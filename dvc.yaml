@@ -1,0 +1,14 @@
+stages:
+  clean:
+    foreach:
+      - dataset: poleval2019_cyberbullying
+        datacleaner: LemmatizerSM
+    do:
+      cmd: python scripts/clean.py "${item.dataset}" "${item.datacleaner}"
+      deps:
+        - scripts/clean.py
+        - data/${item.dataset}/raw
+        - objects/datacleaners/${item.datacleaner}.py
+        - objects/datacleaners/DataCleaner.py
+      outs:
+        - data/${item.dataset}/${item.datacleaner}
