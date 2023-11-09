@@ -1,4 +1,3 @@
-import utils
 import sys
 from objects.datacleaners.DataCleaner import DataCleaner
 from objects.datacleaners.LemmatizerSM import LemmatizerSM
