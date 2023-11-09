@@ -53,7 +53,7 @@ stages:
       size: 6080
       nfiles: 2
   evaluate@0:
-    cmd: python scripts/vectorize.py "poleval2019_cyberbullying" "LemmatizerSM" "CountVectorizer"
+    cmd: python scripts/evaluate.py "poleval2019_cyberbullying" "LemmatizerSM" "CountVectorizer"
       "SVC"
     deps:
     - path: data/poleval2019_cyberbullying/LemmatizerSM_CountVectorizer
@@ -63,12 +63,12 @@ stages:
       nfiles: 2
     - path: scripts/evaluate.py
       hash: md5
-      md5: 63b74d4abe6b8176e8a09cd90a560d04
-      size: 362
+      md5: e7277014394bcd7c4b9eb0cac8088ff1
+      size: 363
     - path: src/objects/models/Model.py
       hash: md5
-      md5: 89dbc3de4e1751275ba053e9ced68b13
-      size: 2157
+      md5: d580f43edad71c66101bfa2f878c5b9b
+      size: 2163
     - path: src/objects/models/SVC.py
       hash: md5
       md5: cd63a692cadc38ad3ac25d1220bd9360

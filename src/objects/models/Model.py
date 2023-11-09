@@ -29,7 +29,7 @@ class Model(ABC):
         :datacleaner: name of datacleaner that was used to clean the data
         :return: tuple of train and test 
         """
-        path = os.path.join(self._get_main_dir_path(), DATA_DIR_PATH, dataset, datacleaner, vectorizer)
+        path = os.path.join(self._get_main_dir_path(), DATA_DIR_PATH, dataset, f"{datacleaner}_{vectorizer}")
         train_path = os.path.join(path, TRAIN_FILENAME)
         test_path = os.path.join(path, TEST_FILENAME)
         df_train = pd.read_parquet(train_path)

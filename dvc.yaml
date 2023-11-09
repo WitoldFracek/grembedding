@@ -35,7 +35,7 @@ stages:
         vectorizer: CountVectorizer
         model: SVC
     do:
-      cmd: python scripts/vectorize.py "${item.dataset}" "${item.datacleaner}" "${item.vectorizer}" "${item.model}"
+      cmd: python scripts/evaluate.py "${item.dataset}" "${item.datacleaner}" "${item.vectorizer}" "${item.model}"
       deps:
         - scripts/evaluate.py
         - data/${item.dataset}/${item.datacleaner}_${item.vectorizer}
