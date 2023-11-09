@@ -1,4 +1,4 @@
-from Vectorizer import Vectorizer
+from objects.vectorizers.Vectorizer import Vectorizer
 import sklearn.feature_extraction.text as sklearntext
 from typing import Dict, List, Tuple
 import pandas as pd

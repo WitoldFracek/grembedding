@@ -1,4 +1,4 @@
-from DataCleaner import DataCleaner
+from objects.datacleaners.DataCleaner import DataCleaner
 from typing import Dict, List
 import spacy
 import pl_core_news_sm

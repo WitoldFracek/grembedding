@@ -49,4 +49,4 @@ class DataCleaner(ABC):
         df_test.to_parquet(test_path)
 
     def _get_main_dir_path(self) -> str:
-        return pathlib.Path(__file__).parent.parent.parent
+        return pathlib.Path(__file__).parent.parent.parent.parent

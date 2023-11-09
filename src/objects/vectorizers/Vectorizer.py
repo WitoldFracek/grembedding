@@ -40,7 +40,7 @@ class Vectorizer(ABC):
         :df_train: train dataframe
         :df_test: test dataframe
         """
-        path = os.path.join(self._get_main_dir_path(), DATA_DIR_PATH, dataset, datacleaner, self.__class__.__name__)
+        path = os.path.join(self._get_main_dir_path(), DATA_DIR_PATH, dataset, f"{datacleaner}_{self.__class__.__name__}")
         if not os.path.exists(path):
             os.makedirs(path)
             
@@ -50,4 +50,4 @@ class Vectorizer(ABC):
         df_test.to_parquet(test_path)
 
     def _get_main_dir_path(self) -> str:
-        return pathlib.Path(__file__).parent.parent.parent
+        return pathlib.Path(__file__).parent.parent.parent.parent

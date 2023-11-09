@@ -8,7 +8,36 @@ stages:
       deps:
         - scripts/clean.py
         - data/${item.dataset}/raw
-        - objects/datacleaners/${item.datacleaner}.py
-        - objects/datacleaners/DataCleaner.py
+        - src/objects/datacleaners/${item.datacleaner}.py
+        - src/objects/datacleaners/DataCleaner.py
       outs:
         - data/${item.dataset}/${item.datacleaner}
+  
+  vectorize:
+    foreach:
+      - dataset: poleval2019_cyberbullying
+        datacleaner: LemmatizerSM
+        vectorizer: CountVectorizer
+    do:
+      cmd: python scripts/vectorize.py "${item.dataset}" "${item.datacleaner}" "${item.vectorizer}"
+      deps:
+        - scripts/vectorize.py
+        - data/${item.dataset}/${item.datacleaner}
+        - src/objects/vectorizers/${item.vectorizer}.py
+        - src/objects/vectorizers/Vectorizer.py
+      outs:
+        - data/${item.dataset}/${item.datacleaner}_${item.vectorizer}
+
+  evaluate:
+    foreach:
+      - dataset: poleval2019_cyberbullying
+        datacleaner: LemmatizerSM
+        vectorizer: CountVectorizer
+        model: SVC
+    do:
+      cmd: python scripts/vectorize.py "${item.dataset}" "${item.datacleaner}" "${item.vectorizer}" "${item.model}"
+      deps:
+        - scripts/evaluate.py
+        - data/${item.dataset}/${item.datacleaner}_${item.vectorizer}
+        - src/objects/models/Model.py
+        - src/objects/models/${item.model}.py

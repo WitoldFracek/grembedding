@@ -1,19 +1,16 @@
-from scripts import utils
+import utils
 import sys
-from objects.datacleaners import DataCleaner, LemmatizerSM
+from objects.datacleaners.DataCleaner import DataCleaner
+from objects.datacleaners.LemmatizerSM import LemmatizerSM
 
 
 def main():
 
     dataset: str = sys.argv[1]
     datacleaner: str = sys.argv[2]
-    print(dataset, datacleaner)
 
-    sys.path.append(utils._get_main_dir_path())
-
-    print(globals())
-    x = globals()[datacleaner]
-    print(x)
+    dc = globals()[datacleaner]()
+    dc.clean_data(dataset)
 
 if __name__ == "__main__":
     main()

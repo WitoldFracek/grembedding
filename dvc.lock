@@ -1,0 +1,75 @@
+schema: '2.0'
+stages:
+  clean@0:
+    cmd: python scripts/clean.py "poleval2019_cyberbullying" "LemmatizerSM"
+    deps:
+    - path: data/poleval2019_cyberbullying/raw
+      hash: md5
+      md5: d47dffb87ec5f718278bd5a1aa0452ff.dir
+      size: 4220
+      nfiles: 2
+    - path: scripts/clean.py
+      hash: md5
+      md5: dcd18f7ed920109e5389e24f556d5fbe
+      size: 336
+    - path: src/objects/datacleaners/DataCleaner.py
+      hash: md5
+      md5: 7e928a09b11a28b1246cf3b4a98e1609
+      size: 1868
+    - path: src/objects/datacleaners/LemmatizerSM.py
+      hash: md5
+      md5: 21642ece5059da71c2e173b9abe77fd0
+      size: 1110
+    outs:
+    - path: data/poleval2019_cyberbullying/LemmatizerSM
+      hash: md5
+      md5: 56a97cffc49b8edd5f7197b5245caff2.dir
+      size: 8600
+      nfiles: 2
+  vectorize@0:
+    cmd: python scripts/vectorize.py "poleval2019_cyberbullying" "LemmatizerSM" "CountVectorizer"
+    deps:
+    - path: data/poleval2019_cyberbullying/LemmatizerSM
+      hash: md5
+      md5: 56a97cffc49b8edd5f7197b5245caff2.dir
+      size: 8600
+      nfiles: 2
+    - path: scripts/vectorize.py
+      hash: md5
+      md5: d1c8e2af98d309fba1265d22a211d8c4
+      size: 366
+    - path: src/objects/vectorizers/CountVectorizer.py
+      hash: md5
+      md5: 6d29df05a4eede09c1c33a5f0df2608c
+      size: 1290
+    - path: src/objects/vectorizers/Vectorizer.py
+      hash: md5
+      md5: e969e90349a3aa3c79e8c72e3668aeb7
+      size: 2030
+    outs:
+    - path: data/poleval2019_cyberbullying/LemmatizerSM_CountVectorizer
+      hash: md5
+      md5: a563e48e3da21b3efadd8db6231d502d.dir
+      size: 6080
+      nfiles: 2
+  evaluate@0:
+    cmd: python scripts/vectorize.py "poleval2019_cyberbullying" "LemmatizerSM" "CountVectorizer"
+      "SVC"
+    deps:
+    - path: data/poleval2019_cyberbullying/LemmatizerSM_CountVectorizer
+      hash: md5
+      md5: a563e48e3da21b3efadd8db6231d502d.dir
+      size: 6080
+      nfiles: 2
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 63b74d4abe6b8176e8a09cd90a560d04
+      size: 362
+    - path: src/objects/models/Model.py
+      hash: md5
+      md5: 89dbc3de4e1751275ba053e9ced68b13
+      size: 2157
+    - path: src/objects/models/SVC.py
+      hash: md5
+      md5: cd63a692cadc38ad3ac25d1220bd9360
+      size: 1378
