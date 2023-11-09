@@ -5,7 +5,7 @@ stages:
     deps:
     - path: data/poleval2019_cyberbullying/raw
       hash: md5
-      md5: 20d681de0080bbf94318022d5a45d691.dir
+      md5: 5c0898ba89600aab4f8f17aba28d0921.dir
       size: 4220
       nfiles: 2
     - path: scripts/clean.py
@@ -23,16 +23,16 @@ stages:
     outs:
     - path: data/poleval2019_cyberbullying/LemmatizerSM
       hash: md5
-      md5: f8368a006878cf67fc530ed51b13066b.dir
-      size: 8600
+      md5: 571eda43258e2228cc41d38221b88564.dir
+      size: 8601
       nfiles: 2
   vectorize@0:
     cmd: python scripts/vectorize.py "poleval2019_cyberbullying" "LemmatizerSM" "CountVectorizer"
     deps:
     - path: data/poleval2019_cyberbullying/LemmatizerSM
       hash: md5
-      md5: f8368a006878cf67fc530ed51b13066b.dir
-      size: 8600
+      md5: 571eda43258e2228cc41d38221b88564.dir
+      size: 8601
       nfiles: 2
     - path: scripts/vectorize.py
       hash: md5
@@ -49,8 +49,8 @@ stages:
     outs:
     - path: data/poleval2019_cyberbullying/LemmatizerSM_CountVectorizer
       hash: md5
-      md5: 0bc2c079b7a2de1a7f03b8a833de3fa8.dir
-      size: 6080
+      md5: d98b917cc0e97806219cf07b88ab7c6e.dir
+      size: 6081
       nfiles: 2
   evaluate@0:
     cmd: python scripts/evaluate.py "poleval2019_cyberbullying" "LemmatizerSM" "CountVectorizer"
@@ -58,8 +58,8 @@ stages:
     deps:
     - path: data/poleval2019_cyberbullying/LemmatizerSM_CountVectorizer
       hash: md5
-      md5: 0bc2c079b7a2de1a7f03b8a833de3fa8.dir
-      size: 6080
+      md5: d98b917cc0e97806219cf07b88ab7c6e.dir
+      size: 6081
       nfiles: 2
     - path: scripts/evaluate.py
       hash: md5
