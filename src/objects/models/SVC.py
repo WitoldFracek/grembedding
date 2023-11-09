@@ -29,7 +29,4 @@ class SVC(Model):
                 metrics = {"accuracy": accuracy_score(y_test, y_pred)},
                 clf = clf
             )
-
-x = SVC()
-x.evaluate("poleval2019_cyberbullying", "LemmatizerSM", "CountVectorizer")
     
