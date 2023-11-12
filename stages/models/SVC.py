@@ -1,4 +1,4 @@
-from objects.models.Model import Model
+from stages.models.Model import Model
 from sklearn.preprocessing import StandardScaler
 import sklearn.svm as svm
 from sklearn.metrics import accuracy_score
