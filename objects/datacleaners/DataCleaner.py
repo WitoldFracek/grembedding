@@ -3,6 +3,7 @@ from typing import Dict, List, Tuple
 import pandas as pd
 import os
 import pathlib
+from loguru import logger
 
 DATA_DIR_PATH = 'data'
 RAW_DIR = 'raw'
@@ -40,6 +41,7 @@ class DataCleaner(ABC):
         :df_test: test dataframe
         """
         path = os.path.join(self._get_main_dir_path(), DATA_DIR_PATH, dataset, self.__class__.__name__)
+        print(f"Saving dataframes to {path}")
         if not os.path.exists(path):
             os.makedirs(path)
             
@@ -49,4 +51,6 @@ class DataCleaner(ABC):
         df_test.to_parquet(test_path)
 
     def _get_main_dir_path(self) -> str:
-        return pathlib.Path(__file__).parent.parent.parent.parent
+        pth = pathlib.Path(__file__).parent.parent.parent.parent
+        print(pth)
+        return pth

@@ -1,8 +1,8 @@
-from objects.datacleaners.DataCleaner import DataCleaner
-from typing import Dict, List
 import spacy
-import pl_core_news_sm
-import pandas as pd
+
+from objects.datacleaners.DataCleaner import DataCleaner
+from loguru import logger
+
 
 class LemmatizerSM(DataCleaner):
 
@@ -15,7 +15,7 @@ class LemmatizerSM(DataCleaner):
         :dataset: name of dataset
         :return: dict of train and test data
         """
-        
+        logger.info(f"Executing clean_data for dataset: {dataset}")
         df_train, df_test = self.load_dataset(dataset)
         df_train['clean_text'] = df_train['text'].apply(self.lemmatize_text)
         df_test['clean_text'] = df_train['text'].apply(self.lemmatize_text)
@@ -31,5 +31,5 @@ class LemmatizerSM(DataCleaner):
         clean_text = ' '.join(lemmas)
         return clean_text
     
-x = LemmatizerSM()
-x.clean_data("poleval2019_cyberbullying")
+# x = LemmatizerSM()
+# x.clean_data("poleval2019_cyberbullying")

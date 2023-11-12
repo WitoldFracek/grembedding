@@ -4,12 +4,15 @@ stages:
       - dataset: poleval2019_cyberbullying
         datacleaner: LemmatizerSM
     do:
-      cmd: python scripts/clean.py "${item.dataset}" "${item.datacleaner}"
+      cmd:
+        - which python
+        - pwd
+        - python scripts/clean.py "${item.dataset}" "${item.datacleaner}"
       deps:
         - scripts/clean.py
         - data/${item.dataset}/raw
-        - src/objects/datacleaners/${item.datacleaner}.py
-        - src/objects/datacleaners/DataCleaner.py
+        - objects/datacleaners/${item.datacleaner}.py
+        - objects/datacleaners/DataCleaner.py
       outs:
         - data/${item.dataset}/${item.datacleaner}
   
@@ -23,8 +26,8 @@ stages:
       deps:
         - scripts/vectorize.py
         - data/${item.dataset}/${item.datacleaner}
-        - src/objects/vectorizers/${item.vectorizer}.py
-        - src/objects/vectorizers/Vectorizer.py
+        - objects/vectorizers/${item.vectorizer}.py
+        - objects/vectorizers/Vectorizer.py
       outs:
         - data/${item.dataset}/${item.datacleaner}_${item.vectorizer}
 
