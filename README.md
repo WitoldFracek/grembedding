@@ -25,10 +25,11 @@
 1. Ensure you are using venv and have `pip-tools` installed.
 2. Manage direct dependencies in `requirements.in`. You can pin the version to the newest one if you like.
 Do not put transitive dependencies in `requirements.in` unless you want to pin them.
-3. Use `pip-compile requirements.in` to generate `requirements.txt`. This may take a bit to resolve all deps.
+3. Use `pip-compile` to generate `requirements.txt`. This may take a bit to resolve all deps.
 4. Use `pip-sync` to install the dependencies from `requirements.txt` into your virtual environment.
 
 ### Changing dependencies
 
 1. Add / update / remove the dependency in `requirements.in`
-2. Use `pip-compile requirements.in` and `pip-sync` to sync venv with the new dependencies.
+2. Use `pip-compile && pip-sync` to sync venv with the new dependencies.
+This is preferred to `pip install -r requirements.txt` because it will also uninstall unused dependencies.
