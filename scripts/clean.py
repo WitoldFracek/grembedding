@@ -1,9 +1,16 @@
+import os
 import sys
+import importlib
 
 from loguru import logger
 
-from objects.datacleaners.DataCleaner import DataCleaner
-from objects.datacleaners.LemmatizerSM import LemmatizerSM
+if "DVC_ROOT" in os.environ.keys():
+    root_dir = os.environ["DVC_ROOT"]
+    sys.path.append(root_dir)
+    logger.info(f"Appending root dir: '{root_dir}' to sys.path")
+
+from stages.datacleaners.DataCleaner import DataCleaner
+from stages.datacleaners.LemmatizerSM import LemmatizerSM
 
 
 def main():

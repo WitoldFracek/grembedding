@@ -11,8 +11,8 @@ stages:
       deps:
         - scripts/clean.py
         - data/${item.dataset}/raw
-        - objects/datacleaners/${item.datacleaner}.py
-        - objects/datacleaners/DataCleaner.py
+        - stages/datacleaners/${item.datacleaner}.py
+        - stages/datacleaners/DataCleaner.py
       outs:
         - data/${item.dataset}/${item.datacleaner}
   
@@ -26,8 +26,8 @@ stages:
       deps:
         - scripts/vectorize.py
         - data/${item.dataset}/${item.datacleaner}
-        - objects/vectorizers/${item.vectorizer}.py
-        - objects/vectorizers/Vectorizer.py
+        - stages/vectorizers/${item.vectorizer}.py
+        - stages/vectorizers/Vectorizer.py
       outs:
         - data/${item.dataset}/${item.datacleaner}_${item.vectorizer}
 
@@ -42,5 +42,5 @@ stages:
       deps:
         - scripts/evaluate.py
         - data/${item.dataset}/${item.datacleaner}_${item.vectorizer}
-        - src/objects/models/Model.py
-        - src/objects/models/${item.model}.py
+        - stages/models/Model.py
+        - stages/models/${item.model}.py

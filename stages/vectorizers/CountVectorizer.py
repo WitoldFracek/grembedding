@@ -1,7 +1,7 @@
-from objects.vectorizers.Vectorizer import Vectorizer
+from stages.vectorizers.Vectorizer import Vectorizer
 import sklearn.feature_extraction.text as sklearntext
-from typing import Dict, List, Tuple
-import pandas as pd
+from typing import List
+
 
 class CountVectorizer(Vectorizer):
     
@@ -26,5 +26,6 @@ class CountVectorizer(Vectorizer):
         return self._count_vectorizer.transform([clean_text]).todense().tolist()[0]
 
 
-x = CountVectorizer()
-x.vectorize("poleval2019_cyberbullying", "LemmatizerSM")
+if __name__ == "__main__":
+    x = CountVectorizer()
+    x.vectorize("poleval2019_cyberbullying", "LemmatizerSM")

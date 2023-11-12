@@ -1,14 +1,15 @@
-from abc import ABC, abstractmethod
-from typing import Dict, List, Tuple
-import pandas as pd
 import os
-import pathlib
+from abc import ABC, abstractmethod
+from typing import Tuple
+
+import pandas as pd
 from loguru import logger
 
 DATA_DIR_PATH = 'data'
 RAW_DIR = 'raw'
 TEST_FILENAME = 'test.csv'
 TRAIN_FILENAME = 'train.csv'
+
 
 class DataCleaner(ABC):
 
@@ -26,13 +27,13 @@ class DataCleaner(ABC):
         :dataset: name of dataset
         :return: tuple of train and test dataframe
         """
-        path = os.path.join(self._get_main_dir_path(), DATA_DIR_PATH, dataset, RAW_DIR)
+        path = os.path.join(self._get_root_dir_abs_path(), DATA_DIR_PATH, dataset, RAW_DIR)
         train_path = os.path.join(path, TRAIN_FILENAME)
         test_path = os.path.join(path, TEST_FILENAME)
-        df_train = pd.read_csv(train_path, sep=';', header=0, names = ["text", "label"])
-        df_test = pd.read_csv(test_path, sep=';', header=0, names = ["text", "label"])
+        df_train = pd.read_csv(train_path, sep=';', header=0, names=["text", "label"])
+        df_test = pd.read_csv(test_path, sep=';', header=0, names=["text", "label"])
         return df_train, df_test
-    
+
     def safe_dataframe_as_parquet(self, dataset: str, df_train: pd.DataFrame, df_test: pd.DataFrame) -> None:
         """
         Save dataframes to parquet file
@@ -40,17 +41,16 @@ class DataCleaner(ABC):
         :df_train: train dataframe
         :df_test: test dataframe
         """
-        path = os.path.join(self._get_main_dir_path(), DATA_DIR_PATH, dataset, self.__class__.__name__)
-        print(f"Saving dataframes to {path}")
+        path = os.path.join(self._get_root_dir_abs_path(), DATA_DIR_PATH, dataset, self.__class__.__name__)
+        logger.info(f"Saving dataframes to {path}")
         if not os.path.exists(path):
             os.makedirs(path)
-            
+
         train_path = os.path.join(path, "train.parquet")
         test_path = os.path.join(path, "test.parquet")
         df_train.to_parquet(train_path)
         df_test.to_parquet(test_path)
 
-    def _get_main_dir_path(self) -> str:
-        pth = pathlib.Path(__file__).parent.parent.parent.parent
-        print(pth)
-        return pth
+    @staticmethod
+    def _get_root_dir_abs_path():
+        return os.environ["DVC_ROOT"]

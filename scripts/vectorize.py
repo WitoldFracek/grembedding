@@ -1,6 +1,15 @@
+import os
 import sys
-from objects.vectorizers.Vectorizer import Vectorizer
-from objects.vectorizers.CountVectorizer import CountVectorizer
+from loguru import logger
+
+if "DVC_ROOT" in os.environ.keys():
+    root_dir = os.environ["DVC_ROOT"]
+    sys.path.append(root_dir)
+    logger.info(f"Appending root dir: '{root_dir}' to sys.path")
+
+from stages.vectorizers.Vectorizer import Vectorizer
+from stages.vectorizers.CountVectorizer import CountVectorizer
+
 
 def main():
 
@@ -8,7 +17,7 @@ def main():
     datacleaner: str = sys.argv[2]
     vectorizer: str = sys.argv[3]
 
-    v = globals()[vectorizer]()
+    v: Vectorizer = globals()[vectorizer]()
     v.vectorize(dataset, datacleaner)
 
 if __name__ == "__main__":

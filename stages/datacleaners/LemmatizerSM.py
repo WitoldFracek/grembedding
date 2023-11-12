@@ -1,6 +1,6 @@
 import spacy
 
-from objects.datacleaners.DataCleaner import DataCleaner
+from stages.datacleaners.DataCleaner import DataCleaner
 from loguru import logger
 
 

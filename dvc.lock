@@ -1,56 +1,59 @@
 schema: '2.0'
 stages:
   clean@0:
-    cmd: python scripts/clean.py "poleval2019_cyberbullying" "LemmatizerSM"
+    cmd:
+    - which python
+    - pwd
+    - python scripts/clean.py "poleval2019_cyberbullying" "LemmatizerSM"
     deps:
     - path: data/poleval2019_cyberbullying/raw
       hash: md5
-      md5: 5c0898ba89600aab4f8f17aba28d0921.dir
+      md5: d47dffb87ec5f718278bd5a1aa0452ff.dir
       size: 4220
       nfiles: 2
     - path: scripts/clean.py
       hash: md5
-      md5: 7c3e51f069fbebfa7ee2d1da4d8fb7d3
-      size: 322
-    - path: src/objects/datacleaners/DataCleaner.py
+      md5: 7a1852cd2ad946c2bc94ea4d913a9751
+      size: 729
+    - path: stages/datacleaners/DataCleaner.py
       hash: md5
-      md5: 7e928a09b11a28b1246cf3b4a98e1609
-      size: 1868
-    - path: src/objects/datacleaners/LemmatizerSM.py
+      md5: 4abf5078043244c6dce3aae94c7af9db
+      size: 1896
+    - path: stages/datacleaners/LemmatizerSM.py
       hash: md5
-      md5: 21642ece5059da71c2e173b9abe77fd0
-      size: 1110
+      md5: b584f8a4e9549e4ddea47578fb503ed0
+      size: 1127
     outs:
     - path: data/poleval2019_cyberbullying/LemmatizerSM
       hash: md5
-      md5: 571eda43258e2228cc41d38221b88564.dir
-      size: 8601
+      md5: 56a97cffc49b8edd5f7197b5245caff2.dir
+      size: 8600
       nfiles: 2
   vectorize@0:
     cmd: python scripts/vectorize.py "poleval2019_cyberbullying" "LemmatizerSM" "CountVectorizer"
     deps:
     - path: data/poleval2019_cyberbullying/LemmatizerSM
       hash: md5
-      md5: 571eda43258e2228cc41d38221b88564.dir
-      size: 8601
+      md5: 56a97cffc49b8edd5f7197b5245caff2.dir
+      size: 8600
       nfiles: 2
     - path: scripts/vectorize.py
       hash: md5
-      md5: d1c8e2af98d309fba1265d22a211d8c4
-      size: 366
-    - path: src/objects/vectorizers/CountVectorizer.py
+      md5: 9f57c11534fe54286d4f148f2a443d38
+      size: 593
+    - path: stages/vectorizers/CountVectorizer.py
       hash: md5
-      md5: 6d29df05a4eede09c1c33a5f0df2608c
-      size: 1290
-    - path: src/objects/vectorizers/Vectorizer.py
+      md5: 6c567be216a45007f7c2dfc8afd84a8e
+      size: 1293
+    - path: stages/vectorizers/Vectorizer.py
       hash: md5
-      md5: e969e90349a3aa3c79e8c72e3668aeb7
-      size: 2030
+      md5: c0b8b6b935aff44cd32e2b61e337082d
+      size: 2060
     outs:
     - path: data/poleval2019_cyberbullying/LemmatizerSM_CountVectorizer
       hash: md5
-      md5: d98b917cc0e97806219cf07b88ab7c6e.dir
-      size: 6081
+      md5: a563e48e3da21b3efadd8db6231d502d.dir
+      size: 6080
       nfiles: 2
   evaluate@0:
     cmd: python scripts/evaluate.py "poleval2019_cyberbullying" "LemmatizerSM" "CountVectorizer"
@@ -58,18 +61,18 @@ stages:
     deps:
     - path: data/poleval2019_cyberbullying/LemmatizerSM_CountVectorizer
       hash: md5
-      md5: d98b917cc0e97806219cf07b88ab7c6e.dir
-      size: 6081
+      md5: a563e48e3da21b3efadd8db6231d502d.dir
+      size: 6080
       nfiles: 2
     - path: scripts/evaluate.py
       hash: md5
-      md5: e7277014394bcd7c4b9eb0cac8088ff1
-      size: 363
-    - path: src/objects/models/Model.py
+      md5: d702e3c174f7e1d863b99ab59706eb23
+      size: 584
+    - path: stages/models/Model.py
       hash: md5
-      md5: d580f43edad71c66101bfa2f878c5b9b
-      size: 2163
-    - path: src/objects/models/SVC.py
+      md5: 088f1f284a08a7a4329e216cadd3ff02
+      size: 2135
+    - path: stages/models/SVC.py
       hash: md5
-      md5: 60c33f58bb09d263a176f3759b76772e
-      size: 1289
+      md5: 3edaf54f65818cbf408eec8a69e03561
+      size: 1288

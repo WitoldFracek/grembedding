@@ -25,7 +25,7 @@ class Vectorizer(ABC):
         :datacleaner: name of datacleaner that was used to clean the data
         :return: tuple of train and test 
         """
-        path = os.path.join(self._get_main_dir_path(), DATA_DIR_PATH, dataset, datacleaner)
+        path = os.path.join(self._get_root_dir_path(), DATA_DIR_PATH, dataset, datacleaner)
         train_path = os.path.join(path, TRAIN_FILENAME)
         test_path = os.path.join(path, TEST_FILENAME)
         df_train = pd.read_parquet(train_path)
@@ -40,7 +40,7 @@ class Vectorizer(ABC):
         :df_train: train dataframe
         :df_test: test dataframe
         """
-        path = os.path.join(self._get_main_dir_path(), DATA_DIR_PATH, dataset, f"{datacleaner}_{self.__class__.__name__}")
+        path = os.path.join(self._get_root_dir_path(), DATA_DIR_PATH, dataset, f"{datacleaner}_{self.__class__.__name__}")
         if not os.path.exists(path):
             os.makedirs(path)
             
@@ -49,5 +49,6 @@ class Vectorizer(ABC):
         df_train.to_parquet(train_path)
         df_test.to_parquet(test_path)
 
-    def _get_main_dir_path(self) -> str:
-        return pathlib.Path(__file__).parent.parent.parent.parent
+    def _get_root_dir_path(self) -> str:
+        # TODO mock this env var in non-dvc runs / tests
+        return os.environ["DVC_ROOT"]
