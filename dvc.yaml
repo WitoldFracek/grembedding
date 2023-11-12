@@ -5,8 +5,6 @@ stages:
         datacleaner: LemmatizerSM
     do:
       cmd:
-        - which python
-        - pwd
         - python scripts/clean.py "${item.dataset}" "${item.datacleaner}"
       deps:
         - scripts/clean.py

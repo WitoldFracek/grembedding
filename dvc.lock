@@ -2,8 +2,6 @@ schema: '2.0'
 stages:
   clean@0:
     cmd:
-    - which python
-    - pwd
     - python scripts/clean.py "poleval2019_cyberbullying" "LemmatizerSM"
     deps:
     - path: data/poleval2019_cyberbullying/raw
@@ -13,16 +11,16 @@ stages:
       nfiles: 2
     - path: scripts/clean.py
       hash: md5
-      md5: 7a1852cd2ad946c2bc94ea4d913a9751
-      size: 729
+      md5: aa0f1dfeb359476bdb9c1dd9cf318168
+      size: 840
     - path: stages/datacleaners/DataCleaner.py
       hash: md5
-      md5: 4abf5078043244c6dce3aae94c7af9db
-      size: 1896
+      md5: cf611213e684a2d5da341d185fddb4cf
+      size: 2087
     - path: stages/datacleaners/LemmatizerSM.py
       hash: md5
-      md5: b584f8a4e9549e4ddea47578fb503ed0
-      size: 1127
+      md5: 704587ed6d94a3fe3e18b6bbc21c6a6c
+      size: 1059
     outs:
     - path: data/poleval2019_cyberbullying/LemmatizerSM
       hash: md5
@@ -39,16 +37,16 @@ stages:
       nfiles: 2
     - path: scripts/vectorize.py
       hash: md5
-      md5: 9f57c11534fe54286d4f148f2a443d38
-      size: 593
+      md5: 313deb9b0c0dc175f52248c04ddc2330
+      size: 798
     - path: stages/vectorizers/CountVectorizer.py
       hash: md5
-      md5: 6c567be216a45007f7c2dfc8afd84a8e
+      md5: ea629607f674858f4d45b0976837012a
       size: 1293
     - path: stages/vectorizers/Vectorizer.py
       hash: md5
-      md5: c0b8b6b935aff44cd32e2b61e337082d
-      size: 2060
+      md5: 075c0ab201ac8d3e51f57c07bab1fe4e
+      size: 2361
     outs:
     - path: data/poleval2019_cyberbullying/LemmatizerSM_CountVectorizer
       hash: md5
@@ -66,12 +64,12 @@ stages:
       nfiles: 2
     - path: scripts/evaluate.py
       hash: md5
-      md5: d702e3c174f7e1d863b99ab59706eb23
-      size: 584
+      md5: 1ff1e58548b61ed8c5b3057aff66ad6a
+      size: 811
     - path: stages/models/Model.py
       hash: md5
-      md5: 088f1f284a08a7a4329e216cadd3ff02
-      size: 2135
+      md5: 857cb8cf388b8e93074eb40e10aec566
+      size: 2314
     - path: stages/models/SVC.py
       hash: md5
       md5: 3edaf54f65818cbf408eec8a69e03561

@@ -20,7 +20,7 @@ class CountVectorizer(Vectorizer):
         df_test["vectorized_text"] = df_test['clean_text'].apply(self.transform)
         df_train = df_train.drop(columns = 'clean_text')
         df_test = df_test.drop(columns = 'clean_text')
-        self.safe_dataframe_as_parquet(dataset, datacleaner, df_train, df_test)
+        self.save_dataframe_as_parquet(dataset, datacleaner, df_train, df_test)
 
     def transform(self, clean_text: str) -> List[int]:
         return self._count_vectorizer.transform([clean_text]).todense().tolist()[0]
