@@ -1,0 +1,12 @@
+pandas
+numpy
+jupyter
+nbconvert
+spacy
+scikit-learn
+dvc
+mlflow
+matplotlib
+seaborn
+qwlist
+pip-tools
