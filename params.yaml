@@ -16,5 +16,7 @@ evaluate:
     vectorizer: CountVectorizer
 
 models:
-  - model: SVC_1
-  - model: SVC_2
+  - model: SVC
+    params: SVC_1
+  - model: SVC
+    params: SVC_2

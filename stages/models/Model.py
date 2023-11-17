@@ -17,7 +17,7 @@ MLFLOW_ARTIFACT_PATH = "mlflow_artifacts"
 class Model(ABC):
 
     @abstractmethod
-    def evaluate(self, dataset: str, datacleaner: str, vectorizer: str) -> None:
+    def evaluate(self, dataset: str, datacleaner: str, vectorizer: str, params: Dict[str, int | float | str]) -> None:
         """
         :dataset: name of dataset
         :datacleaner: name of datacleaner that was used to clean the data

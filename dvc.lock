@@ -6,52 +6,52 @@ stages:
     deps:
     - path: data/DatasetXD/raw
       hash: md5
-      md5: d2c240d25cb46085a53c42917f40eeed.dir
-      size: 6055
-      nfiles: 3
+      md5: e348c75ddb978d6d26d0a7dcb1c6c2ed.dir
+      size: 6155
+      nfiles: 2
     - path: scripts/clean.py
       hash: md5
-      md5: a35073fb8ed6b407b4d09d0c795ba62e
-      size: 842
+      md5: 8f3ab3ce5cbd679d18c72367fe31bdcf
+      size: 812
     - path: stages/datacleaners/DataCleaner.py
       hash: md5
-      md5: 3afe0140f6c94bf9433ce2b8eb365572
-      size: 2015
+      md5: 39d4af2eb9dc8e30af73787604298c4c
+      size: 1951
     - path: stages/datacleaners/LemmatizerSM.py
       hash: md5
-      md5: e7c3beb042c9a501a79f2cc598a37bd6
-      size: 1058
+      md5: 0eb8a80a6d449db80ca14407f57541e1
+      size: 1022
     outs:
     - path: data/DatasetXD/LemmatizerSM
       hash: md5
-      md5: 2962f6a9db2c7dbaf5758b4162766f9b.dir
-      size: 6176
+      md5: 78766910c1126b5db72937b4baa7baf2.dir
+      size: 6263
       nfiles: 2
   vectorize@0:
     cmd: python scripts/vectorize.py "DatasetXD" "LemmatizerSM" "CountVectorizer"
     deps:
     - path: data/DatasetXD/LemmatizerSM
       hash: md5
-      md5: 2962f6a9db2c7dbaf5758b4162766f9b.dir
-      size: 6176
+      md5: 78766910c1126b5db72937b4baa7baf2.dir
+      size: 6263
       nfiles: 2
     - path: scripts/vectorize.py
       hash: md5
-      md5: 313deb9b0c0dc175f52248c04ddc2330
-      size: 798
+      md5: 9e08d7c90656667702d005a49f49ecba
+      size: 769
     - path: stages/vectorizers/CountVectorizer.py
       hash: md5
-      md5: ea629607f674858f4d45b0976837012a
-      size: 1293
+      md5: 1d6f7718daba20d89737407205aada48
+      size: 1262
     - path: stages/vectorizers/Vectorizer.py
       hash: md5
-      md5: 075c0ab201ac8d3e51f57c07bab1fe4e
-      size: 2361
+      md5: 9965fbb21d19c53379d3122ac45fc423
+      size: 2292
     outs:
     - path: data/DatasetXD/LemmatizerSM_CountVectorizer
       hash: md5
-      md5: 44ff61d071ce8abf9def683c5b49d3a2.dir
-      size: 6584
+      md5: 1f46aedfec9639a4f99cfa2f692104bc.dir
+      size: 6788
       nfiles: 2
   evaluate@0:
     cmd: python scripts/evaluate.py "DatasetXD" "LemmatizerSM" "CountVectorizer" "SVC"
@@ -116,18 +116,18 @@ stages:
     deps:
     - path: data/all_raw_datasets/
       hash: md5
-      md5: ddcf28d44440a42f09e4e032a987e811.dir
-      size: 998
+      md5: 6a89417fb9791682b729be129bab7c25.dir
+      size: 728
       nfiles: 2
     - path: scripts/load.py
       hash: md5
-      md5: 1a8e610322c2516321f52c89e4acbd4f
-      size: 762
+      md5: 29ccb6ec0a35f95ecf2a6073766d664b
+      size: 734
     outs:
     - path: data/DatasetXD/raw/test.parquet
       hash: md5
-      md5: 46feace39edace7dc43f2034e104003e
-      size: 2946
+      md5: 230ad5f45b27c461a99f84f71519e573
+      size: 2939
   train@config0-1-feature1:
     cmd: echo 'XD'
   train@config0-1-feature2:
@@ -163,8 +163,64 @@ stages:
   train@config0-SVC_2:
     cmd: echo 'XD'
   train@config0-model0:
-    cmd: echo "--config.dataset DatasetXD --config.datacleaner LemmatizerSM --config.vectorizer
-      CountVectorizer --model.model SVC_1"
+    cmd: echo "DatasetXD"
   train@config0-model1:
-    cmd: echo "--config.dataset DatasetXD --config.datacleaner LemmatizerSM --config.vectorizer
-      CountVectorizer --model.model SVC_2"
+    cmd: echo "DatasetXD"
+  evaluate@data0-models0:
+    cmd: echo "SVC_1"
+  evaluate@data0-models1:
+    cmd: echo "SVC_2"
+  evaluate@data0-SVC_1:
+    cmd: echo "SVC_1"
+  evaluate@data0-SVC_2:
+    cmd: echo "SVC_2"
+  evaluate@data0-model0:
+    cmd: python scripts/evaluate.py "DatasetXD" "LemmatizerSM" "CountVectorizer" "SVC"
+      "SVC_1"
+    deps:
+    - path: data/DatasetXD/LemmatizerSM_CountVectorizer
+      hash: md5
+      md5: 1f46aedfec9639a4f99cfa2f692104bc.dir
+      size: 6788
+      nfiles: 2
+    - path: params/SVC_1.yaml
+      hash: md5
+      md5: 7ca4f218f8111e57289780805f81992a
+      size: 4
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 76b12041b86397f53985f942f4a12791
+      size: 999
+    - path: stages/models/Model.py
+      hash: md5
+      md5: dc0eb476bdd7374b300bc8068b8dbec6
+      size: 2289
+    - path: stages/models/SVC.py
+      hash: md5
+      md5: dbdaedd8918005a3cfaaac8f011721a8
+      size: 1323
+  evaluate@data0-model1:
+    cmd: python scripts/evaluate.py "DatasetXD" "LemmatizerSM" "CountVectorizer" "SVC"
+      "SVC_2"
+    deps:
+    - path: data/DatasetXD/LemmatizerSM_CountVectorizer
+      hash: md5
+      md5: 1f46aedfec9639a4f99cfa2f692104bc.dir
+      size: 6788
+      nfiles: 2
+    - path: params/SVC_2.yaml
+      hash: md5
+      md5: dcc2e18360f768734743656c9a4ef885
+      size: 4
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 76b12041b86397f53985f942f4a12791
+      size: 999
+    - path: stages/models/Model.py
+      hash: md5
+      md5: dc0eb476bdd7374b300bc8068b8dbec6
+      size: 2289
+    - path: stages/models/SVC.py
+      hash: md5
+      md5: dbdaedd8918005a3cfaaac8f011721a8
+      size: 1323

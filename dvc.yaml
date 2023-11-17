@@ -1,60 +1,49 @@
 stages:
-  # train:
-  #   matrix:
-  #     model: [1, xgb]
-  #     feature: [feature1, feature2, feature3]
-  #   cmd: echo 'XD'
 
-  # load:
-  #   foreach: ${load}
-  #   do:
-  #     cmd:
-  #       - python scripts/load.py "${item.dataloader}"
-  #     deps:
-  #       - scripts/load.py
-  #       - data/all_raw_datasets/
-  #     outs:
-  #       - data/${item.dataloader}/raw/test.parquet
+  load:
+    foreach: ${load}
+    do:
+      cmd:
+        - python scripts/load.py "${item.dataloader}"
+      deps:
+        - scripts/load.py
+        - data/all_raw_datasets/
+      outs:
+        - data/${item.dataloader}/raw/test.parquet
 
-  # clean:
-  #   foreach: ${clean}
-  #   do:
-  #     cmd:
-  #       - python scripts/clean.py "${item.dataset}" "${item.datacleaner}"
-  #     deps:
-  #       - scripts/clean.py
-  #       - data/${item.dataset}/raw
-  #       - stages/datacleaners/${item.datacleaner}.py
-  #       - stages/datacleaners/DataCleaner.py
-  #     outs:
-  #       - data/${item.dataset}/${item.datacleaner}
+  clean:
+    foreach: ${clean}
+    do:
+      cmd:
+        - python scripts/clean.py "${item.dataset}" "${item.datacleaner}"
+      deps:
+        - scripts/clean.py
+        - data/${item.dataset}/raw
+        - stages/datacleaners/${item.datacleaner}.py
+        - stages/datacleaners/DataCleaner.py
+      outs:
+        - data/${item.dataset}/${item.datacleaner}
   
-  # vectorize:
-  #   foreach: ${vectorize}
-  #   do:
-  #     cmd: python scripts/vectorize.py "${item.dataset}" "${item.datacleaner}" "${item.vectorizer}"
-  #     deps:
-  #       - scripts/vectorize.py
-  #       - data/${item.dataset}/${item.datacleaner}
-  #       - stages/vectorizers/${item.vectorizer}.py
-  #       - stages/vectorizers/Vectorizer.py
-  #     outs:
-  #       - data/${item.dataset}/${item.datacleaner}_${item.vectorizer}
+  vectorize:
+    foreach: ${vectorize}
+    do:
+      cmd: python scripts/vectorize.py "${item.dataset}" "${item.datacleaner}" "${item.vectorizer}"
+      deps:
+        - scripts/vectorize.py
+        - data/${item.dataset}/${item.datacleaner}
+        - stages/vectorizers/${item.vectorizer}.py
+        - stages/vectorizers/Vectorizer.py
+      outs:
+        - data/${item.dataset}/${item.datacleaner}_${item.vectorizer}
 
-  # evaluate:
-    # matrix:
-    #   model: [1, xgb]
-    #   feature: [feature1, feature2, feature3]
-    #     cmd: echo 'XD'
-        # cmd: python scripts/evaluate.py "${item.dataset}" "${item.datacleaner}" "${item.vectorizer}" "${item.model}"
-        # deps:
-        #   - scripts/evaluate.py
-        #   - data/${item.dataset}/${item.datacleaner}_${item.vectorizer}
-        #   - stages/models/Model.py
-        #   - stages/models/${item.model}.py
-
-  train:
+  evaluate:
     matrix:
-      config: ${evaluate}
+      data: ${evaluate}
       model: ${models}
-    cmd: echo "${item}"
+    cmd: python scripts/evaluate.py "${item.data.dataset}" "${item.data.datacleaner}" "${item.data.vectorizer}" "${item.model.model}" "${item.model.params}"
+    deps:
+      - scripts/evaluate.py
+      - data/${item.data.dataset}/${item.data.datacleaner}_${item.data.vectorizer}
+      - stages/models/Model.py
+      - stages/models/${item.model.model}.py
+      - params/${item.model.params}.yaml
