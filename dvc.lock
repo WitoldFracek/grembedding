@@ -92,3 +92,27 @@ stages:
       md5: 63eb7c54914a5ad527893a45effff0df.dir
       size: 6040
       nfiles: 2
+  dummy@XD:
+    cmd: echo 'XD'
+  dummy@XD1:
+    cmd: echo "XD1"
+  dummy@XD2:
+    cmd: echo "XD2"
+  train@cnn-feature1:
+    cmd: echo 'XD'
+  train@cnn-feature2:
+    cmd: echo 'XD'
+  train@cnn-feature3:
+    cmd: echo 'XD'
+  train@xgb-feature1:
+    cmd: echo 'XD'
+  train@xgb-feature2:
+    cmd: echo 'XD'
+  train@xgb-feature3:
+    cmd: echo 'XD'
+  train@1-feature1:
+    cmd: echo 'XD'
+  train@1-feature2:
+    cmd: echo 'XD'
+  train@1-feature3:
+    cmd: echo 'XD'

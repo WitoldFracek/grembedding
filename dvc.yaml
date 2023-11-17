@@ -1,4 +1,9 @@
 stages:
+  # train:
+  #   matrix:
+  #     model: [1, xgb]
+  #     feature: [feature1, feature2, feature3]
+  #   cmd: echo 'XD'
   load:
     foreach:
       - DatasetXD
