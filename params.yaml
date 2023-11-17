@@ -17,6 +17,6 @@ evaluate:
 
 models:
   - model: SVC
-    params: SVC_1
+    params: SVC1
   - model: SVC
-    params: SVC_2
+    params: SVC2

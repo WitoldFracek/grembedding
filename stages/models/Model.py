@@ -4,6 +4,7 @@ from typing import Dict, Tuple
 
 import mlflow
 import pandas as pd
+import json
 
 from utils.environment import get_root_dir
 
@@ -17,7 +18,7 @@ MLFLOW_ARTIFACT_PATH = "mlflow_artifacts"
 class Model(ABC):
 
     @abstractmethod
-    def evaluate(self, dataset: str, datacleaner: str, vectorizer: str, params: Dict[str, int | float | str]) -> None:
+    def evaluate(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str, params: Dict[str, int | float | str]) -> None:
         """
         :dataset: name of dataset
         :datacleaner: name of datacleaner that was used to clean the data
@@ -57,6 +58,21 @@ class Model(ABC):
             mlflow.sklearn.log_model(
                 sk_model=clf, artifact_path=MLFLOW_ARTIFACT_PATH
             )
+
+    def save_json_results(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str, params: Dict[str, str | int | float], metrics: Dict[str, float]) -> None:
+        # results/${item.data.dataset}_${item.data.datacleaner}_${item.data.vectorizer}_${item.model.model}_${item.model.params}.json
+        filename = f"{dataset}_{datacleaner}_{vectorizer}_{self.__class__.__name__}_{params_name}.json"
+        results = {}
+        results['params'] = params
+        results['metrics'] = metrics
+        results['dataset'] = dataset
+        results['datacleaner'] = datacleaner
+        results['vectorizer'] = vectorizer
+        results['params_name'] = params_name
+        with open(os.path.join(get_root_dir(), "results", filename), 'w') as file:
+            json.dump(results, file)
+
+
 
     @staticmethod
     def get_input_dir(dataset_name, datacleaner_name, vectorizer_name):

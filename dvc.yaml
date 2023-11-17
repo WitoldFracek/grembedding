@@ -48,3 +48,5 @@ stages:
       - stages/models/Model.py
       - stages/models/${item.model.model}.py
       - params/${item.model.params}.yaml
+    outs:
+      - results/${item.data.dataset}_${item.data.datacleaner}_${item.data.vectorizer}_${item.model.model}_${item.model.params}.json
