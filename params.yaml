@@ -1,6 +1,20 @@
-dummy1:
-- XD1
-- XD2
-dummy2:
-- AA1
-- AA2
+load:
+  - dataloader: DatasetXD
+
+clean:
+  - dataset: DatasetXD
+    datacleaner: LemmatizerSM
+
+vectorize:
+  - dataset: DatasetXD
+    datacleaner: LemmatizerSM
+    vectorizer: CountVectorizer
+
+evaluate:
+  - dataset: DatasetXD
+    datacleaner: LemmatizerSM
+    vectorizer: CountVectorizer
+
+models:
+  - model: SVC_1
+  - model: SVC_2

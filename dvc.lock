@@ -6,9 +6,9 @@ stages:
     deps:
     - path: data/DatasetXD/raw
       hash: md5
-      md5: 63eb7c54914a5ad527893a45effff0df.dir
-      size: 6040
-      nfiles: 2
+      md5: d2c240d25cb46085a53c42917f40eeed.dir
+      size: 6055
+      nfiles: 3
     - path: scripts/clean.py
       hash: md5
       md5: a35073fb8ed6b407b4d09d0c795ba62e
@@ -24,7 +24,7 @@ stages:
     outs:
     - path: data/DatasetXD/LemmatizerSM
       hash: md5
-      md5: 413b9ceeef9541d1f46638e8e8d6a65b.dir
+      md5: 2962f6a9db2c7dbaf5758b4162766f9b.dir
       size: 6176
       nfiles: 2
   vectorize@0:
@@ -32,7 +32,7 @@ stages:
     deps:
     - path: data/DatasetXD/LemmatizerSM
       hash: md5
-      md5: 413b9ceeef9541d1f46638e8e8d6a65b.dir
+      md5: 2962f6a9db2c7dbaf5758b4162766f9b.dir
       size: 6176
       nfiles: 2
     - path: scripts/vectorize.py
@@ -50,7 +50,7 @@ stages:
     outs:
     - path: data/DatasetXD/LemmatizerSM_CountVectorizer
       hash: md5
-      md5: 292fd7b84994bc03b4f5ca7f47d8584d.dir
+      md5: 44ff61d071ce8abf9def683c5b49d3a2.dir
       size: 6584
       nfiles: 2
   evaluate@0:
@@ -75,7 +75,7 @@ stages:
       size: 1290
   load@DatasetXD:
     cmd:
-    - python scripts/load.py "DatasetXD"
+    - echo DatasetXD
     deps:
     - path: data/all_raw_datasets/
       hash: md5
@@ -86,12 +86,6 @@ stages:
       hash: md5
       md5: 1a8e610322c2516321f52c89e4acbd4f
       size: 762
-    outs:
-    - path: data/DatasetXD/raw/
-      hash: md5
-      md5: 63eb7c54914a5ad527893a45effff0df.dir
-      size: 6040
-      nfiles: 2
   dummy@XD:
     cmd: echo 'XD'
   dummy@XD1:
@@ -116,3 +110,61 @@ stages:
     cmd: echo 'XD'
   train@1-feature3:
     cmd: echo 'XD'
+  load@0:
+    cmd:
+    - python scripts/load.py "DatasetXD"
+    deps:
+    - path: data/all_raw_datasets/
+      hash: md5
+      md5: ddcf28d44440a42f09e4e032a987e811.dir
+      size: 998
+      nfiles: 2
+    - path: scripts/load.py
+      hash: md5
+      md5: 1a8e610322c2516321f52c89e4acbd4f
+      size: 762
+    outs:
+    - path: data/DatasetXD/raw/test.parquet
+      hash: md5
+      md5: 46feace39edace7dc43f2034e104003e
+      size: 2946
+  train@config0-1-feature1:
+    cmd: echo 'XD'
+  train@config0-1-feature2:
+    cmd: echo 'XD'
+  train@config0-1-feature3:
+    cmd: echo 'XD'
+  train@config0-xgb-feature1:
+    cmd: echo 'XD'
+  train@config0-xgb-feature2:
+    cmd: echo 'XD'
+  train@config0-xgb-feature3:
+    cmd: echo 'XD'
+  train@config1-1-feature1:
+    cmd: echo 'XD'
+  train@config1-1-feature2:
+    cmd: echo 'XD'
+  train@config1-1-feature3:
+    cmd: echo 'XD'
+  train@config1-xgb-feature1:
+    cmd: echo 'XD'
+  train@config1-xgb-feature2:
+    cmd: echo 'XD'
+  train@config1-xgb-feature3:
+    cmd: echo 'XD'
+  train@config0-SVC-feature1:
+    cmd: echo 'XD'
+  train@config0-SVC-feature2:
+    cmd: echo 'XD'
+  train@config0-SVC-feature3:
+    cmd: echo 'XD'
+  train@config0-SVC_1:
+    cmd: echo 'XD'
+  train@config0-SVC_2:
+    cmd: echo 'XD'
+  train@config0-model0:
+    cmd: echo "--config.dataset DatasetXD --config.datacleaner LemmatizerSM --config.vectorizer
+      CountVectorizer --model.model SVC_1"
+  train@config0-model1:
+    cmd: echo "--config.dataset DatasetXD --config.datacleaner LemmatizerSM --config.vectorizer
+      CountVectorizer --model.model SVC_2"
