@@ -2,38 +2,38 @@ schema: '2.0'
 stages:
   clean@0:
     cmd:
-    - python scripts/clean.py "poleval2019_cyberbullying" "LemmatizerSM"
+    - python scripts/clean.py "DatasetXD" "LemmatizerSM"
     deps:
-    - path: data/poleval2019_cyberbullying/raw
+    - path: data/DatasetXD/raw
       hash: md5
-      md5: d47dffb87ec5f718278bd5a1aa0452ff.dir
-      size: 4220
+      md5: 63eb7c54914a5ad527893a45effff0df.dir
+      size: 6040
       nfiles: 2
     - path: scripts/clean.py
       hash: md5
-      md5: aa0f1dfeb359476bdb9c1dd9cf318168
-      size: 840
+      md5: a35073fb8ed6b407b4d09d0c795ba62e
+      size: 842
     - path: stages/datacleaners/DataCleaner.py
       hash: md5
-      md5: cf611213e684a2d5da341d185fddb4cf
-      size: 2087
+      md5: 3afe0140f6c94bf9433ce2b8eb365572
+      size: 2015
     - path: stages/datacleaners/LemmatizerSM.py
       hash: md5
-      md5: 704587ed6d94a3fe3e18b6bbc21c6a6c
-      size: 1059
+      md5: e7c3beb042c9a501a79f2cc598a37bd6
+      size: 1058
     outs:
-    - path: data/poleval2019_cyberbullying/LemmatizerSM
+    - path: data/DatasetXD/LemmatizerSM
       hash: md5
-      md5: 56a97cffc49b8edd5f7197b5245caff2.dir
-      size: 8600
+      md5: 413b9ceeef9541d1f46638e8e8d6a65b.dir
+      size: 6176
       nfiles: 2
   vectorize@0:
-    cmd: python scripts/vectorize.py "poleval2019_cyberbullying" "LemmatizerSM" "CountVectorizer"
+    cmd: python scripts/vectorize.py "DatasetXD" "LemmatizerSM" "CountVectorizer"
     deps:
-    - path: data/poleval2019_cyberbullying/LemmatizerSM
+    - path: data/DatasetXD/LemmatizerSM
       hash: md5
-      md5: 56a97cffc49b8edd5f7197b5245caff2.dir
-      size: 8600
+      md5: 413b9ceeef9541d1f46638e8e8d6a65b.dir
+      size: 6176
       nfiles: 2
     - path: scripts/vectorize.py
       hash: md5
@@ -48,19 +48,18 @@ stages:
       md5: 075c0ab201ac8d3e51f57c07bab1fe4e
       size: 2361
     outs:
-    - path: data/poleval2019_cyberbullying/LemmatizerSM_CountVectorizer
+    - path: data/DatasetXD/LemmatizerSM_CountVectorizer
       hash: md5
-      md5: a563e48e3da21b3efadd8db6231d502d.dir
-      size: 6080
+      md5: 292fd7b84994bc03b4f5ca7f47d8584d.dir
+      size: 6584
       nfiles: 2
   evaluate@0:
-    cmd: python scripts/evaluate.py "poleval2019_cyberbullying" "LemmatizerSM" "CountVectorizer"
-      "SVC"
+    cmd: python scripts/evaluate.py "DatasetXD" "LemmatizerSM" "CountVectorizer" "SVC"
     deps:
-    - path: data/poleval2019_cyberbullying/LemmatizerSM_CountVectorizer
+    - path: data/DatasetXD/LemmatizerSM_CountVectorizer
       hash: md5
-      md5: a563e48e3da21b3efadd8db6231d502d.dir
-      size: 6080
+      md5: 292fd7b84994bc03b4f5ca7f47d8584d.dir
+      size: 6584
       nfiles: 2
     - path: scripts/evaluate.py
       hash: md5
@@ -74,3 +73,22 @@ stages:
       hash: md5
       md5: 4c80fd4ff92bd288d34cedba8515b90b
       size: 1290
+  load@DatasetXD:
+    cmd:
+    - python scripts/load.py "DatasetXD"
+    deps:
+    - path: data/all_raw_datasets/
+      hash: md5
+      md5: ddcf28d44440a42f09e4e032a987e811.dir
+      size: 998
+      nfiles: 2
+    - path: scripts/load.py
+      hash: md5
+      md5: 1a8e610322c2516321f52c89e4acbd4f
+      size: 762
+    outs:
+    - path: data/DatasetXD/raw/
+      hash: md5
+      md5: 63eb7c54914a5ad527893a45effff0df.dir
+      size: 6040
+      nfiles: 2

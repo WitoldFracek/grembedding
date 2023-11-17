@@ -17,7 +17,7 @@ class LemmatizerSM(DataCleaner):
         df_train, df_test = self.load_dataset(dataset)
 
         df_train['clean_text'] = df_train['text'].apply(self.lemmatize_text)
-        df_test['clean_text'] = df_train['text'].apply(self.lemmatize_text)
+        df_test['clean_text'] = df_test['text'].apply(self.lemmatize_text)
 
         df_train = df_train.drop(columns='text')
         df_test = df_test.drop(columns='text')

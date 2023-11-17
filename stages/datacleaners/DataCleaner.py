@@ -9,8 +9,8 @@ from utils.environment import get_root_dir
 
 DATA_DIR_PATH = 'data'
 RAW_DIR = 'raw'
-TEST_FILENAME = 'test.csv'
-TRAIN_FILENAME = 'train.csv'
+TEST_FILENAME = 'test.parquet'
+TRAIN_FILENAME = 'train.parquet'
 
 
 class DataCleaner(ABC):
@@ -33,8 +33,8 @@ class DataCleaner(ABC):
         train_path = os.path.join(path, TRAIN_FILENAME)
         test_path = os.path.join(path, TEST_FILENAME)
 
-        df_train = pd.read_csv(train_path, sep=';', header=0, names=["text", "label"])
-        df_test = pd.read_csv(test_path, sep=';', header=0, names=["text", "label"])
+        df_train = pd.read_parquet(train_path)
+        df_test = pd.read_parquet(test_path)
 
         return df_train, df_test
 

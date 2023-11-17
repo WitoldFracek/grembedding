@@ -1,7 +1,20 @@
 stages:
+  load:
+    foreach:
+      - DatasetXD
+    do:
+      cmd:
+        - python scripts/load.py "${item}"
+      deps:
+        - scripts/load.py
+        - data/all_raw_datasets/
+      outs:
+        - data/${item}/raw/
   clean:
     foreach:
-      - dataset: poleval2019_cyberbullying
+      # - dataset: poleval2019_cyberbullying
+      #   datacleaner: LemmatizerSM
+      - dataset: DatasetXD
         datacleaner: LemmatizerSM
     do:
       cmd:
@@ -16,7 +29,10 @@ stages:
   
   vectorize:
     foreach:
-      - dataset: poleval2019_cyberbullying
+      # - dataset: poleval2019_cyberbullying
+      #   datacleaner: LemmatizerSM
+      #   vectorizer: CountVectorizer
+      - dataset: DatasetXD
         datacleaner: LemmatizerSM
         vectorizer: CountVectorizer
     do:
@@ -31,7 +47,11 @@ stages:
 
   evaluate:
     foreach:
-      - dataset: poleval2019_cyberbullying
+      # - dataset: poleval2019_cyberbullying
+      #   datacleaner: LemmatizerSM
+      #   vectorizer: CountVectorizer
+      #   model: SVC
+      - dataset: DatasetXD
         datacleaner: LemmatizerSM
         vectorizer: CountVectorizer
         model: SVC
