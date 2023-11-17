@@ -72,5 +72,5 @@ stages:
       size: 2314
     - path: stages/models/SVC.py
       hash: md5
-      md5: 3edaf54f65818cbf408eec8a69e03561
-      size: 1288
+      md5: 4c80fd4ff92bd288d34cedba8515b90b
+      size: 1290
