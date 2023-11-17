@@ -6,9 +6,9 @@ stages:
     deps:
     - path: data/DatasetXD/raw
       hash: md5
-      md5: e348c75ddb978d6d26d0a7dcb1c6c2ed.dir
-      size: 6155
-      nfiles: 2
+      md5: 6cf9ab794207cb798963d87a535ee356.dir
+      size: 6185
+      nfiles: 3
     - path: scripts/clean.py
       hash: md5
       md5: 8f3ab3ce5cbd679d18c72367fe31bdcf
@@ -24,16 +24,16 @@ stages:
     outs:
     - path: data/DatasetXD/LemmatizerSM
       hash: md5
-      md5: 78766910c1126b5db72937b4baa7baf2.dir
-      size: 6263
+      md5: 188f73655d6163256356f87ccd7fa94e.dir
+      size: 6264
       nfiles: 2
   vectorize@0:
     cmd: python scripts/vectorize.py "DatasetXD" "LemmatizerSM" "CountVectorizer"
     deps:
     - path: data/DatasetXD/LemmatizerSM
       hash: md5
-      md5: 78766910c1126b5db72937b4baa7baf2.dir
-      size: 6263
+      md5: 188f73655d6163256356f87ccd7fa94e.dir
+      size: 6264
       nfiles: 2
     - path: scripts/vectorize.py
       hash: md5
@@ -50,8 +50,8 @@ stages:
     outs:
     - path: data/DatasetXD/LemmatizerSM_CountVectorizer
       hash: md5
-      md5: 1f46aedfec9639a4f99cfa2f692104bc.dir
-      size: 6788
+      md5: dda815c2ec2805d48096fbc098f0a239.dir
+      size: 6789
       nfiles: 2
   evaluate@0:
     cmd: python scripts/evaluate.py "DatasetXD" "LemmatizerSM" "CountVectorizer" "SVC"
@@ -126,8 +126,12 @@ stages:
     outs:
     - path: data/DatasetXD/raw/test.parquet
       hash: md5
-      md5: 230ad5f45b27c461a99f84f71519e573
-      size: 2939
+      md5: c98745c72140876b460ef0a228933ffc
+      size: 2938
+    - path: data/DatasetXD/raw/train.parquet
+      hash: md5
+      md5: bedd7e75b8b11434383cfcf2f5f5d293
+      size: 3218
   train@config0-1-feature1:
     cmd: echo 'XD'
   train@config0-1-feature2:
@@ -180,8 +184,8 @@ stages:
     deps:
     - path: data/DatasetXD/LemmatizerSM_CountVectorizer
       hash: md5
-      md5: 1f46aedfec9639a4f99cfa2f692104bc.dir
-      size: 6788
+      md5: dda815c2ec2805d48096fbc098f0a239.dir
+      size: 6789
       nfiles: 2
     - path: params/SVC_1.yaml
       hash: md5
@@ -205,8 +209,8 @@ stages:
     deps:
     - path: data/DatasetXD/LemmatizerSM_CountVectorizer
       hash: md5
-      md5: 1f46aedfec9639a4f99cfa2f692104bc.dir
-      size: 6788
+      md5: dda815c2ec2805d48096fbc098f0a239.dir
+      size: 6789
       nfiles: 2
     - path: params/SVC_2.yaml
       hash: md5

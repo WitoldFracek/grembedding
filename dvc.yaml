@@ -10,6 +10,7 @@ stages:
         - data/all_raw_datasets/
       outs:
         - data/${item.dataloader}/raw/test.parquet
+        - data/${item.dataloader}/raw/train.parquet
 
   clean:
     foreach: ${clean}
