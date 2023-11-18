@@ -41,18 +41,18 @@ stages:
       size: 769
     - path: stages/vectorizers/CountVectorizer.py
       hash: md5
-      md5: 1d6f7718daba20d89737407205aada48
-      size: 1262
+      md5: 8df189bde6379181a1bd3f01b11a456b
+      size: 1114
     - path: stages/vectorizers/Vectorizer.py
       hash: md5
-      md5: 9965fbb21d19c53379d3122ac45fc423
-      size: 2292
+      md5: 658c3ce63c178efdb390e7c891b310e9
+      size: 2223
     outs:
     - path: data/DatasetXD/LemmatizerSM_CountVectorizer
       hash: md5
-      md5: 4d0d7df1b3707441bcac3ce7102dfff8.dir
-      size: 6786
-      nfiles: 2
+      md5: bf6e68812875ffb5eed8c86986c5c729.dir
+      size: 2160
+      nfiles: 4
   evaluate@0:
     cmd: python scripts/evaluate.py "DatasetXD" "LemmatizerSM" "CountVectorizer" "SVC"
     deps:
@@ -184,9 +184,9 @@ stages:
     deps:
     - path: data/DatasetXD/LemmatizerSM_CountVectorizer
       hash: md5
-      md5: 4d0d7df1b3707441bcac3ce7102dfff8.dir
-      size: 6786
-      nfiles: 2
+      md5: bf6e68812875ffb5eed8c86986c5c729.dir
+      size: 2160
+      nfiles: 4
     - path: params/SVC1.yaml
       hash: md5
       md5: 7ca4f218f8111e57289780805f81992a
@@ -197,8 +197,8 @@ stages:
       size: 1022
     - path: stages/models/Model.py
       hash: md5
-      md5: dc23b3702b2c3743ace0263281b5844c
-      size: 3115
+      md5: 8d6fbcd2a589831dbf8a1a4e38c35d3c
+      size: 3072
     - path: stages/models/SVC.py
       hash: md5
       md5: f3c3f1c53901db70fedd812112af25e5
@@ -214,9 +214,9 @@ stages:
     deps:
     - path: data/DatasetXD/LemmatizerSM_CountVectorizer
       hash: md5
-      md5: 4d0d7df1b3707441bcac3ce7102dfff8.dir
-      size: 6786
-      nfiles: 2
+      md5: bf6e68812875ffb5eed8c86986c5c729.dir
+      size: 2160
+      nfiles: 4
     - path: params/SVC2.yaml
       hash: md5
       md5: dcc2e18360f768734743656c9a4ef885
@@ -227,8 +227,8 @@ stages:
       size: 1022
     - path: stages/models/Model.py
       hash: md5
-      md5: dc23b3702b2c3743ace0263281b5844c
-      size: 3115
+      md5: 8d6fbcd2a589831dbf8a1a4e38c35d3c
+      size: 3072
     - path: stages/models/SVC.py
       hash: md5
       md5: f3c3f1c53901db70fedd812112af25e5
