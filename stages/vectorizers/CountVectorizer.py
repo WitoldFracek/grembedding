@@ -16,15 +16,13 @@ class CountVectorizer(Vectorizer):
         """
         df_train, df_test = self.load_train_test_dataframes(dataset, datacleaner)
         self._count_vectorizer.fit(df_train['clean_text'].values.tolist())
-        df_train["vectorized_text"] = df_train['clean_text'].apply(self.transform)
-        df_test["vectorized_text"] = df_test['clean_text'].apply(self.transform)
-        df_train = df_train.drop(columns = 'clean_text')
-        df_test = df_test.drop(columns = 'clean_text')
-        self.save_dataframe_as_parquet(dataset, datacleaner, df_train, df_test)
 
-    def transform(self, clean_text: str) -> List[int]:
-        return self._count_vectorizer.transform([clean_text]).todense().tolist()[0]
+        X_train = self._count_vectorizer.transform(df_train['clean_text'].values).todense()
+        X_test = self._count_vectorizer.transform(df_test['clean_text'].values).todense()
+        y_train = df_train['label'].values
+        y_test = df_test['label'].values
 
+        self.save_as_npy(dataset, datacleaner, X_train, X_test, y_train, y_test)
 
 if __name__ == "__main__":
     x = CountVectorizer()

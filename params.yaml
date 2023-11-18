@@ -1,0 +1,22 @@
+load:
+  - dataloader: DatasetXD
+
+clean:
+  - dataset: DatasetXD
+    datacleaner: LemmatizerSM
+
+vectorize:
+  - dataset: DatasetXD
+    datacleaner: LemmatizerSM
+    vectorizer: CountVectorizer
+
+evaluate:
+  - dataset: DatasetXD
+    datacleaner: LemmatizerSM
+    vectorizer: CountVectorizer
+
+models:
+  - model: SVC
+    params: SVC1
+  - model: SVC
+    params: SVC2

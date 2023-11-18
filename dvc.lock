@@ -2,65 +2,64 @@ schema: '2.0'
 stages:
   clean@0:
     cmd:
-    - python scripts/clean.py "poleval2019_cyberbullying" "LemmatizerSM"
+    - python scripts/clean.py "DatasetXD" "LemmatizerSM"
     deps:
-    - path: data/poleval2019_cyberbullying/raw
+    - path: data/DatasetXD/raw
       hash: md5
-      md5: d47dffb87ec5f718278bd5a1aa0452ff.dir
-      size: 4220
-      nfiles: 2
+      md5: 7dd8f2136047ba0a7622b0ce7fea9c2b.dir
+      size: 6182
+      nfiles: 3
     - path: scripts/clean.py
       hash: md5
-      md5: aa0f1dfeb359476bdb9c1dd9cf318168
-      size: 840
+      md5: 8f3ab3ce5cbd679d18c72367fe31bdcf
+      size: 812
     - path: stages/datacleaners/DataCleaner.py
       hash: md5
-      md5: cf611213e684a2d5da341d185fddb4cf
-      size: 2087
+      md5: 39d4af2eb9dc8e30af73787604298c4c
+      size: 1951
     - path: stages/datacleaners/LemmatizerSM.py
       hash: md5
-      md5: 704587ed6d94a3fe3e18b6bbc21c6a6c
-      size: 1059
+      md5: 0eb8a80a6d449db80ca14407f57541e1
+      size: 1022
     outs:
-    - path: data/poleval2019_cyberbullying/LemmatizerSM
+    - path: data/DatasetXD/LemmatizerSM
       hash: md5
-      md5: 56a97cffc49b8edd5f7197b5245caff2.dir
-      size: 8600
+      md5: 53b6e8326f3315b0f70a5a71ded87a8f.dir
+      size: 6261
       nfiles: 2
   vectorize@0:
-    cmd: python scripts/vectorize.py "poleval2019_cyberbullying" "LemmatizerSM" "CountVectorizer"
+    cmd: python scripts/vectorize.py "DatasetXD" "LemmatizerSM" "CountVectorizer"
     deps:
-    - path: data/poleval2019_cyberbullying/LemmatizerSM
+    - path: data/DatasetXD/LemmatizerSM
       hash: md5
-      md5: 56a97cffc49b8edd5f7197b5245caff2.dir
-      size: 8600
+      md5: 53b6e8326f3315b0f70a5a71ded87a8f.dir
+      size: 6261
       nfiles: 2
     - path: scripts/vectorize.py
       hash: md5
-      md5: 313deb9b0c0dc175f52248c04ddc2330
-      size: 798
+      md5: 9e08d7c90656667702d005a49f49ecba
+      size: 769
     - path: stages/vectorizers/CountVectorizer.py
       hash: md5
-      md5: ea629607f674858f4d45b0976837012a
-      size: 1293
+      md5: 8df189bde6379181a1bd3f01b11a456b
+      size: 1114
     - path: stages/vectorizers/Vectorizer.py
       hash: md5
-      md5: 075c0ab201ac8d3e51f57c07bab1fe4e
-      size: 2361
+      md5: 658c3ce63c178efdb390e7c891b310e9
+      size: 2223
     outs:
-    - path: data/poleval2019_cyberbullying/LemmatizerSM_CountVectorizer
+    - path: data/DatasetXD/LemmatizerSM_CountVectorizer
       hash: md5
-      md5: a563e48e3da21b3efadd8db6231d502d.dir
-      size: 6080
-      nfiles: 2
+      md5: bf6e68812875ffb5eed8c86986c5c729.dir
+      size: 2160
+      nfiles: 4
   evaluate@0:
-    cmd: python scripts/evaluate.py "poleval2019_cyberbullying" "LemmatizerSM" "CountVectorizer"
-      "SVC"
+    cmd: python scripts/evaluate.py "DatasetXD" "LemmatizerSM" "CountVectorizer" "SVC"
     deps:
-    - path: data/poleval2019_cyberbullying/LemmatizerSM_CountVectorizer
+    - path: data/DatasetXD/LemmatizerSM_CountVectorizer
       hash: md5
-      md5: a563e48e3da21b3efadd8db6231d502d.dir
-      size: 6080
+      md5: 292fd7b84994bc03b4f5ca7f47d8584d.dir
+      size: 6584
       nfiles: 2
     - path: scripts/evaluate.py
       hash: md5
@@ -72,5 +71,170 @@ stages:
       size: 2314
     - path: stages/models/SVC.py
       hash: md5
-      md5: 3edaf54f65818cbf408eec8a69e03561
-      size: 1288
+      md5: 4c80fd4ff92bd288d34cedba8515b90b
+      size: 1290
+  load@DatasetXD:
+    cmd:
+    - echo DatasetXD
+    deps:
+    - path: data/all_raw_datasets/
+      hash: md5
+      md5: ddcf28d44440a42f09e4e032a987e811.dir
+      size: 998
+      nfiles: 2
+    - path: scripts/load.py
+      hash: md5
+      md5: 1a8e610322c2516321f52c89e4acbd4f
+      size: 762
+  dummy@XD:
+    cmd: echo 'XD'
+  dummy@XD1:
+    cmd: echo "XD1"
+  dummy@XD2:
+    cmd: echo "XD2"
+  train@cnn-feature1:
+    cmd: echo 'XD'
+  train@cnn-feature2:
+    cmd: echo 'XD'
+  train@cnn-feature3:
+    cmd: echo 'XD'
+  train@xgb-feature1:
+    cmd: echo 'XD'
+  train@xgb-feature2:
+    cmd: echo 'XD'
+  train@xgb-feature3:
+    cmd: echo 'XD'
+  train@1-feature1:
+    cmd: echo 'XD'
+  train@1-feature2:
+    cmd: echo 'XD'
+  train@1-feature3:
+    cmd: echo 'XD'
+  load@0:
+    cmd:
+    - python scripts/load.py "DatasetXD"
+    deps:
+    - path: data/all_raw_datasets/
+      hash: md5
+      md5: bb1160e296978b4ddbe8a8d477a8135a.dir
+      size: 738
+      nfiles: 3
+    - path: scripts/load.py
+      hash: md5
+      md5: 29ccb6ec0a35f95ecf2a6073766d664b
+      size: 734
+    outs:
+    - path: data/DatasetXD/raw/test.parquet
+      hash: md5
+      md5: 927841549fdbece33c62794f151c3b01
+      size: 2937
+    - path: data/DatasetXD/raw/train.parquet
+      hash: md5
+      md5: a9c89685345366777cafd90bedf2ad53
+      size: 3216
+  train@config0-1-feature1:
+    cmd: echo 'XD'
+  train@config0-1-feature2:
+    cmd: echo 'XD'
+  train@config0-1-feature3:
+    cmd: echo 'XD'
+  train@config0-xgb-feature1:
+    cmd: echo 'XD'
+  train@config0-xgb-feature2:
+    cmd: echo 'XD'
+  train@config0-xgb-feature3:
+    cmd: echo 'XD'
+  train@config1-1-feature1:
+    cmd: echo 'XD'
+  train@config1-1-feature2:
+    cmd: echo 'XD'
+  train@config1-1-feature3:
+    cmd: echo 'XD'
+  train@config1-xgb-feature1:
+    cmd: echo 'XD'
+  train@config1-xgb-feature2:
+    cmd: echo 'XD'
+  train@config1-xgb-feature3:
+    cmd: echo 'XD'
+  train@config0-SVC-feature1:
+    cmd: echo 'XD'
+  train@config0-SVC-feature2:
+    cmd: echo 'XD'
+  train@config0-SVC-feature3:
+    cmd: echo 'XD'
+  train@config0-SVC_1:
+    cmd: echo 'XD'
+  train@config0-SVC_2:
+    cmd: echo 'XD'
+  train@config0-model0:
+    cmd: echo "DatasetXD"
+  train@config0-model1:
+    cmd: echo "DatasetXD"
+  evaluate@data0-models0:
+    cmd: echo "SVC_1"
+  evaluate@data0-models1:
+    cmd: echo "SVC_2"
+  evaluate@data0-SVC_1:
+    cmd: echo "SVC_1"
+  evaluate@data0-SVC_2:
+    cmd: echo "SVC_2"
+  evaluate@data0-model0:
+    cmd: python scripts/evaluate.py "DatasetXD" "LemmatizerSM" "CountVectorizer" "SVC"
+      "SVC1"
+    deps:
+    - path: data/DatasetXD/LemmatizerSM_CountVectorizer
+      hash: md5
+      md5: bf6e68812875ffb5eed8c86986c5c729.dir
+      size: 2160
+      nfiles: 4
+    - path: params/SVC1.yaml
+      hash: md5
+      md5: 7ca4f218f8111e57289780805f81992a
+      size: 4
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 8a0de2831dac9ea593051a2b8d4178f2
+      size: 1022
+    - path: stages/models/Model.py
+      hash: md5
+      md5: 8d6fbcd2a589831dbf8a1a4e38c35d3c
+      size: 3072
+    - path: stages/models/SVC.py
+      hash: md5
+      md5: f3c3f1c53901db70fedd812112af25e5
+      size: 1462
+    outs:
+    - path: results/DatasetXD_LemmatizerSM_CountVectorizer_SVC_SVC1.json
+      hash: md5
+      md5: 6322e5b56ff7e32000c461a97f5e4524
+      size: 177
+  evaluate@data0-model1:
+    cmd: python scripts/evaluate.py "DatasetXD" "LemmatizerSM" "CountVectorizer" "SVC"
+      "SVC2"
+    deps:
+    - path: data/DatasetXD/LemmatizerSM_CountVectorizer
+      hash: md5
+      md5: bf6e68812875ffb5eed8c86986c5c729.dir
+      size: 2160
+      nfiles: 4
+    - path: params/SVC2.yaml
+      hash: md5
+      md5: dcc2e18360f768734743656c9a4ef885
+      size: 4
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 8a0de2831dac9ea593051a2b8d4178f2
+      size: 1022
+    - path: stages/models/Model.py
+      hash: md5
+      md5: 8d6fbcd2a589831dbf8a1a4e38c35d3c
+      size: 3072
+    - path: stages/models/SVC.py
+      hash: md5
+      md5: f3c3f1c53901db70fedd812112af25e5
+      size: 1462
+    outs:
+    - path: results/DatasetXD_LemmatizerSM_CountVectorizer_SVC_SVC2.json
+      hash: md5
+      md5: 96f68b1bd61a871aa75b7e2eefc4df79
+      size: 177
