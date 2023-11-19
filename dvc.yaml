@@ -8,6 +8,7 @@ stages:
       deps:
         - scripts/load.py
         - data/all_raw_datasets/
+        - stages/dataloaders/${item.dataloader}.py
       outs:
         - data/${item.dataloader}/raw/test.parquet
         - data/${item.dataloader}/raw/train.parquet
@@ -22,6 +23,7 @@ stages:
         - data/${item.dataset}/raw
         - stages/datacleaners/${item.datacleaner}.py
         - stages/datacleaners/DataCleaner.py
+        - stages/datacleaners/components
       outs:
         - data/${item.dataset}/${item.datacleaner}
 

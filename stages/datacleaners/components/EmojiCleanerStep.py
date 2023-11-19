@@ -1,4 +1,5 @@
 import re
+from typing import Optional
 
 from stages.datacleaners.components.GenericRegexCleaner import GenericRegexCleaner
 
@@ -21,5 +22,5 @@ class EmojiCleanerStep(GenericRegexCleaner):
 
     # src = https://gist.github.com/Alex-Just/e86110836f3f93fe7932290526529cd1
 
-    def __init__(self):
-        super().__init__(self.EMOJI_PATTERN, placeholder='')
+    def __init__(self, placeholder: Optional[str] = None):
+        super().__init__(self.EMOJI_PATTERN, placeholder=placeholder)

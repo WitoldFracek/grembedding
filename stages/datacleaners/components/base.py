@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 
 import pandas as pd
 from loguru import logger
+from tqdm import tqdm
 
 
 class DataProcessingStep(ABC):
@@ -13,7 +14,7 @@ class DataProcessingStep(ABC):
 
     @abstractmethod
     def do_transform_inplace(self, df: pd.DataFrame) -> None:
-        """Perform transformation inplace"""
+        """Perform transformation inplace. Expects `text` column to be present"""
         raise NotImplementedError
 
 
@@ -24,8 +25,7 @@ class DataCleanerPipeline(ABC):
 
     def __call__(self, df: pd.DataFrame, inplace: bool = True) -> pd.DataFrame:
         data = df if inplace else df.copy()
-        for step in self.steps:
-            logger.info(f"Pipeline - Executing step: {step.__class__.__name__}")
+        for step in tqdm(self.steps, desc="Executing pipeline"):
             data = step(data, inplace)
         return data
 
