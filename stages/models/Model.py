@@ -41,10 +41,10 @@ class Model(ABC):
         y_train_path = os.path.join(path, "y_train.npy")
         y_test_path = os.path.join(path, "y_test.npy")
 
-        X_train = np.load(X_train_path)
-        X_test = np.load(X_test_path)
-        y_train = np.load(y_train_path)
-        y_test = np.load(y_test_path)
+        X_train = np.load(X_train_path, allow_pickle=True)
+        X_test = np.load(X_test_path, allow_pickle=True)
+        y_train = np.load(y_train_path, allow_pickle=True)
+        y_test = np.load(y_test_path, allow_pickle=True)
 
         return X_train, X_test, y_train, y_test
 

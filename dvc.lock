@@ -1,0 +1,114 @@
+schema: '2.0'
+stages:
+  load@0:
+    cmd:
+    - echo data/RpTweets/raw/test.parquet
+    - python scripts/load.py "RpTweets"
+    deps:
+    - path: datasets_raw/
+      hash: md5
+      md5: 2090ab1bf326723b4cf50ad6d48c4893.dir
+      size: 95361594
+      nfiles: 2
+    - path: scripts/load.py
+      hash: md5
+      md5: 3d3448246f66fdc1646164c565eb0ea9
+      size: 764
+    - path: stages/dataloaders/RpTweets.py
+      hash: md5
+      md5: 9bea5ca1f5f856e45c3e9060b71cdc4c
+      size: 1884
+    outs:
+    - path: data/RpTweets/raw/test.parquet
+      hash: md5
+      md5: 72ba643f53c35f01715f36f73aaf5612
+      size: 9428033
+    - path: data/RpTweets/raw/train.parquet
+      hash: md5
+      md5: 0d04411695b30bb93b678bcf4c73d83c
+      size: 28326932
+  load@1:
+    cmd:
+    - echo data/RpTweetsXS/raw/test.parquet
+    - python scripts/load.py "RpTweetsXS"
+    deps:
+    - path: datasets_raw/
+      hash: md5
+      md5: 2090ab1bf326723b4cf50ad6d48c4893.dir
+      size: 95361594
+      nfiles: 2
+    - path: scripts/load.py
+      hash: md5
+      md5: 3d3448246f66fdc1646164c565eb0ea9
+      size: 764
+    - path: stages/dataloaders/RpTweetsXS.py
+      hash: md5
+      md5: 78000e20ff85f33917aec01693ee19da
+      size: 426
+    outs:
+    - path: data/RpTweetsXS/raw/test.parquet
+      hash: md5
+      md5: 212e0bf224e70f8d7a8e6c0e8e2260f4
+      size: 99995
+    - path: data/RpTweetsXS/raw/train.parquet
+      hash: md5
+      md5: e3584b5e093c8e801dc05aef6c74da9b
+      size: 300275
+  clean@0:
+    cmd:
+    - python scripts/clean.py "RpTweetsXS" "TweetNormalization"
+    deps:
+    - path: data/RpTweetsXS/raw
+      hash: md5
+      md5: 877991e4e0e5e151d24d0e0ecb08e258.dir
+      size: 400270
+      nfiles: 2
+    - path: scripts/clean.py
+      hash: md5
+      md5: a35073fb8ed6b407b4d09d0c795ba62e
+      size: 842
+    - path: stages/datacleaners/DataCleaner.py
+      hash: md5
+      md5: 934ee50d1e9610c307610a8e3a986a47
+      size: 2132
+    - path: stages/datacleaners/TweetNormalization.py
+      hash: md5
+      md5: 6cf5a5452b8668297ddb9c6ccd67e4e9
+      size: 1325
+    - path: stages/datacleaners/components
+      hash: md5
+      md5: 0f482df70972938186452dad8009a305.dir
+      size: 10539
+      nfiles: 12
+    outs:
+    - path: data/RpTweetsXS/TweetNormalization
+      hash: md5
+      md5: 71bef65d807557da805e04ae1fb0a03b.dir
+      size: 347080
+      nfiles: 2
+  vectorize@0:
+    cmd: python scripts/vectorize.py "RpTweetsXS" "TweetNormalization" "CountVectorizer"
+    deps:
+    - path: data/RpTweetsXS/TweetNormalization
+      hash: md5
+      md5: 71bef65d807557da805e04ae1fb0a03b.dir
+      size: 347080
+      nfiles: 2
+    - path: scripts/vectorize.py
+      hash: md5
+      md5: 313deb9b0c0dc175f52248c04ddc2330
+      size: 798
+    - path: stages/vectorizers/CountVectorizer.py
+      hash: md5
+      md5: 3c2020b6ab7fec972cfdb2b59736e3fe
+      size: 1143
+    - path: stages/vectorizers/Vectorizer.py
+      hash: md5
+      md5: 8f9b348cc065e03e61bc7cf543c6a64b
+      size: 2288
+    outs:
+    - path: data/RpTweetsXS/TweetNormalization_CountVectorizer
+      hash: md5
+      md5: 45ee2da24790b5f8a57ae92c9975fd6c.dir
+      size: 303348716
+      nfiles: 4

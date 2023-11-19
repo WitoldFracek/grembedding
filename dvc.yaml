@@ -4,10 +4,11 @@ stages:
     foreach: ${load}
     do:
       cmd:
+        - echo data/${item.dataloader}/raw/test.parquet
         - python scripts/load.py "${item.dataloader}"
       deps:
         - scripts/load.py
-        - data/all_raw_datasets/
+        - datasets_raw/
         - stages/dataloaders/${item.dataloader}.py
       outs:
         - data/${item.dataloader}/raw/test.parquet

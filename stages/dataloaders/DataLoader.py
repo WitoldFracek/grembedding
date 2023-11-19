@@ -7,7 +7,7 @@ from loguru import logger
 from utils.environment import get_root_dir
 
 DATA_DIR = 'data'
-ALL_RAW_DATASETS = 'all_raw_datasets'
+ALL_RAW_DATASETS = 'datasets_raw'
 RAW_DIR = 'raw'
 
 
@@ -40,11 +40,11 @@ class DataLoader(ABC):
 
     @property
     def raw_datasets_dir(self) -> str | os.PathLike:
-        return os.path.join(get_root_dir(), DATA_DIR, ALL_RAW_DATASETS)
+        return os.path.join(get_root_dir(), ALL_RAW_DATASETS)
 
     @staticmethod
     def _get_file_path(filename: str) -> str | os.PathLike:
-        return os.path.join(get_root_dir(), DATA_DIR, ALL_RAW_DATASETS, filename)
+        return os.path.join(get_root_dir(), ALL_RAW_DATASETS, filename)
 
     def _data_output_dir(self) -> str | os.PathLike:
         return os.path.join(get_root_dir(), DATA_DIR, self.dataset_name, RAW_DIR)

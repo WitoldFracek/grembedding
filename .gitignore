@@ -178,3 +178,4 @@ pyrightconfig.json
 mlruns
 .vscode
 .idea
+/datasets_raw
