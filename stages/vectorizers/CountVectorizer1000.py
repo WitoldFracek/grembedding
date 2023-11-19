@@ -1,10 +1,10 @@
-from stages.vectorizers.Vectorizer import Vectorizer
 import sklearn.feature_extraction.text as sklearntext
-from typing import List
+
+from stages.vectorizers.Vectorizer import Vectorizer
 
 
 class CountVectorizer1000(Vectorizer):
-    
+
     def __init__(self) -> None:
         super().__init__()
         self._count_vectorizer = sklearntext.CountVectorizer(max_features=1000)
@@ -23,6 +23,7 @@ class CountVectorizer1000(Vectorizer):
         y_test = df_test['label'].values
 
         self.save_as_npy(dataset, datacleaner, X_train, X_test, y_train, y_test)
+
 
 if __name__ == "__main__":
     x = CountVectorizer1000()

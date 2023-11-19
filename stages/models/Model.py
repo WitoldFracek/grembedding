@@ -1,10 +1,10 @@
+import json
 import os
 from abc import ABC, abstractmethod
 from typing import Dict, Tuple
-import numpy as np
+
 import mlflow
-import pandas as pd
-import json
+import numpy as np
 
 from utils.environment import get_root_dir
 
@@ -18,7 +18,8 @@ MLFLOW_ARTIFACT_PATH = "mlflow_artifacts"
 class Model(ABC):
 
     @abstractmethod
-    def evaluate(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str, params: Dict[str, int | float | str]) -> None:
+    def evaluate(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str,
+                 params: Dict[str, int | float | str]) -> None:
         """
         :dataset: name of dataset
         :datacleaner: name of datacleaner that was used to clean the data
@@ -58,7 +59,8 @@ class Model(ABC):
                 sk_model=clf, artifact_path=MLFLOW_ARTIFACT_PATH
             )
 
-    def save_json_results(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str, params: Dict[str, str | int | float], metrics: Dict[str, float]) -> None:
+    def save_json_results(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str,
+                          params: Dict[str, str | int | float], metrics: Dict[str, float]) -> None:
         # results/${item.data.dataset}_${item.data.datacleaner}_${item.data.vectorizer}_${item.model.model}_${item.model.params}.json
         filename = f"{dataset}_{datacleaner}_{vectorizer}_{self.__class__.__name__}_{params_name}.json"
         results = {}
@@ -70,8 +72,6 @@ class Model(ABC):
         results['params_name'] = params_name
         with open(os.path.join(get_root_dir(), "results", filename), 'w') as file:
             json.dump(results, file)
-
-
 
     @staticmethod
     def get_input_dir(dataset_name, datacleaner_name, vectorizer_name):

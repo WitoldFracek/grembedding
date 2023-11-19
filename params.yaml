@@ -5,15 +5,23 @@ load:
 clean:
   - dataset: RpTweetsXS
     datacleaner: LemmatizerSM
+  - dataset: RpTweetsXS
+    datacleaner: TweetNormalization
 
 vectorize:
   - dataset: RpTweetsXS
     datacleaner: LemmatizerSM
     vectorizer: CountVectorizer1000
+  - dataset: RpTweetsXS
+    datacleaner: TweetNormalization
+    vectorizer: CountVectorizer1000
 
 evaluate:
   - dataset: RpTweetsXS
     datacleaner: LemmatizerSM
+    vectorizer: CountVectorizer1000
+  - dataset: RpTweetsXS
+    datacleaner: TweetNormalization
     vectorizer: CountVectorizer1000
 
 models:
