@@ -3,3 +3,5 @@
 /raw
 /TweetNormalization
 /TweetNormalization_CountVectorizer1000
+/LemmatizerSM_CountVectorizer5000
+/TweetNormalization_CountVectorizer5000

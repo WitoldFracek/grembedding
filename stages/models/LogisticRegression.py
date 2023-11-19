@@ -1,16 +1,16 @@
-import itertools
 from typing import Dict
 
 import matplotlib.pyplot as plt
 import mlflow
 import numpy as np
+import seaborn as sns
 import sklearn.linear_model as lm
 from loguru import logger
 from sklearn.metrics import (
-    roc_curve, auc, accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report
+    roc_curve, auc, accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 )
 
-from stages.models.Model import Model
+from stages.models.Model import Model, MLFLOW_ARTIFACT_PATH
 
 
 class LogisticRegression(Model):
@@ -53,19 +53,24 @@ class LogisticRegression(Model):
 
             # Logging metrics
             logger.info("Saving metrics...")
-            mlflow.log_param("params", params)
+            mlflow.log_params(params)
             mlflow.log_metrics(metrics)
             self.save_json_results(dataset, datacleaner, vectorizer, params_name, params, metrics=metrics)
 
             mlflow.set_tags(
                 {
                     "vectorizer": vectorizer,
+                    "datacleaner": datacleaner,
                 }
+            )
+
+            mlflow.sklearn.log_model(
+                sk_model=clf, artifact_path=MLFLOW_ARTIFACT_PATH
             )
 
             # Confusion Matrix
             conf_matrix = confusion_matrix(y_test, y_pred)
-            # self.plot_confusion_matrix(conf_matrix)
+            self.plot_confusion_matrix(conf_matrix)
 
             # ROC Curve
             # self.plot_roc_curve(y_test, y_proba)
@@ -73,23 +78,12 @@ class LogisticRegression(Model):
             # Classification Report
             logger.info(f"Result F1: {f1:.2f}")
 
-    def plot_confusion_matrix(self, conf_matrix):
-        plt.figure(figsize=(8, 6))
-        plt.imshow(conf_matrix, interpolation='nearest', cmap=plt.cm.Blues)
-        plt.title('Confusion Matrix')
-        plt.colorbar()
-        tick_marks = np.arange(2)
-        plt.xticks(tick_marks, ['Negative', 'Positive'])
-        plt.yticks(tick_marks, ['Negative', 'Positive'])
-        plt.xlabel('Predicted Label')
-        plt.ylabel('True Label')
-        plt.grid(False)
-        for i, j in itertools.product(range(conf_matrix.shape[0]), range(conf_matrix.shape[1])):
-            plt.text(j, i, conf_matrix[i, j],
-                     horizontalalignment="center",
-                     color="white" if conf_matrix[i, j] > conf_matrix.max() / 2 else "black")
-        plt.tight_layout()
-        plt.show()
+    @staticmethod
+    def plot_confusion_matrix(conf_matrix):
+        fig, ax = plt.subplots(figsize=(8, 6))
+        sns.heatmap(conf_matrix, annot=True, fmt='g', cmap='Blues', ax=ax)
+        ax.set_title('Confusion Matrix')
+        mlflow.log_figure(fig, "confusion_matrix.png")
 
     def plot_roc_curve(self, y_test, y_proba):
         fpr, tpr, _ = roc_curve(y_test, y_proba)
