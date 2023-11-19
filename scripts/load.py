@@ -12,16 +12,16 @@ if "DVC_ROOT" in os.environ.keys():
 
 from stages.dataloaders.DataLoader import DataLoader
 
-def main():
-    dataloder: str = sys.argv[1]
-    logger.info(f"Executing load with dataloader: '{dataloder}'")
 
-    dataloder_cls = getattr(importlib.import_module(f"stages.dataloaders.{dataloder}"), dataloder)
-    loader: DataLoader = dataloder_cls()
+def main():
+    dataloader: str = sys.argv[1]
+    logger.info(f"Executing load with dataloader: '{dataloader}'")
+
+    dataloader_cls = getattr(importlib.import_module(f"stages.dataloaders.{dataloader}"), dataloader)
+    loader: DataLoader = dataloader_cls()
     logger.info(f"Instantiated datacleaner: '{loader.__class__.__name__}'")
 
     loader.create_dataset()
-    
 
 
 if __name__ == "__main__":

@@ -45,6 +45,9 @@ class DataCleaner(ABC):
         :df_train: train dataframe
         :df_test: test dataframe
         """
+
+        assert all(c in df_train.columns for c in ["clean_text"]), "Dataframes should have `clean_text` column"
+
         path = self.data_output_dir(dataset)
         if not os.path.exists(path):
             logger.debug(f"Creating directory {path}")

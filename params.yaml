@@ -1,18 +1,18 @@
 load:
-  - dataloader: TweetsRp
-  - dataloader: TweetsRpXS
+  - dataloader: RpTweets
+  - dataloader: RpTweetsXS
 
 clean:
-  - dataset: TweetsRpXS
-    datacleaner: LemmatizerSM
+  - dataset: RpTweetsXS
+    datacleaner: TweetNormalization
 
 vectorize:
-  - dataset: TweetsRpXS
+  - dataset: RpTweetsXS
     datacleaner: LemmatizerSM
     vectorizer: CountVectorizer
 
 evaluate:
-  - dataset: TweetsRpXS
+  - dataset: RpTweetsXS
     datacleaner: LemmatizerSM
     vectorizer: CountVectorizer
 

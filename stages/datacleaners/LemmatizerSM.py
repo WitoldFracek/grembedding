@@ -10,9 +10,12 @@ class LemmatizerSM(DataCleaner):
         self._nlp = spacy.load("pl_core_news_sm")
 
     def clean_data(self, dataset: str) -> None:
-        """
-        :dataset: name of dataset
-        :return: dict of train and test data
+        """Lemmatize text in dataset and save it as parquet files
+
+        The output file has columns `clean_text` and `label`
+
+        Args:
+            dataset: The name of the dataset to be cleaned
         """
         df_train, df_test = self.load_dataset(dataset)
 

@@ -16,14 +16,14 @@ def make_split(df: pd.DataFrame,
         Tuple containing the train and test DataFrames
     """
 
-    stratify_option: Optional[pd.Series] = df["label"] if stratify else None
-
     # Reduce dataset size if subset percentage is provided
     if subset is not None:
-        data, _ = train_test_split(df, stratify=stratify_option, train_size=subset)
+        subset_stratify_option: Optional[pd.Series] = df["label"] if stratify else None
+        data, _ = train_test_split(df, stratify=subset_stratify_option, train_size=subset)
     else:
         data = df
 
+    stratify_option: Optional[pd.Series] = data["label"] if stratify else None
     df_train, df_test = train_test_split(data, stratify=stratify_option)
 
     return df_train, df_test
