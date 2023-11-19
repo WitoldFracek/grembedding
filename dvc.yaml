@@ -11,8 +11,7 @@ stages:
         - datasets_raw/
         - stages/dataloaders/${item.dataloader}.py
       outs:
-        - data/${item.dataloader}/raw/test.parquet
-        - data/${item.dataloader}/raw/train.parquet
+        - data/${item.dataloader}/raw
 
   clean:
     foreach: ${clean}
