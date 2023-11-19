@@ -1,6 +1,7 @@
 import spacy
 
 from stages.datacleaners.DataCleaner import DataCleaner
+from spacy.lang.pl import stop_words as pl_stop_words
 
 
 class LemmatizerSM(DataCleaner):
@@ -29,7 +30,7 @@ class LemmatizerSM(DataCleaner):
 
     def lemmatize_text(self, text: str) -> str:
         doc = self._nlp(text)
-        lemmas = [w.lemma_ for w in doc]
+        lemmas = [w.lemma_ for w in doc if w.lemma_ not in pl_stop_words.STOP_WORDS]    # NOTE: dodane stopwordsy
         clean_text = ' '.join(lemmas)
         return clean_text
 

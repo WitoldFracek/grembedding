@@ -83,6 +83,8 @@ class LogisticRegression(Model):
         fig, ax = plt.subplots(figsize=(8, 6))
         sns.heatmap(conf_matrix, annot=True, fmt='g', cmap='Blues', ax=ax)
         ax.set_title('Confusion Matrix')
+        ax.set_xlabel('Predicted labels')
+        ax.set_ylabel('True labels')
         mlflow.log_figure(fig, "confusion_matrix.png")
 
     def plot_roc_curve(self, y_test, y_proba):
