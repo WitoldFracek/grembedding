@@ -1,7 +1,7 @@
 from stages.vectorizers.CountVectorizer import CountVectorizer
 
 
-class CountVectorizer1000(CountVectorizer):
+class CountVectorizer5000(CountVectorizer):
 
     def __init__(self):
-        super().__init__(1000)
+        super().__init__(5000)

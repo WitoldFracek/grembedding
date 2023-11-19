@@ -15,6 +15,12 @@ vectorize:
   - dataset: RpTweetsXS
     datacleaner: TweetNormalization
     vectorizer: CountVectorizer1000
+  - dataset: RpTweetsXS
+    datacleaner: LemmatizerSM
+    vectorizer: CountVectorizer5000
+  - dataset: RpTweetsXS
+    datacleaner: TweetNormalization
+    vectorizer: CountVectorizer5000
 
 evaluate:
   - dataset: RpTweetsXS
@@ -23,6 +29,12 @@ evaluate:
   - dataset: RpTweetsXS
     datacleaner: TweetNormalization
     vectorizer: CountVectorizer1000
+  - dataset: RpTweetsXS
+    datacleaner: LemmatizerSM
+    vectorizer: CountVectorizer5000
+  - dataset: RpTweetsXS
+    datacleaner: TweetNormalization
+    vectorizer: CountVectorizer5000
 
 models:
 #  - model: SVC
