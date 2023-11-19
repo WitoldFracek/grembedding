@@ -1,4 +1,5 @@
 from stages.dataloaders.RpTweets import RpTweets
+from stages.dataloaders.utils import make_split
 
 
 class RpTweetsXS(RpTweets):
@@ -8,5 +9,5 @@ class RpTweetsXS(RpTweets):
 
     def create_dataset(self) -> None:
         df = self.load_tweets()
-        train, test = self._make_split(df, stratify=True, subset=self.SUBSET_SIZE_PERCENTAGE)
+        train, test = make_split(df, stratify=True, subset=self.SUBSET_SIZE_PERCENTAGE)
         self._save_dataset(train, test)
