@@ -25,7 +25,9 @@ evaluate:
     vectorizer: CountVectorizer1000
 
 models:
-  - model: SVC
-    params: SVC1
-  - model: SVC
-    params: SVC2
+#  - model: SVC
+#    params: SVC1
+#  - model: SVC
+#    params: SVC2
+  - model: LogisticRegression
+    params: LR1
