@@ -30,27 +30,38 @@ class LogisticRegression(Model):
             clf.fit(X_train, y_train)
 
             logger.info("Running predict...")
-            y_proba: np.ndarray = clf.predict_proba(X_test)[:, 1]
-            y_pred: np.ndarray = (y_proba > 0.5).astype("int")
+            y_pred: np.ndarray = clf.predict(X_test)
+
+            # TOOD predict proba
+            # y_pred: np.ndarray = (y_proba > 0.5).astype("int")
 
             # Evaluation metrics
             logger.info("Calculating metrics...")
             accuracy = accuracy_score(y_test, y_pred)
-            precision = precision_score(y_test, y_pred)
-            recall = recall_score(y_test, y_pred)
-            f1 = f1_score(y_test, y_pred)
-            roc_auc = auc(*roc_curve(y_test, y_proba)[:2])
+            precision = precision_score(y_test, y_pred, average="macro")
+            recall = recall_score(y_test, y_pred, average="macro")
+            f1 = f1_score(y_test, y_pred, average="macro")
+            # roc_auc = auc(*roc_curve(y_test, y_proba)[:2])
 
-            # Logging metrics
-            logger.info("Saving metrics...")
-            mlflow.log_param("params", params)
-            mlflow.log_metrics({
+            metrics = {
                 "accuracy": accuracy,
                 "precision": precision,
                 "recall": recall,
                 "f1_score": f1,
-                "roc_auc": roc_auc
-            })
+                # "roc_auc": roc_auc
+            }
+
+            # Logging metrics
+            logger.info("Saving metrics...")
+            mlflow.log_param("params", params)
+            mlflow.log_metrics(metrics)
+            self.save_json_results(dataset, datacleaner, vectorizer, params_name, params, metrics=metrics)
+
+            mlflow.set_tags(
+                {
+                    "vectorizer": vectorizer,
+                }
+            )
 
             # Confusion Matrix
             conf_matrix = confusion_matrix(y_test, y_pred)
