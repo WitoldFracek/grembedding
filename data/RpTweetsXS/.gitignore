@@ -5,3 +5,7 @@
 /TweetNormalization_CountVectorizer1000
 /LemmatizerSM_CountVectorizer5000
 /TweetNormalization_CountVectorizer5000
+/LemmatizerSM_TfidfVectorizer1000
+/TweetNormalization_TfidfVectorizer1000
+/LemmatizerSM_TfidfVectorizer5000
+/TweetNormalization_TfidfVectorizer5000

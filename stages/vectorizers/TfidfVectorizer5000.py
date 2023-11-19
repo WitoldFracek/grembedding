@@ -1,7 +1,7 @@
 from stages.vectorizers.components.TfidfVectorizer import TfidfVectorizer
 
 
-class TfidfVectorizer1000(TfidfVectorizer):
+class TfidfVectorizer5000(TfidfVectorizer):
 
     def __init__(self):
         params = {

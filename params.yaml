@@ -26,13 +26,13 @@ vectorize:
     vectorizer: TfidfVectorizer1000
   - dataset: RpTweetsXS
     datacleaner: TweetNormalization
-    vectorizer: TfidVectorizer1000
+    vectorizer: TfidfVectorizer1000
   - dataset: RpTweetsXS
     datacleaner: LemmatizerSM
-    vectorizer: TfidVectorizer5000
+    vectorizer: TfidfVectorizer5000
   - dataset: RpTweetsXS
     datacleaner: TweetNormalization
-    vectorizer: TfidVectorizer5000
+    vectorizer: TfidfVectorizer5000
 
 evaluate:
   - dataset: RpTweetsXS
@@ -52,13 +52,13 @@ evaluate:
     vectorizer: TfidfVectorizer1000
   - dataset: RpTweetsXS
     datacleaner: TweetNormalization
-    vectorizer: TfidVectorizer1000
+    vectorizer: TfidfVectorizer1000
   - dataset: RpTweetsXS
     datacleaner: LemmatizerSM
-    vectorizer: TfidVectorizer5000
+    vectorizer: TfidfVectorizer5000
   - dataset: RpTweetsXS
     datacleaner: TweetNormalization
-    vectorizer: TfidVectorizer5000
+    vectorizer: TfidfVectorizer5000
 
 
 models:
