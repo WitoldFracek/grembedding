@@ -1,4 +1,4 @@
-from stages.vectorizers.CountVectorizer import CountVectorizer
+from stages.vectorizers.components.CountVectorizer import CountVectorizer
 
 
 class CountVectorizer5000(CountVectorizer):
