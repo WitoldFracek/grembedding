@@ -71,9 +71,9 @@ stages:
       size: 1300
     - path: stages/datacleaners/components
       hash: md5
-      md5: fa3a9c2d1a76f9de206ced226ce65078.dir
-      size: 4132
-      nfiles: 6
+      md5: c90c944f78847228d0f3d25567fb1a33.dir
+      size: 13357
+      nfiles: 12
     outs:
     - path: data/RpTweetsXS/LemmatizerSM
       hash: md5
@@ -102,9 +102,9 @@ stages:
       size: 2288
     - path: stages/vectorizers/components
       hash: md5
-      md5: 5c8b90d9bc939543652dca35199e4658.dir
-      size: 4686
-      nfiles: 3
+      md5: eef1069d704f8bb2dfcba9d5b90fe7ac.dir
+      size: 6971
+      nfiles: 4
     outs:
     - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer1000
       hash: md5
@@ -225,9 +225,9 @@ stages:
       size: 2288
     - path: stages/vectorizers/components
       hash: md5
-      md5: 5c8b90d9bc939543652dca35199e4658.dir
-      size: 4686
-      nfiles: 3
+      md5: eef1069d704f8bb2dfcba9d5b90fe7ac.dir
+      size: 6971
+      nfiles: 4
     outs:
     - path: data/RpTweetsXS/TweetNormalization_CountVectorizer1000
       hash: md5
@@ -287,9 +287,9 @@ stages:
       size: 2288
     - path: stages/vectorizers/components
       hash: md5
-      md5: 5c8b90d9bc939543652dca35199e4658.dir
-      size: 4686
-      nfiles: 3
+      md5: eef1069d704f8bb2dfcba9d5b90fe7ac.dir
+      size: 6971
+      nfiles: 4
     outs:
     - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer5000
       hash: md5
@@ -318,9 +318,9 @@ stages:
       size: 2288
     - path: stages/vectorizers/components
       hash: md5
-      md5: 5c8b90d9bc939543652dca35199e4658.dir
-      size: 4686
-      nfiles: 3
+      md5: eef1069d704f8bb2dfcba9d5b90fe7ac.dir
+      size: 6971
+      nfiles: 4
     outs:
     - path: data/RpTweetsXS/TweetNormalization_CountVectorizer5000
       hash: md5
@@ -410,7 +410,7 @@ stages:
       size: 2288
     - path: stages/vectorizers/components
       hash: md5
-      md5: d7bce999afaf0534de6d03efaf83ba18.dir
+      md5: fdd19342d3b10e8f23ff86aa97e1887f.dir
       size: 6971
       nfiles: 4
     outs:
@@ -441,7 +441,7 @@ stages:
       size: 2288
     - path: stages/vectorizers/components
       hash: md5
-      md5: d7bce999afaf0534de6d03efaf83ba18.dir
+      md5: fdd19342d3b10e8f23ff86aa97e1887f.dir
       size: 6971
       nfiles: 4
     outs:
@@ -472,7 +472,7 @@ stages:
       size: 2288
     - path: stages/vectorizers/components
       hash: md5
-      md5: d7bce999afaf0534de6d03efaf83ba18.dir
+      md5: fdd19342d3b10e8f23ff86aa97e1887f.dir
       size: 6971
       nfiles: 4
     outs:
@@ -503,7 +503,7 @@ stages:
       size: 2288
     - path: stages/vectorizers/components
       hash: md5
-      md5: d7bce999afaf0534de6d03efaf83ba18.dir
+      md5: fdd19342d3b10e8f23ff86aa97e1887f.dir
       size: 6971
       nfiles: 4
     outs:
