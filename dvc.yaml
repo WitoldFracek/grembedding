@@ -23,7 +23,7 @@ stages:
         - data/${item.dataset}/raw
         - stages/datacleaners/${item.datacleaner}.py
         - stages/datacleaners/DataCleaner.py
-        - stages/datacleaners/components
+        # - stages/datacleaners/components
       outs:
         - data/${item.dataset}/${item.datacleaner}
 
@@ -35,7 +35,7 @@ stages:
         - scripts/vectorize.py
         - data/${item.dataset}/${item.datacleaner}
         - stages/vectorizers/${item.vectorizer}.py
-        - stages/vectorizers/components # TODO: robienie takich klas bazowych może nas kiedyś ujebać (??)
+        # - stages/vectorizers/components
         - stages/vectorizers/Vectorizer.py
       outs:
         - data/${item.dataset}/${item.datacleaner}_${item.vectorizer}

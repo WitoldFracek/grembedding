@@ -71,13 +71,13 @@ stages:
       size: 1300
     - path: stages/datacleaners/components
       hash: md5
-      md5: c90c944f78847228d0f3d25567fb1a33.dir
-      size: 13357
-      nfiles: 12
+      md5: fa3a9c2d1a76f9de206ced226ce65078.dir
+      size: 4132
+      nfiles: 6
     outs:
     - path: data/RpTweetsXS/LemmatizerSM
       hash: md5
-      md5: d46fca3103e6ddde7273682a495996f1.dir
+      md5: b8ef318c11b4cd877edfc5524cb83b72.dir
       size: 3036814
       nfiles: 2
   vectorize@0:
@@ -85,7 +85,7 @@ stages:
     deps:
     - path: data/RpTweetsXS/LemmatizerSM
       hash: md5
-      md5: d46fca3103e6ddde7273682a495996f1.dir
+      md5: b8ef318c11b4cd877edfc5524cb83b72.dir
       size: 3036814
       nfiles: 2
     - path: scripts/vectorize.py
@@ -100,11 +100,6 @@ stages:
       hash: md5
       md5: 8f9b348cc065e03e61bc7cf543c6a64b
       size: 2288
-    - path: stages/vectorizers/components
-      hash: md5
-      md5: eef1069d704f8bb2dfcba9d5b90fe7ac.dir
-      size: 6971
-      nfiles: 4
     outs:
     - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer1000
       hash: md5
@@ -194,13 +189,13 @@ stages:
       size: 1325
     - path: stages/datacleaners/components
       hash: md5
-      md5: c90c944f78847228d0f3d25567fb1a33.dir
-      size: 13357
+      md5: 880549483d3ff70e1a3ca5ad02f3e3ad.dir
+      size: 10503
       nfiles: 12
     outs:
     - path: data/RpTweetsXS/TweetNormalization
       hash: md5
-      md5: 013e7d0c64ee0034b641ad500622ca99.dir
+      md5: 0837cd17e5dae313b3ddcefbe3f4ee8f.dir
       size: 3233571
       nfiles: 2
   vectorize@1:
@@ -208,7 +203,7 @@ stages:
     deps:
     - path: data/RpTweetsXS/TweetNormalization
       hash: md5
-      md5: 013e7d0c64ee0034b641ad500622ca99.dir
+      md5: 0837cd17e5dae313b3ddcefbe3f4ee8f.dir
       size: 3233571
       nfiles: 2
     - path: scripts/vectorize.py
@@ -223,11 +218,6 @@ stages:
       hash: md5
       md5: 8f9b348cc065e03e61bc7cf543c6a64b
       size: 2288
-    - path: stages/vectorizers/components
-      hash: md5
-      md5: eef1069d704f8bb2dfcba9d5b90fe7ac.dir
-      size: 6971
-      nfiles: 4
     outs:
     - path: data/RpTweetsXS/TweetNormalization_CountVectorizer1000
       hash: md5
@@ -270,7 +260,7 @@ stages:
     deps:
     - path: data/RpTweetsXS/LemmatizerSM
       hash: md5
-      md5: d46fca3103e6ddde7273682a495996f1.dir
+      md5: b8ef318c11b4cd877edfc5524cb83b72.dir
       size: 3036814
       nfiles: 2
     - path: scripts/vectorize.py
@@ -285,11 +275,6 @@ stages:
       hash: md5
       md5: 8f9b348cc065e03e61bc7cf543c6a64b
       size: 2288
-    - path: stages/vectorizers/components
-      hash: md5
-      md5: eef1069d704f8bb2dfcba9d5b90fe7ac.dir
-      size: 6971
-      nfiles: 4
     outs:
     - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer5000
       hash: md5
@@ -301,7 +286,7 @@ stages:
     deps:
     - path: data/RpTweetsXS/TweetNormalization
       hash: md5
-      md5: 013e7d0c64ee0034b641ad500622ca99.dir
+      md5: 0837cd17e5dae313b3ddcefbe3f4ee8f.dir
       size: 3233571
       nfiles: 2
     - path: scripts/vectorize.py
@@ -316,11 +301,6 @@ stages:
       hash: md5
       md5: 8f9b348cc065e03e61bc7cf543c6a64b
       size: 2288
-    - path: stages/vectorizers/components
-      hash: md5
-      md5: eef1069d704f8bb2dfcba9d5b90fe7ac.dir
-      size: 6971
-      nfiles: 4
     outs:
     - path: data/RpTweetsXS/TweetNormalization_CountVectorizer5000
       hash: md5
@@ -393,7 +373,7 @@ stages:
     deps:
     - path: data/RpTweetsXS/LemmatizerSM
       hash: md5
-      md5: d46fca3103e6ddde7273682a495996f1.dir
+      md5: b8ef318c11b4cd877edfc5524cb83b72.dir
       size: 3036814
       nfiles: 2
     - path: scripts/vectorize.py
@@ -408,11 +388,6 @@ stages:
       hash: md5
       md5: 8f9b348cc065e03e61bc7cf543c6a64b
       size: 2288
-    - path: stages/vectorizers/components
-      hash: md5
-      md5: fdd19342d3b10e8f23ff86aa97e1887f.dir
-      size: 6971
-      nfiles: 4
     outs:
     - path: data/RpTweetsXS/LemmatizerSM_TfidfVectorizer1000
       hash: md5
@@ -424,7 +399,7 @@ stages:
     deps:
     - path: data/RpTweetsXS/TweetNormalization
       hash: md5
-      md5: 013e7d0c64ee0034b641ad500622ca99.dir
+      md5: 0837cd17e5dae313b3ddcefbe3f4ee8f.dir
       size: 3233571
       nfiles: 2
     - path: scripts/vectorize.py
@@ -439,11 +414,6 @@ stages:
       hash: md5
       md5: 8f9b348cc065e03e61bc7cf543c6a64b
       size: 2288
-    - path: stages/vectorizers/components
-      hash: md5
-      md5: fdd19342d3b10e8f23ff86aa97e1887f.dir
-      size: 6971
-      nfiles: 4
     outs:
     - path: data/RpTweetsXS/TweetNormalization_TfidfVectorizer1000
       hash: md5
@@ -455,7 +425,7 @@ stages:
     deps:
     - path: data/RpTweetsXS/LemmatizerSM
       hash: md5
-      md5: d46fca3103e6ddde7273682a495996f1.dir
+      md5: b8ef318c11b4cd877edfc5524cb83b72.dir
       size: 3036814
       nfiles: 2
     - path: scripts/vectorize.py
@@ -470,11 +440,6 @@ stages:
       hash: md5
       md5: 8f9b348cc065e03e61bc7cf543c6a64b
       size: 2288
-    - path: stages/vectorizers/components
-      hash: md5
-      md5: fdd19342d3b10e8f23ff86aa97e1887f.dir
-      size: 6971
-      nfiles: 4
     outs:
     - path: data/RpTweetsXS/LemmatizerSM_TfidfVectorizer5000
       hash: md5
@@ -486,7 +451,7 @@ stages:
     deps:
     - path: data/RpTweetsXS/TweetNormalization
       hash: md5
-      md5: 013e7d0c64ee0034b641ad500622ca99.dir
+      md5: 0837cd17e5dae313b3ddcefbe3f4ee8f.dir
       size: 3233571
       nfiles: 2
     - path: scripts/vectorize.py
@@ -501,11 +466,6 @@ stages:
       hash: md5
       md5: 8f9b348cc065e03e61bc7cf543c6a64b
       size: 2288
-    - path: stages/vectorizers/components
-      hash: md5
-      md5: fdd19342d3b10e8f23ff86aa97e1887f.dir
-      size: 6971
-      nfiles: 4
     outs:
     - path: data/RpTweetsXS/TweetNormalization_TfidfVectorizer5000
       hash: md5
