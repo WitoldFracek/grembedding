@@ -138,34 +138,34 @@ stages:
       size: 350
   evaluate@data0-model1:
     cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer1000"
-      "SVC" "SVC2"
+      "SVC" "SVC1"
     deps:
     - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer1000
       hash: md5
-      md5: a37027552e15672ed18988551aeb49d2.dir
-      size: 21430300
+      md5: 5b780d9212c9509ded0fa4a2cb8ac277.dir
+      size: 214318558
       nfiles: 4
-    - path: params/SVC2.yaml
+    - path: params/SVC1.yaml
       hash: md5
-      md5: dcc2e18360f768734743656c9a4ef885
-      size: 4
+      md5: 4d4566ceb63190a6b78049a19328cb4c
+      size: 5
     - path: scripts/evaluate.py
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
     - path: stages/models/Model.py
       hash: md5
-      md5: a7f2f2fdf7c9e397668cbba173ffb3bf
-      size: 3225
+      md5: 198cfbaa11881b74ecb7116946d89f9c
+      size: 3249
     - path: stages/models/SVC.py
       hash: md5
-      md5: b1fb71fc85741cfafe4eacda17e2e7c1
-      size: 1498
+      md5: 83effad05bcb21943fb1429553d87d76
+      size: 1713
     outs:
-    - path: results/RpTweetsXS_LemmatizerSM_CountVectorizer1000_SVC_SVC2.json
+    - path: results/RpTweetsXS_LemmatizerSM_CountVectorizer1000_SVC_SVC1.json
       hash: md5
-      md5: 742c79e128d93ed9553b05b6c1d87ce0
-      size: 181
+      md5: f94178881746ad86e8a7c236465f818a
+      size: 167
   clean@1:
     cmd:
     - python scripts/clean.py "RpTweetsXS" "TweetNormalization"
@@ -594,3 +594,213 @@ stages:
       hash: md5
       md5: ece7e2ba22c38d951ecfde18cc09dfae
       size: 354
+  evaluate@data1-model1:
+    cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "CountVectorizer1000"
+      "SVC" "SVC1"
+    deps:
+    - path: data/RpTweetsXS/TweetNormalization_CountVectorizer1000
+      hash: md5
+      md5: f77b64f55f7b59ced3ce684520c57cf5.dir
+      size: 214318558
+      nfiles: 4
+    - path: params/SVC1.yaml
+      hash: md5
+      md5: 4d4566ceb63190a6b78049a19328cb4c
+      size: 5
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/Model.py
+      hash: md5
+      md5: 198cfbaa11881b74ecb7116946d89f9c
+      size: 3249
+    - path: stages/models/SVC.py
+      hash: md5
+      md5: 83effad05bcb21943fb1429553d87d76
+      size: 1713
+    outs:
+    - path: results/RpTweetsXS_TweetNormalization_CountVectorizer1000_SVC_SVC1.json
+      hash: md5
+      md5: b12d16a8e90a26ef46ede28eabd8ef23
+      size: 173
+  evaluate@data2-model1:
+    cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer5000"
+      "SVC" "SVC1"
+    deps:
+    - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer5000
+      hash: md5
+      md5: 930bbc59df4e97eb817a0e1255f783db.dir
+      size: 1071374558
+      nfiles: 4
+    - path: params/SVC1.yaml
+      hash: md5
+      md5: 4d4566ceb63190a6b78049a19328cb4c
+      size: 5
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/Model.py
+      hash: md5
+      md5: 198cfbaa11881b74ecb7116946d89f9c
+      size: 3249
+    - path: stages/models/SVC.py
+      hash: md5
+      md5: 83effad05bcb21943fb1429553d87d76
+      size: 1713
+    outs:
+    - path: results/RpTweetsXS_LemmatizerSM_CountVectorizer5000_SVC_SVC1.json
+      hash: md5
+      md5: 4ab48043fb173cda99f4baeb6f36741c
+      size: 167
+  evaluate@data3-model1:
+    cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "CountVectorizer5000"
+      "SVC" "SVC1"
+    deps:
+    - path: data/RpTweetsXS/TweetNormalization_CountVectorizer5000
+      hash: md5
+      md5: 7174605b795494f62b4cffdf36b183af.dir
+      size: 1071374558
+      nfiles: 4
+    - path: params/SVC1.yaml
+      hash: md5
+      md5: 4d4566ceb63190a6b78049a19328cb4c
+      size: 5
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/Model.py
+      hash: md5
+      md5: 198cfbaa11881b74ecb7116946d89f9c
+      size: 3249
+    - path: stages/models/SVC.py
+      hash: md5
+      md5: 83effad05bcb21943fb1429553d87d76
+      size: 1713
+    outs:
+    - path: results/RpTweetsXS_TweetNormalization_CountVectorizer5000_SVC_SVC1.json
+      hash: md5
+      md5: b6c5d058249ed0e943c3f570d3018ca2
+      size: 173
+  evaluate@data4-model1:
+    cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "TfidfVectorizer1000"
+      "SVC" "SVC1"
+    deps:
+    - path: data/RpTweetsXS/LemmatizerSM_TfidfVectorizer1000
+      hash: md5
+      md5: d12032ce11d518034a283897e64fe99d.dir
+      size: 214318558
+      nfiles: 4
+    - path: params/SVC1.yaml
+      hash: md5
+      md5: 4d4566ceb63190a6b78049a19328cb4c
+      size: 5
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/Model.py
+      hash: md5
+      md5: 198cfbaa11881b74ecb7116946d89f9c
+      size: 3249
+    - path: stages/models/SVC.py
+      hash: md5
+      md5: 83effad05bcb21943fb1429553d87d76
+      size: 1713
+    outs:
+    - path: results/RpTweetsXS_LemmatizerSM_TfidfVectorizer1000_SVC_SVC1.json
+      hash: md5
+      md5: b05a980acd8c4e74f21d4076fa477782
+      size: 167
+  evaluate@data5-model1:
+    cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "TfidfVectorizer1000"
+      "SVC" "SVC1"
+    deps:
+    - path: data/RpTweetsXS/TweetNormalization_TfidfVectorizer1000
+      hash: md5
+      md5: 1e9496e57546185688c9711b803ae956.dir
+      size: 214318558
+      nfiles: 4
+    - path: params/SVC1.yaml
+      hash: md5
+      md5: 4d4566ceb63190a6b78049a19328cb4c
+      size: 5
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/Model.py
+      hash: md5
+      md5: 198cfbaa11881b74ecb7116946d89f9c
+      size: 3249
+    - path: stages/models/SVC.py
+      hash: md5
+      md5: 83effad05bcb21943fb1429553d87d76
+      size: 1713
+    outs:
+    - path: results/RpTweetsXS_TweetNormalization_TfidfVectorizer1000_SVC_SVC1.json
+      hash: md5
+      md5: 7207019eedf643b37eb59a57fee3f0e0
+      size: 173
+  evaluate@data6-model1:
+    cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "TfidfVectorizer5000"
+      "SVC" "SVC1"
+    deps:
+    - path: data/RpTweetsXS/LemmatizerSM_TfidfVectorizer5000
+      hash: md5
+      md5: f7cb74d411b9a536c426548ec715b3b7.dir
+      size: 1071374558
+      nfiles: 4
+    - path: params/SVC1.yaml
+      hash: md5
+      md5: 4d4566ceb63190a6b78049a19328cb4c
+      size: 5
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/Model.py
+      hash: md5
+      md5: 198cfbaa11881b74ecb7116946d89f9c
+      size: 3249
+    - path: stages/models/SVC.py
+      hash: md5
+      md5: 83effad05bcb21943fb1429553d87d76
+      size: 1713
+    outs:
+    - path: results/RpTweetsXS_LemmatizerSM_TfidfVectorizer5000_SVC_SVC1.json
+      hash: md5
+      md5: 9886b9ddc45df39f0ef31577c85e4bf6
+      size: 166
+  evaluate@data7-model1:
+    cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "TfidfVectorizer5000"
+      "SVC" "SVC1"
+    deps:
+    - path: data/RpTweetsXS/TweetNormalization_TfidfVectorizer5000
+      hash: md5
+      md5: 8566592aa1ee48e8e3902bd2ec5e2ebe.dir
+      size: 1071374558
+      nfiles: 4
+    - path: params/SVC1.yaml
+      hash: md5
+      md5: 4d4566ceb63190a6b78049a19328cb4c
+      size: 5
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/Model.py
+      hash: md5
+      md5: 198cfbaa11881b74ecb7116946d89f9c
+      size: 3249
+    - path: stages/models/SVC.py
+      hash: md5
+      md5: 83effad05bcb21943fb1429553d87d76
+      size: 1713
+    outs:
+    - path: results/RpTweetsXS_TweetNormalization_TfidfVectorizer5000_SVC_SVC1.json
+      hash: md5
+      md5: de9799507b10423ed235acbf61874f1e
+      size: 173

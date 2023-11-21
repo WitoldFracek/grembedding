@@ -30,12 +30,12 @@ class SVC(Model):
         clf = svm.SVC(**params)
 
         logger.info(f"Fitting SVC classifier...")
-        clf.fit(X_train, y_train)
+        clf.fit(X_train[:100], y_train[:100])
         logger.info("Predicting with CSV classifier...")
-        y_pred = clf.predict(X_test)
+        y_pred = clf.predict(X_test[:100])
 
-        logger.info(f"Params: {params}, acc: {accuracy_score(y_test, y_pred)}")
-        metrics = {"accuracy": accuracy_score(y_test, y_pred)}
+        logger.info(f"Params: {params}, acc: {accuracy_score(y_test[:100], y_pred)}")
+        metrics = {"accuracy": accuracy_score(y_test[:100], y_pred)}
 
         self.save_results(
             experiment_name=dataset,
