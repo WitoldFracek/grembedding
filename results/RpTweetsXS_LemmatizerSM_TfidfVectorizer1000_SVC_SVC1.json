@@ -1,0 +1,1 @@
+{"params": {"C": 1}, "metrics": {"accuracy": 0.14}, "dataset": "RpTweetsXS", "datacleaner": "LemmatizerSM", "vectorizer": "TfidfVectorizer1000", "params_name": "SVC1"}
