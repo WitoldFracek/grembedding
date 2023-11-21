@@ -1,1 +1,0 @@
-{"params": {"C": 1}, "metrics": {"accuracy": 0.16}, "dataset": "RpTweetsXS", "datacleaner": "TweetNormalization", "vectorizer": "CountVectorizer5000", "params_name": "SVC1"}
