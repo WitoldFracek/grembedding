@@ -69,4 +69,4 @@ models:
   - model: LogisticRegression
     params: LR1
   - model: SVC
-    params: SVC1
+    params: SVC3
