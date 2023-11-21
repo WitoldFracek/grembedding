@@ -23,7 +23,7 @@ NIGDY NIE USUWAMY NIC Z PARAMSÓW!
 6. `dvc push`
 7. `git add .`
 8. `git commit -m "message"`
-9. `git push`
+9. `git push` \
 Na innym kompie
 10. `git pull`
 11. `dvc pull`
