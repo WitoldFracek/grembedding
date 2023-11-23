@@ -18,7 +18,7 @@ class MsTweets(DataLoader):
     TWEETS_RELEVANT_COLS: list[str] = ["rawContent", "author_user_id"]
 
     def create_dataset(self) -> None:
-        df = self.load_and_filter_data()
+        df, _ = self.load_and_filter_data()
         train, test = make_split(df, stratify=True, random_state=0)
         self._save_dataset(train, test)
 
