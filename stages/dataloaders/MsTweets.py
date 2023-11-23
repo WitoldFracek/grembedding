@@ -18,7 +18,7 @@ class MsTweets(DataLoader):
     TWEETS_RELEVANT_COLS: list[str] = ["rawContent", "author_user_id"]
 
     def create_dataset(self) -> None:
-        df, _ = self.load_and_filter_data()
+        df = self.load_and_filter_data()
         train, test = make_split(df, stratify=True, random_state=0)
         self._save_dataset(train, test)
 
@@ -47,16 +47,15 @@ class MsTweets(DataLoader):
         df_data = df_data[df_data['affiliation_displayname'].isin(affiliation)]
         print(df_data['affiliation_displayname'].value_counts())
         # Zmiana nazw kolumn
-        df_data = df_data.rename(columns = {"rawContent": "text", "affiliation_displayname": "label"})
+        df_data = df_data.rename(columns = {"rawContent": "text", "affiliation_displayname": "label_str"})
         # Ogarnięcie dlugości tekstu
         df_data['text_length'] = df_data['text'].apply(lambda x: len(x))
         df_data = df_data.query('text_length <= 250 and text_length >= 50')
-        df_data = df_data[['text', 'label']]
+        df_data = df_data[['text', 'label_str']]
         # Mappowanie labela
-        df_data['label'], factorize_labels = pd.factorize(df_data['label'])
+        df_data['label'] = pd.factorize(df_data['label_str'])[0]
         logger.info(f"Tweets merged dataset shape = {df_data.shape}")
-        logger.info(f"Factorize labels = {factorize_labels}")
-
-        return df_data, factorize_labels
+    
+        return df_data
 
     
