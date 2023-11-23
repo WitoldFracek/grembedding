@@ -22,35 +22,6 @@ class MsTweets(DataLoader):
         train, test = make_split(df, stratify=True, random_state=0)
         self._save_dataset(train, test)
 
-    def load_tweets(self) -> pd.DataFrame:
-        """
-        Load tweets and users parquet files and merge them on the `author_user_id` column. Keep only relevant columns
-        """
-
-        tweets_fp = os.path.join(self.raw_datasets_dir, self.DATASET_DIR, "tweets.parquet")
-        users_fp = os.path.join(self.raw_datasets_dir, self.DATASET_DIR, "users.parquet")
-
-        tweets = pd.read_parquet(tweets_fp,
-                                 columns=self.TWEETS_RELEVANT_COLS,
-                                 filters=[("lang", "==", self.ALLOWED_TWEET_LANGUAGE)],
-                                 engine="pyarrow")
-
-        users = pd.read_parquet(users_fp,
-                                columns=self.USERS_RELEVANT_COLS,
-                                engine="pyarrow")
-
-        df = tweets.merge(users, left_on="author_user_id", right_on="id", how="left")
-
-        df = df[["rawContent", "affiliation_id"]]
-        df.rename(columns={"rawContent": "text", "affiliation_id": "label"}, inplace=True)
-
-        df.dropna(subset=["text", "label"], inplace=True)
-
-        logger.debug(f"Loaded tweets data: Tweets={tweets.shape}, Users={users.shape}")
-        logger.info(f"Tweets merged dataset shape = {df.shape}")
-
-        return df
-    
     def load_raw_data(self) -> Tuple[pd.DataFrame, pd.DataFrame]:
         tweets_fp = os.path.join(self.raw_datasets_dir, self.DATASET_DIR, "tweets.parquet")
         users_fp = os.path.join(self.raw_datasets_dir, self.DATASET_DIR, "users.parquet")
@@ -77,10 +48,15 @@ class MsTweets(DataLoader):
         print(df_data['affiliation_displayname'].value_counts())
         # Zmiana nazw kolumn
         df_data = df_data.rename(columns = {"rawContent": "text", "affiliation_displayname": "label"})
+        # Ogarnięcie dlugości tekstu
+        df_data['text_length'] = df_data['text'].apply(lambda x: len(x))
+        df_data = df_data.query('text_length <= 250 and text_length >= 50')
+        df_data = df_data[['text', 'label']]
         # Mappowanie labela
-        df_data['label'] = pd.factorize(df_data['label'])[0]
+        df_data['label'], factorize_labels = pd.factorize(df_data['label'])
         logger.info(f"Tweets merged dataset shape = {df_data.shape}")
-        
-        return df_data
+        logger.info(f"Factorize labels = {factorize_labels}")
+
+        return df_data, factorize_labels
 
     
