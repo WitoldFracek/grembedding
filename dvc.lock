@@ -820,13 +820,13 @@ stages:
       size: 764
     - path: stages/dataloaders/MsTweets.py
       hash: md5
-      md5: 511b5e082901352960805b62863bde7a
-      size: 3776
+      md5: d38b1dcd78ac58283dd38957872b21ba
+      size: 2830
     outs:
     - path: data/MsTweets/raw
       hash: md5
-      md5: 9c5c3af469e5607ef395c98a45ab50f4.dir
-      size: 15760883
+      md5: 94cb1f61f8f4485ab3a7f069a47e973c.dir
+      size: 7453389
       nfiles: 2
   clean@2:
     cmd:
@@ -834,8 +834,8 @@ stages:
     deps:
     - path: data/MsTweets/raw
       hash: md5
-      md5: 9c5c3af469e5607ef395c98a45ab50f4.dir
-      size: 15760883
+      md5: 94cb1f61f8f4485ab3a7f069a47e973c.dir
+      size: 7453389
       nfiles: 2
     - path: scripts/clean.py
       hash: md5
@@ -852,6 +852,6 @@ stages:
     outs:
     - path: data/MsTweets/TweetNormalization
       hash: md5
-      md5: 1b322df4f03387e632a02cce21412ca5.dir
-      size: 13879512
+      md5: 050cbd1a2df437c82372b152ee704866.dir
+      size: 6332538
       nfiles: 2
