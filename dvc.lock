@@ -185,26 +185,21 @@ stages:
       size: 2132
     - path: stages/datacleaners/TweetNormalization.py
       hash: md5
-      md5: 6cf5a5452b8668297ddb9c6ccd67e4e9
-      size: 1325
-    - path: stages/datacleaners/components
-      hash: md5
-      md5: 880549483d3ff70e1a3ca5ad02f3e3ad.dir
-      size: 10503
-      nfiles: 12
+      md5: f17249e434ff836ed82dddff4864de1c
+      size: 1487
     outs:
     - path: data/RpTweetsXS/TweetNormalization
       hash: md5
-      md5: 0837cd17e5dae313b3ddcefbe3f4ee8f.dir
-      size: 3233571
+      md5: 2fd31251911aebf6d8ef1465a16f6c1d.dir
+      size: 3225922
       nfiles: 2
   vectorize@1:
     cmd: python scripts/vectorize.py "RpTweetsXS" "TweetNormalization" "CountVectorizer1000"
     deps:
     - path: data/RpTweetsXS/TweetNormalization
       hash: md5
-      md5: 0837cd17e5dae313b3ddcefbe3f4ee8f.dir
-      size: 3233571
+      md5: 2fd31251911aebf6d8ef1465a16f6c1d.dir
+      size: 3225922
       nfiles: 2
     - path: scripts/vectorize.py
       hash: md5
@@ -286,8 +281,8 @@ stages:
     deps:
     - path: data/RpTweetsXS/TweetNormalization
       hash: md5
-      md5: 0837cd17e5dae313b3ddcefbe3f4ee8f.dir
-      size: 3233571
+      md5: 2fd31251911aebf6d8ef1465a16f6c1d.dir
+      size: 3225922
       nfiles: 2
     - path: scripts/vectorize.py
       hash: md5
@@ -399,8 +394,8 @@ stages:
     deps:
     - path: data/RpTweetsXS/TweetNormalization
       hash: md5
-      md5: 0837cd17e5dae313b3ddcefbe3f4ee8f.dir
-      size: 3233571
+      md5: 2fd31251911aebf6d8ef1465a16f6c1d.dir
+      size: 3225922
       nfiles: 2
     - path: scripts/vectorize.py
       hash: md5
@@ -451,8 +446,8 @@ stages:
     deps:
     - path: data/RpTweetsXS/TweetNormalization
       hash: md5
-      md5: 0837cd17e5dae313b3ddcefbe3f4ee8f.dir
-      size: 3233571
+      md5: 2fd31251911aebf6d8ef1465a16f6c1d.dir
+      size: 3225922
       nfiles: 2
     - path: scripts/vectorize.py
       hash: md5
@@ -830,6 +825,33 @@ stages:
       nfiles: 2
   clean@2:
     cmd:
+    - python scripts/clean.py "RpTweets" "TweetNormalization"
+    deps:
+    - path: data/RpTweets/raw
+      hash: md5
+      md5: 8d7d1210b7bd4f6ef2d6681d8dea30b0.dir
+      size: 37752135
+      nfiles: 2
+    - path: scripts/clean.py
+      hash: md5
+      md5: a35073fb8ed6b407b4d09d0c795ba62e
+      size: 842
+    - path: stages/datacleaners/DataCleaner.py
+      hash: md5
+      md5: 934ee50d1e9610c307610a8e3a986a47
+      size: 2132
+    - path: stages/datacleaners/TweetNormalization.py
+      hash: md5
+      md5: f17249e434ff836ed82dddff4864de1c
+      size: 1487
+    outs:
+    - path: data/RpTweets/TweetNormalization
+      hash: md5
+      md5: 09207581b86783ac08fb37593e9f4ecc.dir
+      size: 32157761
+      nfiles: 2
+  clean@3:
+    cmd:
     - python scripts/clean.py "MsTweets" "TweetNormalization"
     deps:
     - path: data/MsTweets/raw
@@ -847,11 +869,11 @@ stages:
       size: 2132
     - path: stages/datacleaners/TweetNormalization.py
       hash: md5
-      md5: 6cf5a5452b8668297ddb9c6ccd67e4e9
-      size: 1325
+      md5: f17249e434ff836ed82dddff4864de1c
+      size: 1487
     outs:
     - path: data/MsTweets/TweetNormalization
       hash: md5
-      md5: 0f0b337bf313492bf2732a6df43af006.dir
-      size: 6349353
+      md5: 6f6ff7781887ae1fa2fc17eb0891a71a.dir
+      size: 6326981
       nfiles: 2

@@ -8,6 +8,8 @@ clean:
     datacleaner: LemmatizerSM
   - dataset: RpTweetsXS
     datacleaner: TweetNormalization
+  - dataset: RpTweets
+    datacleaner: TweetNormalization
   - dataset: MsTweets
     datacleaner: TweetNormalization
 

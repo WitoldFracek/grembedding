@@ -27,6 +27,9 @@ class TweetNormalization(DataCleaner):
         self.pipeline(train, inplace=True)
         self.pipeline(test, inplace=True)
 
+        train["text"] = train["text"].apply(lambda txt: txt.replace("\n", " "))
+        test["text"] = test["text"].apply(lambda txt: txt.replace("\n", " "))
+
         train.rename(columns={"text": "clean_text"}, inplace=True)
         test.rename(columns={"text": "clean_text"}, inplace=True)
 
