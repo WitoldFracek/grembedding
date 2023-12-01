@@ -27,38 +27,42 @@ class MsTweetsV2(DataLoader):
         return df_tweets, df_users
 
     def load_and_filter_data(self) -> pd.DataFrame:
-        df_tweets, df_users = self.load_raw_data()
+        tweets, users = self.load_raw_data()
 
         # Pozbycie się duplikatów
-        df_tweets = df_tweets.drop_duplicates(subset=['id'])
+        tweets = tweets.drop_duplicates(subset=['id'])
 
         # Usunięcie odpowiedzi do tweetów i ludzi
-        df_tweets = df_tweets[pd.isna(df_tweets['inReplyToTweetId'])]
-        df_tweets = df_tweets[df_tweets['inReplyToUser'].isnull()]
-        df_tweets = df_tweets[df_tweets['quotedTweet'].isnull()]
+        tweets = tweets[pd.isna(tweets['inReplyToTweetId'])]
+        tweets = tweets[tweets['inReplyToUser'].isnull()]
+        tweets = tweets[tweets['quotedTweet'].isnull()]
 
         # Wybranie tylko potrzebnych kolumn
-        df_tweets = df_tweets[['author_user_id', 'rawContent', 'date']]
+        tweets = tweets[['author_user_id', 'rawContent', 'date']]
 
         # Połączenie z userami
-        df_data = pd.merge(df_tweets, df_users, left_on='author_user_id', right_on='id', how='left')
-        df_data = df_data[['rawContent', 'affiliation_displayname', 'date']]
+        df = pd.merge(tweets, users, left_on='author_user_id', right_on='id', how='right')
+        df = df[['rawContent', 'affiliation_id', 'date']]
 
         # Wybranie partii
-        affiliation = ['Prawo i Sprawiedliwość', 'Konfederacja', 'PlatformaObywatelska', 'Lewica']
-        df_data = df_data[df_data['affiliation_displayname'].isin(affiliation)]
-        print(df_data['affiliation_displayname'].value_counts())
+        affiliationids = ["pis", "ko", "konfederacja", "lewica"]
+        # make sure no spelling mistakes
+        assert all([aid in df["affiliation_id"].unique() for aid in affiliationids])
+
+        df = df.query("affiliation_id in @affiliationids")
+        print(df['affiliation_id'].value_counts())
 
         # Zmiana nazw kolumn
-        df_data = df_data.rename(columns={"rawContent": "text", "affiliation_displayname": "label_str"})
+        df = df.rename(columns={"rawContent": "text", "affiliation_id": "label_str"})
 
         # Ogarnięcie dlugości tekstu
-        df_data = df_data.query('text.str.len() <= 500 and text.str.len() >= 50')
-        df_data = df_data[['text', 'label_str', 'date']]
+        df = df.query('text.str.len() <= 500 and text.str.len() >= 50')
+        df = df[['text', 'label_str', 'date']]
 
         # Mappowanie labela
-        df_data['label'] = pd.factorize(df_data['label_str'])[0]
-        logger.info(f"Tweets merged dataset shape = {df_data.shape}")
+        df['label'] = pd.factorize(df['label_str'])[0]
 
-        return df_data
+        logger.info(f"Tweets merged dataset shape = {df.shape}")
+
+        return df
 
