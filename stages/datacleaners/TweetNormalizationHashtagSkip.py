@@ -27,7 +27,7 @@ class TweetNormalizationHashtagSkip(DataCleaner):
     def clean_data(self, dataset: str) -> None:
         train, test = self.load_dataset(dataset)
 
-        logger.info(f"Executing steps: {[s.__class__.__name__ for s in self.pipeline.steps]} ")
+        logger.info(f"Executing steps: {[s.__class__.__name__ for s in self.pipeline.steps]}  ")
 
         self.pipeline(train, inplace=True)
         self.pipeline(test, inplace=True)

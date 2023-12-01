@@ -8,7 +8,7 @@ class DuplicateWhitespaceCleaner(GenericRegexCleaner):
     SINGLE_SPACE: str = " "
 
     REGEX = re.compile(
-        r"/\s\s+"
+        r"\s+"
     )
 
     def __init__(self, placeholder: Optional[str] = SINGLE_SPACE):
