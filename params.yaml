@@ -2,6 +2,7 @@ load:
   - dataloader: RpTweets
   - dataloader: RpTweetsXS
   - dataloader: MsTweets
+  - dataloader: MsTweetsV2
 
 clean:
   - dataset: RpTweetsXS
@@ -13,6 +14,8 @@ clean:
   - dataset: MsTweets
     datacleaner: TweetNormalization
   - dataset: MsTweets
+    datacleaner: TweetNormalizationHashtagSkip
+  - dataset: MsTweetsV2
     datacleaner: TweetNormalizationHashtagSkip
 
 vectorize:

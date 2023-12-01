@@ -31,3 +31,32 @@ def make_split(df: pd.DataFrame,
     df_train, df_test = train_test_split(data, stratify=stratify_option, random_state=random_state)
 
     return df_train, df_test
+
+
+def temporal_train_test_split(df: pd.DataFrame,
+                              timestamp_col: str,
+                              test_size: float
+                              ) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """
+    Splits the DataFrame into training and test sets based on a temporal column.
+
+    Args:
+        df: DataFrame to split.
+        timestamp_col: The name of the temporal column to sort on.
+        test_size: Proportion of the dataset to include in the test split.
+
+    Returns:
+        Tuple containing the training and test DataFrames.
+    """
+
+    # Sort the DataFrame based on the temporal column
+    df_sorted = df.sort_values(by=timestamp_col)
+
+    # Calculate the index at which to split the DataFrame
+    split_idx = int(len(df_sorted) * (1 - test_size))
+
+    # Split the DataFrame into training and test sets
+    df_train = df_sorted.iloc[:split_idx]
+    df_test = df_sorted.iloc[split_idx:]
+
+    return df_train, df_test
