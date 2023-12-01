@@ -24,6 +24,12 @@ NIGDY NIE USUWAMY NIC Z PARAMSÓW!
 7. `git add .`
 8. `git commit -m "message"`
 9. `git push` \
+
+Dla lubiących ryzyko:
+* `git add . && git commit -m "push worktree" --allow-empty`
+* `dvc exp run`
+* `./after-dvc.sh` (dvc add, push + git add, push)
+
 Na innym kompie
 10. `git pull`
 11. `dvc pull`
