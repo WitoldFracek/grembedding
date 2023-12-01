@@ -12,6 +12,8 @@ clean:
     datacleaner: TweetNormalization
   - dataset: MsTweets
     datacleaner: TweetNormalization
+  - dataset: MsTweets
+    datacleaner: TweetNormalizationHashtagSkip
 
 vectorize:
   - dataset: RpTweetsXS

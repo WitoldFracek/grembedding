@@ -877,3 +877,30 @@ stages:
       md5: 6f6ff7781887ae1fa2fc17eb0891a71a.dir
       size: 6326981
       nfiles: 2
+  clean@4:
+    cmd:
+    - python scripts/clean.py "MsTweets" "TweetNormalizationHashtagSkip"
+    deps:
+    - path: data/MsTweets/raw
+      hash: md5
+      md5: 69a81154bcee9535449243027593e500.dir
+      size: 7470212
+      nfiles: 2
+    - path: scripts/clean.py
+      hash: md5
+      md5: a35073fb8ed6b407b4d09d0c795ba62e
+      size: 842
+    - path: stages/datacleaners/DataCleaner.py
+      hash: md5
+      md5: 934ee50d1e9610c307610a8e3a986a47
+      size: 2132
+    - path: stages/datacleaners/TweetNormalizationHashtagSkip.py
+      hash: md5
+      md5: 5259a2291c7d8f36c61693b72ac6f6ca
+      size: 1640
+    outs:
+    - path: data/MsTweets/TweetNormalizationHashtagSkip
+      hash: md5
+      md5: 6f6ff7781887ae1fa2fc17eb0891a71a.dir
+      size: 6326981
+      nfiles: 2
