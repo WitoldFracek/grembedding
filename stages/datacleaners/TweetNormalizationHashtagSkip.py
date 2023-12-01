@@ -1,6 +1,7 @@
 from loguru import logger
 
 from stages.datacleaners.DataCleaner import DataCleaner
+from stages.datacleaners.components.DuplicateWhitespaceRemover import DuplicateWhitespaceRemover
 from stages.datacleaners.components.EmojiCleanerStep import EmojiCleanerStep
 from stages.datacleaners.components.HashtagCleaner import HashtagCleaner
 from stages.datacleaners.components.HtmlTagCleanerStep import HtmlTagCleanerStep
@@ -18,7 +19,8 @@ class TweetNormalizationHashtagSkip(DataCleaner):
                 EmojiCleanerStep(),
                 HtmlTagCleanerStep(),
                 TwitterHandleCleanerStep(placeholder="@user"),
-                HashtagCleaner(placeholder="")
+                HashtagCleaner(placeholder=""),
+                DuplicateWhitespaceRemover()
             ]
         )
 
