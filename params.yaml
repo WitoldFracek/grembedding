@@ -15,8 +15,11 @@ clean:
     datacleaner: TweetNormalization
   - dataset: MsTweets
     datacleaner: TweetNormalizationHashtagSkip
+  # MsTweetsV2
   - dataset: MsTweetsV2
     datacleaner: TweetNormalizationHashtagSkip
+  - dataset: MsTweetsV2
+    datacleaner: LemmatizerSM
 
 vectorize:
   - dataset: RpTweetsXS
@@ -43,6 +46,33 @@ vectorize:
   - dataset: RpTweetsXS
     datacleaner: TweetNormalization
     vectorizer: TfidfVectorizer5000
+  # MsTweetsV2
+  - dataset: MsTweetsV2
+    datacleaner: LemmatizerSM
+    vectorizer: CountVectorizer1000
+  - dataset: MsTweetsV2
+    datacleaner: LemmatizerSM
+    vectorizer: CountVectorizer5000
+  - dataset: MsTweetsV2
+    datacleaner: LemmatizerSM
+    vectorizer: TfidfVectorizer1000
+  - dataset: MsTweetsV2
+    datacleaner: LemmatizerSM
+    vectorizer: TfidfVectorizer5000
+  # MsTweetsV2 TweetNormalizationHashtagSkip
+  - dataset: MsTweetsV2
+    datacleaner: TweetNormalizationHashtagSkip
+    vectorizer: CountVectorizer1000
+  - dataset: MsTweetsV2
+    datacleaner: TweetNormalizationHashtagSkip
+    vectorizer: CountVectorizer5000
+  - dataset: MsTweetsV2
+    datacleaner: TweetNormalizationHashtagSkip
+    vectorizer: TfidfVectorizer1000
+  - dataset: MsTweetsV2
+    datacleaner: TweetNormalizationHashtagSkip
+    vectorizer: TfidfVectorizer5000
+
 
 evaluate:
   - dataset: RpTweetsXS
@@ -69,6 +99,32 @@ evaluate:
   - dataset: RpTweetsXS
     datacleaner: TweetNormalization
     vectorizer: TfidfVectorizer5000
+  # MsTweetsV2 LemmatizerSM
+  - dataset: MsTweetsV2
+    datacleaner: LemmatizerSM
+    vectorizer: CountVectorizer1000
+  - dataset: MsTweetsV2
+    datacleaner: LemmatizerSM
+    vectorizer: CountVectorizer5000
+  - dataset: MsTweetsV2
+    datacleaner: LemmatizerSM
+    vectorizer: TfidfVectorizer1000
+  - dataset: MsTweetsV2
+    datacleaner: LemmatizerSM
+    vectorizer: TfidfVectorizer5000
+  # MsTweetsV2 TweetNormalizationHashtagSkip
+  - dataset: MsTweetsV2
+    datacleaner: TweetNormalizationHashtagSkip
+    vectorizer: CountVectorizer1000
+  - dataset: MsTweetsV2
+    datacleaner: TweetNormalizationHashtagSkip
+    vectorizer: CountVectorizer5000
+  - dataset: MsTweetsV2
+    datacleaner: TweetNormalizationHashtagSkip
+    vectorizer: TfidfVectorizer1000
+  - dataset: MsTweetsV2
+    datacleaner: TweetNormalizationHashtagSkip
+    vectorizer: TfidfVectorizer5000
 
 
 models:
@@ -76,7 +132,9 @@ models:
 #    params: SVC1
 #  - model: SVC
 #    params: SVC2
-  - model: LogisticRegression
-    params: LR1
   - model: SVC
     params: SVC3
+  - model: LogisticRegression
+    params: LR1
+  - model: MLP
+    params: MLP1

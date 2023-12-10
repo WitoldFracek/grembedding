@@ -1,2 +1,6 @@
 /raw
 /TweetNormalizationHashtagSkip
+/TweetNormalizationHashtagSkip_CountVectorizer1000
+/TweetNormalizationHashtagSkip_CountVectorizer5000
+/TweetNormalizationHashtagSkip_TfidfVectorizer1000
+/TweetNormalizationHashtagSkip_TfidfVectorizer5000
