@@ -33,6 +33,7 @@ class MLP(Model):
 
             logger.info("Running predict...")
             y_pred: np.ndarray = clf.predict(X_test)
+            y_proba: np.ndarray = clf.predict_proba(X_test)
 
             # Evaluation metrics
             logger.info("Calculating metrics...")
@@ -100,3 +101,8 @@ class MLP(Model):
         plt.title('Receiver Operating Characteristic')
         plt.legend(loc="lower right")
         plt.show()
+
+
+if __name__ == "__main__":
+    mlp = MLP()
+    mlp.evaluate("RpTweetsXS", "LemmatizerSM", "CountVectorizer", "default", {})
