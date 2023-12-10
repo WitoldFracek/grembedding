@@ -40,11 +40,14 @@ class RpTweets(DataLoader):
         df = tweets.merge(users, left_on="author_user_id", right_on="id", how="left")
 
         df = df[["rawContent", "affiliation_id"]]
-        df.rename(columns={"rawContent": "text", "affiliation_id": "label"}, inplace=True)
+        df.rename(columns={"rawContent": "text", "affiliation_id": "label_str"}, inplace=True)
 
-        df.dropna(subset=["text", "label"], inplace=True)
+        df.dropna(subset=["text", "label_str"], inplace=True)
 
         logger.debug(f"Loaded tweets data: Tweets={tweets.shape}, Users={users.shape}")
         logger.info(f"Tweets merged dataset shape = {df.shape}")
+
+        labels = pd.factorize(df['label_str'])
+        df['label'] = labels[0]
 
         return df

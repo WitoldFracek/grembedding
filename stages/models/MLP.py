@@ -32,8 +32,9 @@ class MLP(Model):
             clf.fit(X_train, y_train)
 
             logger.info("Running predict...")
-            y_pred: np.ndarray = clf.predict(X_test)
+            # y_pred: np.ndarray = clf.predict(X_test)
             y_proba: np.ndarray = clf.predict_proba(X_test)
+            y_pred: np.ndarray = y_proba.argmax(axis=1)
 
             # Evaluation metrics
             logger.info("Calculating metrics...")
@@ -41,14 +42,14 @@ class MLP(Model):
             precision = precision_score(y_test, y_pred, average="macro")
             recall = recall_score(y_test, y_pred, average="macro")
             f1 = f1_score(y_test, y_pred, average="macro")
-            # roc_auc = auc(*roc_curve(y_test, y_proba)[:2])
+            roc_auc = auc(*roc_curve(y_test, y_proba)[:2])
 
             metrics = {
                 "accuracy": accuracy,
                 "precision": precision,
                 "recall": recall,
                 "f1_score": f1,
-                # "roc_auc": roc_auc
+                "roc_auc": roc_auc
             }
 
             # Logging metrics
@@ -73,7 +74,7 @@ class MLP(Model):
             self.plot_confusion_matrix(conf_matrix)
 
             # ROC Curve
-            # self.plot_roc_curve(y_test, y_proba)
+            self.plot_roc_curve(y_test, y_proba)
 
             # Classification Report
             logger.info(f"Result F1: {f1:.2f}")
@@ -105,4 +106,5 @@ class MLP(Model):
 
 if __name__ == "__main__":
     mlp = MLP()
-    mlp.evaluate("RpTweetsXS", "LemmatizerSM", "CountVectorizer", "default", {})
+    mlp.evaluate("MsTweetsV2", "TweetNormalizationHashtagSkip",
+                 "CountVectorizer1000", "default", {"max_iter": 1})

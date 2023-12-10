@@ -3,7 +3,7 @@ from stages.dataloaders.utils import make_split
 
 
 class RpTweetsXS(RpTweets):
-    """XSmall version of RpTweets dataset"""
+    """XSmall version of RpTweets dataset (label int)"""
 
     SUBSET_SIZE_PERCENTAGE: float = 0.1
 
