@@ -6,7 +6,7 @@ import numpy as np
 import seaborn as sns
 from loguru import logger
 from sklearn.metrics import (
-    roc_curve, auc, accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
+    accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, roc_auc_score
 )
 from sklearn.neural_network import MLPClassifier
 
@@ -42,7 +42,9 @@ class MLP(Model):
             precision = precision_score(y_test, y_pred, average="macro")
             recall = recall_score(y_test, y_pred, average="macro")
             f1 = f1_score(y_test, y_pred, average="macro")
-            roc_auc = auc(*roc_curve(y_test, y_proba)[:2])
+            roc_auc = roc_auc_score(
+                y_test, y_proba, multi_class="ovr", average="macro"
+            )
 
             metrics = {
                 "accuracy": accuracy,
@@ -73,8 +75,8 @@ class MLP(Model):
             conf_matrix = confusion_matrix(y_test, y_pred)
             self.plot_confusion_matrix(conf_matrix)
 
-            # ROC Curve
-            self.plot_roc_curve(y_test, y_proba)
+            # Plot training process
+            self.plot_training_process(clf)
 
             # Classification Report
             logger.info(f"Result F1: {f1:.2f}")
@@ -88,20 +90,20 @@ class MLP(Model):
         ax.set_ylabel('True labels')
         mlflow.log_figure(fig, "confusion_matrix.png")
 
-    def plot_roc_curve(self, y_test, y_proba):
-        fpr, tpr, _ = roc_curve(y_test, y_proba)
-        roc_auc = auc(fpr, tpr)
+    @staticmethod
+    def plot_training_process(clf: MLPClassifier):
+        # make seaborn plot with loss curve and val loss
+        fig, ax = plt.subplots(figsize=(8, 6))
+        ax.plot(clf.loss_curve_, label="loss")
 
-        plt.figure(figsize=(8, 6))
-        plt.plot(fpr, tpr, color='darkorange', lw=2, label='ROC curve (area = %0.2f)' % roc_auc)
-        plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
-        plt.xlim([0.0, 1.0])
-        plt.ylim([0.0, 1.05])
-        plt.xlabel('False Positive Rate')
-        plt.ylabel('True Positive Rate')
-        plt.title('Receiver Operating Characteristic')
-        plt.legend(loc="lower right")
-        plt.show()
+        if clf.validation_scores_:
+            ax.plot(clf.validation_scores_, label="validation_score")
+
+        ax.set_title('Training process')
+        ax.set_xlabel('Epoch')
+        ax.set_ylabel('Loss')
+        ax.legend()
+        mlflow.log_figure(fig, "training_process.png")
 
 
 if __name__ == "__main__":
