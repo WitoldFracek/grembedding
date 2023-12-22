@@ -24,6 +24,7 @@ stages:
         - data/${item.dataloader}/raw
         - stages/datacleaners/${item.datacleaner}.py
         - stages/datacleaners/DataCleaner.py
+        - imports_validator/clean/${item.dataloader}_${item.datacleaner}.txt
       outs:
         - data/${item.dataloader}/${item.datacleaner}
 
@@ -36,12 +37,13 @@ stages:
         - data/${item.dataloader}/${item.datacleaner}
         - stages/vectorizers/${item.vectorizer}.py
         - stages/vectorizers/Vectorizer.py
+        - imports_validator/vectorize/${item.dataloader}_${item.datacleaner}_${item.vectorizer}.txt
       outs:
         - data/${item.dataloader}/${item.datacleaner}_${item.vectorizer}
 
   evaluate:
     matrix:
-      data: ${evaluate}
+      data: ${vectorize}
       model: ${models}
     cmd: python scripts/evaluate.py "${item.data.dataloader}" "${item.data.datacleaner}" "${item.data.vectorizer}" "${item.model.model}" "${item.model.params}"
     deps:
@@ -50,5 +52,6 @@ stages:
       - stages/models/Model.py
       - stages/models/${item.model.model}.py
       - params/${item.model.params}.yaml
+      - imports_validator/evaluate/${item.model.model}_${item.model.params}.txt
     outs:
       - results/${item.model.model}_${item.model.params}/${item.data.dataloader}_${item.data.datacleaner}_${item.data.vectorizer}.json

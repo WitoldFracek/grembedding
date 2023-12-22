@@ -74,59 +74,6 @@ vectorize:
     vectorizer: TfidfVectorizer5000
 
 
-evaluate:
-  - dataloader: RpTweetsXS
-    datacleaner: LemmatizerSM
-    vectorizer: CountVectorizer1000
-  - dataloader: RpTweetsXS
-    datacleaner: TweetNormalization
-    vectorizer: CountVectorizer1000
-  - dataloader: RpTweetsXS
-    datacleaner: LemmatizerSM
-    vectorizer: CountVectorizer5000
-  - dataloader: RpTweetsXS
-    datacleaner: TweetNormalization
-    vectorizer: CountVectorizer5000
-  - dataloader: RpTweetsXS
-    datacleaner: LemmatizerSM
-    vectorizer: TfidfVectorizer1000
-  - dataloader: RpTweetsXS
-    datacleaner: TweetNormalization
-    vectorizer: TfidfVectorizer1000
-  - dataloader: RpTweetsXS
-    datacleaner: LemmatizerSM
-    vectorizer: TfidfVectorizer5000
-  - dataloader: RpTweetsXS
-    datacleaner: TweetNormalization
-    vectorizer: TfidfVectorizer5000
-  # MsTweetsV2 LemmatizerSM
-  - dataloader: MsTweetsV2
-    datacleaner: LemmatizerSM
-    vectorizer: CountVectorizer1000
-  - dataloader: MsTweetsV2
-    datacleaner: LemmatizerSM
-    vectorizer: CountVectorizer5000
-  - dataloader: MsTweetsV2
-    datacleaner: LemmatizerSM
-    vectorizer: TfidfVectorizer1000
-  - dataloader: MsTweetsV2
-    datacleaner: LemmatizerSM
-    vectorizer: TfidfVectorizer5000
-  # MsTweetsV2 TweetNormalizationHashtagSkip
-  - dataloader: MsTweetsV2
-    datacleaner: TweetNormalizationHashtagSkip
-    vectorizer: CountVectorizer1000
-  - dataloader: MsTweetsV2
-    datacleaner: TweetNormalizationHashtagSkip
-    vectorizer: CountVectorizer5000
-  - dataloader: MsTweetsV2
-    datacleaner: TweetNormalizationHashtagSkip
-    vectorizer: TfidfVectorizer1000
-  - dataloader: MsTweetsV2
-    datacleaner: TweetNormalizationHashtagSkip
-    vectorizer: TfidfVectorizer5000
-
-
 models:
 #  - model: SVC
 #    params: SVC1
