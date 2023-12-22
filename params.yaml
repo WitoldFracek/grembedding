@@ -1,25 +1,25 @@
 load:
-  - dataloader: RpTweets
+  # - dataloader: RpTweets
   - dataloader: RpTweetsXS
-  - dataloader: MsTweets
-  - dataloader: MsTweetsV2
+  # - dataloader: MsTweets
+  # - dataloader: MsTweetsV2
 
 clean:
   - dataloader: RpTweetsXS
     datacleaner: LemmatizerSM
   - dataloader: RpTweetsXS
     datacleaner: TweetNormalization
-  - dataloader: RpTweets
-    datacleaner: TweetNormalization
-  - dataloader: MsTweets
-    datacleaner: TweetNormalization
-  - dataloader: MsTweets
-    datacleaner: TweetNormalizationHashtagSkip
+  # - dataloader: RpTweets
+  #   datacleaner: TweetNormalization
+  # - dataloader: MsTweets
+  #   datacleaner: TweetNormalization
+  # - dataloader: MsTweets
+  #   datacleaner: TweetNormalizationHashtagSkip
   # MsTweetsV2
-  - dataloader: MsTweetsV2
-    datacleaner: TweetNormalizationHashtagSkip
-  - dataloader: MsTweetsV2
-    datacleaner: LemmatizerSM
+  # - dataloader: MsTweetsV2
+  #   datacleaner: TweetNormalizationHashtagSkip
+  # - dataloader: MsTweetsV2
+  #   datacleaner: LemmatizerSM
 
 vectorize:
   - dataloader: RpTweetsXS
@@ -31,57 +31,57 @@ vectorize:
   - dataloader: RpTweetsXS
     datacleaner: LemmatizerSM
     vectorizer: CountVectorizer5000
-  - dataloader: RpTweetsXS
-    datacleaner: TweetNormalization
-    vectorizer: CountVectorizer5000
-  - dataloader: RpTweetsXS
-    datacleaner: LemmatizerSM
-    vectorizer: TfidfVectorizer1000
-  - dataloader: RpTweetsXS
-    datacleaner: TweetNormalization
-    vectorizer: TfidfVectorizer1000
-  - dataloader: RpTweetsXS
-    datacleaner: LemmatizerSM
-    vectorizer: TfidfVectorizer5000
-  - dataloader: RpTweetsXS
-    datacleaner: TweetNormalization
-    vectorizer: TfidfVectorizer5000
-  # MsTweetsV2
-  - dataloader: MsTweetsV2
-    datacleaner: LemmatizerSM
-    vectorizer: CountVectorizer1000
-  - dataloader: MsTweetsV2
-    datacleaner: LemmatizerSM
-    vectorizer: CountVectorizer5000
-  - dataloader: MsTweetsV2
-    datacleaner: LemmatizerSM
-    vectorizer: TfidfVectorizer1000
-  - dataloader: MsTweetsV2
-    datacleaner: LemmatizerSM
-    vectorizer: TfidfVectorizer5000
-  # MsTweetsV2 TweetNormalizationHashtagSkip
-  - dataloader: MsTweetsV2
-    datacleaner: TweetNormalizationHashtagSkip
-    vectorizer: CountVectorizer1000
-  - dataloader: MsTweetsV2
-    datacleaner: TweetNormalizationHashtagSkip
-    vectorizer: CountVectorizer5000
-  - dataloader: MsTweetsV2
-    datacleaner: TweetNormalizationHashtagSkip
-    vectorizer: TfidfVectorizer1000
-  - dataloader: MsTweetsV2
-    datacleaner: TweetNormalizationHashtagSkip
-    vectorizer: TfidfVectorizer5000
+  # - dataloader: RpTweetsXS
+  #   datacleaner: TweetNormalization
+  #   vectorizer: CountVectorizer5000
+  # - dataloader: RpTweetsXS
+  #   datacleaner: LemmatizerSM
+  #   vectorizer: TfidfVectorizer1000
+  # - dataloader: RpTweetsXS
+  #   datacleaner: TweetNormalization
+  #   vectorizer: TfidfVectorizer1000
+  # - dataloader: RpTweetsXS
+  #   datacleaner: LemmatizerSM
+  #   vectorizer: TfidfVectorizer5000
+  # - dataloader: RpTweetsXS
+  #   datacleaner: TweetNormalization
+  #   vectorizer: TfidfVectorizer5000
+  # # MsTweetsV2
+  # - dataloader: MsTweetsV2
+  #   datacleaner: LemmatizerSM
+  #   vectorizer: CountVectorizer1000
+  # - dataloader: MsTweetsV2
+  #   datacleaner: LemmatizerSM
+  #   vectorizer: CountVectorizer5000
+  # - dataloader: MsTweetsV2
+  #   datacleaner: LemmatizerSM
+  #   vectorizer: TfidfVectorizer1000
+  # - dataloader: MsTweetsV2
+  #   datacleaner: LemmatizerSM
+  #   vectorizer: TfidfVectorizer5000
+  # # MsTweetsV2 TweetNormalizationHashtagSkip
+  # - dataloader: MsTweetsV2
+  #   datacleaner: TweetNormalizationHashtagSkip
+  #   vectorizer: CountVectorizer1000
+  # - dataloader: MsTweetsV2
+  #   datacleaner: TweetNormalizationHashtagSkip
+  #   vectorizer: CountVectorizer5000
+  # - dataloader: MsTweetsV2
+  #   datacleaner: TweetNormalizationHashtagSkip
+  #   vectorizer: TfidfVectorizer1000
+  # - dataloader: MsTweetsV2
+  #   datacleaner: TweetNormalizationHashtagSkip
+  #   vectorizer: TfidfVectorizer5000
 
 
 models:
 #  - model: SVC
 #    params: SVC1
-#  - model: SVC
-#    params: SVC2
-  - model: SVC
-    params: SVC3
-  - model: LogisticRegression
-    params: LR1
-  - model: MLP
-    params: MLP1
+ - model: SVC
+   params: SVC2
+ - model: SVC
+   params: SVC3
+  # - model: LogisticRegression
+  #   params: LR1
+  # - model: MLP
+  #   params: MLP1
