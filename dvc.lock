@@ -10,6 +10,10 @@ stages:
       md5: 2090ab1bf326723b4cf50ad6d48c4893.dir
       size: 95361594
       nfiles: 2
+    - path: imports_validator/load/RpTweets.txt
+      hash: md5
+      md5: b99e5a81d7d3909c862c5f23db95a028
+      size: 18
     - path: scripts/load.py
       hash: md5
       md5: 3d3448246f66fdc1646164c565eb0ea9
@@ -34,6 +38,10 @@ stages:
       md5: 2090ab1bf326723b4cf50ad6d48c4893.dir
       size: 95361594
       nfiles: 2
+    - path: imports_validator/load/RpTweetsXS.txt
+      hash: md5
+      md5: b4010d841170024d821d1ddd5b7d63de
+      size: 18
     - path: scripts/load.py
       hash: md5
       md5: 3d3448246f66fdc1646164c565eb0ea9
@@ -804,6 +812,10 @@ stages:
       md5: 2090ab1bf326723b4cf50ad6d48c4893.dir
       size: 95361594
       nfiles: 2
+    - path: imports_validator/load/MsTweets.txt
+      hash: md5
+      md5: b4057136a5c6f2f4dd96b72dab97047d
+      size: 18
     - path: scripts/load.py
       hash: md5
       md5: 3d3448246f66fdc1646164c565eb0ea9
@@ -909,6 +921,10 @@ stages:
       md5: 2090ab1bf326723b4cf50ad6d48c4893.dir
       size: 95361594
       nfiles: 2
+    - path: imports_validator/load/MsTweetsV2.txt
+      hash: md5
+      md5: 916db9beac656c77ba81594242c6ce5e
+      size: 18
     - path: scripts/load.py
       hash: md5
       md5: 3d3448246f66fdc1646164c565eb0ea9

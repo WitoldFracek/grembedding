@@ -10,6 +10,7 @@ stages:
         - scripts/load.py
         - datasets_raw/
         - stages/dataloaders/${item.dataloader}.py
+        - imports_validator/load/${item.dataloader}.txt
       outs:
         - data/${item.dataloader}/raw
 
@@ -17,39 +18,37 @@ stages:
     foreach: ${clean}
     do:
       cmd:
-        - python scripts/clean.py "${item.dataset}" "${item.datacleaner}"
+        - python scripts/clean.py "${item.dataloader}" "${item.datacleaner}"
       deps:
         - scripts/clean.py
-        - data/${item.dataset}/raw
+        - data/${item.dataloader}/raw
         - stages/datacleaners/${item.datacleaner}.py
         - stages/datacleaners/DataCleaner.py
-        # - stages/datacleaners/components
       outs:
-        - data/${item.dataset}/${item.datacleaner}
+        - data/${item.dataloader}/${item.datacleaner}
 
   vectorize:
     foreach: ${vectorize}
     do:
-      cmd: python scripts/vectorize.py "${item.dataset}" "${item.datacleaner}" "${item.vectorizer}"
+      cmd: python scripts/vectorize.py "${item.dataloader}" "${item.datacleaner}" "${item.vectorizer}"
       deps:
         - scripts/vectorize.py
-        - data/${item.dataset}/${item.datacleaner}
+        - data/${item.dataloader}/${item.datacleaner}
         - stages/vectorizers/${item.vectorizer}.py
-        # - stages/vectorizers/components
         - stages/vectorizers/Vectorizer.py
       outs:
-        - data/${item.dataset}/${item.datacleaner}_${item.vectorizer}
+        - data/${item.dataloader}/${item.datacleaner}_${item.vectorizer}
 
   evaluate:
     matrix:
       data: ${evaluate}
       model: ${models}
-    cmd: python scripts/evaluate.py "${item.data.dataset}" "${item.data.datacleaner}" "${item.data.vectorizer}" "${item.model.model}" "${item.model.params}"
+    cmd: python scripts/evaluate.py "${item.data.dataloader}" "${item.data.datacleaner}" "${item.data.vectorizer}" "${item.model.model}" "${item.model.params}"
     deps:
       - scripts/evaluate.py
-      - data/${item.data.dataset}/${item.data.datacleaner}_${item.data.vectorizer}
+      - data/${item.data.dataloader}/${item.data.datacleaner}_${item.data.vectorizer}
       - stages/models/Model.py
       - stages/models/${item.model.model}.py
       - params/${item.model.params}.yaml
     outs:
-      - results/${item.data.dataset}_${item.data.datacleaner}_${item.data.vectorizer}_${item.model.model}_${item.model.params}.json
+      - results/${item.model.model}_${item.model.params}/${item.data.dataloader}_${item.data.datacleaner}_${item.data.vectorizer}.json

@@ -5,124 +5,124 @@ load:
   - dataloader: MsTweetsV2
 
 clean:
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: LemmatizerSM
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: TweetNormalization
-  - dataset: RpTweets
+  - dataloader: RpTweets
     datacleaner: TweetNormalization
-  - dataset: MsTweets
+  - dataloader: MsTweets
     datacleaner: TweetNormalization
-  - dataset: MsTweets
+  - dataloader: MsTweets
     datacleaner: TweetNormalizationHashtagSkip
   # MsTweetsV2
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: TweetNormalizationHashtagSkip
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: LemmatizerSM
 
 vectorize:
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: LemmatizerSM
     vectorizer: CountVectorizer1000
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: TweetNormalization
     vectorizer: CountVectorizer1000
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: LemmatizerSM
     vectorizer: CountVectorizer5000
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: TweetNormalization
     vectorizer: CountVectorizer5000
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: LemmatizerSM
     vectorizer: TfidfVectorizer1000
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: TweetNormalization
     vectorizer: TfidfVectorizer1000
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: LemmatizerSM
     vectorizer: TfidfVectorizer5000
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: TweetNormalization
     vectorizer: TfidfVectorizer5000
   # MsTweetsV2
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: LemmatizerSM
     vectorizer: CountVectorizer1000
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: LemmatizerSM
     vectorizer: CountVectorizer5000
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: LemmatizerSM
     vectorizer: TfidfVectorizer1000
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: LemmatizerSM
     vectorizer: TfidfVectorizer5000
   # MsTweetsV2 TweetNormalizationHashtagSkip
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: TweetNormalizationHashtagSkip
     vectorizer: CountVectorizer1000
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: TweetNormalizationHashtagSkip
     vectorizer: CountVectorizer5000
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: TweetNormalizationHashtagSkip
     vectorizer: TfidfVectorizer1000
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: TweetNormalizationHashtagSkip
     vectorizer: TfidfVectorizer5000
 
 
 evaluate:
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: LemmatizerSM
     vectorizer: CountVectorizer1000
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: TweetNormalization
     vectorizer: CountVectorizer1000
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: LemmatizerSM
     vectorizer: CountVectorizer5000
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: TweetNormalization
     vectorizer: CountVectorizer5000
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: LemmatizerSM
     vectorizer: TfidfVectorizer1000
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: TweetNormalization
     vectorizer: TfidfVectorizer1000
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: LemmatizerSM
     vectorizer: TfidfVectorizer5000
-  - dataset: RpTweetsXS
+  - dataloader: RpTweetsXS
     datacleaner: TweetNormalization
     vectorizer: TfidfVectorizer5000
   # MsTweetsV2 LemmatizerSM
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: LemmatizerSM
     vectorizer: CountVectorizer1000
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: LemmatizerSM
     vectorizer: CountVectorizer5000
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: LemmatizerSM
     vectorizer: TfidfVectorizer1000
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: LemmatizerSM
     vectorizer: TfidfVectorizer5000
   # MsTweetsV2 TweetNormalizationHashtagSkip
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: TweetNormalizationHashtagSkip
     vectorizer: CountVectorizer1000
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: TweetNormalizationHashtagSkip
     vectorizer: CountVectorizer5000
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: TweetNormalizationHashtagSkip
     vectorizer: TfidfVectorizer1000
-  - dataset: MsTweetsV2
+  - dataloader: MsTweetsV2
     datacleaner: TweetNormalizationHashtagSkip
     vectorizer: TfidfVectorizer5000
 
