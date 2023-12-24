@@ -40,6 +40,8 @@ class Model(ABC):
 
         data = np.load(path)
 
+        a = 1 # dummy for test
+
         # X_train_path = os.path.join(path, "X_train.npy")
         # X_test_path = os.path.join(path, "X_test.npy")
         # y_train_path = os.path.join(path, "y_train.npy")

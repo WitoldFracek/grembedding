@@ -25,20 +25,6 @@ def get_imports(file_path):
 def is_file(path):
     return os.path.exists(path)
 
-# def get_output_mtime(stage: str, run_params: Dict[str, str]) -> float:
-#     output_file_path = ''
-#     if stage == "load":
-#         output_file_path = os.path.join("data", run_params['dataloader'], "raw")
-#     elif stage == "clean":
-#         output_file_path = os.path.join("data", run_params['dataloader'], run_params['datacleaner'])
-#     elif stage == "vectorize":
-#         output_file_path = os.path.join("data", run_params['dataloader'], f"{run_params['datacleaner']}_{run_params['vectorizer']}")
-#     elif stage == "evaluate":
-#         output_file_path = os.path.join("results", f"{run_params['model']}_{run_params['params']}")
-#     if os.path.exists(output_file_path):
-#         return os.path.getmtime(output_file_path)
-#     return -1
-
 def get_output_filename(stage: str, run_params: Dict[str, str]) -> str:
     filename = ''
     if stage == "load":
@@ -53,7 +39,6 @@ def get_output_filename(stage: str, run_params: Dict[str, str]) -> str:
 
 def validate(stage: str, stage_params: List[Dict[str, str]], md5_df: pd.DataFrame):
     for run_params in stage_params:
-        # output_mtime = get_output_mtime(stage, run_params)
         for item in run_params.items():
             if item[0] == "params":
                 imports = get_imports(os.path.join("params", f"{item[1]}.yaml"))
