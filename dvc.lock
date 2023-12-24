@@ -128,8 +128,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC_SVC2.txt
       hash: md5
-      md5: c74e6b98bdb67ea9ad836257bf5e7b87
-      size: 18
+      md5: 2c573f360c0f359ef7583cafa3c9d739
+      size: 17
     - path: params/SVC2.yaml
       hash: md5
       md5: dcc2e18360f768734743656c9a4ef885
@@ -138,10 +138,6 @@ stages:
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
-    - path: stages/models/Model.py
-      hash: md5
-      md5: ad11630c6c839b47ad6bda5cf25ace22
-      size: 3518
     - path: stages/models/SVC.py
       hash: md5
       md5: 83effad05bcb21943fb1429553d87d76
@@ -258,8 +254,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC_SVC2.txt
       hash: md5
-      md5: c74e6b98bdb67ea9ad836257bf5e7b87
-      size: 18
+      md5: 2c573f360c0f359ef7583cafa3c9d739
+      size: 17
     - path: params/SVC2.yaml
       hash: md5
       md5: dcc2e18360f768734743656c9a4ef885
@@ -268,10 +264,6 @@ stages:
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
-    - path: stages/models/Model.py
-      hash: md5
-      md5: ad11630c6c839b47ad6bda5cf25ace22
-      size: 3518
     - path: stages/models/SVC.py
       hash: md5
       md5: 83effad05bcb21943fb1429553d87d76
@@ -348,8 +340,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC_SVC2.txt
       hash: md5
-      md5: c74e6b98bdb67ea9ad836257bf5e7b87
-      size: 18
+      md5: 2c573f360c0f359ef7583cafa3c9d739
+      size: 17
     - path: params/SVC2.yaml
       hash: md5
       md5: dcc2e18360f768734743656c9a4ef885
@@ -358,10 +350,6 @@ stages:
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
-    - path: stages/models/Model.py
-      hash: md5
-      md5: ad11630c6c839b47ad6bda5cf25ace22
-      size: 3518
     - path: stages/models/SVC.py
       hash: md5
       md5: 83effad05bcb21943fb1429553d87d76
