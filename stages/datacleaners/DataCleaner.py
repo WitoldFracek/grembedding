@@ -56,8 +56,8 @@ class DataCleaner(ABC):
         train_path = os.path.join(path, "train.parquet")
         test_path = os.path.join(path, "test.parquet")
 
-        df_train.to_parquet(train_path)
-        df_test.to_parquet(test_path)
+        df_train.to_parquet(train_path, compression='gzip')
+        df_test.to_parquet(test_path, compression='gzip')
 
     @staticmethod
     def data_input_dir(dataset_name: str) -> str | os.PathLike:

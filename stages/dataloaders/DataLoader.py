@@ -35,8 +35,8 @@ class DataLoader(ABC):
         test_path = os.path.join(path, "test.parquet")
 
         logger.info(f"Saving created dataset to {path}")
-        df_train.to_parquet(train_path)
-        df_test.to_parquet(test_path)
+        df_train.to_parquet(train_path, compression='gzip')
+        df_test.to_parquet(test_path, compression='gzip')
 
     @property
     def raw_datasets_dir(self) -> str | os.PathLike:

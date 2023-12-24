@@ -36,18 +36,21 @@ class Model(ABC):
         :return: tuple of train and test 
         """
         path = self.get_input_dir(dataset, datacleaner, vectorizer)
+        path = os.path.join(path, "data.npz")
 
-        X_train_path = os.path.join(path, "X_train.npy")
-        X_test_path = os.path.join(path, "X_test.npy")
-        y_train_path = os.path.join(path, "y_train.npy")
-        y_test_path = os.path.join(path, "y_test.npy")
+        data = np.load(path)
 
-        X_train = np.load(X_train_path, allow_pickle=True)
-        X_test = np.load(X_test_path, allow_pickle=True)
-        y_train = np.load(y_train_path, allow_pickle=True)
-        y_test = np.load(y_test_path, allow_pickle=True)
+        # X_train_path = os.path.join(path, "X_train.npy")
+        # X_test_path = os.path.join(path, "X_test.npy")
+        # y_train_path = os.path.join(path, "y_train.npy")
+        # y_test_path = os.path.join(path, "y_test.npy")
 
-        return X_train, X_test, y_train, y_test
+        # X_train = np.load(X_train_path, allow_pickle=True)
+        # X_test = np.load(X_test_path, allow_pickle=True)
+        # y_train = np.load(y_train_path, allow_pickle=True)
+        # y_test = np.load(y_test_path, allow_pickle=True)
+
+        return data["X_train"], data["X_test"], data["y_train"], data["y_test"]
 
     def save_results(self, experiment_name: str, run_name: str, params: Dict[str, str | int | float],
                      metrics: Dict[str, float], clf) -> None:
