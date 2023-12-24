@@ -12,7 +12,7 @@ stages:
       nfiles: 2
     - path: imports_validator/load/RpTweetsXS.txt
       hash: md5
-      md5: fb74de1d2a73c65822832c33f98364c1
+      md5: f2f44e4fff2fd3753ba5836cf5371392
       size: 18
     - path: scripts/load.py
       hash: md5
