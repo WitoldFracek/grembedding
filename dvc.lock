@@ -132,8 +132,8 @@ stages:
       size: 1058
     - path: stages/models/SVC.py
       hash: md5
-      md5: 83effad05bcb21943fb1429553d87d76
-      size: 1713
+      md5: c0dd212ee127f86d2220147521bb38ad
+      size: 1742
     outs:
     - path: results/SVC_SVC2/RpTweetsXS_LemmatizerSM_CountVectorizer1000.json
       hash: md5
@@ -162,8 +162,8 @@ stages:
       size: 1058
     - path: stages/models/SVC.py
       hash: md5
-      md5: 83effad05bcb21943fb1429553d87d76
-      size: 1713
+      md5: c0dd212ee127f86d2220147521bb38ad
+      size: 1742
     outs:
     - path: results/SVC_SVC3/RpTweetsXS_LemmatizerSM_CountVectorizer1000.json
       hash: md5
@@ -246,8 +246,8 @@ stages:
       size: 1058
     - path: stages/models/SVC.py
       hash: md5
-      md5: 83effad05bcb21943fb1429553d87d76
-      size: 1713
+      md5: c0dd212ee127f86d2220147521bb38ad
+      size: 1742
     outs:
     - path: results/SVC_SVC2/RpTweetsXS_TweetNormalization_CountVectorizer1000.json
       hash: md5
@@ -328,8 +328,8 @@ stages:
       size: 1058
     - path: stages/models/SVC.py
       hash: md5
-      md5: 83effad05bcb21943fb1429553d87d76
-      size: 1713
+      md5: c0dd212ee127f86d2220147521bb38ad
+      size: 1742
     outs:
     - path: results/SVC_SVC2/RpTweetsXS_LemmatizerSM_CountVectorizer5000.json
       hash: md5
@@ -612,8 +612,8 @@ stages:
       size: 1058
     - path: stages/models/SVC.py
       hash: md5
-      md5: 83effad05bcb21943fb1429553d87d76
-      size: 1713
+      md5: c0dd212ee127f86d2220147521bb38ad
+      size: 1742
     outs:
     - path: results/SVC_SVC3/RpTweetsXS_TweetNormalization_CountVectorizer1000.json
       hash: md5
@@ -642,8 +642,8 @@ stages:
       size: 1058
     - path: stages/models/SVC.py
       hash: md5
-      md5: 83effad05bcb21943fb1429553d87d76
-      size: 1713
+      md5: c0dd212ee127f86d2220147521bb38ad
+      size: 1742
     outs:
     - path: results/SVC_SVC3/RpTweetsXS_LemmatizerSM_CountVectorizer5000.json
       hash: md5
