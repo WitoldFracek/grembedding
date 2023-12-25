@@ -1,5 +1,15 @@
 stages:
 
+  imports_validator:
+    cmd: python imports_validator/imports_validator.py
+    outs:
+      - imports_validator/load
+      - imports_validator/clean
+      - imports_validator/vectorize
+      - imports_validator/evaluate
+      - imports_validator/md5.parquet
+    always_changed: true
+
   load:
     foreach: ${load}
     do:

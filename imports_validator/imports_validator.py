@@ -88,52 +88,11 @@ def validate(stage: str, stage_params: List[Dict[str, str]], md5_df: pd.DataFram
 
     return new_md5_df
 
-# def validate(stage: str, stage_params: List[Dict[str, str]], md5_df: pd.DataFrame):
-#     new_md5_df = pd.DataFrame(columns = ['file', 'md5'])
-#     for run_params in stage_params:
-#         for item in run_params.items():
-#             if item[0] == "params":
-#                 imports = get_imports(os.path.join("params", f"{item[1]}.yaml"))
-#             else:
-#                 imports = get_imports(os.path.join("stages", f"{item[0]}s", f"{item[1]}.py"))
-#             imports = [imp.replace(".", "/")+".py" for imp in imports]
-#             custom_imports = [imp for imp in imports if is_file(imp)]
-#             create_file_flag = False
-#             for imp in custom_imports:
-#                 with open(imp, 'rb') as file:
-#                     file_content = file.read()
-#                     current_md5 = hashlib.md5(file_content).hexdigest()
-#                     row = md5_df[md5_df['file'] == imp]
-#                     if row.empty:
-#                         create_file_flag = True
-#                         new_md5_df = pd.concat([new_md5_df, pd.DataFrame({
-#                             "file": [imp],
-#                             "md5": [current_md5]
-#                         })], ignore_index=True)
-#                     else:
-#                         last_md5 = row['md5'].values[0]
-#                         if last_md5 != current_md5:
-#                             create_file_flag = True
-#                             new_md5_df = pd.concat([new_md5_df, pd.DataFrame({
-#                             "file": [imp],
-#                             "md5": [current_md5]
-#                             })], ignore_index=True)
-            
-#             if create_file_flag:
-#                 path = os.path.join("imports_validator", stage)
-#                 if not os.path.exists(path):
-#                     os.mkdir(path)
-#                 with open(os.path.join(path, get_output_filename(stage, run_params)), 'w') as file:
-#                     logger.info(f"Creating file {os.path.join(path, get_output_filename(stage, run_params))}")
-#                     file.write(str(time.time()))
-
-#     return new_md5_df
-
 def main():
     with open('./params.yaml', 'r') as file:
         params = yaml.safe_load(file)
-    if os.path.exists('./imports_validator/md5.pickle'):
-        md5_df = pd.read_parquet('./imports_validator/md5.pickle')
+    if os.path.exists('./imports_validator/md5.parquet'):
+        md5_df = pd.read_parquet('./imports_validator/md5.parquet')
     else:
         md5_df = pd.DataFrame(columns = ['file', 'md5'])
     
@@ -157,7 +116,7 @@ def main():
             new_md5_df = pd.concat([new_md5_df, pd.DataFrame([new_row])], ignore_index=True)
 
 
-    new_md5_df.to_parquet('./imports_validator/md5.pickle')
+    new_md5_df.to_parquet('./imports_validator/md5.parquet')
 
 
 if __name__ == "__main__":
