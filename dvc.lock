@@ -12,8 +12,8 @@ stages:
       nfiles: 2
     - path: imports_validator/load/RpTweetsXS.txt
       hash: md5
-      md5: b61379cbc6cb139d46a7dcbcfde9f929
-      size: 17
+      md5: a62beea8ced1ff000663a56f246fa2cb
+      size: 18
     - path: scripts/load.py
       hash: md5
       md5: 3d3448246f66fdc1646164c565eb0ea9
@@ -67,7 +67,7 @@ stages:
       nfiles: 2
     - path: imports_validator/clean/RpTweetsXS_LemmatizerSM.txt
       hash: md5
-      md5: 76f2813e4304bb6564f9b9b7aa7c0ac7
+      md5: 3438ff5b4b7163a00c14d11efcb7cdb9
       size: 18
     - path: scripts/clean.py
       hash: md5
@@ -93,7 +93,7 @@ stages:
       nfiles: 2
     - path: imports_validator/vectorize/RpTweetsXS_LemmatizerSM_CountVectorizer1000.txt
       hash: md5
-      md5: c55487052ea2039385116c49b2d9b43e
+      md5: 5a871e956e8dd6299e752124eab7811b
       size: 18
     - path: scripts/vectorize.py
       hash: md5
@@ -120,8 +120,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC_SVC2.txt
       hash: md5
-      md5: a4e88a40cf5cfc69aa38d1b6b76b07bf
-      size: 17
+      md5: 485c017f0f3bd72ba35bfa8c87ff9920
+      size: 18
     - path: params/SVC2.yaml
       hash: md5
       md5: dcc2e18360f768734743656c9a4ef885
@@ -150,8 +150,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC_SVC3.txt
       hash: md5
-      md5: ff7ef4bef0d2276dd9b9ec9b67dbbb6e
-      size: 17
+      md5: 13e77237a7a6fc8340ffdf0a602155ce
+      size: 18
     - path: params/SVC3.yaml
       hash: md5
       md5: f4a38f6ad011583db9702ff247258b90
@@ -180,7 +180,7 @@ stages:
       nfiles: 2
     - path: imports_validator/clean/RpTweetsXS_TweetNormalization.txt
       hash: md5
-      md5: 37cade2edbf0eade7423b2456bf1091b
+      md5: 0b6c76e4a3368267e6ff8a009a1dfe2a
       size: 18
     - path: scripts/clean.py
       hash: md5
@@ -207,7 +207,7 @@ stages:
     - path: 
         imports_validator/vectorize/RpTweetsXS_TweetNormalization_CountVectorizer1000.txt
       hash: md5
-      md5: 92ff456d570f85aee7140a6f34240591
+      md5: 125a8cf0a16047da9c405284d0159c35
       size: 17
     - path: scripts/vectorize.py
       hash: md5
@@ -234,8 +234,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC_SVC2.txt
       hash: md5
-      md5: a4e88a40cf5cfc69aa38d1b6b76b07bf
-      size: 17
+      md5: 485c017f0f3bd72ba35bfa8c87ff9920
+      size: 18
     - path: params/SVC2.yaml
       hash: md5
       md5: dcc2e18360f768734743656c9a4ef885
@@ -263,7 +263,7 @@ stages:
       nfiles: 2
     - path: imports_validator/vectorize/RpTweetsXS_LemmatizerSM_CountVectorizer5000.txt
       hash: md5
-      md5: 8e3284d2c575741bbd50289a6024dca0
+      md5: b0602f7bef24228558869176579864ab
       size: 18
     - path: scripts/vectorize.py
       hash: md5
@@ -316,8 +316,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC_SVC2.txt
       hash: md5
-      md5: a4e88a40cf5cfc69aa38d1b6b76b07bf
-      size: 17
+      md5: 485c017f0f3bd72ba35bfa8c87ff9920
+      size: 18
     - path: params/SVC2.yaml
       hash: md5
       md5: dcc2e18360f768734743656c9a4ef885
@@ -600,8 +600,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC_SVC3.txt
       hash: md5
-      md5: ff7ef4bef0d2276dd9b9ec9b67dbbb6e
-      size: 17
+      md5: 13e77237a7a6fc8340ffdf0a602155ce
+      size: 18
     - path: params/SVC3.yaml
       hash: md5
       md5: f4a38f6ad011583db9702ff247258b90
@@ -630,8 +630,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC_SVC3.txt
       hash: md5
-      md5: ff7ef4bef0d2276dd9b9ec9b67dbbb6e
-      size: 17
+      md5: 13e77237a7a6fc8340ffdf0a602155ce
+      size: 18
     - path: params/SVC3.yaml
       hash: md5
       md5: f4a38f6ad011583db9702ff247258b90
@@ -2194,25 +2194,25 @@ stages:
     outs:
     - path: imports_validator/clean
       hash: md5
-      md5: 4f28521308ac3b72fd9791f9b43658b0.dir
+      md5: a6b718245c882c20262484cc7e82677d.dir
       size: 36
       nfiles: 2
     - path: imports_validator/evaluate
       hash: md5
-      md5: 0a7c3b440b401ac4b12a28019b91704a.dir
-      size: 35
+      md5: 096e60fad046add385260adb0d2f47d4.dir
+      size: 36
       nfiles: 2
     - path: imports_validator/load
       hash: md5
-      md5: 6cd0908a6092099a4e26270be2f407e0.dir
-      size: 17
+      md5: 2cba0f2de540bbd8e2cf65e0f986e228.dir
+      size: 18
       nfiles: 1
     - path: imports_validator/md5.parquet
       hash: md5
-      md5: 5b8793985f6961ca7f65b8fa08820e1a
-      size: 3709
+      md5: a5ad5584954fb3580d5b59f6f00f5b3c
+      size: 3707
     - path: imports_validator/vectorize
       hash: md5
-      md5: 62e3dfd3f6cdff4dae2adbc6f943c63e.dir
+      md5: 5b69aac67c99781c98b9cba6eb296eda.dir
       size: 53
       nfiles: 3
