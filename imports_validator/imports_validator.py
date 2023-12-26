@@ -30,11 +30,11 @@ def get_output_filename(stage: str, run_params: Dict[str, str]) -> str:
     if stage == "load":
         filename = run_params['dataloader']
     elif stage == "clean":
-        filename = f"{run_params['dataloader']}_{run_params['datacleaner']}"
+        filename = f"{run_params['datacleaner']}"
     elif stage == "vectorize":
-        filename = f"{run_params['dataloader']}_{run_params['datacleaner']}_{run_params['vectorizer']}"
+        filename = f"{run_params['vectorizer']}"
     elif stage == "evaluate":
-        filename = f"{run_params['model']}_{run_params['params']}"
+        filename = f"{run_params['model']}"
     return filename+".txt"
 
 def _get_important_param_name(stage: str) -> str:

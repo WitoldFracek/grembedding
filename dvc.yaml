@@ -23,7 +23,7 @@ stages:
         - scripts/clean.py
         - data/${item.dataloader}/raw
         - stages/datacleaners/${item.datacleaner}.py
-        - imports_validator/clean/${item.dataloader}_${item.datacleaner}.txt
+        - imports_validator/clean/${item.datacleaner}.txt
       outs:
         - data/${item.dataloader}/${item.datacleaner}
 
@@ -35,7 +35,7 @@ stages:
         - scripts/vectorize.py
         - data/${item.dataloader}/${item.datacleaner}
         - stages/vectorizers/${item.vectorizer}.py
-        - imports_validator/vectorize/${item.dataloader}_${item.datacleaner}_${item.vectorizer}.txt
+        - imports_validator/vectorize/${item.vectorizer}.txt
       outs:
         - data/${item.dataloader}/${item.datacleaner}_${item.vectorizer}
 
@@ -49,6 +49,6 @@ stages:
       - data/${item.data.dataloader}/${item.data.datacleaner}_${item.data.vectorizer}
       - stages/models/${item.model.model}.py
       - params/${item.model.params}.yaml
-      - imports_validator/evaluate/${item.model.model}_${item.model.params}.txt
+      - imports_validator/evaluate/${item.model.model}.txt
     outs:
       - results/${item.model.model}_${item.model.params}/${item.data.dataloader}_${item.data.datacleaner}_${item.data.vectorizer}.json
