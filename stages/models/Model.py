@@ -55,10 +55,15 @@ class Model(ABC):
     def save_json_results(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str,
                           params: Dict[str, str | int | float], metrics: Dict[str, float]) -> None:
         # results/${item.data.dataset}_${item.data.datacleaner}_${item.data.vectorizer}_${item.model.model}_${item.model.params}.json
-        path = os.path.join(get_root_dir(), "results", f"{self.__class__.__name__}_{params_name}")
-        if not os.path.exists(path):
-            os.makedirs(path)
-        filename = f"{dataset}_{datacleaner}_{vectorizer}.json"
+        # path = os.path.join(get_root_dir(), "results", f"{self.__class__.__name__}_{params_name}")
+        dirs_in_path = ["results", dataset, datacleaner, vectorizer, self.__class__.__name__]
+        path = get_root_dir()
+        for p in dirs_in_path:
+            path = os.path.join(path, p)
+            if not os.path.exists(path):
+                os.makedirs(path)
+
+        filename = f"{params_name}.json"
         results = {}
         results['params'] = params
         results['metrics'] = metrics

@@ -51,4 +51,4 @@ stages:
       - params/${item.model.params}.yaml
       - imports_validator/evaluate/${item.model.model}.txt
     outs:
-      - results/${item.model.model}_${item.model.params}/${item.data.dataloader}_${item.data.datacleaner}_${item.data.vectorizer}.json
+      - results/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}.json
