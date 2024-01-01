@@ -1,0 +1,26 @@
+load:
+  - dataloader: RpTweetsXS
+
+clean:
+  - dataloader: RpTweetsXS
+    datacleaner: LemmatizerSM
+  - dataloader: RpTweetsXS
+    datacleaner: TweetNormalization
+
+vectorize:
+  - dataloader: RpTweetsXS
+    datacleaner: LemmatizerSM
+    vectorizer: CountVectorizer1000
+  - dataloader: RpTweetsXS
+    datacleaner: TweetNormalization
+    vectorizer: CountVectorizer1000
+  - dataloader: RpTweetsXS
+    datacleaner: LemmatizerSM
+    vectorizer: CountVectorizer5000
+
+
+models:
+ - model: SVC
+   params: SVC2
+ - model: SVC
+   params: SVC3

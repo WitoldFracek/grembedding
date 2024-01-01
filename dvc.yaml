@@ -1,0 +1,54 @@
+stages:
+
+  load:
+    foreach: ${load}
+    do:
+      cmd:
+        - echo data/${item.dataloader}/raw/test.parquet
+        - python scripts/load.py "${item.dataloader}"
+      deps:
+        - scripts/load.py
+        - datasets_raw/
+        - stages/dataloaders/${item.dataloader}.py
+        - imports_validator/load/${item.dataloader}.txt
+      outs:
+        - data/${item.dataloader}/raw
+
+  clean:
+    foreach: ${clean}
+    do:
+      cmd:
+        - python scripts/clean.py "${item.dataloader}" "${item.datacleaner}"
+      deps:
+        - scripts/clean.py
+        - data/${item.dataloader}/raw
+        - stages/datacleaners/${item.datacleaner}.py
+        - imports_validator/clean/${item.datacleaner}.txt
+      outs:
+        - data/${item.dataloader}/${item.datacleaner}
+
+  vectorize:
+    foreach: ${vectorize}
+    do:
+      cmd: python scripts/vectorize.py "${item.dataloader}" "${item.datacleaner}" "${item.vectorizer}"
+      deps:
+        - scripts/vectorize.py
+        - data/${item.dataloader}/${item.datacleaner}
+        - stages/vectorizers/${item.vectorizer}.py
+        - imports_validator/vectorize/${item.vectorizer}.txt
+      outs:
+        - data/${item.dataloader}/${item.datacleaner}_${item.vectorizer}
+
+  evaluate:
+    matrix:
+      data: ${vectorize}
+      model: ${models}
+    cmd: python scripts/evaluate.py "${item.data.dataloader}" "${item.data.datacleaner}" "${item.data.vectorizer}" "${item.model.model}" "${item.model.params}"
+    deps:
+      - scripts/evaluate.py
+      - data/${item.data.dataloader}/${item.data.datacleaner}_${item.data.vectorizer}
+      - stages/models/${item.model.model}.py
+      - params/${item.model.params}.yaml
+      - imports_validator/evaluate/${item.model.model}.txt
+    outs:
+      - results/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}.json

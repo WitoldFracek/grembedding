@@ -1,0 +1,11 @@
+/raw
+/TweetNormalizationHashtagSkip
+/TweetNormalizationHashtagSkip_CountVectorizer1000
+/TweetNormalizationHashtagSkip_CountVectorizer5000
+/TweetNormalizationHashtagSkip_TfidfVectorizer1000
+/TweetNormalizationHashtagSkip_TfidfVectorizer5000
+/LemmatizerSM
+/LemmatizerSM_CountVectorizer1000
+/LemmatizerSM_CountVectorizer5000
+/LemmatizerSM_TfidfVectorizer1000
+/LemmatizerSM_TfidfVectorizer5000
