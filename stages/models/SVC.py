@@ -6,12 +6,14 @@ from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import StandardScaler
 
 from stages.models.Model import Model
+from utils.experiments import mlflow_context
 
 
 class SVC(Model):
     def __init__(self) -> None:
         super().__init__()
 
+    @mlflow_context
     def evaluate(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str,
                  params: Dict[str, int | float | str]) -> None:
         """
@@ -33,15 +35,13 @@ class SVC(Model):
 
         logger.info(f"Fitting SVC classifier...")
         clf.fit(X_train[:100], y_train[:100])
-        logger.info("Predicting with CSV classifier...")
+        logger.info("Predicting with SVC classifier...")
         y_pred = clf.predict(X_test[:100])
 
         logger.info(f"Params: {params}, acc: {accuracy_score(y_test[:100], y_pred)}")
         metrics = {"accuracy": accuracy_score(y_test[:100], y_pred)}
 
-        self.save_results(
-            experiment_name=dataset,
-            run_name=f"{datacleaner}-{vectorizer}-{self.__class__.__name__}",
+        self.save_mlflow_results(
             params=params,
             metrics=metrics,
             clf=clf

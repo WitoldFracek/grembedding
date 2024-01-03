@@ -5,6 +5,8 @@ from typing import Dict, Tuple
 
 import mlflow
 import numpy as np
+import sklearn.base
+from loguru import logger
 
 from utils.environment import get_root_dir
 
@@ -42,35 +44,36 @@ class Model(ABC):
 
         return data["X_train"], data["X_test"], data["y_train"], data["y_test"]
 
-    def save_results(self, experiment_name: str, run_name: str, params: Dict[str, str | int | float],
-                     metrics: Dict[str, float], clf) -> None:
-        mlflow.set_experiment(experiment_name)
-        with mlflow.start_run(run_name=run_name):
-            mlflow.log_params(params)
-            mlflow.log_metrics(metrics)
+    @staticmethod
+    def save_mlflow_results(params: Dict[str, str | int | float], metrics: Dict[str, float],
+                            clf: sklearn.base.BaseEstimator) -> None:
+        """Saves params, metrics and logs mlflow model if is of supported type"""
+
+        mlflow.log_params(params)
+        mlflow.log_metrics(metrics)
+
+        if isinstance(clf, sklearn.base.BaseEstimator):
             mlflow.sklearn.log_model(
                 sk_model=clf, artifact_path=MLFLOW_ARTIFACT_PATH
             )
+        else:
+            logger.warning(
+                f"Model {clf.__class__.__name__} will not be saved as sklearn model "
+                f"since it does not extect BaseEstimator")
 
     def save_json_results(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str,
                           params: Dict[str, str | int | float], metrics: Dict[str, float]) -> None:
-        # results/${item.data.dataset}_${item.data.datacleaner}_${item.data.vectorizer}_${item.model.model}_${item.model.params}.json
-        # path = os.path.join(get_root_dir(), "results", f"{self.__class__.__name__}_{params_name}")
         dirs_in_path = ["results", dataset, datacleaner, vectorizer, self.__class__.__name__]
         path = get_root_dir()
+
         for p in dirs_in_path:
             path = os.path.join(path, p)
             if not os.path.exists(path):
                 os.makedirs(path)
 
         filename = f"{params_name}.json"
-        results = {}
-        results['params'] = params
-        results['metrics'] = metrics
-        results['dataset'] = dataset
-        results['datacleaner'] = datacleaner
-        results['vectorizer'] = vectorizer
-        results['params_name'] = params_name
+        results = {'params': params, 'metrics': metrics, 'dataset': dataset, 'datacleaner': datacleaner,
+                   'vectorizer': vectorizer, 'params_name': params_name}
         with open(os.path.join(path, filename), 'w') as file:
             json.dump(results, file)
 
