@@ -24,7 +24,7 @@ def mlflow_context(func):
 
         mlflow.set_experiment(experiment_name=experiment_name)
 
-        with mlflow.start_run(run_name=run_name,tags=default_tags):
+        with mlflow.start_run(experiment_name=run_name, tags=default_tags):
             result = func(model_instance, dataset, datacleaner, vectorizer, params_name, params)
             return result
 
