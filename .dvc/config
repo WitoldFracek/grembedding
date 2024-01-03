@@ -2,5 +2,5 @@
     remote = gdrive
     autostage = true
 ['remote "gdrive"']
-    url = gdrive://1QxMJ9or54XyWi7G5H6phbO6IGk_B1-W8/test_mlflow_improv
+    url = gdrive://1n1CH4lzPeMzY7cI-eN2W7hKKTzkl5c1A/mlflow-improv
     gdrive_acknowledge_abuse = true
