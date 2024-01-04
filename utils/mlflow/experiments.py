@@ -60,36 +60,13 @@ def mlflow_context(func):
         evaluate_request = EvaluateModelRequest.from_tuple(args)
 
         default_tags: dict[str, str] = evaluate_request.run_tags
-
-        # runs: list[Run] = mlflow.search_runs(
-        #     experiment_ids=[exp_id],
-        #     filter_string=f"tags.vectorizer = '{vectorizer}' and tags.dataset = '{dataset}' and"
-        #                   f" tags.datacleaner = '{datacleaner}' and tags.model = '{class_name}'",
-        #     run_view_type=ViewType.ALL, output_format="list")
-        # eligible_parents: list[Run] = [r for r in runs if MLFLOW_RUN_PARENT_TAG_KEY in r.data.tags.keys()]
-        # logger.debug(f"[Parent run search] Found {len(runs)} in total, {len(eligible_parents)} are parents")
-
-        # if len(eligible_parents) == 1:
-        #     # Parent run exists
-        #     parent_run = eligible_parents[0]
-        # elif len(eligible_parents) == 0:
-        #     parent_tags = copy.deepcopy(default_tags)
-        #     parent_tags[MLFLOW_RUN_PARENT_TAG_KEY] = MLFLOW_RUN_PARENT_VALUE
-        #     parent_run = mlflow.start_run(experiment_id=exp_id, run_name=f"Series: {run_name}", tags=parent_tags)
-        # else:
-        #     raise ValueError(f"Invalid MLFlow configuration - "
-        #                      f"more than 1 qualifying parent run for run_name={run_name}, experiment={experiment_name}")
-
-        # probably no real benefit for nested runs since these are not actually nested in the filetree
-        # with mlflow.start_run(run_id=parent_run.info.run_id, nested=True) as active_parent_run:
-
         exp_id: str = _resolve_experiment_id(evaluate_request)
 
-        with mlflow.start_run(experiment_id=exp_id, tags=default_tags) as run:
-            result = func(*args, **kwargs)
-            run_id = run.info.run_id
+        mlflow.autolog(log_models=True)
 
-        # _sync_view_mlruns_dir(evaluate_request, exp_id, run_id)
+        with mlflow.start_run(experiment_id=exp_id, run_name=evaluate_request.experiment_name, tags=default_tags) as run:
+            result = func(*args, **kwargs)
+
         return result
 
     return wrapper
