@@ -35,7 +35,7 @@ class EvaluateModelRequest:
 
     @property
     def experiment_name(self):
-        return f"{self.dataset}_{self.datacleaner}_{self.vectorizer}_{self.model_name}"
+        return f"{self.dataset}_{self.datacleaner}_{self.vectorizer}_{self.model_name}_{self.params_name}"
 
     @property
     def mlruns_location(self):
@@ -96,7 +96,7 @@ def mlflow_context(func):
             result = func(*args, **kwargs)
             run_id = run.info.run_id
 
-        _sync_view_mlruns_dir(evaluate_request, exp_id, run_id)
+        # _sync_view_mlruns_dir(evaluate_request, exp_id, run_id)
         return result
 
     return wrapper
@@ -118,6 +118,7 @@ def _resolve_experiment_id(eval_request: EvaluateModelRequest) -> str:
     return exp_id
 
 
+# TODO not working
 def _sync_view_mlruns_dir(eval_request: EvaluateModelRequest, exp_id: str, run_id: str) -> None:
     run_artifact_storage_dir = os.path.join(eval_request.mlruns_location)
     dest_location = os.path.join(MLRUNS_VIEW_ROOT, exp_id)

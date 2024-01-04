@@ -120,7 +120,7 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: b63d50c0ad657e4c59bbba2848299e8e
+      md5: c59e6464c7f0ce9b9d9635fd88b57cfd
       size: 18
     - path: params/SVC1.yaml
       hash: md5
@@ -135,6 +135,11 @@ stages:
       md5: 8e3189913f9bde64fc3daa9ad94fa617
       size: 1649
     outs:
+    - path: mlruns_store/RpTweetsXS/LemmatizerSM/CountVectorizer1000/SVC/SVC1
+      hash: md5
+      md5: 71433b4df1cc682cd0009b86c3ec48dc.dir
+      size: 1233
+      nfiles: 14
     - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer1000/SVC/SVC1.json
       hash: md5
       md5: 9ea3a412b3bda8ed5c5c9967c68fb6dc
@@ -150,7 +155,7 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: b63d50c0ad657e4c59bbba2848299e8e
+      md5: c59e6464c7f0ce9b9d9635fd88b57cfd
       size: 18
     - path: params/SVC2.yaml
       hash: md5
@@ -165,6 +170,11 @@ stages:
       md5: 8e3189913f9bde64fc3daa9ad94fa617
       size: 1649
     outs:
+    - path: mlruns_store/RpTweetsXS/LemmatizerSM/CountVectorizer1000/SVC/SVC2
+      hash: md5
+      md5: b7711867984f87d4e371c1c8548a7eb3.dir
+      size: 1229
+      nfiles: 14
     - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer1000/SVC/SVC2.json
       hash: md5
       md5: 15a77ca4809668e766f0c6d6ed253638
@@ -233,7 +243,7 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: b63d50c0ad657e4c59bbba2848299e8e
+      md5: c59e6464c7f0ce9b9d9635fd88b57cfd
       size: 18
     - path: params/SVC1.yaml
       hash: md5
@@ -248,6 +258,11 @@ stages:
       md5: 8e3189913f9bde64fc3daa9ad94fa617
       size: 1649
     outs:
+    - path: mlruns_store/RpTweetsXS/TweetNormalization/CountVectorizer1000/SVC/SVC1
+      hash: md5
+      md5: a3db2b6bec7a744e4f36d0285804acbb.dir
+      size: 1258
+      nfiles: 14
     - path: results/RpTweetsXS/TweetNormalization/CountVectorizer1000/SVC/SVC1.json
       hash: md5
       md5: fcb2fbcb31882b5d0c94a1944c55c95a
@@ -315,7 +330,7 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: b63d50c0ad657e4c59bbba2848299e8e
+      md5: c59e6464c7f0ce9b9d9635fd88b57cfd
       size: 18
     - path: params/SVC1.yaml
       hash: md5
@@ -330,6 +345,11 @@ stages:
       md5: 8e3189913f9bde64fc3daa9ad94fa617
       size: 1649
     outs:
+    - path: mlruns_store/RpTweetsXS/LemmatizerSM/CountVectorizer5000/SVC/SVC1
+      hash: md5
+      md5: a3d05fb69eabc02664978ef5cdfa532a.dir
+      size: 1226
+      nfiles: 14
     - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer5000/SVC/SVC1.json
       hash: md5
       md5: 32ef9223eaed9dd0e89857138d220918
@@ -599,7 +619,7 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: b63d50c0ad657e4c59bbba2848299e8e
+      md5: c59e6464c7f0ce9b9d9635fd88b57cfd
       size: 18
     - path: params/SVC2.yaml
       hash: md5
@@ -614,6 +634,11 @@ stages:
       md5: 8e3189913f9bde64fc3daa9ad94fa617
       size: 1649
     outs:
+    - path: mlruns_store/RpTweetsXS/TweetNormalization/CountVectorizer1000/SVC/SVC2
+      hash: md5
+      md5: 31df8e3e48c1926bc999c4faa3766d89.dir
+      size: 1256
+      nfiles: 14
     - path: results/RpTweetsXS/TweetNormalization/CountVectorizer1000/SVC/SVC2.json
       hash: md5
       md5: f0dc6cc4980aeeb3dae3fa0f4cff265f
@@ -629,7 +654,7 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: b63d50c0ad657e4c59bbba2848299e8e
+      md5: c59e6464c7f0ce9b9d9635fd88b57cfd
       size: 18
     - path: params/SVC2.yaml
       hash: md5
@@ -644,6 +669,11 @@ stages:
       md5: 8e3189913f9bde64fc3daa9ad94fa617
       size: 1649
     outs:
+    - path: mlruns_store/RpTweetsXS/LemmatizerSM/CountVectorizer5000/SVC/SVC2
+      hash: md5
+      md5: c3ef4d5116aa4a138a1ca0d3cacadbbd.dir
+      size: 1228
+      nfiles: 14
     - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer5000/SVC/SVC2.json
       hash: md5
       md5: c0d99d49a14ee7ee8893c7e1355dd76a
@@ -1107,7 +1137,7 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: b63d50c0ad657e4c59bbba2848299e8e
+      md5: c59e6464c7f0ce9b9d9635fd88b57cfd
       size: 18
     - path: params/SVC3.yaml
       hash: md5
@@ -1122,6 +1152,11 @@ stages:
       md5: 8e3189913f9bde64fc3daa9ad94fa617
       size: 1649
     outs:
+    - path: mlruns_store/RpTweetsXS/LemmatizerSM/CountVectorizer1000/SVC/SVC3
+      hash: md5
+      md5: a8492d0d87a3896afe123afb59b0d9ac.dir
+      size: 1220
+      nfiles: 14
     - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer1000/SVC/SVC3.json
       hash: md5
       md5: 06dba9e6177ca87dce671a04cd38da23
@@ -1137,7 +1172,7 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: b63d50c0ad657e4c59bbba2848299e8e
+      md5: c59e6464c7f0ce9b9d9635fd88b57cfd
       size: 18
     - path: params/SVC3.yaml
       hash: md5
@@ -1152,6 +1187,11 @@ stages:
       md5: 8e3189913f9bde64fc3daa9ad94fa617
       size: 1649
     outs:
+    - path: mlruns_store/RpTweetsXS/TweetNormalization/CountVectorizer1000/SVC/SVC3
+      hash: md5
+      md5: 85a89405965a52750c53dc8144346194.dir
+      size: 1260
+      nfiles: 14
     - path: results/RpTweetsXS/TweetNormalization/CountVectorizer1000/SVC/SVC3.json
       hash: md5
       md5: eafb89b596830ab82e75b97ea03e10d5
@@ -1167,7 +1207,7 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: b63d50c0ad657e4c59bbba2848299e8e
+      md5: c59e6464c7f0ce9b9d9635fd88b57cfd
       size: 18
     - path: params/SVC3.yaml
       hash: md5
@@ -1182,6 +1222,11 @@ stages:
       md5: 8e3189913f9bde64fc3daa9ad94fa617
       size: 1649
     outs:
+    - path: mlruns_store/RpTweetsXS/LemmatizerSM/CountVectorizer5000/SVC/SVC3
+      hash: md5
+      md5: a62ebb2ed2b4ea8f490b880a75d85c62.dir
+      size: 1218
+      nfiles: 14
     - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer5000/SVC/SVC3.json
       hash: md5
       md5: 3026d942642cb3c2d3c8a8b1a8705b1f
