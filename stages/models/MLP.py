@@ -2,7 +2,6 @@ import os
 from typing import Dict
 
 import matplotlib.pyplot as plt
-import mlflow
 import numpy as np
 import seaborn as sns
 from loguru import logger
@@ -12,7 +11,7 @@ from sklearn.metrics import (
 from sklearn.neural_network import MLPClassifier
 
 from stages.models.Model import Model
-from utils.experiments import mlflow_context
+from utils.mlflow.experiments import mlflow_context
 
 
 class MLP(Model):

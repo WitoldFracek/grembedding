@@ -6,7 +6,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import StandardScaler
 
 from stages.models.Model import Model
-from utils.experiments import mlflow_context
+from utils.mlflow.experiments import mlflow_context
 
 
 class SVC(Model):

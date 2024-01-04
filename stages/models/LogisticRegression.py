@@ -11,7 +11,7 @@ from sklearn.metrics import (
 )
 
 from stages.models.Model import Model
-from utils.experiments import mlflow_context
+from utils.mlflow.experiments import mlflow_context
 
 
 class LogisticRegression(Model):

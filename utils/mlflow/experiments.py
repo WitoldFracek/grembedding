@@ -9,7 +9,7 @@ import mlflow
 from loguru import logger
 from mlflow import MlflowException
 
-from config.MlflowConfig import MLRUNS_STORAGE_ROOT, MLRUNS_VIEW_ROOT
+from config.mlflow import MLRUNS_STORAGE_ROOT, MLRUNS_VIEW_ROOT
 from stages.models.Model import Model
 
 MLFLOW_RUN_PARENT_TAG_KEY: str = "parent"
