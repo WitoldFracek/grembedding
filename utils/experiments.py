@@ -1,17 +1,13 @@
-import copy
 import functools
 import os.path
 import shutil
-import uuid
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Union
 
 import mlflow
-from mlflow import MlflowException
-from pathlib import Path
 from loguru import logger
-
-from mlflow.entities import Run, ViewType
+from mlflow import MlflowException
 
 from config.MlflowConfig import MLRUNS_STORAGE_ROOT, MLRUNS_VIEW_ROOT
 from stages.models.Model import Model
@@ -60,7 +56,6 @@ def mlflow_context(func):
 
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        # TODO shady
         assert len(args) == 6, "Passed args do not match Model::evaluate"
         evaluate_request = EvaluateModelRequest.from_tuple(args)
 
