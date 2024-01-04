@@ -52,14 +52,14 @@ class Model(ABC):
         mlflow.log_params(params)
         mlflow.log_metrics(metrics)
 
-        if isinstance(clf, sklearn.base.BaseEstimator):
-            mlflow.sklearn.log_model(
-                sk_model=clf, artifact_path=MLFLOW_ARTIFACT_PATH
-            )
-        else:
-            logger.warning(
-                f"Model {clf.__class__.__name__} will not be saved as sklearn model "
-                f"since it does not extect BaseEstimator")
+        # if isinstance(clf, sklearn.base.BaseEstimator):
+        #     mlflow.sklearn.log_model(
+        #         sk_model=clf, artifact_path=MLFLOW_ARTIFACT_PATH
+        #     )
+        # else:
+        #     logger.warning(
+        #         f"Model {clf.__class__.__name__} will not be saved as sklearn model "
+        #         f"since it does not extect BaseEstimator")
 
     def save_json_results(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str,
                           params: Dict[str, str | int | float], metrics: Dict[str, float]) -> None:

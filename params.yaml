@@ -20,7 +20,9 @@ vectorize:
 
 
 models:
- - model: SVC
-   params: SVC2
- - model: SVC
-   params: SVC3
+  - model: SVC
+    params: SVC1
+  - model: SVC
+    params: SVC2
+  - model: SVC
+    params: SVC3

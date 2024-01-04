@@ -74,7 +74,7 @@ class MLP(Model):
         ax.set_title('Confusion Matrix')
         ax.set_xlabel('Predicted labels')
         ax.set_ylabel('True labels')
-        mlflow.log_figure(fig, "confusion_matrix.png")
+        # mlflow.log_figure(fig, "confusion_matrix.png")
 
     @staticmethod
     def plot_training_process(clf: MLPClassifier):
@@ -89,15 +89,16 @@ class MLP(Model):
         ax.set_xlabel('Epoch')
         ax.set_ylabel('Loss')
         ax.legend()
-        mlflow.log_figure(fig, "training_process.png")
+        # mlflow.log_figure(fig, "training_process.png")
 
 
 if __name__ == "__main__":
     mlp = MLP()
-    os.environ["DVC_ROOT"] = "../../"
+    os.chdir("../../")
+    os.environ["DVC_ROOT"] = "."
     mlp.evaluate(
-        "MsTweetsV2",
-        "TweetNormalizationHashtagSkip",
+        "RpTweetsXS",
+        "LemmatizerSM",
         "CountVectorizer1000",
         "default",
         {"max_iter": 1}
