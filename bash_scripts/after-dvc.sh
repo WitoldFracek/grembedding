@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-dvc add datasets_raw
+dvc add datasets_raw  # add new data to dvc
 dvc push
 
 git add .

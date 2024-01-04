@@ -1,6 +1,4 @@
-run:
-	exp_run
-	dvc_push
+run: exp_run dvc_push
 
 exp_run:
 	./bash_scripts/run_grembedding.sh
