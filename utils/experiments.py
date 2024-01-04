@@ -64,8 +64,6 @@ def mlflow_context(func):
         assert len(args) == 6, "Passed args do not match Model::evaluate"
         evaluate_request = EvaluateModelRequest.from_tuple(args)
 
-        experiment_fqn: str = evaluate_request.experiment_name
-        run_name: str = uuid.uuid4().hex  # TODO random for now
         default_tags: dict[str, str] = evaluate_request.run_tags
 
         # runs: list[Run] = mlflow.search_runs(
