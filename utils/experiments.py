@@ -62,6 +62,7 @@ def mlflow_context(func):
             raise ValueError(f"Invalid MLFlow configuration - "
                              f"more than 1 qualifying parent run for run_name={run_name}, experiment={experiment_name}")
 
+        # TODO: probably no real benefit for nested runs since these are not actually nested in the filetree
         with mlflow.start_run(run_id=parent_run.info.run_id, nested=True) as active_parent_run:
             with mlflow.start_run(run_name=run_name, experiment_id=exp_id, tags=default_tags, nested=True) as run:
                 result = func(model_instance, dataset, datacleaner, vectorizer, params_name, params)
