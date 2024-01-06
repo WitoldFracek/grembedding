@@ -10,17 +10,17 @@ clean:
 vectorize:
   - dataloader: RpTweetsXS
     datacleaner: LemmatizerSM
-    vectorizer: CountVectorizer1000
-  - dataloader: RpTweetsXS
-    datacleaner: TweetNormalization
-    vectorizer: CountVectorizer1000
-  - dataloader: RpTweetsXS
-    datacleaner: LemmatizerSM
-    vectorizer: CountVectorizer5000
+    vectorizer: DPEBPVectorizer100Avg
+  # - dataloader: RpTweetsXS
+  #   datacleaner: TweetNormalization
+  #   vectorizer: CountVectorizer1000
+  # - dataloader: RpTweetsXS
+  #   datacleaner: LemmatizerSM
+  #   vectorizer: CountVectorizer5000
 
 
 models:
  - model: SVC
    params: SVC2
- - model: SVC
-   params: SVC3
+#  - model: SVC
+#    params: SVC3
