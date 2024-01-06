@@ -115,6 +115,7 @@ colorama==0.4.6
     #   click
     #   dvc
     #   ipython
+    #   loguru
     #   tqdm
     #   wasabi
 comm==0.2.0
@@ -363,6 +364,8 @@ kombu==5.3.3
     #   dvc-task
 langcodes==3.3.0
     # via spacy
+loguru==0.7.2
+    # via -r requirements.in
 mako==1.3.0
     # via alembic
 markdown==3.5.1
@@ -541,7 +544,9 @@ pydantic-core==2.10.1
 pydot==1.4.2
     # via dvc
 pydrive2[fsspec]==1.17.0
-    # via dvc-gdrive
+    # via
+    #   dvc-gdrive
+    #   pydrive2
 pygit2==1.13.2
     # via scmrepo
 pygments==2.16.1
@@ -856,6 +861,8 @@ wheel==0.41.3
     # via pip-tools
 widgetsnbextension==4.0.9
     # via ipywidgets
+win32-setctime==1.1.0
+    # via loguru
 yarl==1.9.2
     # via aiohttp
 zc-lockfile==3.0.post1
@@ -866,4 +873,3 @@ zipp==3.17.0
 # The following packages are considered to be unsafe in a requirements file:
 # pip
 # setuptools
-

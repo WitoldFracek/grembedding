@@ -1,6 +1,7 @@
 import os
 from dataclasses import dataclass
-from typing import Union
+from typing import Union, Literal, Optional
+from loguru import logger
 
 import yaml
 
@@ -34,7 +35,7 @@ class RunMetadata:
     user_id: str
 
 
-def load_mlflow_meta(metadata_path: Union[str, os.PathLike]) -> Union[ExperimentMetadata, RunMetadata]:
+def load_mlflow_meta(metadata_path: Union[str, os.PathLike], errors: Literal['omit', 'raise'] = "omit") -> Optional[Union[ExperimentMetadata, RunMetadata]]:
     with open(metadata_path, "r") as f:
         data = yaml.safe_load(f)
         try:
@@ -43,7 +44,11 @@ def load_mlflow_meta(metadata_path: Union[str, os.PathLike]) -> Union[Experiment
             elif "experiment_id" in data.keys():
                 return ExperimentMetadata(**data)
             else:
-                raise ValueError(f"Could not determine metadata type from {metadata_path}")
+                if errors == "raise":
+                    raise ValueError(f"Could not determine metadata type from {metadata_path}")
+                elif errors == "omit":
+                    logger.warning(f"Not known metadata type for {metadata_path}")
+                    return None
         except TypeError:
             raise ValueError(f"Failed to instantiate mlflow metadata from {metadata_path}")
 

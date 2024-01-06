@@ -29,8 +29,6 @@ class SVC(Model):
         X_test = sc.transform(X_test)
         logger.info(f"Fit/transform with scaler complete")
 
-        a = 1 # test only
-
         clf = svm.SVC(**params)
 
         logger.info(f"Fitting SVC classifier...")
