@@ -38,7 +38,7 @@ class Vectorizer(ABC):
 
         return df_train, df_test
 
-    def save_as_npy(self, dataset: str, datacleaner: str, X_train: np.matrix, X_test: np.matrix, y_train: np.array, y_test: np.array) -> None:
+    def save_as_npy(self, dataset: str, datacleaner: str, X_train: np.matrix, X_test: np.matrix, y_train: np.ndarray, y_test: np.ndarray) -> None:
         path = self.get_output_dir(dataset, datacleaner)
 
         if not os.path.exists(path):
