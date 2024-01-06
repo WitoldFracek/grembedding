@@ -4,69 +4,99 @@ import os
 import re
 import shutil
 from pathlib import Path
-from typing import Union, Optional
+from typing import Union
 
+import mlflow
 from loguru import logger
 from tqdm.auto import tqdm
 
 from config.mlflow import MLRUNS_STORAGE_ROOT, MLRUNS_VIEW_ROOT
-from utils.mlflow.domain import load_mlflow_meta, RunMetadata, ExperimentMetadata
+from utils.mlflow.domain import load_mlflow_meta, ExperimentMetadata, RunMetadata
 
 
-# def traverse(mlruns_store_dir: Union[str, os.PathLike] = MLRUNS_STORAGE_ROOT) -> list[Union[str, os.PathLike]]:
-#     return glob.glob(mlruns_store_dir + "/**/meta.yaml", recursive=True)
-#
-#
-# def migrate_experiment(meta: ExperimentMetadata) -> None:
-#     if meta.experiment_id == '0':
-#         return  # Do not migrate default
-#
-#     src_dir_uri = meta.artifact_location  # file:///home/rafal/projects/grembedding/mlruns_store/RpTweetsXS/LemmatizerSM/CountVectorizer1000/SVC/SVC2/626233705505186099
-#
-#     # dest_dir_uri = src_dir_uri.replace(MLRUNS_STORAGE_ROOT, MLRUNS_VIEW_ROOT)  # file:///home/rafal/projects/grembedding/mlruns_ui/RpTweetsXS/LemmatizerSM/CountVectorizer1000/SVC/SVC2/626233705505186099
-#     # exp_name_dirtree = meta.name.replace("_", "/") + "/"
-#     # dest_dir_uri = dest_dir_uri.replace(exp_name_dirtree,"")  # file:///home/rafal/projects/grembedding/mlruns_ui/626233705505186099
-#     # dest_dir_uri = dest_dir_uri.removesuffix(meta.experiment_id)
-#
-#     # DEST DIR URI
-#     # DVC_ROOT + MLRUNS_VIEW_ROOT
-#     dest_dir_path = Path.cwd().joinpath(MLRUNS_VIEW_ROOT)
-#     # dest_dir_uri = os.path.join(os.environ["DVC_ROOT"], MLRUNS_VIEW_ROOT)
-#     logger.debug(f"Resolved experiment dest dir uri: {dest_dir_path}")
-#
-#     # dest_experiment_meta = copy.deepcopy(meta)
-#     # dest_experiment_meta.artifact_location = dest_dir_uri
-#
-#     shutil.copytree(src_dir_uri.removeprefix("file://"), dest_dir_path, dirs_exist_ok=True)
-#     logger.info(f"Success migrating {meta.name}")
-#
-#
-# def migrate_run(meta: RunMetadata) -> None:
-#     pass
-#
-#
-# def run_sync():
-#     meta_paths = traverse()
-#     metas: list[Optional[Union[RunMetadata, ExperimentMetadata]]] = [load_mlflow_meta(meta_path) for meta_path in
-#                                                                      meta_paths]
-#     metas: list[Union[RunMetadata, ExperimentMetadata]] = [m for m in metas if m is not None]
-#     experiments: list[ExperimentMetadata] = [meta for meta in metas if isinstance(meta, ExperimentMetadata)]
-#
-#     for exp in tqdm(experiments):
-#         migrate_experiment(exp)
+def run_simple_sync(force_recreate: bool = True):
+    """Copies all experiments from MLRUNS_STORAGE_ROOT to MLRUNS_VIEW_ROOT
+
+    1. Finds all experiments in MLRUNS_STORAGE_ROOT
+    2. Creates corresponding experiments in MLRUNS_VIEW_ROOT
+    3. Copies all runs from MLRUNS_STORAGE_ROOT to MLRUNS_VIEW_ROOT
+    4. Fixes up metadata of the copied runs to point to the correct experiment id and artifact uri
+    """
+    source_exp_dirs = find_mlruns_store_experiment_dirs()
+    dest_mlruns_root = Path.cwd().joinpath(MLRUNS_VIEW_ROOT)
+    logger.info(f"Schedule to copy {len(source_exp_dirs)} experiments to {dest_mlruns_root}")
+
+    # remove previous migrations
+    if force_recreate:
+        shutil.rmtree(dest_mlruns_root, ignore_errors=True)
+        logger.info(f"Removed previous migrations from {dest_mlruns_root}")
+
+    for exp_folder in tqdm(source_exp_dirs):
+        dest_experiment_path = resolve_destination(exp_folder, dest_mlruns_root)  # mlruns/1234
+        logger.info(f"For exp: {exp_folder} resolved dest experiment path: {dest_experiment_path}")
+
+        # Walk all direct directories children in src exp_folder & copy
+        for root, dirs, files in os.walk(exp_folder):
+            for dir in dirs:
+                source_run_dir = os.path.join(root, dir)                            # mlruns store run folder
+                dest_experiment_dir = os.path.join(dest_experiment_path, dir)       # mlruns view experiment folder
+                logger.info(f"Copying {source_run_dir} to {dest_experiment_dir}")
+                shutil.copytree(source_run_dir, dest_experiment_dir, dirs_exist_ok=True)
+
+                # Fixup metadata, omit datasets folders
+                if dir != "datasets":
+                    fixup_dest_run_metadata(dest_experiment_dir, new_experiment_id=Path(dest_experiment_path).name)
+            break  # Break after the first iteration to not go deeper
 
 
-def run_simple_sync():
-    all_exp_folders = find_folders()
-    base_dest_path = Path.cwd().joinpath(MLRUNS_VIEW_ROOT)
-    logger.info(f"Schedule to copy {len(all_exp_folders)} experiments to {base_dest_path}")
+def fixup_dest_run_metadata(dest_run_dir: Union[str, os.PathLike], new_experiment_id: str) -> None:
+    """Modifies runs metadata to point to the correct experiment id and artifact uri after copy to MLRUNS_VIEW_ROOT
 
-    for exp_folder in tqdm(all_exp_folders):
-        current_dest_path = Path(base_dest_path).joinpath(Path(exp_folder).name)
-        shutil.copytree(exp_folder, current_dest_path, dirs_exist_ok=True)
+    Args:
+        dest_run_dir: path to the copied run directory in MLRUNS_VIEW_ROOT
+        new_experiment_id: id of the dest experiment in MLRUNS_VIEW_ROOT
+    """
+    meta_path = Path(dest_run_dir).joinpath("meta.yaml")
+    meta: RunMetadata = load_mlflow_meta(meta_path, errors="raise")
+
+    meta.experiment_id = str(new_experiment_id)
+    meta.artifact_uri = Path(dest_run_dir).joinpath("artifacts").as_uri()
+
+    meta.save(dest_run_dir)
+    logger.info(f"Fixed up metadata: {meta_path}")
 
 
-def find_folders(base_path: Union[str, os.PathLike] = MLRUNS_STORAGE_ROOT) -> list[Union[str, os.PathLike]]:
+def resolve_destination(exp_folder: Union[str, os.PathLike],
+                        base_dest_path: Union[str, os.PathLike] = MLRUNS_VIEW_ROOT) -> Union[str, os.PathLike]:
+    """Resolved destination path of the experiment for a given run of mlruns_store
+    (creates dest experiment if not exists)
+
+    Args:
+        exp_folder: path to the DVC tracked experiment folder
+        base_dest_path: path to the mlruns_view root
+
+    Returns:
+        Path to the destination experiment folder in MLRUNS_VIEW_ROOT
+    """
+    meta: ExperimentMetadata = load_mlflow_meta(Path(exp_folder).joinpath("meta.yaml"), errors="raise")
+    dataset_name = meta.name.split("_")[0]
+    dest_exp_id = _resolve_dest_experiment(dataset_name, base_dest_path)
+    dest_exp_path = Path(base_dest_path).joinpath(dest_exp_id)
+    return dest_exp_path
+
+
+def _resolve_dest_experiment(dataset_name: str, base_dest_path: Union[str, os.PathLike] = MLRUNS_VIEW_ROOT) -> str:
+    """Resolve destination experiment id by name, create if not exists (convention: name = dataset)"""
+    mlflow.set_tracking_uri(base_dest_path)
+    exp = mlflow.get_experiment_by_name(dataset_name)
+    if exp is None:
+        return mlflow.create_experiment(dataset_name)
+    else:
+        return exp.experiment_id
+
+
+def find_mlruns_store_experiment_dirs(base_path: Union[str, os.PathLike] = MLRUNS_STORAGE_ROOT) -> list[
+    Union[str, os.PathLike]]:
     folder_name_pattern = re.compile(r'^\d+$')
 
     matched_folders = []
@@ -81,4 +111,4 @@ def find_folders(base_path: Union[str, os.PathLike] = MLRUNS_STORAGE_ROOT) -> li
 
 if __name__ == "__main__":
     os.chdir('../../')
-    run_simple_sync()
+    run_simple_sync(force_recreate=False)

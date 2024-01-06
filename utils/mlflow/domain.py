@@ -1,13 +1,25 @@
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 from typing import Union, Literal, Optional
 from loguru import logger
 
 import yaml
 
 
+class SavableYamlDataclassMixin:
+    def to_yaml(self):
+        data = asdict(self)
+        return yaml.dump(data, sort_keys=False)
+
+    def save(self, path):
+        full_path = os.path.join(path, 'meta.yaml')
+        yaml_data = self.to_yaml()
+        with open(full_path, 'w') as file:
+            file.write(yaml_data)
+
+
 @dataclass
-class ExperimentMetadata:
+class ExperimentMetadata(SavableYamlDataclassMixin):
     artifact_location: str
     creation_time: int
     experiment_id: str
@@ -17,7 +29,7 @@ class ExperimentMetadata:
 
 
 @dataclass
-class RunMetadata:
+class RunMetadata(SavableYamlDataclassMixin):
     artifact_uri: str
     end_time: int
     entry_point_name: str
@@ -35,7 +47,8 @@ class RunMetadata:
     user_id: str
 
 
-def load_mlflow_meta(metadata_path: Union[str, os.PathLike], errors: Literal['omit', 'raise'] = "omit") -> Optional[Union[ExperimentMetadata, RunMetadata]]:
+def load_mlflow_meta(metadata_path: Union[str, os.PathLike], errors: Literal['omit', 'raise'] = "omit") -> Optional[
+    Union[ExperimentMetadata, RunMetadata]]:
     with open(metadata_path, "r") as f:
         data = yaml.safe_load(f)
         try:
@@ -51,4 +64,3 @@ def load_mlflow_meta(metadata_path: Union[str, os.PathLike], errors: Literal['om
                     return None
         except TypeError:
             raise ValueError(f"Failed to instantiate mlflow metadata from {metadata_path}")
-
