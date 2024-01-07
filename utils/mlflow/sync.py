@@ -109,4 +109,4 @@ def _find_mlruns_store_experiment_dirs(base_path: Union[str, os.PathLike] = MLRU
 
 if __name__ == "__main__":
     os.chdir('../../')
-    run_sync(force_recreate=False)
+    run_sync(force_recreate=True)
