@@ -41,10 +41,7 @@ class SVC(Model):
 
         self.save_mlflow_results(
             params=params,
-            metrics=metrics,
-            clf=clf
+            metrics=metrics
         )
 
         self.save_json_results(dataset, datacleaner, vectorizer, params_name, params, metrics)
-
-        # Test

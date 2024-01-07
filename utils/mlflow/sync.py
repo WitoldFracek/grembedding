@@ -1,5 +1,3 @@
-import copy
-import glob
 import os
 import re
 import shutil
@@ -14,7 +12,7 @@ from config.mlflow import MLRUNS_STORAGE_ROOT, MLRUNS_VIEW_ROOT
 from utils.mlflow.domain import load_mlflow_meta, ExperimentMetadata, RunMetadata
 
 
-def run_simple_sync(force_recreate: bool = True):
+def run_sync(force_recreate: bool = True):
     """Copies all experiments from MLRUNS_STORAGE_ROOT to MLRUNS_VIEW_ROOT
 
     1. Finds all experiments in MLRUNS_STORAGE_ROOT
@@ -22,7 +20,7 @@ def run_simple_sync(force_recreate: bool = True):
     3. Copies all runs from MLRUNS_STORAGE_ROOT to MLRUNS_VIEW_ROOT
     4. Fixes up metadata of the copied runs to point to the correct experiment id and artifact uri
     """
-    source_exp_dirs = find_mlruns_store_experiment_dirs()
+    source_exp_dirs = _find_mlruns_store_experiment_dirs()
     dest_mlruns_root = Path.cwd().joinpath(MLRUNS_VIEW_ROOT)
     logger.info(f"Schedule to copy {len(source_exp_dirs)} experiments to {dest_mlruns_root}")
 
@@ -32,24 +30,24 @@ def run_simple_sync(force_recreate: bool = True):
         logger.info(f"Removed previous migrations from {dest_mlruns_root}")
 
     for exp_folder in tqdm(source_exp_dirs):
-        dest_experiment_path = resolve_destination(exp_folder, dest_mlruns_root)  # mlruns/1234
+        dest_experiment_path = _resolve_destination(exp_folder, dest_mlruns_root)
         logger.info(f"For exp: {exp_folder} resolved dest experiment path: {dest_experiment_path}")
 
         # Walk all direct directories children in src exp_folder & copy
         for root, dirs, files in os.walk(exp_folder):
             for dir in dirs:
-                source_run_dir = os.path.join(root, dir)                            # mlruns store run folder
-                dest_experiment_dir = os.path.join(dest_experiment_path, dir)       # mlruns view experiment folder
+                source_run_dir = os.path.join(root, dir)  # mlruns store run folder
+                dest_experiment_dir = os.path.join(dest_experiment_path, dir)  # mlruns view experiment folder
                 logger.info(f"Copying {source_run_dir} to {dest_experiment_dir}")
                 shutil.copytree(source_run_dir, dest_experiment_dir, dirs_exist_ok=True)
 
                 # Fixup metadata, omit datasets folders
                 if dir != "datasets":
-                    fixup_dest_run_metadata(dest_experiment_dir, new_experiment_id=Path(dest_experiment_path).name)
+                    _fixup_dest_run_metadata(dest_experiment_dir, new_experiment_id=Path(dest_experiment_path).name)
             break  # Break after the first iteration to not go deeper
 
 
-def fixup_dest_run_metadata(dest_run_dir: Union[str, os.PathLike], new_experiment_id: str) -> None:
+def _fixup_dest_run_metadata(dest_run_dir: Union[str, os.PathLike], new_experiment_id: str) -> None:
     """Modifies runs metadata to point to the correct experiment id and artifact uri after copy to MLRUNS_VIEW_ROOT
 
     Args:
@@ -66,8 +64,8 @@ def fixup_dest_run_metadata(dest_run_dir: Union[str, os.PathLike], new_experimen
     logger.info(f"Fixed up metadata: {meta_path}")
 
 
-def resolve_destination(exp_folder: Union[str, os.PathLike],
-                        base_dest_path: Union[str, os.PathLike] = MLRUNS_VIEW_ROOT) -> Union[str, os.PathLike]:
+def _resolve_destination(exp_folder: Union[str, os.PathLike],
+                         base_dest_path: Union[str, os.PathLike] = MLRUNS_VIEW_ROOT) -> Union[str, os.PathLike]:
     """Resolved destination path of the experiment for a given run of mlruns_store
     (creates dest experiment if not exists)
 
@@ -95,7 +93,7 @@ def _resolve_dest_experiment(dataset_name: str, base_dest_path: Union[str, os.Pa
         return exp.experiment_id
 
 
-def find_mlruns_store_experiment_dirs(base_path: Union[str, os.PathLike] = MLRUNS_STORAGE_ROOT) -> list[
+def _find_mlruns_store_experiment_dirs(base_path: Union[str, os.PathLike] = MLRUNS_STORAGE_ROOT) -> list[
     Union[str, os.PathLike]]:
     folder_name_pattern = re.compile(r'^\d+$')
 
@@ -111,4 +109,4 @@ def find_mlruns_store_experiment_dirs(base_path: Union[str, os.PathLike] = MLRUN
 
 if __name__ == "__main__":
     os.chdir('../../')
-    run_simple_sync(force_recreate=False)
+    run_sync(force_recreate=False)

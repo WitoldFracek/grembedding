@@ -5,6 +5,9 @@ from loguru import logger
 
 import yaml
 
+from config.mlflow import MLRUNS_STORAGE_ROOT
+from stages.models.Model import Model
+
 
 class SavableYamlDataclassMixin:
     def to_yaml(self):
@@ -45,6 +48,41 @@ class RunMetadata(SavableYamlDataclassMixin):
     status: int
     tags: any
     user_id: str
+
+
+@dataclass
+class EvaluateModelRequest:
+    model_instance: Model
+    dataset: str
+    datacleaner: str
+    vectorizer: str
+    params_name: str
+    params: dict[str, Union[int, float, str]]
+
+    @property
+    def model_name(self):
+        return self.model_instance.__class__.__name__
+
+    @property
+    def experiment_name(self):
+        return f"{self.dataset}_{self.datacleaner}_{self.vectorizer}_{self.model_name}_{self.params_name}"
+
+    @property
+    def mlruns_location(self):
+        return os.path.join(MLRUNS_STORAGE_ROOT, *self.experiment_name.split("_"))
+
+    @property
+    def run_tags(self):
+        return {
+            "dataset": self.dataset,
+            "vectorizer": self.vectorizer,
+            "datacleaner": self.datacleaner,
+            "model": self.model_name
+        }
+
+    @staticmethod
+    def from_tuple(args: tuple) -> "EvaluateModelRequest":
+        return EvaluateModelRequest(*args)
 
 
 def load_mlflow_meta(metadata_path: Union[str, os.PathLike], errors: Literal['omit', 'raise'] = "omit") -> Optional[

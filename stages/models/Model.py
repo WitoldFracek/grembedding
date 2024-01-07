@@ -5,16 +5,12 @@ from typing import Dict, Tuple
 
 import mlflow
 import numpy as np
-import sklearn.base
-from loguru import logger
 
 from utils.environment import get_root_dir
 
 DATA_DIR_PATH = 'data'
 TEST_FILENAME = 'test.parquet'
 TRAIN_FILENAME = 'train.parquet'
-MLFOW_URI = 'http://127.0.0.1:8080'
-MLFLOW_ARTIFACT_PATH = "mlflow_artifacts"
 
 
 class Model(ABC):
@@ -29,8 +25,7 @@ class Model(ABC):
         """
         pass
 
-    def load_train_test(self, dataset: str, datacleaner: str, vectorizer: str
-                        ) -> Tuple[np.matrix, np.matrix, np.array, np.array]:
+    def load_train_test(self, dataset: str, datacleaner: str, vectorizer: str) -> Tuple[np.matrix, np.matrix, np.array, np.array]:
         """
         Load train and test data
         :dataset: name of dataset
@@ -45,21 +40,10 @@ class Model(ABC):
         return data["X_train"], data["X_test"], data["y_train"], data["y_test"]
 
     @staticmethod
-    def save_mlflow_results(params: Dict[str, str | int | float], metrics: Dict[str, float],
-                            clf: sklearn.base.BaseEstimator) -> None:
-        """Saves params, metrics and logs mlflow model if is of supported type"""
-
+    def save_mlflow_results(params: Dict[str, str | int | float], metrics: Dict[str, float]) -> None:
+        """Saves params & metrics to mlflow"""
         mlflow.log_params(params)
         mlflow.log_metrics(metrics)
-
-        # if isinstance(clf, sklearn.base.BaseEstimator):
-        #     mlflow.sklearn.log_model(
-        #         sk_model=clf, artifact_path=MLFLOW_ARTIFACT_PATH
-        #     )
-        # else:
-        #     logger.warning(
-        #         f"Model {clf.__class__.__name__} will not be saved as sklearn model "
-        #         f"since it does not extect BaseEstimator")
 
     def save_json_results(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str,
                           params: Dict[str, str | int | float], metrics: Dict[str, float]) -> None:

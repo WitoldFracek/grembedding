@@ -1,12 +1,12 @@
-import os
-import sys
-import yaml
 import ast
-import time
-from typing import List, Dict, Tuple
-from loguru import logger
-import pandas as pd
 import hashlib
+import os
+import time
+from typing import List, Dict
+
+import pandas as pd
+import yaml
+from loguru import logger
 
 
 def get_imports(file_path):
@@ -22,8 +22,10 @@ def get_imports(file_path):
             imports.add(f'{node.module}')
     return imports
 
+
 def is_file(path):
     return os.path.exists(path)
+
 
 def get_output_filename(stage: str, run_params: Dict[str, str]) -> str:
     filename = ''
@@ -35,7 +37,8 @@ def get_output_filename(stage: str, run_params: Dict[str, str]) -> str:
         filename = f"{run_params['vectorizer']}"
     elif stage == "evaluate":
         filename = f"{run_params['model']}"
-    return filename+".txt"
+    return filename + ".txt"
+
 
 def _get_important_param_name(stage: str) -> str:
     if stage == "load":
@@ -50,12 +53,12 @@ def _get_important_param_name(stage: str) -> str:
 
 
 def validate(stage: str, stage_params: List[Dict[str, str]], md5_df: pd.DataFrame):
-    new_md5_df = pd.DataFrame(columns = ['file', 'md5'])
+    new_md5_df = pd.DataFrame(columns=['file', 'md5'])
     for run_params in stage_params:
         param_name = _get_important_param_name(stage)
         param_value = run_params[param_name]
         imports = get_imports(os.path.join("stages", f"{param_name}s", f"{param_value}.py"))
-        imports = [imp.replace(".", "/")+".py" for imp in imports]
+        imports = [imp.replace(".", "/") + ".py" for imp in imports]
         custom_imports = [imp for imp in imports if is_file(imp)]
         create_file_flag = False
         for imp in custom_imports:
@@ -74,10 +77,10 @@ def validate(stage: str, stage_params: List[Dict[str, str]], md5_df: pd.DataFram
                     if last_md5 != current_md5:
                         create_file_flag = True
                         new_md5_df = pd.concat([new_md5_df, pd.DataFrame({
-                        "file": [imp],
-                        "md5": [current_md5]
+                            "file": [imp],
+                            "md5": [current_md5]
                         })], ignore_index=True)
-        
+
         if create_file_flag:
             path = os.path.join("imports_validator", stage)
             if not os.path.exists(path):
@@ -88,22 +91,20 @@ def validate(stage: str, stage_params: List[Dict[str, str]], md5_df: pd.DataFram
 
     return new_md5_df
 
+
 def main():
     with open('./params.yaml', 'r') as file:
         params = yaml.safe_load(file)
     if os.path.exists('./imports_validator/md5.parquet'):
         md5_df = pd.read_parquet('./imports_validator/md5.parquet')
     else:
-        md5_df = pd.DataFrame(columns = ['file', 'md5'])
-    
-    new_md5_dfs = []
-    new_md5_dfs.append(validate("load", params['load'], md5_df))
-    new_md5_dfs.append(validate("clean", params['clean'], md5_df))
-    new_md5_dfs.append(validate("vectorize", params['vectorize'], md5_df))
-    new_md5_dfs.append(validate("evaluate", params['models'], md5_df))
+        md5_df = pd.DataFrame(columns=['file', 'md5'])
+
+    new_md5_dfs = [validate("load", params['load'], md5_df), validate("clean", params['clean'], md5_df),
+                   validate("vectorize", params['vectorize'], md5_df), validate("evaluate", params['models'], md5_df)]
 
     new_md5_df = pd.concat(new_md5_dfs)
-    new_md5_df = new_md5_df.drop_duplicates(subset = 'file')
+    new_md5_df = new_md5_df.drop_duplicates(subset='file')
 
     # Iteruj po każdym wierszu w md5_df
     for index, row in md5_df.iterrows():
@@ -114,7 +115,6 @@ def main():
             # Jeśli nie istnieje, dodaj ten wiersz do new_md5_df
             new_row = {'file': file_value, 'md5': row['md5']}
             new_md5_df = pd.concat([new_md5_df, pd.DataFrame([new_row])], ignore_index=True)
-
 
     new_md5_df.to_parquet('./imports_validator/md5.parquet')
 

@@ -50,7 +50,7 @@ class LogisticRegression(Model):
 
         # Logging metrics
         logger.info("Saving metrics...")
-        self.save_mlflow_results(params, metrics, clf)
+        self.save_mlflow_results(params, metrics)
         self.save_json_results(dataset, datacleaner, vectorizer, params_name, params, metrics=metrics)
 
         # Confusion Matrix
