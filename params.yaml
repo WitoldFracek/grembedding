@@ -1,11 +1,14 @@
 load:
   - dataloader: RpTweetsXS
+  - dataloader: MsTweetsV2
 
 clean:
   - dataloader: RpTweetsXS
     datacleaner: LemmatizerSM
   - dataloader: RpTweetsXS
     datacleaner: TweetNormalization
+  - dataloader: MsTweetsV2
+    datacleaner: TweetNormalizationHashtagSkip
 
 vectorize:
   - dataloader: RpTweetsXS
@@ -17,6 +20,18 @@ vectorize:
   - dataloader: RpTweetsXS
     datacleaner: LemmatizerSM
     vectorizer: CountVectorizer5000
+  - dataloader: MsTweetsV2
+    datacleaner: TweetNormalizationHashtagSkip
+    vectorizer: CountVectorizer1000
+  - dataloader: MsTweetsV2
+    datacleaner: TweetNormalizationHashtagSkip
+    vectorizer: CountVectorizer5000
+  - dataloader: MsTweetsV2
+    datacleaner: TweetNormalizationHashtagSkip
+    vectorizer: TfidfVectorizer1000
+  - dataloader: MsTweetsV2
+    datacleaner: TweetNormalizationHashtagSkip
+    vectorizer: TfidfVectorizer5000
 
 
 models:
@@ -26,3 +41,5 @@ models:
     params: SVC2
   - model: SVC
     params: SVC3
+  - model: MLP
+    params: MLP1
