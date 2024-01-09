@@ -12,3 +12,5 @@ if [ $? -eq 0 ]; then
 else
     echo "Error during execution of the first command."
 fi
+
+# python ./utils/mlflow/sync.py

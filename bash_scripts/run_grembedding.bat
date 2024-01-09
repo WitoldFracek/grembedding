@@ -14,3 +14,5 @@ if %errorlevel% equ 0 (
     rem Jeśli pierwsza komenda nie powiodła się, wyświetl komunikat o błędzie
     echo Błąd podczas wykonania pierwszej komendy.
 )
+
+rem python .\utils\mlflow\sync.py
