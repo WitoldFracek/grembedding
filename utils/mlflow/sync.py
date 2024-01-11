@@ -32,14 +32,14 @@ def run_sync(force_recreate: bool = True):
 
     for exp_folder in tqdm(source_exp_dirs):
         dest_experiment_path = _resolve_destination(exp_folder, dest_mlruns_root)
-        logger.info(f"For exp: {exp_folder} resolved dest experiment path: {dest_experiment_path}")
+        # logger.info(f"For exp: {exp_folder} resolved dest experiment path: {dest_experiment_path}")
 
         # Walk all direct directories children in src exp_folder & copy
         for root, dirs, files in os.walk(exp_folder):
             for dir in dirs:
                 source_run_dir = os.path.join(root, dir)  # mlruns store run folder
                 dest_experiment_dir = os.path.join(dest_experiment_path, dir)  # mlruns view experiment folder
-                logger.info(f"Copying {source_run_dir} to {dest_experiment_dir}")
+                # logger.info(f"Copying {source_run_dir} to {dest_experiment_dir}")
                 shutil.copytree(source_run_dir, dest_experiment_dir, dirs_exist_ok=True)
 
                 # Fixup metadata, omit datasets folders
@@ -62,7 +62,7 @@ def _fixup_dest_run_metadata(dest_run_dir: Union[str, os.PathLike], new_experime
     meta.artifact_uri = Path(dest_run_dir).joinpath("artifacts").as_uri()
 
     meta.save(dest_run_dir)
-    logger.info(f"Fixed up metadata: {meta_path}")
+    # logger.info(f"Fixed up metadata: {meta_path}")
 
 
 def _resolve_destination(exp_folder: Union[str, os.PathLike],

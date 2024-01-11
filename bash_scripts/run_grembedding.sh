@@ -13,4 +13,4 @@ else
     echo "Error during execution of the first command."
 fi
 
-# python ./utils/mlflow/sync.py
+PYTHONPATH=. python ./utils/mlflow/sync.py

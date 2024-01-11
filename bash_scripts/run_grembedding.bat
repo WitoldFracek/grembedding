@@ -15,4 +15,5 @@ if %errorlevel% equ 0 (
     echo Błąd podczas wykonania pierwszej komendy.
 )
 
-rem python .\utils\mlflow\sync.py
+set PYTHONPATH=.
+python .\utils\mlflow\sync.py
