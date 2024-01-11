@@ -1,7 +1,7 @@
+import os
 from typing import Dict
 
 import matplotlib.pyplot as plt
-import mlflow
 import numpy as np
 import seaborn as sns
 from loguru import logger
@@ -10,76 +10,61 @@ from sklearn.metrics import (
 )
 from sklearn.neural_network import MLPClassifier
 
-from stages.models.Model import Model, MLFLOW_ARTIFACT_PATH
+from stages.models.Model import Model
+from utils.mlflow.experiments import mlflow_context
 
 
 class MLP(Model):
+
+    @mlflow_context
     def evaluate(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str,
                  params: Dict[str, int | float | str]) -> None:
         X_train, X_test, y_train, y_test = self.load_train_test(dataset, datacleaner, vectorizer)
 
-        experiment_name = dataset
-        run_name = f"{datacleaner}-{vectorizer}-{self.__class__.__name__}"
+        clf = MLPClassifier(**params)
 
-        mlflow.set_experiment(experiment_name)
+        logger.info("Fitting MLP Sklearn base classifier classifier...")
+        logger.info(f"Using param: {params}")
 
-        with mlflow.start_run(run_name=run_name):
-            clf = MLPClassifier(**params)
+        clf.fit(X_train, y_train)
 
-            logger.info("Fitting MLP Sklearn base classifier classifier...")
-            logger.info(f"Using param: {params}")
+        logger.info("Running predict...")
+        # y_pred: np.ndarray = clf.predict(X_test)
+        y_proba: np.ndarray = clf.predict_proba(X_test)
+        y_pred: np.ndarray = y_proba.argmax(axis=1)
 
-            clf.fit(X_train, y_train)
+        # Evaluation metrics
+        logger.info("Calculating metrics...")
+        accuracy = accuracy_score(y_test, y_pred)
+        precision = precision_score(y_test, y_pred, average="macro")
+        recall = recall_score(y_test, y_pred, average="macro")
+        f1 = f1_score(y_test, y_pred, average="macro")
+        roc_auc = roc_auc_score(
+            y_test, y_proba, multi_class="ovr", average="macro"
+        )
 
-            logger.info("Running predict...")
-            # y_pred: np.ndarray = clf.predict(X_test)
-            y_proba: np.ndarray = clf.predict_proba(X_test)
-            y_pred: np.ndarray = y_proba.argmax(axis=1)
+        metrics = {
+            "accuracy": accuracy,
+            "precision": precision,
+            "recall": recall,
+            "f1_score": f1,
+            "roc_auc": roc_auc
+        }
 
-            # Evaluation metrics
-            logger.info("Calculating metrics...")
-            accuracy = accuracy_score(y_test, y_pred)
-            precision = precision_score(y_test, y_pred, average="macro")
-            recall = recall_score(y_test, y_pred, average="macro")
-            f1 = f1_score(y_test, y_pred, average="macro")
-            roc_auc = roc_auc_score(
-                y_test, y_proba, multi_class="ovr", average="macro"
-            )
+        # Logging metrics
+        logger.info("Saving metrics...")
+        self.save_mlflow_results(params, metrics)
+        self.save_json_results(dataset, datacleaner, vectorizer, params_name, params, metrics=metrics)
 
-            metrics = {
-                "accuracy": accuracy,
-                "precision": precision,
-                "recall": recall,
-                "f1_score": f1,
-                "roc_auc": roc_auc
-            }
+        # Confusion Matrix
+        conf_matrix = confusion_matrix(y_test, y_pred)
+        self.plot_confusion_matrix(conf_matrix)
 
-            # Logging metrics
-            logger.info("Saving metrics...")
-            mlflow.log_params(params)
-            mlflow.log_metrics(metrics)
-            self.save_json_results(dataset, datacleaner, vectorizer, params_name, params, metrics=metrics)
+        # Plot training process
+        self.plot_training_process(clf)
 
-            mlflow.set_tags(
-                {
-                    "vectorizer": vectorizer,
-                    "datacleaner": datacleaner,
-                }
-            )
-
-            mlflow.sklearn.log_model(
-                sk_model=clf, artifact_path=MLFLOW_ARTIFACT_PATH
-            )
-
-            # Confusion Matrix
-            conf_matrix = confusion_matrix(y_test, y_pred)
-            self.plot_confusion_matrix(conf_matrix)
-
-            # Plot training process
-            self.plot_training_process(clf)
-
-            # Classification Report
-            logger.info(f"Result F1: {f1:.2f}")
+        # Classification Report
+        logger.info(f"Result F1: {f1:.2f}")
 
     @staticmethod
     def plot_confusion_matrix(conf_matrix):
@@ -88,7 +73,7 @@ class MLP(Model):
         ax.set_title('Confusion Matrix')
         ax.set_xlabel('Predicted labels')
         ax.set_ylabel('True labels')
-        mlflow.log_figure(fig, "confusion_matrix.png")
+        # mlflow.log_figure(fig, "confusion_matrix.png")
 
     @staticmethod
     def plot_training_process(clf: MLPClassifier):
@@ -103,10 +88,17 @@ class MLP(Model):
         ax.set_xlabel('Epoch')
         ax.set_ylabel('Loss')
         ax.legend()
-        mlflow.log_figure(fig, "training_process.png")
+        # mlflow.log_figure(fig, "training_process.png")
 
 
 if __name__ == "__main__":
     mlp = MLP()
-    mlp.evaluate("MsTweetsV2", "TweetNormalizationHashtagSkip",
-                 "CountVectorizer1000", "default", {"max_iter": 1})
+    os.chdir("../../")
+    os.environ["DVC_ROOT"] = "."
+    mlp.evaluate(
+        "RpTweetsXS",
+        "LemmatizerSM",
+        "CountVectorizer1000",
+        "default",
+        {"max_iter": 1}
+    )

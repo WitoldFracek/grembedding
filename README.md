@@ -19,8 +19,6 @@ NIGDY NIE USUWAMY NIC Z PARAMSÓW!
 1. Push **wszystkich** zmian na gita (wszystkich wszystkich nawet params.yaml)
 2. Bez zrobienia żadnych zmian (ABSOLUTNIE ŻADNYCH!) `dvc exp run`
 3. `git status`
-4. `dvc add mlruns`
-5. `dvc status --cloud` pownien pokazać zmiany w mlruns
 6. `dvc push`
 7. `git add .`
 8. `git commit -m "message"`

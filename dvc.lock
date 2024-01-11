@@ -12,35 +12,7 @@ stages:
       nfiles: 2
     - path: imports_validator/load/RpTweetsXS.txt
       hash: md5
-      md5: 60b591507e2e3fc03ec4c3a9682127e1
-      size: 17
-    - path: scripts/load.py
-      hash: md5
-      md5: 3d3448246f66fdc1646164c565eb0ea9
-      size: 764
-    - path: stages/dataloaders/RpTweetsXS.py
-      hash: md5
-      md5: adfd715cb625804159b54b42dca2dfc3
-      size: 453
-    outs:
-    - path: data/RpTweetsXS/raw
-      hash: md5
-      md5: e113ade2bcbe6f75573d15c35be547ad.dir
-      size: 2486565
-      nfiles: 2
-  load@1:
-    cmd:
-    - echo data/RpTweetsXS/raw/test.parquet
-    - python scripts/load.py "RpTweetsXS"
-    deps:
-    - path: datasets_raw/
-      hash: md5
-      md5: 2090ab1bf326723b4cf50ad6d48c4893.dir
-      size: 95361594
-      nfiles: 2
-    - path: imports_validator/load/RpTweetsXS.txt
-      hash: md5
-      md5: b4010d841170024d821d1ddd5b7d63de
+      md5: 7b767ee74a09d2878dc0d5600e9b0477
       size: 18
     - path: scripts/load.py
       hash: md5
@@ -53,8 +25,36 @@ stages:
     outs:
     - path: data/RpTweetsXS/raw
       hash: md5
-      md5: 1c6ee185f234607f946211a0157c6b38.dir
-      size: 3828190
+      md5: 36d68669293771d83dde3710d5617f23.dir
+      size: 2486565
+      nfiles: 2
+  load@1:
+    cmd:
+    - echo data/MsTweetsV2/raw/test.parquet
+    - python scripts/load.py "MsTweetsV2"
+    deps:
+    - path: datasets_raw/
+      hash: md5
+      md5: 2090ab1bf326723b4cf50ad6d48c4893.dir
+      size: 95361594
+      nfiles: 2
+    - path: imports_validator/load/MsTweetsV2.txt
+      hash: md5
+      md5: ad21b4fdb8eaa293074192f4727da859
+      size: 18
+    - path: scripts/load.py
+      hash: md5
+      md5: 3d3448246f66fdc1646164c565eb0ea9
+      size: 764
+    - path: stages/dataloaders/MsTweetsV2.py
+      hash: md5
+      md5: 6ace308d6f89b8ddb120374eb18271fe
+      size: 2513
+    outs:
+    - path: data/MsTweetsV2/raw
+      hash: md5
+      md5: 078f0cdf757091df6de8b7152854c2ba.dir
+      size: 10010152
       nfiles: 2
   clean@0:
     cmd:
@@ -62,13 +62,13 @@ stages:
     deps:
     - path: data/RpTweetsXS/raw
       hash: md5
-      md5: e113ade2bcbe6f75573d15c35be547ad.dir
+      md5: 36d68669293771d83dde3710d5617f23.dir
       size: 2486565
       nfiles: 2
     - path: imports_validator/clean/LemmatizerSM.txt
       hash: md5
-      md5: 1636e1a684c505973669c96452d1fe59
-      size: 18
+      md5: 7a0f2d09d37e1b82e11f7de36d5e4ebe
+      size: 17
     - path: scripts/clean.py
       hash: md5
       md5: a35073fb8ed6b407b4d09d0c795ba62e
@@ -80,7 +80,7 @@ stages:
     outs:
     - path: data/RpTweetsXS/LemmatizerSM
       hash: md5
-      md5: a13a1d005b0c16dad2e5ba38ab41102f.dir
+      md5: de3e5d35c33744700b9288812e63e342.dir
       size: 2016768
       nfiles: 2
   vectorize@0:
@@ -88,12 +88,12 @@ stages:
     deps:
     - path: data/RpTweetsXS/LemmatizerSM
       hash: md5
-      md5: a13a1d005b0c16dad2e5ba38ab41102f.dir
+      md5: de3e5d35c33744700b9288812e63e342.dir
       size: 2016768
       nfiles: 2
     - path: imports_validator/vectorize/CountVectorizer1000.txt
       hash: md5
-      md5: 45c31e8b0ae5a8c8be3618d88e854e49
+      md5: fa7596ae68de75f2fb15543c5dd4f445
       size: 18
     - path: scripts/vectorize.py
       hash: md5
@@ -106,22 +106,57 @@ stages:
     outs:
     - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer1000
       hash: md5
-      md5: e3441420c27eaff89720fa8d2ada8dce.dir
+      md5: fa48c5b02d06f01894ce7ccf38d9431a.dir
       size: 718452
       nfiles: 1
   evaluate@data0-model0:
+    cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer1000"
+      "SVC" "SVC1"
+    deps:
+    - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer1000
+      hash: md5
+      md5: fa48c5b02d06f01894ce7ccf38d9431a.dir
+      size: 718452
+      nfiles: 1
+    - path: imports_validator/evaluate/SVC.txt
+      hash: md5
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC1.yaml
+      hash: md5
+      md5: 4d4566ceb63190a6b78049a19328cb4c
+      size: 5
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/SVC.py
+      hash: md5
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
+    outs:
+    - path: mlruns_store/RpTweetsXS/LemmatizerSM/CountVectorizer1000/SVC/SVC1
+      hash: md5
+      md5: 2b6d43f21250700ec78f74afef910242.dir
+      size: 851379
+      nfiles: 47
+    - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer1000/SVC/SVC1.json
+      hash: md5
+      md5: 9ea3a412b3bda8ed5c5c9967c68fb6dc
+      size: 166
+  evaluate@data0-model1:
     cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer1000"
       "SVC" "SVC2"
     deps:
     - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer1000
       hash: md5
-      md5: e3441420c27eaff89720fa8d2ada8dce.dir
+      md5: fa48c5b02d06f01894ce7ccf38d9431a.dir
       size: 718452
       nfiles: 1
     - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: dd2a7825bfac55af0fed0518038279ce
-      size: 18
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
     - path: params/SVC2.yaml
       hash: md5
       md5: dcc2e18360f768734743656c9a4ef885
@@ -132,56 +167,31 @@ stages:
       size: 1058
     - path: stages/models/SVC.py
       hash: md5
-      md5: c0dd212ee127f86d2220147521bb38ad
-      size: 1742
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
+    - path: mlruns_store/RpTweetsXS/LemmatizerSM/CountVectorizer1000/SVC/SVC2
+      hash: md5
+      md5: 0432ea5bb0038eadf7f582d382e60fd3.dir
+      size: 852690
+      nfiles: 47
     - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer1000/SVC/SVC2.json
       hash: md5
       md5: 15a77ca4809668e766f0c6d6ed253638
       size: 166
-  evaluate@data0-model1:
-    cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer1000"
-      "SVC" "SVC3"
-    deps:
-    - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer1000
-      hash: md5
-      md5: e3441420c27eaff89720fa8d2ada8dce.dir
-      size: 718452
-      nfiles: 1
-    - path: imports_validator/evaluate/SVC.txt
-      hash: md5
-      md5: dd2a7825bfac55af0fed0518038279ce
-      size: 18
-    - path: params/SVC3.yaml
-      hash: md5
-      md5: f4a38f6ad011583db9702ff247258b90
-      size: 4
-    - path: scripts/evaluate.py
-      hash: md5
-      md5: ea49b7cebc0803f03157ca6696987f14
-      size: 1058
-    - path: stages/models/SVC.py
-      hash: md5
-      md5: c0dd212ee127f86d2220147521bb38ad
-      size: 1742
-    outs:
-    - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer1000/SVC/SVC3.json
-      hash: md5
-      md5: 06dba9e6177ca87dce671a04cd38da23
-      size: 167
   clean@1:
     cmd:
     - python scripts/clean.py "RpTweetsXS" "TweetNormalization"
     deps:
     - path: data/RpTweetsXS/raw
       hash: md5
-      md5: e113ade2bcbe6f75573d15c35be547ad.dir
+      md5: 36d68669293771d83dde3710d5617f23.dir
       size: 2486565
       nfiles: 2
     - path: imports_validator/clean/TweetNormalization.txt
       hash: md5
-      md5: 7050a60d80f15b4b7d48634efe8a511f
-      size: 18
+      md5: c6bc6e68d733321afea27bca803d5fcc
+      size: 17
     - path: scripts/clean.py
       hash: md5
       md5: a35073fb8ed6b407b4d09d0c795ba62e
@@ -193,7 +203,7 @@ stages:
     outs:
     - path: data/RpTweetsXS/TweetNormalization
       hash: md5
-      md5: 899f84e50cdd8ea31f18ddf37ee78f99.dir
+      md5: e87bf3b68e782466e7b8726a32f890c0.dir
       size: 2059609
       nfiles: 2
   vectorize@1:
@@ -201,12 +211,12 @@ stages:
     deps:
     - path: data/RpTweetsXS/TweetNormalization
       hash: md5
-      md5: 899f84e50cdd8ea31f18ddf37ee78f99.dir
+      md5: e87bf3b68e782466e7b8726a32f890c0.dir
       size: 2059609
       nfiles: 2
     - path: imports_validator/vectorize/CountVectorizer1000.txt
       hash: md5
-      md5: 45c31e8b0ae5a8c8be3618d88e854e49
+      md5: fa7596ae68de75f2fb15543c5dd4f445
       size: 18
     - path: scripts/vectorize.py
       hash: md5
@@ -219,185 +229,209 @@ stages:
     outs:
     - path: data/RpTweetsXS/TweetNormalization_CountVectorizer1000
       hash: md5
-      md5: 639751bae14770a45ad819902cd58a37.dir
+      md5: 9ed3d49f1387658f33cee54f025fd443.dir
       size: 867686
       nfiles: 1
   evaluate@data1-model0:
     cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "CountVectorizer1000"
-      "SVC" "SVC2"
+      "SVC" "SVC1"
     deps:
     - path: data/RpTweetsXS/TweetNormalization_CountVectorizer1000
       hash: md5
-      md5: 639751bae14770a45ad819902cd58a37.dir
+      md5: 9ed3d49f1387658f33cee54f025fd443.dir
       size: 867686
       nfiles: 1
     - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: dd2a7825bfac55af0fed0518038279ce
-      size: 18
-    - path: params/SVC2.yaml
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC1.yaml
       hash: md5
-      md5: dcc2e18360f768734743656c9a4ef885
-      size: 4
+      md5: 4d4566ceb63190a6b78049a19328cb4c
+      size: 5
     - path: scripts/evaluate.py
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
     - path: stages/models/SVC.py
       hash: md5
-      md5: c0dd212ee127f86d2220147521bb38ad
-      size: 1742
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
-    - path: results/RpTweetsXS/TweetNormalization/CountVectorizer1000/SVC/SVC2.json
+    - path: mlruns_store/RpTweetsXS/TweetNormalization/CountVectorizer1000/SVC/SVC1
       hash: md5
-      md5: f0dc6cc4980aeeb3dae3fa0f4cff265f
+      md5: 76745958cd65220833d7bf02b56902b4.dir
+      size: 850327
+      nfiles: 47
+    - path: results/RpTweetsXS/TweetNormalization/CountVectorizer1000/SVC/SVC1.json
+      hash: md5
+      md5: fcb2fbcb31882b5d0c94a1944c55c95a
       size: 173
   vectorize@2:
     cmd: python scripts/vectorize.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer5000"
     deps:
     - path: data/RpTweetsXS/LemmatizerSM
       hash: md5
-      md5: a13a1d005b0c16dad2e5ba38ab41102f.dir
+      md5: de3e5d35c33744700b9288812e63e342.dir
       size: 2016768
       nfiles: 2
     - path: imports_validator/vectorize/CountVectorizer5000.txt
       hash: md5
-      md5: ccbea2105f3af73c2fffa7e33c3f2868
+      md5: 10d4aaae582f6698f0b67b6dc02e9d25
+      size: 17
+    - path: scripts/vectorize.py
+      hash: md5
+      md5: 313deb9b0c0dc175f52248c04ddc2330
+      size: 798
+    - path: stages/vectorizers/CountVectorizer5000.py
+      hash: md5
+      md5: 46335d26c3afcc23f7e7919b3b15e9ff
+      size: 183
+    outs:
+    - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer5000
+      hash: md5
+      md5: 687dc9ab93f104cd997bbfb98f46daeb.dir
+      size: 1859564
+      nfiles: 1
+  vectorize@3:
+    cmd: python scripts/vectorize.py "MsTweetsV2" "TweetNormalizationHashtagSkip"
+      "CountVectorizer1000"
+    deps:
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip
+      hash: md5
+      md5: 69ddc052efe5aa58eaf9e088bfcb3a4a.dir
+      size: 8140655
+      nfiles: 2
+    - path: imports_validator/vectorize/CountVectorizer1000.txt
+      hash: md5
+      md5: fa7596ae68de75f2fb15543c5dd4f445
       size: 18
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
       size: 798
-    - path: stages/vectorizers/CountVectorizer5000.py
+    - path: stages/vectorizers/CountVectorizer1000.py
       hash: md5
-      md5: 46335d26c3afcc23f7e7919b3b15e9ff
+      md5: 52614696ad9ffe36c66ea7aa91c91dc2
       size: 183
     outs:
-    - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer5000
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_CountVectorizer1000
       hash: md5
-      md5: 65c68a7fc24eae3647abf67c81394560.dir
-      size: 1859564
+      md5: aae95d50927870dcaaa11ca2ebb6cf7e.dir
+      size: 3267474
       nfiles: 1
-  vectorize@3:
-    cmd: python scripts/vectorize.py "RpTweetsXS" "TweetNormalization" "CountVectorizer5000"
-    deps:
-    - path: data/RpTweetsXS/TweetNormalization
-      hash: md5
-      md5: 83601e77b2e0955595264527509cebf8.dir
-      size: 3253771
-      nfiles: 2
-    - path: scripts/vectorize.py
-      hash: md5
-      md5: 313deb9b0c0dc175f52248c04ddc2330
-      size: 798
-    - path: stages/vectorizers/CountVectorizer5000.py
-      hash: md5
-      md5: 46335d26c3afcc23f7e7919b3b15e9ff
-      size: 183
-    - path: stages/vectorizers/Vectorizer.py
-      hash: md5
-      md5: 8f9b348cc065e03e61bc7cf543c6a64b
-      size: 2288
-    outs:
-    - path: data/RpTweetsXS/TweetNormalization_CountVectorizer5000
-      hash: md5
-      md5: 408d5d125cfe7a628b6ee95fe07efd4f.dir
-      size: 1071534776
-      nfiles: 4
   evaluate@data2-model0:
     cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer5000"
-      "SVC" "SVC2"
+      "SVC" "SVC1"
     deps:
     - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer5000
       hash: md5
-      md5: 65c68a7fc24eae3647abf67c81394560.dir
+      md5: 687dc9ab93f104cd997bbfb98f46daeb.dir
       size: 1859564
       nfiles: 1
     - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: dd2a7825bfac55af0fed0518038279ce
-      size: 18
-    - path: params/SVC2.yaml
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC1.yaml
       hash: md5
-      md5: dcc2e18360f768734743656c9a4ef885
-      size: 4
+      md5: 4d4566ceb63190a6b78049a19328cb4c
+      size: 5
     - path: scripts/evaluate.py
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
     - path: stages/models/SVC.py
       hash: md5
-      md5: c0dd212ee127f86d2220147521bb38ad
-      size: 1742
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
-    - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer5000/SVC/SVC2.json
+    - path: mlruns_store/RpTweetsXS/LemmatizerSM/CountVectorizer5000/SVC/SVC1
       hash: md5
-      md5: c0d99d49a14ee7ee8893c7e1355dd76a
+      md5: 70ccd95732af9c30d019957ddebdd8e7.dir
+      size: 4050956
+      nfiles: 47
+    - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer5000/SVC/SVC1.json
+      hash: md5
+      md5: 32ef9223eaed9dd0e89857138d220918
       size: 167
   evaluate@data3-model0:
-    cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "CountVectorizer5000"
-      "SVC" "SVC3"
+    cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "CountVectorizer1000"
+      "SVC" "SVC1"
     deps:
-    - path: data/RpTweetsXS/TweetNormalization_CountVectorizer5000
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_CountVectorizer1000
       hash: md5
-      md5: 408d5d125cfe7a628b6ee95fe07efd4f.dir
-      size: 1071534776
-      nfiles: 4
-    - path: params/SVC3.yaml
+      md5: aae95d50927870dcaaa11ca2ebb6cf7e.dir
+      size: 3267474
+      nfiles: 1
+    - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: f4a38f6ad011583db9702ff247258b90
-      size: 4
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC1.yaml
+      hash: md5
+      md5: 4d4566ceb63190a6b78049a19328cb4c
+      size: 5
     - path: scripts/evaluate.py
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
-    - path: stages/models/Model.py
-      hash: md5
-      md5: 198cfbaa11881b74ecb7116946d89f9c
-      size: 3249
     - path: stages/models/SVC.py
       hash: md5
-      md5: 83effad05bcb21943fb1429553d87d76
-      size: 1713
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
-    - path: results/RpTweetsXS_TweetNormalization_CountVectorizer5000_SVC_SVC3.json
+    - path: 
+        mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer1000/SVC/SVC1
       hash: md5
-      md5: bfc2c4c4094c0ad02df8f103f80dbbd3
-      size: 172
+      md5: da6944a1de40ca5f851bb153231578d4.dir
+      size: 847718
+      nfiles: 47
+    - path: 
+        results/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer1000/SVC/SVC1.json
+      hash: md5
+      md5: 8e539ea9743c6c25caf3b1fcff2d2fc4
+      size: 184
   vectorize@4:
-    cmd: python scripts/vectorize.py "RpTweetsXS" "LemmatizerSM" "TfidfVectorizer1000"
+    cmd: python scripts/vectorize.py "MsTweetsV2" "TweetNormalizationHashtagSkip"
+      "CountVectorizer5000"
     deps:
-    - path: data/RpTweetsXS/LemmatizerSM
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip
       hash: md5
-      md5: 5f405c9326ac31fdf946bf7493bc1341.dir
-      size: 3070222
+      md5: 69ddc052efe5aa58eaf9e088bfcb3a4a.dir
+      size: 8140655
       nfiles: 2
+    - path: imports_validator/vectorize/CountVectorizer5000.txt
+      hash: md5
+      md5: 10d4aaae582f6698f0b67b6dc02e9d25
+      size: 17
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
       size: 798
-    - path: stages/vectorizers/TfidfVectorizer1000.py
+    - path: stages/vectorizers/CountVectorizer5000.py
       hash: md5
-      md5: 68cd77ee60169f068587a4e7bbaabdce
-      size: 252
-    - path: stages/vectorizers/Vectorizer.py
-      hash: md5
-      md5: 8f9b348cc065e03e61bc7cf543c6a64b
-      size: 2288
+      md5: 46335d26c3afcc23f7e7919b3b15e9ff
+      size: 183
     outs:
-    - path: data/RpTweetsXS/LemmatizerSM_TfidfVectorizer1000
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_CountVectorizer5000
       hash: md5
-      md5: 3f6e81c6c422afd2d62afc6422c9b8bc.dir
-      size: 214478776
-      nfiles: 4
+      md5: 4b866208d010ae338c9a3365c4a3931c.dir
+      size: 7565280
+      nfiles: 1
   vectorize@5:
-    cmd: python scripts/vectorize.py "RpTweetsXS" "TweetNormalization" "TfidfVectorizer1000"
+    cmd: python scripts/vectorize.py "MsTweetsV2" "TweetNormalizationHashtagSkip"
+      "TfidfVectorizer1000"
     deps:
-    - path: data/RpTweetsXS/TweetNormalization
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip
       hash: md5
-      md5: 83601e77b2e0955595264527509cebf8.dir
-      size: 3253771
+      md5: 69ddc052efe5aa58eaf9e088bfcb3a4a.dir
+      size: 8140655
       nfiles: 2
+    - path: imports_validator/vectorize/TfidfVectorizer1000.txt
+      hash: md5
+      md5: 0e30acae35d64a240545520e7395209b
+      size: 18
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
@@ -406,24 +440,25 @@ stages:
       hash: md5
       md5: 68cd77ee60169f068587a4e7bbaabdce
       size: 252
-    - path: stages/vectorizers/Vectorizer.py
-      hash: md5
-      md5: 8f9b348cc065e03e61bc7cf543c6a64b
-      size: 2288
     outs:
-    - path: data/RpTweetsXS/TweetNormalization_TfidfVectorizer1000
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_TfidfVectorizer1000
       hash: md5
-      md5: 49f1c2a34e3103c05afb2ec370abbad1.dir
-      size: 214478776
-      nfiles: 4
+      md5: de24f4fb97320115fd15b7d79dfb0ef4.dir
+      size: 10489890
+      nfiles: 1
   vectorize@6:
-    cmd: python scripts/vectorize.py "RpTweetsXS" "LemmatizerSM" "TfidfVectorizer5000"
+    cmd: python scripts/vectorize.py "MsTweetsV2" "TweetNormalizationHashtagSkip"
+      "TfidfVectorizer5000"
     deps:
-    - path: data/RpTweetsXS/LemmatizerSM
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip
       hash: md5
-      md5: 5f405c9326ac31fdf946bf7493bc1341.dir
-      size: 3070222
+      md5: 69ddc052efe5aa58eaf9e088bfcb3a4a.dir
+      size: 8140655
       nfiles: 2
+    - path: imports_validator/vectorize/TfidfVectorizer5000.txt
+      hash: md5
+      md5: 689dbb6da8ad7714bbf9ac9509ff06e5
+      size: 18
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
@@ -432,16 +467,12 @@ stages:
       hash: md5
       md5: a262d3b84d8d9928c9cef04eac811201
       size: 252
-    - path: stages/vectorizers/Vectorizer.py
-      hash: md5
-      md5: 8f9b348cc065e03e61bc7cf543c6a64b
-      size: 2288
     outs:
-    - path: data/RpTweetsXS/LemmatizerSM_TfidfVectorizer5000
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_TfidfVectorizer5000
       hash: md5
-      md5: 5d3ad27f7a2fc14b8e943b2656dbe8e9.dir
-      size: 1071534776
-      nfiles: 4
+      md5: 397b9e47e1cbca601658f751b4b96840.dir
+      size: 18137919
+      nfiles: 1
   vectorize@7:
     cmd: python scripts/vectorize.py "RpTweetsXS" "TweetNormalization" "TfidfVectorizer5000"
     deps:
@@ -469,95 +500,116 @@ stages:
       size: 1071534776
       nfiles: 4
   evaluate@data4-model0:
-    cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "TfidfVectorizer1000"
-      "SVC" "SVC3"
+    cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "CountVectorizer5000"
+      "SVC" "SVC1"
     deps:
-    - path: data/RpTweetsXS/LemmatizerSM_TfidfVectorizer1000
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_CountVectorizer5000
       hash: md5
-      md5: 3f6e81c6c422afd2d62afc6422c9b8bc.dir
-      size: 214478776
-      nfiles: 4
-    - path: params/SVC3.yaml
+      md5: 4b866208d010ae338c9a3365c4a3931c.dir
+      size: 7565280
+      nfiles: 1
+    - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: f4a38f6ad011583db9702ff247258b90
-      size: 4
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC1.yaml
+      hash: md5
+      md5: 4d4566ceb63190a6b78049a19328cb4c
+      size: 5
     - path: scripts/evaluate.py
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
-    - path: stages/models/Model.py
-      hash: md5
-      md5: 198cfbaa11881b74ecb7116946d89f9c
-      size: 3249
     - path: stages/models/SVC.py
       hash: md5
-      md5: 83effad05bcb21943fb1429553d87d76
-      size: 1713
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
-    - path: results/RpTweetsXS_LemmatizerSM_TfidfVectorizer1000_SVC_SVC3.json
+    - path: 
+        mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer5000/SVC/SVC1
       hash: md5
-      md5: c9a6a81c2a258d962340c1ea19a291c6
-      size: 167
+      md5: 0dbdd6e4aaa0e5c8ea5d55aba9173777.dir
+      size: 4046934
+      nfiles: 47
+    - path: 
+        results/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer5000/SVC/SVC1.json
+      hash: md5
+      md5: c8f9c766ee1e817cc42792d8c7ed3fb0
+      size: 184
   evaluate@data5-model0:
-    cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "TfidfVectorizer1000"
-      "SVC" "SVC3"
+    cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "TfidfVectorizer1000"
+      "SVC" "SVC1"
     deps:
-    - path: data/RpTweetsXS/TweetNormalization_TfidfVectorizer1000
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_TfidfVectorizer1000
       hash: md5
-      md5: 49f1c2a34e3103c05afb2ec370abbad1.dir
-      size: 214478776
-      nfiles: 4
-    - path: params/SVC3.yaml
+      md5: de24f4fb97320115fd15b7d79dfb0ef4.dir
+      size: 10489890
+      nfiles: 1
+    - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: f4a38f6ad011583db9702ff247258b90
-      size: 4
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC1.yaml
+      hash: md5
+      md5: 4d4566ceb63190a6b78049a19328cb4c
+      size: 5
     - path: scripts/evaluate.py
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
-    - path: stages/models/Model.py
-      hash: md5
-      md5: 198cfbaa11881b74ecb7116946d89f9c
-      size: 3249
     - path: stages/models/SVC.py
       hash: md5
-      md5: 83effad05bcb21943fb1429553d87d76
-      size: 1713
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
-    - path: results/RpTweetsXS_TweetNormalization_TfidfVectorizer1000_SVC_SVC3.json
+    - path: 
+        mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer1000/SVC/SVC1
       hash: md5
-      md5: 1e320791bb13af1796976e768529073f
-      size: 173
+      md5: 81b2ce28cf40bf8fbc2e186f0f9e2d54.dir
+      size: 847656
+      nfiles: 47
+    - path: 
+        results/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer1000/SVC/SVC1.json
+      hash: md5
+      md5: c86bcfffaf55f3b2160813158bafb5a5
+      size: 184
   evaluate@data6-model0:
-    cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "TfidfVectorizer5000"
-      "SVC" "SVC3"
+    cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "TfidfVectorizer5000"
+      "SVC" "SVC1"
     deps:
-    - path: data/RpTweetsXS/LemmatizerSM_TfidfVectorizer5000
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_TfidfVectorizer5000
       hash: md5
-      md5: 5d3ad27f7a2fc14b8e943b2656dbe8e9.dir
-      size: 1071534776
-      nfiles: 4
-    - path: params/SVC3.yaml
+      md5: 397b9e47e1cbca601658f751b4b96840.dir
+      size: 18137919
+      nfiles: 1
+    - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: f4a38f6ad011583db9702ff247258b90
-      size: 4
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC1.yaml
+      hash: md5
+      md5: 4d4566ceb63190a6b78049a19328cb4c
+      size: 5
     - path: scripts/evaluate.py
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
-    - path: stages/models/Model.py
-      hash: md5
-      md5: 198cfbaa11881b74ecb7116946d89f9c
-      size: 3249
     - path: stages/models/SVC.py
       hash: md5
-      md5: 83effad05bcb21943fb1429553d87d76
-      size: 1713
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
-    - path: results/RpTweetsXS_LemmatizerSM_TfidfVectorizer5000_SVC_SVC3.json
+    - path: 
+        mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer5000/SVC/SVC1
       hash: md5
-      md5: 1e30ac036399a4b29be143a7297b8d4c
-      size: 167
+      md5: eb2e80bee73b2300dfd04a6dfeff7a93.dir
+      size: 4048036
+      nfiles: 47
+    - path: 
+        results/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer5000/SVC/SVC1.json
+      hash: md5
+      md5: 683843a610f9155e857106b4a984f5d8
+      size: 184
   evaluate@data7-model0:
     cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "TfidfVectorizer5000"
       "SVC" "SVC3"
@@ -590,20 +642,20 @@ stages:
       size: 173
   evaluate@data1-model1:
     cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "CountVectorizer1000"
-      "SVC" "SVC3"
+      "SVC" "SVC2"
     deps:
     - path: data/RpTweetsXS/TweetNormalization_CountVectorizer1000
       hash: md5
-      md5: 639751bae14770a45ad819902cd58a37.dir
+      md5: 9ed3d49f1387658f33cee54f025fd443.dir
       size: 867686
       nfiles: 1
     - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: dd2a7825bfac55af0fed0518038279ce
-      size: 18
-    - path: params/SVC3.yaml
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC2.yaml
       hash: md5
-      md5: f4a38f6ad011583db9702ff247258b90
+      md5: dcc2e18360f768734743656c9a4ef885
       size: 4
     - path: scripts/evaluate.py
       hash: md5
@@ -611,29 +663,34 @@ stages:
       size: 1058
     - path: stages/models/SVC.py
       hash: md5
-      md5: c0dd212ee127f86d2220147521bb38ad
-      size: 1742
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
-    - path: results/RpTweetsXS/TweetNormalization/CountVectorizer1000/SVC/SVC3.json
+    - path: mlruns_store/RpTweetsXS/TweetNormalization/CountVectorizer1000/SVC/SVC2
       hash: md5
-      md5: eafb89b596830ab82e75b97ea03e10d5
+      md5: cfb00d6006e23e324da2217e0a7a01ce.dir
+      size: 851838
+      nfiles: 47
+    - path: results/RpTweetsXS/TweetNormalization/CountVectorizer1000/SVC/SVC2.json
+      hash: md5
+      md5: f0dc6cc4980aeeb3dae3fa0f4cff265f
       size: 173
   evaluate@data2-model1:
     cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer5000"
-      "SVC" "SVC3"
+      "SVC" "SVC2"
     deps:
     - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer5000
       hash: md5
-      md5: 65c68a7fc24eae3647abf67c81394560.dir
+      md5: 687dc9ab93f104cd997bbfb98f46daeb.dir
       size: 1859564
       nfiles: 1
     - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: dd2a7825bfac55af0fed0518038279ce
-      size: 18
-    - path: params/SVC3.yaml
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC2.yaml
       hash: md5
-      md5: f4a38f6ad011583db9702ff247258b90
+      md5: dcc2e18360f768734743656c9a4ef885
       size: 4
     - path: scripts/evaluate.py
       hash: md5
@@ -641,135 +698,166 @@ stages:
       size: 1058
     - path: stages/models/SVC.py
       hash: md5
-      md5: c0dd212ee127f86d2220147521bb38ad
-      size: 1742
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
-    - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer5000/SVC/SVC3.json
+    - path: mlruns_store/RpTweetsXS/LemmatizerSM/CountVectorizer5000/SVC/SVC2
       hash: md5
-      md5: 3026d942642cb3c2d3c8a8b1a8705b1f
+      md5: a6048f9728aaef38d2cfb7b1959be069.dir
+      size: 4052961
+      nfiles: 47
+    - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer5000/SVC/SVC2.json
+      hash: md5
+      md5: c0d99d49a14ee7ee8893c7e1355dd76a
       size: 167
   evaluate@data3-model1:
-    cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "CountVectorizer5000"
-      "LogisticRegression" "LR1"
+    cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "CountVectorizer1000"
+      "SVC" "SVC2"
     deps:
-    - path: data/RpTweetsXS/TweetNormalization_CountVectorizer5000
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_CountVectorizer1000
       hash: md5
-      md5: 408d5d125cfe7a628b6ee95fe07efd4f.dir
-      size: 1071534776
-      nfiles: 4
-    - path: params/LR1.yaml
+      md5: aae95d50927870dcaaa11ca2ebb6cf7e.dir
+      size: 3267474
+      nfiles: 1
+    - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: 575940047794a5dc6e126056daa3ba96
-      size: 67
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC2.yaml
+      hash: md5
+      md5: dcc2e18360f768734743656c9a4ef885
+      size: 4
     - path: scripts/evaluate.py
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
-    - path: stages/models/LogisticRegression.py
+    - path: stages/models/SVC.py
       hash: md5
-      md5: 95623765423b8a1e454d0874b59abbb1
-      size: 3746
-    - path: stages/models/Model.py
-      hash: md5
-      md5: 198cfbaa11881b74ecb7116946d89f9c
-      size: 3249
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
     - path: 
-        results/RpTweetsXS_TweetNormalization_CountVectorizer5000_LogisticRegression_LR1.json
+        mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer1000/SVC/SVC2
       hash: md5
-      md5: 60fb6faba9f0cdb732f66a7013a8b7d4
-      size: 353
+      md5: 567a14c55544bebdac528a181d8035fe.dir
+      size: 848639
+      nfiles: 47
+    - path: 
+        results/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer1000/SVC/SVC2.json
+      hash: md5
+      md5: c98a5134cb5dfdfaea8d02ba9037ddb7
+      size: 184
   evaluate@data4-model1:
-    cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "TfidfVectorizer1000"
-      "LogisticRegression" "LR1"
+    cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "CountVectorizer5000"
+      "SVC" "SVC2"
     deps:
-    - path: data/RpTweetsXS/LemmatizerSM_TfidfVectorizer1000
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_CountVectorizer5000
       hash: md5
-      md5: 3f6e81c6c422afd2d62afc6422c9b8bc.dir
-      size: 214478776
-      nfiles: 4
-    - path: params/LR1.yaml
+      md5: 4b866208d010ae338c9a3365c4a3931c.dir
+      size: 7565280
+      nfiles: 1
+    - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: 575940047794a5dc6e126056daa3ba96
-      size: 67
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC2.yaml
+      hash: md5
+      md5: dcc2e18360f768734743656c9a4ef885
+      size: 4
     - path: scripts/evaluate.py
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
-    - path: stages/models/LogisticRegression.py
+    - path: stages/models/SVC.py
       hash: md5
-      md5: 95623765423b8a1e454d0874b59abbb1
-      size: 3746
-    - path: stages/models/Model.py
-      hash: md5
-      md5: 198cfbaa11881b74ecb7116946d89f9c
-      size: 3249
-    outs:
-    - path: results/RpTweetsXS_LemmatizerSM_TfidfVectorizer1000_LogisticRegression_LR1.json
-      hash: md5
-      md5: c12956bc39489ec180d296bfe3c9f9ad
-      size: 348
-  evaluate@data5-model1:
-    cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "TfidfVectorizer1000"
-      "LogisticRegression" "LR1"
-    deps:
-    - path: data/RpTweetsXS/TweetNormalization_TfidfVectorizer1000
-      hash: md5
-      md5: 49f1c2a34e3103c05afb2ec370abbad1.dir
-      size: 214478776
-      nfiles: 4
-    - path: params/LR1.yaml
-      hash: md5
-      md5: 575940047794a5dc6e126056daa3ba96
-      size: 67
-    - path: scripts/evaluate.py
-      hash: md5
-      md5: ea49b7cebc0803f03157ca6696987f14
-      size: 1058
-    - path: stages/models/LogisticRegression.py
-      hash: md5
-      md5: 95623765423b8a1e454d0874b59abbb1
-      size: 3746
-    - path: stages/models/Model.py
-      hash: md5
-      md5: 198cfbaa11881b74ecb7116946d89f9c
-      size: 3249
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
     - path: 
-        results/RpTweetsXS_TweetNormalization_TfidfVectorizer1000_LogisticRegression_LR1.json
+        mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer5000/SVC/SVC2
       hash: md5
-      md5: 2458a1a74c491e8744e625f4565bb377
-      size: 353
-  evaluate@data6-model1:
-    cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "TfidfVectorizer5000"
-      "LogisticRegression" "LR1"
+      md5: 1a8a6bf5ee5498c948aeb3e24efa0172.dir
+      size: 4048145
+      nfiles: 47
+    - path: 
+        results/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer5000/SVC/SVC2.json
+      hash: md5
+      md5: d058bf81358f71e810c35ceb75b7ffbd
+      size: 184
+  evaluate@data5-model1:
+    cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "TfidfVectorizer1000"
+      "SVC" "SVC2"
     deps:
-    - path: data/RpTweetsXS/LemmatizerSM_TfidfVectorizer5000
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_TfidfVectorizer1000
       hash: md5
-      md5: 5d3ad27f7a2fc14b8e943b2656dbe8e9.dir
-      size: 1071534776
-      nfiles: 4
-    - path: params/LR1.yaml
+      md5: de24f4fb97320115fd15b7d79dfb0ef4.dir
+      size: 10489890
+      nfiles: 1
+    - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: 575940047794a5dc6e126056daa3ba96
-      size: 67
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC2.yaml
+      hash: md5
+      md5: dcc2e18360f768734743656c9a4ef885
+      size: 4
     - path: scripts/evaluate.py
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
-    - path: stages/models/LogisticRegression.py
+    - path: stages/models/SVC.py
       hash: md5
-      md5: 95623765423b8a1e454d0874b59abbb1
-      size: 3746
-    - path: stages/models/Model.py
-      hash: md5
-      md5: 198cfbaa11881b74ecb7116946d89f9c
-      size: 3249
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
-    - path: results/RpTweetsXS_LemmatizerSM_TfidfVectorizer5000_LogisticRegression_LR1.json
+    - path: 
+        mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer1000/SVC/SVC2
       hash: md5
-      md5: 488a3b4e5c036aaff2eb838fd16e6dfc
-      size: 348
+      md5: 553200658fd07e163f50fa784a0917f5.dir
+      size: 842398
+      nfiles: 47
+    - path: 
+        results/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer1000/SVC/SVC2.json
+      hash: md5
+      md5: 09d433d45f3a4f4088fde4d2ce7b8be5
+      size: 184
+  evaluate@data6-model1:
+    cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "TfidfVectorizer5000"
+      "SVC" "SVC2"
+    deps:
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_TfidfVectorizer5000
+      hash: md5
+      md5: 397b9e47e1cbca601658f751b4b96840.dir
+      size: 18137919
+      nfiles: 1
+    - path: imports_validator/evaluate/SVC.txt
+      hash: md5
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC2.yaml
+      hash: md5
+      md5: dcc2e18360f768734743656c9a4ef885
+      size: 4
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/SVC.py
+      hash: md5
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
+    outs:
+    - path: 
+        mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer5000/SVC/SVC2
+      hash: md5
+      md5: f18c1ef9a4843976360b3450f40a49c5.dir
+      size: 4042402
+      nfiles: 47
+    - path: 
+        results/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer5000/SVC/SVC2.json
+      hash: md5
+      md5: abd6565957e72132c6b80582030ecbc6
+      size: 184
   evaluate@data7-model1:
     cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "TfidfVectorizer5000"
       "LogisticRegression" "LR1"
@@ -831,57 +919,57 @@ stages:
       nfiles: 2
   clean@2:
     cmd:
-    - python scripts/clean.py "RpTweets" "TweetNormalization"
+    - python scripts/clean.py "MsTweetsV2" "TweetNormalizationHashtagSkip"
     deps:
-    - path: data/RpTweets/raw
+    - path: data/MsTweetsV2/raw
       hash: md5
-      md5: b20e8316a1f753d02544a2631993b8f8.dir
-      size: 37847754
+      md5: 078f0cdf757091df6de8b7152854c2ba.dir
+      size: 10010152
       nfiles: 2
+    - path: imports_validator/clean/TweetNormalizationHashtagSkip.txt
+      hash: md5
+      md5: 24c7fb590fa005dc1e86283e8e884061
+      size: 18
     - path: scripts/clean.py
       hash: md5
       md5: a35073fb8ed6b407b4d09d0c795ba62e
       size: 842
-    - path: stages/datacleaners/DataCleaner.py
+    - path: stages/datacleaners/TweetNormalizationHashtagSkip.py
       hash: md5
-      md5: 934ee50d1e9610c307610a8e3a986a47
-      size: 2132
-    - path: stages/datacleaners/TweetNormalization.py
-      hash: md5
-      md5: f17249e434ff836ed82dddff4864de1c
-      size: 1487
+      md5: b1fee1606ab7ac84c1b8fa62d454e28e
+      size: 1789
     outs:
-    - path: data/RpTweets/TweetNormalization
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip
       hash: md5
-      md5: 2132289fa09e6c7181f465390970e363.dir
-      size: 32151163
+      md5: 69ddc052efe5aa58eaf9e088bfcb3a4a.dir
+      size: 8140655
       nfiles: 2
   clean@3:
     cmd:
-    - python scripts/clean.py "MsTweets" "TweetNormalization"
+    - python scripts/clean.py "MsTweetsV2" "TweetNormalization"
     deps:
-    - path: data/MsTweets/raw
+    - path: data/MsTweetsV2/raw
       hash: md5
-      md5: 69a81154bcee9535449243027593e500.dir
-      size: 7470212
+      md5: 078f0cdf757091df6de8b7152854c2ba.dir
+      size: 10010152
       nfiles: 2
+    - path: imports_validator/clean/TweetNormalization.txt
+      hash: md5
+      md5: c6bc6e68d733321afea27bca803d5fcc
+      size: 17
     - path: scripts/clean.py
       hash: md5
       md5: a35073fb8ed6b407b4d09d0c795ba62e
       size: 842
-    - path: stages/datacleaners/DataCleaner.py
-      hash: md5
-      md5: 934ee50d1e9610c307610a8e3a986a47
-      size: 2132
     - path: stages/datacleaners/TweetNormalization.py
       hash: md5
       md5: f17249e434ff836ed82dddff4864de1c
       size: 1487
     outs:
-    - path: data/MsTweets/TweetNormalization
+    - path: data/MsTweetsV2/TweetNormalization
       hash: md5
-      md5: 6f6ff7781887ae1fa2fc17eb0891a71a.dir
-      size: 6326981
+      md5: 0e707b976ef5e6a9ba139ec26e69332d.dir
+      size: 8484617
       nfiles: 2
   clean@4:
     cmd:
@@ -1098,226 +1186,257 @@ stages:
       nfiles: 4
   evaluate@data0-model2:
     cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer1000"
-      "MLP" "MLP1"
+      "SVC" "SVC3"
     deps:
     - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer1000
       hash: md5
-      md5: 8fc669840a0e50db01973009cf131741.dir
-      size: 214478776
-      nfiles: 4
-    - path: imports_validator/evaluate/MLP_MLP1.txt
+      md5: fa48c5b02d06f01894ce7ccf38d9431a.dir
+      size: 718452
+      nfiles: 1
+    - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: 291cac9d9ee76075ef716b91996400ab
-      size: 18
-    - path: params/MLP1.yaml
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC3.yaml
       hash: md5
-      md5: 37c50ab93123590daa2ce4cc339014d4
-      size: 224
+      md5: f4a38f6ad011583db9702ff247258b90
+      size: 4
     - path: scripts/evaluate.py
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
-    - path: stages/models/MLP.py
+    - path: stages/models/SVC.py
       hash: md5
-      md5: 7aaf7cc6efef9247674ad408ead83a71
-      size: 3971
-    - path: stages/models/Model.py
-      hash: md5
-      md5: 367fa0576789a1de3596f76f0491855d
-      size: 3357
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
-    - path: results/MLP_MLP1/RpTweetsXS_LemmatizerSM_CountVectorizer1000.json
+    - path: mlruns_store/RpTweetsXS/LemmatizerSM/CountVectorizer1000/SVC/SVC3
       hash: md5
-      md5: a8f8649eecb55826f5df70613d481add
-      size: 488
+      md5: d09926913ead635d0d66d7813b0f6c9a.dir
+      size: 852417
+      nfiles: 47
+    - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer1000/SVC/SVC3.json
+      hash: md5
+      md5: 06dba9e6177ca87dce671a04cd38da23
+      size: 167
   evaluate@data1-model2:
     cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "CountVectorizer1000"
-      "MLP" "MLP1"
+      "SVC" "SVC3"
     deps:
     - path: data/RpTweetsXS/TweetNormalization_CountVectorizer1000
       hash: md5
-      md5: 7dbd93ce48b0d0df5ac07e2b6ddb22f4.dir
-      size: 214478776
-      nfiles: 4
-    - path: imports_validator/evaluate/MLP_MLP1.txt
+      md5: 9ed3d49f1387658f33cee54f025fd443.dir
+      size: 867686
+      nfiles: 1
+    - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: 291cac9d9ee76075ef716b91996400ab
-      size: 18
-    - path: params/MLP1.yaml
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC3.yaml
       hash: md5
-      md5: 37c50ab93123590daa2ce4cc339014d4
-      size: 224
+      md5: f4a38f6ad011583db9702ff247258b90
+      size: 4
     - path: scripts/evaluate.py
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
-    - path: stages/models/MLP.py
+    - path: stages/models/SVC.py
       hash: md5
-      md5: 7aaf7cc6efef9247674ad408ead83a71
-      size: 3971
-    - path: stages/models/Model.py
-      hash: md5
-      md5: 367fa0576789a1de3596f76f0491855d
-      size: 3357
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
-    - path: results/MLP_MLP1/RpTweetsXS_TweetNormalization_CountVectorizer1000.json
+    - path: mlruns_store/RpTweetsXS/TweetNormalization/CountVectorizer1000/SVC/SVC3
       hash: md5
-      md5: c4fbea24c74977ea775601a4e2be890c
-      size: 498
+      md5: 67c089e26b14415c2d348967109a6e58.dir
+      size: 851838
+      nfiles: 47
+    - path: results/RpTweetsXS/TweetNormalization/CountVectorizer1000/SVC/SVC3.json
+      hash: md5
+      md5: eafb89b596830ab82e75b97ea03e10d5
+      size: 173
   evaluate@data2-model2:
     cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer5000"
-      "MLP" "MLP1"
+      "SVC" "SVC3"
     deps:
     - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer5000
       hash: md5
-      md5: edffd0a0490767e0cf57c699716ba335.dir
-      size: 1071534776
-      nfiles: 4
-    - path: imports_validator/evaluate/MLP_MLP1.txt
+      md5: 687dc9ab93f104cd997bbfb98f46daeb.dir
+      size: 1859564
+      nfiles: 1
+    - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: 291cac9d9ee76075ef716b91996400ab
-      size: 18
-    - path: params/MLP1.yaml
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC3.yaml
       hash: md5
-      md5: 37c50ab93123590daa2ce4cc339014d4
-      size: 224
+      md5: f4a38f6ad011583db9702ff247258b90
+      size: 4
     - path: scripts/evaluate.py
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
-    - path: stages/models/MLP.py
+    - path: stages/models/SVC.py
       hash: md5
-      md5: 7aaf7cc6efef9247674ad408ead83a71
-      size: 3971
-    - path: stages/models/Model.py
-      hash: md5
-      md5: 367fa0576789a1de3596f76f0491855d
-      size: 3357
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
-    - path: results/MLP_MLP1/RpTweetsXS_LemmatizerSM_CountVectorizer5000.json
+    - path: mlruns_store/RpTweetsXS/LemmatizerSM/CountVectorizer5000/SVC/SVC3
       hash: md5
-      md5: 30be55943ce4f0bf41c24197edf3b394
-      size: 492
+      md5: 51cee2661296069213df2f2194431002.dir
+      size: 4053058
+      nfiles: 47
+    - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer5000/SVC/SVC3.json
+      hash: md5
+      md5: 3026d942642cb3c2d3c8a8b1a8705b1f
+      size: 167
   evaluate@data3-model2:
-    cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "CountVectorizer5000"
-      "MLP" "MLP1"
+    cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "CountVectorizer1000"
+      "SVC" "SVC3"
     deps:
-    - path: data/RpTweetsXS/TweetNormalization_CountVectorizer5000
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_CountVectorizer1000
       hash: md5
-      md5: 408d5d125cfe7a628b6ee95fe07efd4f.dir
-      size: 1071534776
-      nfiles: 4
-    - path: params/MLP1.yaml
+      md5: aae95d50927870dcaaa11ca2ebb6cf7e.dir
+      size: 3267474
+      nfiles: 1
+    - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: 37c50ab93123590daa2ce4cc339014d4
-      size: 224
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC3.yaml
+      hash: md5
+      md5: f4a38f6ad011583db9702ff247258b90
+      size: 4
     - path: scripts/evaluate.py
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
-    - path: stages/models/MLP.py
+    - path: stages/models/SVC.py
       hash: md5
-      md5: 7aaf7cc6efef9247674ad408ead83a71
-      size: 3971
-    - path: stages/models/Model.py
-      hash: md5
-      md5: 198cfbaa11881b74ecb7116946d89f9c
-      size: 3249
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
-    - path: results/RpTweetsXS_TweetNormalization_CountVectorizer5000_MLP_MLP1.json
+    - path: 
+        mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer1000/SVC/SVC3
       hash: md5
-      md5: b313c98689bba49136a47119ac0c21b4
-      size: 497
+      md5: f9d75e2e3ac32b327710ec3d1e1b199b.dir
+      size: 849391
+      nfiles: 47
+    - path: 
+        results/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer1000/SVC/SVC3.json
+      hash: md5
+      md5: 96c56bf9f12b318948598960e6eb563a
+      size: 184
   evaluate@data4-model2:
-    cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "TfidfVectorizer1000"
-      "MLP" "MLP1"
+    cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "CountVectorizer5000"
+      "SVC" "SVC3"
     deps:
-    - path: data/RpTweetsXS/LemmatizerSM_TfidfVectorizer1000
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_CountVectorizer5000
       hash: md5
-      md5: 3f6e81c6c422afd2d62afc6422c9b8bc.dir
-      size: 214478776
-      nfiles: 4
-    - path: params/MLP1.yaml
+      md5: 4b866208d010ae338c9a3365c4a3931c.dir
+      size: 7565280
+      nfiles: 1
+    - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: 37c50ab93123590daa2ce4cc339014d4
-      size: 224
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC3.yaml
+      hash: md5
+      md5: f4a38f6ad011583db9702ff247258b90
+      size: 4
     - path: scripts/evaluate.py
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
-    - path: stages/models/MLP.py
+    - path: stages/models/SVC.py
       hash: md5
-      md5: 7aaf7cc6efef9247674ad408ead83a71
-      size: 3971
-    - path: stages/models/Model.py
-      hash: md5
-      md5: 198cfbaa11881b74ecb7116946d89f9c
-      size: 3249
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
-    - path: results/RpTweetsXS_LemmatizerSM_TfidfVectorizer1000_MLP_MLP1.json
+    - path: 
+        mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer5000/SVC/SVC3
       hash: md5
-      md5: a5d485ebc0f62d5da70c44cc0290a39b
-      size: 491
+      md5: f483e819517b72f2a49e3a1c184c7a5e.dir
+      size: 4046548
+      nfiles: 47
+    - path: 
+        results/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer5000/SVC/SVC3.json
+      hash: md5
+      md5: 225adecb1a912ae8ac231b3f5126512a
+      size: 184
   evaluate@data5-model2:
-    cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "TfidfVectorizer1000"
-      "MLP" "MLP1"
+    cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "TfidfVectorizer1000"
+      "SVC" "SVC3"
     deps:
-    - path: data/RpTweetsXS/TweetNormalization_TfidfVectorizer1000
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_TfidfVectorizer1000
       hash: md5
-      md5: 49f1c2a34e3103c05afb2ec370abbad1.dir
-      size: 214478776
-      nfiles: 4
-    - path: params/MLP1.yaml
+      md5: de24f4fb97320115fd15b7d79dfb0ef4.dir
+      size: 10489890
+      nfiles: 1
+    - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: 37c50ab93123590daa2ce4cc339014d4
-      size: 224
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC3.yaml
+      hash: md5
+      md5: f4a38f6ad011583db9702ff247258b90
+      size: 4
     - path: scripts/evaluate.py
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
-    - path: stages/models/MLP.py
+    - path: stages/models/SVC.py
       hash: md5
-      md5: 7aaf7cc6efef9247674ad408ead83a71
-      size: 3971
-    - path: stages/models/Model.py
-      hash: md5
-      md5: 198cfbaa11881b74ecb7116946d89f9c
-      size: 3249
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
-    - path: results/RpTweetsXS_TweetNormalization_TfidfVectorizer1000_MLP_MLP1.json
+    - path: 
+        mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer1000/SVC/SVC3
       hash: md5
-      md5: 6f3754bd802c9697ec17bc63ef817612
-      size: 497
+      md5: 7504f5f73aa325e3b4253428fbcccef6.dir
+      size: 842397
+      nfiles: 47
+    - path: 
+        results/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer1000/SVC/SVC3.json
+      hash: md5
+      md5: a4fc7173fed9a1ec20ea1b565987eed6
+      size: 183
   evaluate@data6-model2:
-    cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "TfidfVectorizer5000"
-      "MLP" "MLP1"
+    cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "TfidfVectorizer5000"
+      "SVC" "SVC3"
     deps:
-    - path: data/RpTweetsXS/LemmatizerSM_TfidfVectorizer5000
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_TfidfVectorizer5000
       hash: md5
-      md5: 5d3ad27f7a2fc14b8e943b2656dbe8e9.dir
-      size: 1071534776
-      nfiles: 4
-    - path: params/MLP1.yaml
+      md5: 397b9e47e1cbca601658f751b4b96840.dir
+      size: 18137919
+      nfiles: 1
+    - path: imports_validator/evaluate/SVC.txt
       hash: md5
-      md5: 37c50ab93123590daa2ce4cc339014d4
-      size: 224
+      md5: 9bc23e4aade47a8f1d641d0b59a36789
+      size: 16
+    - path: params/SVC3.yaml
+      hash: md5
+      md5: f4a38f6ad011583db9702ff247258b90
+      size: 4
     - path: scripts/evaluate.py
       hash: md5
       md5: ea49b7cebc0803f03157ca6696987f14
       size: 1058
-    - path: stages/models/MLP.py
+    - path: stages/models/SVC.py
       hash: md5
-      md5: 7aaf7cc6efef9247674ad408ead83a71
-      size: 3971
-    - path: stages/models/Model.py
-      hash: md5
-      md5: 198cfbaa11881b74ecb7116946d89f9c
-      size: 3249
+      md5: 9811e6caa4e430631a3eefe9c4acfc34
+      size: 1655
     outs:
-    - path: results/RpTweetsXS_LemmatizerSM_TfidfVectorizer5000_MLP_MLP1.json
+    - path: 
+        mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer5000/SVC/SVC3
       hash: md5
-      md5: c3b3497a67c7b54a142e29f680e249ef
-      size: 489
+      md5: 25c4870274ddf41754cf39d9d63067c4.dir
+      size: 4042401
+      nfiles: 47
+    - path: 
+        results/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer5000/SVC/SVC3.json
+      hash: md5
+      md5: 68d5dcd8c0783afd8919451b6d25a8af
+      size: 183
   evaluate@data7-model2:
     cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "TfidfVectorizer5000"
       "MLP" "MLP1"
@@ -2215,3 +2334,256 @@ stages:
       md5: 5b69aac67c99781c98b9cba6eb296eda.dir
       size: 53
       nfiles: 3
+  evaluate@data0-model3:
+    cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer1000"
+      "MLP" "MLP1"
+    deps:
+    - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer1000
+      hash: md5
+      md5: fa48c5b02d06f01894ce7ccf38d9431a.dir
+      size: 718452
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.txt
+      hash: md5
+      md5: 7348edd09ef698996e6d75cdc52f4b88
+      size: 18
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: dc1345a86fb4872844e93ec7be851d2b
+      size: 3418
+    outs:
+    - path: mlruns_store/RpTweetsXS/LemmatizerSM/CountVectorizer1000/MLP/MLP1
+      hash: md5
+      md5: d3d35e354fd368faf3d19fa76b3f5ef9.dir
+      size: 2481978
+      nfiles: 61
+    - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer1000/MLP/MLP1.json
+      hash: md5
+      md5: b3af44c71eee1b04c2b2da4e8c2b4d14
+      size: 492
+  evaluate@data1-model3:
+    cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "CountVectorizer1000"
+      "MLP" "MLP1"
+    deps:
+    - path: data/RpTweetsXS/TweetNormalization_CountVectorizer1000
+      hash: md5
+      md5: 9ed3d49f1387658f33cee54f025fd443.dir
+      size: 867686
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.txt
+      hash: md5
+      md5: 7348edd09ef698996e6d75cdc52f4b88
+      size: 18
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: dc1345a86fb4872844e93ec7be851d2b
+      size: 3418
+    outs:
+    - path: mlruns_store/RpTweetsXS/TweetNormalization/CountVectorizer1000/MLP/MLP1
+      hash: md5
+      md5: 11ecc7e99acd915ccfed6aa78713f401.dir
+      size: 2483095
+      nfiles: 61
+    - path: results/RpTweetsXS/TweetNormalization/CountVectorizer1000/MLP/MLP1.json
+      hash: md5
+      md5: e226f5f065050c124a38d9191db7b929
+      size: 495
+  evaluate@data2-model3:
+    cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer5000"
+      "MLP" "MLP1"
+    deps:
+    - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer5000
+      hash: md5
+      md5: 687dc9ab93f104cd997bbfb98f46daeb.dir
+      size: 1859564
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.txt
+      hash: md5
+      md5: 7348edd09ef698996e6d75cdc52f4b88
+      size: 18
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: dc1345a86fb4872844e93ec7be851d2b
+      size: 3418
+    outs:
+    - path: mlruns_store/RpTweetsXS/LemmatizerSM/CountVectorizer5000/MLP/MLP1
+      hash: md5
+      md5: f525ed422c4f7593c033a105ee8a13e9.dir
+      size: 12085930
+      nfiles: 61
+    - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer5000/MLP/MLP1.json
+      hash: md5
+      md5: c5ce59d9a331304e06217f80510923f2
+      size: 490
+  evaluate@data3-model3:
+    cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "CountVectorizer1000"
+      "MLP" "MLP1"
+    deps:
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_CountVectorizer1000
+      hash: md5
+      md5: aae95d50927870dcaaa11ca2ebb6cf7e.dir
+      size: 3267474
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.txt
+      hash: md5
+      md5: 7348edd09ef698996e6d75cdc52f4b88
+      size: 18
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: dc1345a86fb4872844e93ec7be851d2b
+      size: 3418
+    outs:
+    - path: 
+        mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer1000/MLP/MLP1
+      hash: md5
+      md5: 82ca0b52cb97ff29a896719d52f4547a.dir
+      size: 2468782
+      nfiles: 61
+    - path: 
+        results/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer1000/MLP/MLP1.json
+      hash: md5
+      md5: 84a1edd21c2434e61c24c422ac3d14ac
+      size: 508
+  evaluate@data4-model3:
+    cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "CountVectorizer5000"
+      "MLP" "MLP1"
+    deps:
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_CountVectorizer5000
+      hash: md5
+      md5: 4b866208d010ae338c9a3365c4a3931c.dir
+      size: 7565280
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.txt
+      hash: md5
+      md5: 7348edd09ef698996e6d75cdc52f4b88
+      size: 18
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: dc1345a86fb4872844e93ec7be851d2b
+      size: 3418
+    outs:
+    - path: 
+        mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer5000/MLP/MLP1
+      hash: md5
+      md5: a3c2d50aa1ad61197308981a456fa941.dir
+      size: 12073788
+      nfiles: 61
+    - path: 
+        results/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer5000/MLP/MLP1.json
+      hash: md5
+      md5: e986f52523a26725e4ebe330287735e0
+      size: 506
+  evaluate@data5-model3:
+    cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "TfidfVectorizer1000"
+      "MLP" "MLP1"
+    deps:
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_TfidfVectorizer1000
+      hash: md5
+      md5: de24f4fb97320115fd15b7d79dfb0ef4.dir
+      size: 10489890
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.txt
+      hash: md5
+      md5: 7348edd09ef698996e6d75cdc52f4b88
+      size: 18
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: dc1345a86fb4872844e93ec7be851d2b
+      size: 3418
+    outs:
+    - path: 
+        mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer1000/MLP/MLP1
+      hash: md5
+      md5: c198ab15c80b71f50c2a9923b0a0b7f7.dir
+      size: 2469853
+      nfiles: 61
+    - path: 
+        results/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer1000/MLP/MLP1.json
+      hash: md5
+      md5: c028ed16f2cb2f8780c2d08c9531cd98
+      size: 508
+  evaluate@data6-model3:
+    cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "TfidfVectorizer5000"
+      "MLP" "MLP1"
+    deps:
+    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_TfidfVectorizer5000
+      hash: md5
+      md5: 397b9e47e1cbca601658f751b4b96840.dir
+      size: 18137919
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.txt
+      hash: md5
+      md5: 7348edd09ef698996e6d75cdc52f4b88
+      size: 18
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: dc1345a86fb4872844e93ec7be851d2b
+      size: 3418
+    outs:
+    - path: 
+        mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer5000/MLP/MLP1
+      hash: md5
+      md5: cb0a906e9901e2a10359868f8f682653.dir
+      size: 12068048
+      nfiles: 61
+    - path: 
+        results/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer5000/MLP/MLP1.json
+      hash: md5
+      md5: 6ea4b1fa6f569d111591e1053390cc49
+      size: 508

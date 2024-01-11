@@ -10,73 +10,58 @@ from sklearn.metrics import (
     roc_curve, auc, accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 )
 
-from stages.models.Model import Model, MLFLOW_ARTIFACT_PATH
+from stages.models.Model import Model
+from utils.mlflow.experiments import mlflow_context
 
 
 class LogisticRegression(Model):
+
+    @mlflow_context
     def evaluate(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str,
                  params: Dict[str, int | float | str]) -> None:
         X_train, X_test, y_train, y_test = self.load_train_test(dataset, datacleaner, vectorizer)
 
-        experiment_name = dataset
-        run_name = f"{datacleaner}-{vectorizer}-{self.__class__.__name__}"
+        clf = lm.LogisticRegression(n_jobs=-1, **params)
 
-        mlflow.set_experiment(experiment_name)
+        logger.info("Fitting Logistic Regression classifier...")
+        clf.fit(X_train, y_train)
 
-        with mlflow.start_run(run_name=run_name):
-            clf = lm.LogisticRegression(n_jobs=-1, **params)
+        logger.info("Running predict...")
+        y_pred: np.ndarray = clf.predict(X_test)
 
-            logger.info("Fitting Logistic Regression classifier...")
-            clf.fit(X_train, y_train)
+        # TODO predict proba
+        # y_pred: np.ndarray = (y_proba > 0.5).astype("int")
 
-            logger.info("Running predict...")
-            y_pred: np.ndarray = clf.predict(X_test)
+        # Evaluation metrics
+        logger.info("Calculating metrics...")
+        accuracy = accuracy_score(y_test, y_pred)
+        precision = precision_score(y_test, y_pred, average="macro")
+        recall = recall_score(y_test, y_pred, average="macro")
+        f1 = f1_score(y_test, y_pred, average="macro")
+        # roc_auc = auc(*roc_curve(y_test, y_proba)[:2])
 
-            # TOOD predict proba
-            # y_pred: np.ndarray = (y_proba > 0.5).astype("int")
+        metrics = {
+            "accuracy": accuracy,
+            "precision": precision,
+            "recall": recall,
+            "f1_score": f1,
+            # "roc_auc": roc_auc
+        }
 
-            # Evaluation metrics
-            logger.info("Calculating metrics...")
-            accuracy = accuracy_score(y_test, y_pred)
-            precision = precision_score(y_test, y_pred, average="macro")
-            recall = recall_score(y_test, y_pred, average="macro")
-            f1 = f1_score(y_test, y_pred, average="macro")
-            # roc_auc = auc(*roc_curve(y_test, y_proba)[:2])
+        # Logging metrics
+        logger.info("Saving metrics...")
+        self.save_mlflow_results(params, metrics)
+        self.save_json_results(dataset, datacleaner, vectorizer, params_name, params, metrics=metrics)
 
-            metrics = {
-                "accuracy": accuracy,
-                "precision": precision,
-                "recall": recall,
-                "f1_score": f1,
-                # "roc_auc": roc_auc
-            }
+        # Confusion Matrix
+        conf_matrix = confusion_matrix(y_test, y_pred)
+        self.plot_confusion_matrix(conf_matrix)
 
-            # Logging metrics
-            logger.info("Saving metrics...")
-            mlflow.log_params(params)
-            mlflow.log_metrics(metrics)
-            self.save_json_results(dataset, datacleaner, vectorizer, params_name, params, metrics=metrics)
+        # ROC Curve
+        # self.plot_roc_curve(y_test, y_proba)
 
-            mlflow.set_tags(
-                {
-                    "vectorizer": vectorizer,
-                    "datacleaner": datacleaner,
-                }
-            )
-
-            mlflow.sklearn.log_model(
-                sk_model=clf, artifact_path=MLFLOW_ARTIFACT_PATH
-            )
-
-            # Confusion Matrix
-            conf_matrix = confusion_matrix(y_test, y_pred)
-            self.plot_confusion_matrix(conf_matrix)
-
-            # ROC Curve
-            # self.plot_roc_curve(y_test, y_proba)
-
-            # Classification Report
-            logger.info(f"Result F1: {f1:.2f}")
+        # Classification Report
+        logger.info(f"Result F1: {f1:.2f}")
 
     @staticmethod
     def plot_confusion_matrix(conf_matrix):

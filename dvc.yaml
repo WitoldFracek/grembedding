@@ -52,3 +52,4 @@ stages:
       - imports_validator/evaluate/${item.model.model}.txt
     outs:
       - results/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}.json
+      - mlruns_store/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}
