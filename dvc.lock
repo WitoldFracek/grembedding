@@ -2345,8 +2345,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/MLP.txt
       hash: md5
-      md5: 70f8c22141cfdee4ee452ae96632c6e3
-      size: 49
+      md5: 7348edd09ef698996e6d75cdc52f4b88
+      size: 18
     - path: params/MLP1.yaml
       hash: md5
       md5: 37c50ab93123590daa2ce4cc339014d4
@@ -2362,13 +2362,13 @@ stages:
     outs:
     - path: mlruns_store/RpTweetsXS/LemmatizerSM/CountVectorizer1000/MLP/MLP1
       hash: md5
-      md5: 6fd233b16f5ac2b5afbf34d7ebe7df5f.dir
-      size: 2482114
+      md5: d3d35e354fd368faf3d19fa76b3f5ef9.dir
+      size: 2481978
       nfiles: 61
     - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer1000/MLP/MLP1.json
       hash: md5
-      md5: 9ebb99a4eb0530b491d7bb863ea6f5cc
-      size: 490
+      md5: b3af44c71eee1b04c2b2da4e8c2b4d14
+      size: 492
   evaluate@data1-model3:
     cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "CountVectorizer1000"
       "MLP" "MLP1"
@@ -2380,8 +2380,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/MLP.txt
       hash: md5
-      md5: 70f8c22141cfdee4ee452ae96632c6e3
-      size: 49
+      md5: 7348edd09ef698996e6d75cdc52f4b88
+      size: 18
     - path: params/MLP1.yaml
       hash: md5
       md5: 37c50ab93123590daa2ce4cc339014d4
@@ -2397,12 +2397,12 @@ stages:
     outs:
     - path: mlruns_store/RpTweetsXS/TweetNormalization/CountVectorizer1000/MLP/MLP1
       hash: md5
-      md5: 2743a0383896fe3ac00ff78070d372a1.dir
-      size: 2483599
+      md5: 11ecc7e99acd915ccfed6aa78713f401.dir
+      size: 2483095
       nfiles: 61
     - path: results/RpTweetsXS/TweetNormalization/CountVectorizer1000/MLP/MLP1.json
       hash: md5
-      md5: fe9300acce5e78c97b80efbe63cd3cb6
+      md5: e226f5f065050c124a38d9191db7b929
       size: 495
   evaluate@data2-model3:
     cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer5000"
@@ -2415,8 +2415,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/MLP.txt
       hash: md5
-      md5: 70f8c22141cfdee4ee452ae96632c6e3
-      size: 49
+      md5: 7348edd09ef698996e6d75cdc52f4b88
+      size: 18
     - path: params/MLP1.yaml
       hash: md5
       md5: 37c50ab93123590daa2ce4cc339014d4
@@ -2432,13 +2432,13 @@ stages:
     outs:
     - path: mlruns_store/RpTweetsXS/LemmatizerSM/CountVectorizer5000/MLP/MLP1
       hash: md5
-      md5: 63489d0732f3a543e86192a3baf30cf3.dir
-      size: 12086355
+      md5: f525ed422c4f7593c033a105ee8a13e9.dir
+      size: 12085930
       nfiles: 61
     - path: results/RpTweetsXS/LemmatizerSM/CountVectorizer5000/MLP/MLP1.json
       hash: md5
-      md5: c46e669a139c9113cb68c4e992c96620
-      size: 489
+      md5: c5ce59d9a331304e06217f80510923f2
+      size: 490
   evaluate@data3-model3:
     cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "CountVectorizer1000"
       "MLP" "MLP1"
@@ -2450,8 +2450,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/MLP.txt
       hash: md5
-      md5: 70f8c22141cfdee4ee452ae96632c6e3
-      size: 49
+      md5: 7348edd09ef698996e6d75cdc52f4b88
+      size: 18
     - path: params/MLP1.yaml
       hash: md5
       md5: 37c50ab93123590daa2ce4cc339014d4
@@ -2468,14 +2468,14 @@ stages:
     - path: 
         mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer1000/MLP/MLP1
       hash: md5
-      md5: b341a39a07d2e2b75c64a1773018c3e0.dir
-      size: 2469264
+      md5: 82ca0b52cb97ff29a896719d52f4547a.dir
+      size: 2468782
       nfiles: 61
     - path: 
         results/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer1000/MLP/MLP1.json
       hash: md5
-      md5: 35ea0071f66e635a98e36d928751cf22
-      size: 506
+      md5: 84a1edd21c2434e61c24c422ac3d14ac
+      size: 508
   evaluate@data4-model3:
     cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "CountVectorizer5000"
       "MLP" "MLP1"
@@ -2487,8 +2487,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/MLP.txt
       hash: md5
-      md5: 70f8c22141cfdee4ee452ae96632c6e3
-      size: 49
+      md5: 7348edd09ef698996e6d75cdc52f4b88
+      size: 18
     - path: params/MLP1.yaml
       hash: md5
       md5: 37c50ab93123590daa2ce4cc339014d4
@@ -2505,14 +2505,14 @@ stages:
     - path: 
         mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer5000/MLP/MLP1
       hash: md5
-      md5: 1cff4fad7b12d03f1d9a463e432dae99.dir
-      size: 12073600
+      md5: a3c2d50aa1ad61197308981a456fa941.dir
+      size: 12073788
       nfiles: 61
     - path: 
         results/MsTweetsV2/TweetNormalizationHashtagSkip/CountVectorizer5000/MLP/MLP1.json
       hash: md5
-      md5: f9bd920ebc0cfd163dcad0d65ec63e23
-      size: 508
+      md5: e986f52523a26725e4ebe330287735e0
+      size: 506
   evaluate@data5-model3:
     cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "TfidfVectorizer1000"
       "MLP" "MLP1"
@@ -2524,8 +2524,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/MLP.txt
       hash: md5
-      md5: 70f8c22141cfdee4ee452ae96632c6e3
-      size: 49
+      md5: 7348edd09ef698996e6d75cdc52f4b88
+      size: 18
     - path: params/MLP1.yaml
       hash: md5
       md5: 37c50ab93123590daa2ce4cc339014d4
@@ -2542,14 +2542,14 @@ stages:
     - path: 
         mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer1000/MLP/MLP1
       hash: md5
-      md5: 7d330b6a03d319dda8cf0acceedc0d52.dir
-      size: 2470211
+      md5: c198ab15c80b71f50c2a9923b0a0b7f7.dir
+      size: 2469853
       nfiles: 61
     - path: 
         results/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer1000/MLP/MLP1.json
       hash: md5
-      md5: 32bf377e67e3885794e2be80da9a6472
-      size: 507
+      md5: c028ed16f2cb2f8780c2d08c9531cd98
+      size: 508
   evaluate@data6-model3:
     cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "TfidfVectorizer5000"
       "MLP" "MLP1"
@@ -2561,8 +2561,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/MLP.txt
       hash: md5
-      md5: 70f8c22141cfdee4ee452ae96632c6e3
-      size: 49
+      md5: 7348edd09ef698996e6d75cdc52f4b88
+      size: 18
     - path: params/MLP1.yaml
       hash: md5
       md5: 37c50ab93123590daa2ce4cc339014d4
@@ -2579,11 +2579,11 @@ stages:
     - path: 
         mlruns_store/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer5000/MLP/MLP1
       hash: md5
-      md5: 54d5d8c0780e681eaea1a3305833f893.dir
-      size: 12067973
+      md5: cb0a906e9901e2a10359868f8f682653.dir
+      size: 12068048
       nfiles: 61
     - path: 
         results/MsTweetsV2/TweetNormalizationHashtagSkip/TfidfVectorizer5000/MLP/MLP1.json
       hash: md5
-      md5: 8025e5e928974154197c4826c763866d
-      size: 506
+      md5: 6ea4b1fa6f569d111591e1053390cc49
+      size: 508

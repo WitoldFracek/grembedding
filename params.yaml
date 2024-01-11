@@ -32,7 +32,7 @@ vectorize:
   - dataloader: MsTweetsV2
     datacleaner: TweetNormalizationHashtagSkip
     vectorizer: TfidfVectorizer5000
-
+# TODO add task (list: classification, clustering)
 
 models:
   - model: SVC

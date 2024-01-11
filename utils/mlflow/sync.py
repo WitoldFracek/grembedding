@@ -8,7 +8,6 @@ import mlflow
 from loguru import logger
 from tqdm.auto import tqdm
 
-# TODO import errors when running from project root
 from config.mlflow import MLRUNS_STORAGE_ROOT, MLRUNS_VIEW_ROOT
 from utils.mlflow.domain import load_mlflow_meta, ExperimentMetadata, RunMetadata
 
@@ -109,4 +108,5 @@ def _find_mlruns_store_experiment_dirs(base_path: Union[str, os.PathLike] = MLRU
 
 
 if __name__ == "__main__":
+    # NOTE: change this if you want to stack exps in mlruns
     run_sync(force_recreate=True)
