@@ -51,7 +51,6 @@ vectorize:
     vectorizer: TfidfVectorizer5000
     tasks:
       - classification
-# TODO add task (list: classification, clustering)
 
 classification_models:
   - model: SVC
@@ -64,4 +63,6 @@ classification_models:
     params: MLP1
 
 clustering_models:
+  - model: DummyClusteringModel
+    params: DCM
 # TODO

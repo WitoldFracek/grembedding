@@ -105,7 +105,8 @@ def main():
         md5_df = pd.DataFrame(columns=['file', 'md5'])
 
     new_md5_dfs = [validate("load", params['load'], md5_df), validate("clean", params['clean'], md5_df),
-                   validate("vectorize", params['vectorize'], md5_df), validate("evaluate", params['models'], md5_df)]
+                   validate("vectorize", params['vectorize'], md5_df), validate("evaluate", params['classification_models'], md5_df),
+                   validate("evaluate", params['clustering_models'], md5_df)]
 
     new_md5_df = pd.concat(new_md5_dfs)
     new_md5_df = new_md5_df.drop_duplicates(subset='file')
