@@ -81,16 +81,20 @@ def validate(stage: str, stage_params: List[Dict[str, str]], md5_df: pd.DataFram
                             "md5": [current_md5]
                         })], ignore_index=True)
 
+        path = os.path.join("imports_validator", stage)
+        if not os.path.exists(path):
+            os.mkdir(path)
+        
+        txt_file_path = os.path.join(path, get_output_filename(stage, run_params))
+        if not os.path.exists(txt_file_path):
+            create_file_flag = True
+
         if create_file_flag:
-            path = os.path.join("imports_validator", stage)
-            if not os.path.exists(path):
-                os.mkdir(path)
-            with open(os.path.join(path, get_output_filename(stage, run_params)), 'w') as file:
+            with open(txt_file_path, 'w') as file:
                 logger.info(f"Creating file {os.path.join(path, get_output_filename(stage, run_params))}")
                 file.write(str(time.time()))
 
     return new_md5_df
-
 
 def main():
     with open('./params.yaml', 'r') as file:
@@ -101,7 +105,8 @@ def main():
         md5_df = pd.DataFrame(columns=['file', 'md5'])
 
     new_md5_dfs = [validate("load", params['load'], md5_df), validate("clean", params['clean'], md5_df),
-                   validate("vectorize", params['vectorize'], md5_df), validate("evaluate", params['models'], md5_df)]
+                   validate("vectorize", params['vectorize'], md5_df), validate("evaluate", params['classification_models'], md5_df),
+                   validate("evaluate", params['clustering_models'], md5_df)]
 
     new_md5_df = pd.concat(new_md5_dfs)
     new_md5_df = new_md5_df.drop_duplicates(subset='file')

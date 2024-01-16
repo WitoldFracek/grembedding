@@ -21,9 +21,13 @@ def main():
     vectorizer_name: str = sys.argv[3]
     model_name: str = sys.argv[4]
     params_name: str = sys.argv[5]
+    task_name: str = sys.argv[6]
 
     with open(os.path.join(get_root_dir(), "params", f"{params_name}.yaml"), 'r') as file:
         params = yaml.safe_load(file)
+
+    if not task_name in params['tasks']:
+        return
 
     model_cls = getattr(importlib.import_module(f"stages.models.{model_name}"), model_name)
     model: Model = model_cls()
