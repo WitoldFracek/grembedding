@@ -11,3 +11,4 @@
 /TweetNormalization_TfidfVectorizer5000
 /LemmatizerSM_DPEBPVectoriser100Avg
 /LemmatizerSM_DPEBPVectorizer100Avg
+/LemmatizerSM_SpacyMorphTagVectorizer
