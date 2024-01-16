@@ -43,7 +43,7 @@ stages:
     matrix:
       data: ${vectorize}
       model: ${classification_models}
-    cmd: python scripts/evaluate.py "${item.data.dataloader}" "${item.data.datacleaner}" "${item.data.vectorizer}" "${item.model.model}" "${item.model.params}" classification
+    cmd: python scripts/evaluate.py "${item.data.dataloader}" "${item.data.datacleaner}" "${item.data.vectorizer}" "${item.data.tasks}" "${item.model.model}" "${item.model.params}" classification
     deps:
       - scripts/evaluate.py
       - data/${item.data.dataloader}/${item.data.datacleaner}_${item.data.vectorizer}
@@ -58,7 +58,7 @@ stages:
     matrix:
       data: ${vectorize}
       model: ${clustering_models}
-    cmd: python scripts/evaluate.py "${item.data.dataloader}" "${item.data.datacleaner}" "${item.data.vectorizer}" "${item.model.model}" "${item.model.params}" clustering
+    cmd: python scripts/evaluate.py "${item.data.dataloader}" "${item.data.datacleaner}" "${item.data.vectorizer}" "${item.data.tasks}" "${item.model.model}" "${item.model.params}" clustering
     deps:
       - scripts/evaluate.py
       - data/${item.data.dataloader}/${item.data.datacleaner}_${item.data.vectorizer}
