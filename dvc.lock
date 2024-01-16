@@ -84,30 +84,30 @@ stages:
       size: 2016768
       nfiles: 2
   vectorize@0:
-    cmd: python scripts/vectorize.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer1000"
+    cmd: python scripts/vectorize.py "RpTweetsXS" "LemmatizerSM" "SpacyMorphTagVectorizer"
     deps:
     - path: data/RpTweetsXS/LemmatizerSM
       hash: md5
       md5: de3e5d35c33744700b9288812e63e342.dir
       size: 2016768
       nfiles: 2
-    - path: imports_validator/vectorize/CountVectorizer1000.txt
+    - path: imports_validator/vectorize/SpacyMorphTagVectorizer.txt
       hash: md5
-      md5: fa7596ae68de75f2fb15543c5dd4f445
+      md5: aee319705cd1935b4404074215293332
       size: 18
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
       size: 798
-    - path: stages/vectorizers/CountVectorizer1000.py
+    - path: stages/vectorizers/SpacyMorphTagVectorizer.py
       hash: md5
-      md5: 52614696ad9ffe36c66ea7aa91c91dc2
-      size: 183
+      md5: 08f983ced27e16212730641850f80391
+      size: 3338
     outs:
-    - path: data/RpTweetsXS/LemmatizerSM_CountVectorizer1000
+    - path: data/RpTweetsXS/LemmatizerSM_SpacyMorphTagVectorizer
       hash: md5
-      md5: fa48c5b02d06f01894ce7ccf38d9431a.dir
-      size: 718452
+      md5: 0a9680de8af5629275fd196c60d7b1c3.dir
+      size: 1855330
       nfiles: 1
   evaluate@data0-model0:
     cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer1000"
@@ -2587,3 +2587,38 @@ stages:
       hash: md5
       md5: 6ea4b1fa6f569d111591e1053390cc49
       size: 508
+  evaluate_classification@data0-model0:
+    cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "SpacyMorphTagVectorizer"
+      "MLP" "MLP1" classification
+    deps:
+    - path: data/RpTweetsXS/LemmatizerSM_SpacyMorphTagVectorizer
+      hash: md5
+      md5: 0a9680de8af5629275fd196c60d7b1c3.dir
+      size: 1855330
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.txt
+      hash: md5
+      md5: 7348edd09ef698996e6d75cdc52f4b88
+      size: 18
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: faf770533ec429bb508560c0a5ac1d46
+      size: 1188
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: dc1345a86fb4872844e93ec7be851d2b
+      size: 3418
+    outs:
+    - path: mlruns_store/RpTweetsXS/LemmatizerSM/SpacyMorphTagVectorizer/MLP/MLP1
+      hash: md5
+      md5: 32f1d424a57c59081f5f2c2ce1d5fcf7.dir
+      size: 301177
+      nfiles: 61
+    - path: results/RpTweetsXS/LemmatizerSM/SpacyMorphTagVectorizer/MLP/MLP1.json
+      hash: md5
+      md5: 6827c71b735fe767899a958772972670
+      size: 494
