@@ -19,9 +19,11 @@ class SpacyMorphTagVectorizer(Vectorizer):
         X_train = np.zeros((len(df_train), len(TAGS)))
         X_test = np.zeros((len(df_test), len(TAGS)))
 
+        logger.info(f'generating train document gramatical vectors')
         for i, (_, data) in enumerate(tqdm(df_train.iterrows(), total=len(df_train))):
             X_train[i] = self.get_document_vector(data['clean_text'])
         
+        logger.info(f'generating test document gramatical vectors')
         for i, (_, data) in enumerate(tqdm(df_test.iterrows(), total=len(df_test))):
             X_test[i] = self.get_document_vector(data['clean_text'])
         

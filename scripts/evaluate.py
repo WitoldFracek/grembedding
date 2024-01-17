@@ -27,7 +27,7 @@ def main():
     with open(os.path.join(get_root_dir(), "params", f"{params_name}.yaml"), 'r') as file:
         params = yaml.safe_load(file)
     
-    if task_name not  tasks.split(',')in:
+    if task_name not in tasks.split(','):
         return
 
     model_cls = getattr(importlib.import_module(f"stages.models.{model_name}"), model_name)
