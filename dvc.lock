@@ -2589,38 +2589,38 @@ stages:
       size: 508
   evaluate_classification@data0-model0:
     cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "SpacyMorphTagVectorizer"
-      "classification" "SVC" "SVC1" classification
+      "classification" "RandomForest" "RandomForest1" classification
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
       md5: ce16da4d41769cb4ca6ffeed5a09a0bf.dir
       size: 586414
       nfiles: 1
-    - path: imports_validator/evaluate/SVC.txt
+    - path: imports_validator/evaluate/RandomForest.txt
       hash: md5
-      md5: 9bc23e4aade47a8f1d641d0b59a36789
-      size: 16
-    - path: params/SVC1.yaml
+      md5: ce93818012bc6986123e4ad0431c9937
+      size: 17
+    - path: params/RandomForest1.yaml
       hash: md5
-      md5: 4d4566ceb63190a6b78049a19328cb4c
-      size: 5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
     - path: scripts/evaluate.py
       hash: md5
       md5: 1961a38f861634f9d1081643037a13da
       size: 1187
-    - path: stages/models/SVC.py
+    - path: stages/models/RandomForest.py
       hash: md5
-      md5: 9811e6caa4e430631a3eefe9c4acfc34
-      size: 1655
+      md5: 359cc2cae79850161d792f7898c960fc
+      size: 2096
     outs:
     - path: 
-        mlruns_store/TweeterCyberbullying/DummyDatacleaner/SpacyMorphTagVectorizer/SVC/SVC1
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/SpacyMorphTagVectorizer/RandomForest/RandomForest1
       hash: md5
-      md5: bfc35e3eddb819a1ba604918fa8c8e85.dir
-      size: 151490
-      nfiles: 49
+      md5: 9dee89e9624b81ed04ae2598f5d3ffe0.dir
+      size: 3188206
+      nfiles: 58
     - path: 
-        results/TweeterCyberbullying/DummyDatacleaner/SpacyMorphTagVectorizer/SVC/SVC1.json
+        results/TweeterCyberbullying/DummyDatacleaner/SpacyMorphTagVectorizer/RandomForest/RandomForest1.json
       hash: md5
-      md5: 4289721fafbe37351d38cb44511b351e
-      size: 185
+      md5: 12b36605405796e585237500d031d89d
+      size: 346

@@ -63,8 +63,8 @@ classification_models:
   #   params: SVC2
   # - model: SVC
   #   params: SVC3
-  - model: SVC
-    params: SVC1
+  - model: RandomForest
+    params: RandomForest1
 
 clustering_models:
   - model: MLP
