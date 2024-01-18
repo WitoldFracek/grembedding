@@ -5,6 +5,7 @@ from typing import Dict, Tuple
 
 import mlflow
 import numpy as np
+from loguru import logger
 
 from utils.environment import get_root_dir
 
@@ -25,7 +26,8 @@ class Model(ABC):
         """
         pass
 
-    def load_train_test(self, dataset: str, datacleaner: str, vectorizer: str) -> Tuple[np.matrix, np.matrix, np.array, np.array]:
+    def load_train_test(self, dataset: str, datacleaner: str, vectorizer: str) -> Tuple[
+        np.matrix, np.matrix, np.array, np.array]:
         """
         Load train and test data
         :dataset: name of dataset
@@ -42,6 +44,7 @@ class Model(ABC):
     @staticmethod
     def save_mlflow_results(params: Dict[str, str | int | float], metrics: Dict[str, float]) -> None:
         """Saves params & metrics to mlflow"""
+        logger.info("Saving results to Mlflow...")
         mlflow.log_params(params)
         mlflow.log_metrics(metrics)
 

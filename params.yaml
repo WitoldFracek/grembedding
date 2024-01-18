@@ -15,12 +15,10 @@ vectorize:
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
     tasks: classification
-  # - dataloader: RpTweetsXS
-  #   datacleaner: LemmatizerSM
-  #   vectorizer: CountVectorizer1000
-  #   tasks:
-  #     - classification
-  #     - clustering
+  - dataloader: RpTweetsXS
+    datacleaner: LemmatizerSM
+    vectorizer: CountVectorizer1000
+    tasks: classification
   # - dataloader: RpTweetsXS
   #   datacleaner: TweetNormalization
   #   vectorizer: CountVectorizer1000
@@ -65,8 +63,12 @@ classification_models:
   #   params: SVC3
   - model: RandomForest
     params: RandomForest1
-
-clustering_models:
   - model: MLP
     params: MLP1
-# TODO
+  - model: LogisticRegression
+    params: LR1
+
+# TODO fix this
+clustering_models:
+  - model: DummyClusteringModel
+    params: DCM
