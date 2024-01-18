@@ -18,10 +18,10 @@ vectorize:
     datacleaner: DummyDatacleaner
     vectorizer: DPEBPVectorizer100Avg
     tasks: classification
-  # - dataloader: TweeterCyberbullying
-  #   datacleaner: DummyDatacleaner
-  #   vectorizer: HerbertVectorizer
-  #   tasks: classification
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertVectorizer
+    tasks: classification
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
     vectorizer: TfidfVectorizer1000

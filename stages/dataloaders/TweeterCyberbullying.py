@@ -16,5 +16,5 @@ class TweeterCyberbullying(DataLoader):
             os.path.join(self.raw_datasets_dir, self.DATASET_DIR, 'data.parquet')
         )
         logger.info(f'Train test split')
-        test_df, train_df = make_split(df, stratify=True, subset=0.9)
+        train_df, test_df = make_split(df, stratify=True, subset=0.9)
         self._save_dataset(train_df, test_df)
