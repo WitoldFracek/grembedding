@@ -1,72 +1,41 @@
 load:
   - dataloader: TweeterCyberbullying
-  # - dataloader: MsTweetsV2
 
 clean:
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
-  # - dataloader: RpTweetsXS
-  #   datacleaner: TweetNormalization
-  # - dataloader: MsTweetsV2
-  #   datacleaner: TweetNormalizationHashtagSkip
 
 vectorize:
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
     tasks: classification
-  - dataloader: RpTweetsXS
-    datacleaner: LemmatizerSM
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
     vectorizer: CountVectorizer1000
     tasks: classification
-  # - dataloader: RpTweetsXS
-  #   datacleaner: TweetNormalization
-  #   vectorizer: CountVectorizer1000
-  #   tasks:
-  #     - classification
-  #     - clustering
-  # - dataloader: RpTweetsXS
-  #   datacleaner: LemmatizerSM
-  #   vectorizer: CountVectorizer5000
-  #   tasks:
-  #     - classification
-  #     - clustering
-  # - dataloader: MsTweetsV2
-  #   datacleaner: TweetNormalizationHashtagSkip
-  #   vectorizer: CountVectorizer1000
-  #   tasks:
-  #     - classification
-  #     - clustering
-  # - dataloader: MsTweetsV2
-  #   datacleaner: TweetNormalizationHashtagSkip
-  #   vectorizer: CountVectorizer5000
-  #   tasks:
-  #     - classification
-  #     - clustering
-  # - dataloader: MsTweetsV2
-  #   datacleaner: TweetNormalizationHashtagSkip
-  #   vectorizer: TfidfVectorizer1000
-  #   tasks:
-  #     - clustering
-  # - dataloader: MsTweetsV2
-  #   datacleaner: TweetNormalizationHashtagSkip
-  #   vectorizer: TfidfVectorizer5000
-  #   tasks:
-  #     - classification
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+    tasks: classification
+  # - dataloader: TweeterCyberbullying
+  #   datacleaner: DummyDatacleaner
+  #   vectorizer: HerbertVectorizer
+  #   tasks: classification
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+    tasks: classification
 
 classification_models:
-  # - model: SVC
-  #   params: SVC1
-  # - model: SVC
-  #   params: SVC2
-  # - model: SVC
-  #   params: SVC3
   - model: RandomForest
     params: RandomForest1
   - model: MLP
     params: MLP1
   - model: LogisticRegression
     params: LR1
+  - model: SVC
+    params: SVC1
 
 # TODO fix this
 clustering_models:

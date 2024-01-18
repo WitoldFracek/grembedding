@@ -37,14 +37,14 @@ def compute_classification_metrics(y_test: np.ndarray, y_pred: np.ndarray,
         "f1_score": f1
     }
 
-    if y_proba is not None:
-        # Only if y_proba is supported
-        roc_auc = roc_auc_score(
-            y_test, y_proba, multi_class="ovr", average="macro"
-        )
-        results["roc_auc"] = roc_auc
+    # if y_proba is not None:
+    #     # Only if y_proba is supported
+    #     roc_auc = roc_auc_score(
+    #         y_test, y_proba, multi_class="ovr", average="macro"
+    #     )
+    #     results["roc_auc"] = roc_auc
 
-        _log_roc_auc_macro_plot(y_test, y_proba)
+    #     _log_roc_auc_macro_plot(y_test, y_proba)
 
     conf_matrix = confusion_matrix(y_test, y_pred)
     _log_confusion_matrix_plot(conf_matrix)
