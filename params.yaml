@@ -1,18 +1,18 @@
 load:
-  - dataloader: RpTweetsXS
+  - dataloader: TweeterCyberbullying
   # - dataloader: MsTweetsV2
 
 clean:
-  - dataloader: RpTweetsXS
-    datacleaner: LemmatizerSM
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
   # - dataloader: RpTweetsXS
   #   datacleaner: TweetNormalization
   # - dataloader: MsTweetsV2
   #   datacleaner: TweetNormalizationHashtagSkip
 
 vectorize:
-  - dataloader: RpTweetsXS
-    datacleaner: LemmatizerSM
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
     tasks: classification
   # - dataloader: RpTweetsXS
@@ -63,10 +63,10 @@ classification_models:
   #   params: SVC2
   # - model: SVC
   #   params: SVC3
-  - model: MLP
-    params: MLP1
+  - model: RandomForest
+    params: RandomForest1
 
 clustering_models:
-  - model: DummyClusteringModel
-    params: DCM
+  - model: MLP
+    params: MLP1
 # TODO

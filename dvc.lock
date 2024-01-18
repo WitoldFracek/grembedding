@@ -2,31 +2,31 @@ schema: '2.0'
 stages:
   load@0:
     cmd:
-    - echo data/RpTweetsXS/raw/test.parquet
-    - python scripts/load.py "RpTweetsXS"
+    - echo data/TweeterCyberbullying/raw/test.parquet
+    - python scripts/load.py "TweeterCyberbullying"
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: 2090ab1bf326723b4cf50ad6d48c4893.dir
-      size: 95361594
-      nfiles: 2
-    - path: imports_validator/load/RpTweetsXS.txt
+      md5: 4c6c2ff6314356dd48342074b8fcf9c4.dir
+      size: 97054783
+      nfiles: 5
+    - path: imports_validator/load/TweeterCyberbullying.txt
       hash: md5
-      md5: 7b767ee74a09d2878dc0d5600e9b0477
+      md5: 9726ac8a6dab3c93b1e5404c15ba5300
       size: 18
     - path: scripts/load.py
       hash: md5
       md5: 3d3448246f66fdc1646164c565eb0ea9
       size: 764
-    - path: stages/dataloaders/RpTweetsXS.py
+    - path: stages/dataloaders/TweeterCyberbullying.py
       hash: md5
-      md5: adfd715cb625804159b54b42dca2dfc3
-      size: 453
+      md5: 56a11cd889b1c5b41d5d4f8965d6940e
+      size: 603
     outs:
-    - path: data/RpTweetsXS/raw
+    - path: data/TweeterCyberbullying/raw
       hash: md5
-      md5: 36d68669293771d83dde3710d5617f23.dir
-      size: 2486565
+      md5: abbdc0678344fd307ad355fe4157d753.dir
+      size: 401874
       nfiles: 2
   load@1:
     cmd:
@@ -58,38 +58,38 @@ stages:
       nfiles: 2
   clean@0:
     cmd:
-    - python scripts/clean.py "RpTweetsXS" "LemmatizerSM"
+    - python scripts/clean.py "TweeterCyberbullying" "DummyDatacleaner"
     deps:
-    - path: data/RpTweetsXS/raw
+    - path: data/TweeterCyberbullying/raw
       hash: md5
-      md5: 36d68669293771d83dde3710d5617f23.dir
-      size: 2486565
+      md5: abbdc0678344fd307ad355fe4157d753.dir
+      size: 401874
       nfiles: 2
-    - path: imports_validator/clean/LemmatizerSM.txt
+    - path: imports_validator/clean/DummyDatacleaner.txt
       hash: md5
-      md5: 7a0f2d09d37e1b82e11f7de36d5e4ebe
+      md5: fbf8538f6f31d863c4bf2547adbc90d9
       size: 17
     - path: scripts/clean.py
       hash: md5
       md5: a35073fb8ed6b407b4d09d0c795ba62e
       size: 842
-    - path: stages/datacleaners/LemmatizerSM.py
+    - path: stages/datacleaners/DummyDatacleaner.py
       hash: md5
-      md5: 03c77875fd12ea1f34c54f679c734623
-      size: 1300
+      md5: 23ff43c09abce64633a874d5758ce9b7
+      size: 426
     outs:
-    - path: data/RpTweetsXS/LemmatizerSM
+    - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: de3e5d35c33744700b9288812e63e342.dir
-      size: 2016768
+      md5: ce7ece58cda9476c32f8bec18b7fab6e.dir
+      size: 401982
       nfiles: 2
   vectorize@0:
-    cmd: python scripts/vectorize.py "RpTweetsXS" "LemmatizerSM" "SpacyMorphTagVectorizer"
+    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "SpacyMorphTagVectorizer"
     deps:
-    - path: data/RpTweetsXS/LemmatizerSM
+    - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: de3e5d35c33744700b9288812e63e342.dir
-      size: 2016768
+      md5: ce7ece58cda9476c32f8bec18b7fab6e.dir
+      size: 401982
       nfiles: 2
     - path: imports_validator/vectorize/SpacyMorphTagVectorizer.txt
       hash: md5
@@ -101,13 +101,13 @@ stages:
       size: 798
     - path: stages/vectorizers/SpacyMorphTagVectorizer.py
       hash: md5
-      md5: 08f983ced27e16212730641850f80391
-      size: 3338
+      md5: 20510deb8216e4338b873a6b8d9a4f32
+      size: 3477
     outs:
-    - path: data/RpTweetsXS/LemmatizerSM_SpacyMorphTagVectorizer
+    - path: data/TweeterCyberbullying/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 0a9680de8af5629275fd196c60d7b1c3.dir
-      size: 1855330
+      md5: ce16da4d41769cb4ca6ffeed5a09a0bf.dir
+      size: 586414
       nfiles: 1
   evaluate@data0-model0:
     cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer1000"
@@ -2588,37 +2588,39 @@ stages:
       md5: 6ea4b1fa6f569d111591e1053390cc49
       size: 508
   evaluate_classification@data0-model0:
-    cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "SpacyMorphTagVectorizer"
-      "MLP" "MLP1" classification
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "SpacyMorphTagVectorizer"
+      "classification" "RandomForest" "RandomForest1" classification
     deps:
-    - path: data/RpTweetsXS/LemmatizerSM_SpacyMorphTagVectorizer
+    - path: data/TweeterCyberbullying/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 0a9680de8af5629275fd196c60d7b1c3.dir
-      size: 1855330
+      md5: ce16da4d41769cb4ca6ffeed5a09a0bf.dir
+      size: 586414
       nfiles: 1
-    - path: imports_validator/evaluate/MLP.txt
+    - path: imports_validator/evaluate/RandomForest.txt
       hash: md5
-      md5: 7348edd09ef698996e6d75cdc52f4b88
-      size: 18
-    - path: params/MLP1.yaml
+      md5: ce93818012bc6986123e4ad0431c9937
+      size: 17
+    - path: params/RandomForest1.yaml
       hash: md5
-      md5: 37c50ab93123590daa2ce4cc339014d4
-      size: 224
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
     - path: scripts/evaluate.py
       hash: md5
-      md5: faf770533ec429bb508560c0a5ac1d46
-      size: 1188
-    - path: stages/models/MLP.py
+      md5: 1961a38f861634f9d1081643037a13da
+      size: 1187
+    - path: stages/models/RandomForest.py
       hash: md5
-      md5: dc1345a86fb4872844e93ec7be851d2b
-      size: 3418
+      md5: 359cc2cae79850161d792f7898c960fc
+      size: 2096
     outs:
-    - path: mlruns_store/RpTweetsXS/LemmatizerSM/SpacyMorphTagVectorizer/MLP/MLP1
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/SpacyMorphTagVectorizer/RandomForest/RandomForest1
       hash: md5
-      md5: 32f1d424a57c59081f5f2c2ce1d5fcf7.dir
-      size: 301177
-      nfiles: 61
-    - path: results/RpTweetsXS/LemmatizerSM/SpacyMorphTagVectorizer/MLP/MLP1.json
+      md5: 9dee89e9624b81ed04ae2598f5d3ffe0.dir
+      size: 3188206
+      nfiles: 58
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/SpacyMorphTagVectorizer/RandomForest/RandomForest1.json
       hash: md5
-      md5: 6827c71b735fe767899a958772972670
-      size: 494
+      md5: 12b36605405796e585237500d031d89d
+      size: 346
