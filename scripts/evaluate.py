@@ -19,16 +19,11 @@ def main():
     dataset_name: str = sys.argv[1]
     datacleaner_name: str = sys.argv[2]
     vectorizer_name: str = sys.argv[3]
-    tasks: str = sys.argv[4]
-    model_name: str = sys.argv[5]
-    params_name: str = sys.argv[6]
-    task_name: str = sys.argv[7]
+    model_name: str = sys.argv[4]
+    params_name: str = sys.argv[5]
 
     with open(os.path.join(get_root_dir(), "params", f"{params_name}.yaml"), 'r') as file:
         params = yaml.safe_load(file)
-    
-    if task_name not in tasks.split(','):
-        return
 
     model_cls = getattr(importlib.import_module(f"stages.models.{model_name}"), model_name)
     model: Model = model_cls()

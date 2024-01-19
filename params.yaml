@@ -9,23 +9,38 @@ vectorize:
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-    tasks: classification
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
     vectorizer: CountVectorizer1000
-    tasks: classification
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
     vectorizer: DPEBPVectorizer100Avg
-    tasks: classification
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
     vectorizer: HerbertVectorizer
-    tasks: classification
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
     vectorizer: TfidfVectorizer1000
-    tasks: classification
+
+evaluate_classification:
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertVectorizer
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+
+evaluate_clustering:
+  # TODO
 
 classification_models:
   - model: RandomForest
@@ -37,7 +52,5 @@ classification_models:
   - model: SVC
     params: SVC1
 
-# TODO fix this
 clustering_models:
-  - model: DummyClusteringModel
-    params: DCM
+  # TODO
