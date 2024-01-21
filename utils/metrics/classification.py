@@ -37,14 +37,15 @@ def compute_classification_metrics(y_test: np.ndarray, y_pred: np.ndarray,
         "f1_score": f1
     }
 
-    # if y_proba is not None:
-    #     # Only if y_proba is supported
-    #     roc_auc = roc_auc_score(
-    #         y_test, y_proba, multi_class="ovr", average="macro"
-    #     )
-    #     results["roc_auc"] = roc_auc
+    if y_proba is not None:
+        # Only if y_proba is supported
+        roc_auc = roc_auc_score(
+            y_test, y_proba, multi_class="ovr", average="macro"
+        )
+        results["roc_auc"] = roc_auc
 
-    #     _log_roc_auc_macro_plot(y_test, y_proba)
+        # TODO: fix this - multiclass?
+        # _log_roc_auc_macro_plot(y_test, y_proba)
 
     conf_matrix = confusion_matrix(y_test, y_pred)
     _log_confusion_matrix_plot(conf_matrix)
@@ -64,7 +65,6 @@ def _log_confusion_matrix_plot(conf_matrix):
     mlflow.log_figure(fig, "confusion_matrix.png")
 
 
-# TODO - chat to napisał i nie mam pojęcia czy to tak może działać
 def _log_roc_auc_macro_plot(y_test, y_proba):
     """Plot macro-average ROC AUC curve."""
     logger.info("Creating macro-average ROC AUC curve...")
