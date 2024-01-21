@@ -39,8 +39,8 @@ class DPEBPVectorizer(Vectorizer):
         embeddings = list(map(lambda t: t.embedding, tokens))
         concat = torch.vstack(embeddings)
         if self.__agg_method == 'avg':
-            return torch.mean(concat, dim=0).detach().numpy()
-        return torch.sum(concat, dim=0).detach().numpy()
+            return torch.mean(concat, dim=0).detach().cpu().numpy()
+        return torch.sum(concat, dim=0).detach().cpu().numpy()
     
     @property
     def agg_method(self) -> str:
