@@ -108,5 +108,4 @@ def _find_mlruns_store_experiment_dirs(base_path: Union[str, os.PathLike] = MLRU
 
 
 if __name__ == "__main__":
-    # NOTE: change this if you want to stack exps in mlruns
     run_sync(force_recreate=True)

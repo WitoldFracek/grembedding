@@ -17,7 +17,7 @@ class SVC(Model):
     @mlflow_context
     def evaluate(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str,
                  params: Dict[str, int | float | str]) -> None:
-        X_train, X_test, y_train, y_test = self.load_train_test(dataset, datacleaner, vectorizer)
+        X_train, X_test, y_train, y_test, metadata = self.load_train_test(dataset, datacleaner, vectorizer)
         sc = StandardScaler()
 
         X_train = sc.fit_transform(X_train)

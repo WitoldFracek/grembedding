@@ -37,9 +37,9 @@ class Model(ABC):
         path = self.get_input_dir(dataset, datacleaner, vectorizer)
         path = os.path.join(path, "data.npz")
 
-        data = np.load(path)
+        data = np.load(path, allow_pickle=True)
 
-        return data["X_train"], data["X_test"], data["y_train"], data["y_test"]
+        return data["X_train"], data["X_test"], data["y_train"], data["y_test"], data["metadata"]
 
     @staticmethod
     def save_mlflow_results(params: Dict[str, str | int | float], metrics: Dict[str, float]) -> None:
