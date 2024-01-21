@@ -13,25 +13,54 @@
 </code>
 </pre>
 
+# To run the pipeline
+`bat` lub `sh`
+```sh
+bash_scripts/run_gremedding.bat
+dvc push
+git push
+```
 
-NIGDY NIE USUWAMY NIC Z PARAMSÓW!
+# To download pipeline
+```sh
+git pull
+dvc pull
+```
 
-1. Push **wszystkich** zmian na gita (wszystkich wszystkich nawet params.yaml)
-2. Bez zrobienia żadnych zmian (ABSOLUTNIE ŻADNYCH!) `dvc exp run`
-3. `git status`
-6. `dvc push`
-7. `git add .`
-8. `git commit -m "message"`
-9. `git push` \
+# To see mlflow results
+```sh
+mlflow ui
+```
 
-Dla lubiących ryzyko:
-* `git add . && git commit -m "push worktree" --allow-empty`
-* `dvc exp run`
-* `./after-dvc.sh` (dvc add, push + git add, push)
+# Pipeline Parameters
+All parameters found in config file: `params.yaml`
 
-Na innym kompie
-10. `git pull`
-11. `dvc pull`
+### load stage
+
+- `dataloader`: name of the DataLoader class (base class `stages.dataloaders.DataLoader`)
+
+### clean stage
+
+- `dataloader`: name of the DataLoader class (base class `stages.dataloaders.DataLoader`)
+- `datacleaner`: name of the DataCleaner class (base class `stages.datacleaners.DataCleaner`)
+
+### vectorize stage:
+
+- `dataloader`: name of the DataLoader class (base class `stages.dataloaders.DataLoader`)
+- `datacleaner`: name of the DataCleaner class (base class `stages.datacleaners.DataCleaner`)
+- `vectorizer`: name of the Vectorizer class (base class `stages.vectorizers.Vectorizer`)
+
+### evaluate stage (classification and clustering):
+
+- `dataloader`: name of the DataLoader class (base class `stages.dataloaders.DataLoader`)
+- `datacleaner`: name of the DataCleaner class (base class `stages.datacleaners.DataCleaner`)
+- `vectorizer`: name of the Vectorizer class (base class `stages.vectorizers.Vectorizer`)
+
+### models parameters (classification and clustering):
+
+- `model`: name of the Model class (base class `stages.models.Model`)
+- `params`: name of the `.yaml` file with model parameters (found in `./params/`)
+
 
 ## Environment setup
 
