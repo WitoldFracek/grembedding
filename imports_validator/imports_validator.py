@@ -67,29 +67,13 @@ def validate(stage: str, stage_params: List[Dict[str, str]]):
                 file_content = file.read()
                 current_md5 = hashlib.md5(file_content).hexdigest()
                 md5s.append(current_md5)
-                # row = md5_df[md5_df['file'] == imp]
-                # if row.empty:
-                #     create_file_flag = True
-                #     new_md5_df = pd.concat([new_md5_df, pd.DataFrame({
-                #         "file": [imp],
-                #         "md5": [current_md5]
-                #     })], ignore_index=True)
-                # else:
-                #     last_md5 = row['md5'].values[0]
-                #     if last_md5 != current_md5:
-                #         create_file_flag = True
-                #         new_md5_df = pd.concat([new_md5_df, pd.DataFrame({
-                #             "file": [imp],
-                #             "md5": [current_md5]
-                #         })], ignore_index=True)
+
         md5s = sorted(md5s)
         path = os.path.join("imports_validator", stage)
         if not os.path.exists(path):
             os.mkdir(path)
         
         file_path = os.path.join(path, get_output_filename(stage, run_params))
-        # if not os.path.exists(txt_file_path):
-        #     create_file_flag = True
 
         logger.info(f"Creating file {file_path}")
         with open(file_path, 'w') as file:
@@ -100,36 +84,12 @@ def validate(stage: str, stage_params: List[Dict[str, str]]):
 def main():
     with open('./params.yaml', 'r') as file:
         params = yaml.safe_load(file)
-    # if os.path.exists('./imports_validator/md5.parquet'):
-    #     md5_df = pd.read_parquet('./imports_validator/md5.parquet')
-    # else:
-    #     md5_df = pd.DataFrame(columns=['file', 'md5'])
 
     validate("load", params['load'])
     validate("clean", params['clean'])
     validate("vectorize", params['vectorize'])
     validate("evaluate", params['classification_models'])
     validate("evaluate", params['clustering_models'])
-
-    # new_md5_dfs = [validate("load", params['load'], md5_df), validate("clean", params['clean'], md5_df),
-    #                validate("vectorize", params['vectorize'], md5_df), validate("evaluate", params['classification_models'], md5_df),
-    #                validate("evaluate", params['clustering_models'], md5_df)]
-
-    # new_md5_df = pd.concat(new_md5_dfs)
-    # new_md5_df = new_md5_df.drop_duplicates(subset='file')
-
-    # # Iteruj po każdym wierszu w md5_df
-    # for index, row in md5_df.iterrows():
-    #     file_value = row['file']
-
-    #     # Sprawdź, czy istnieje wiersz o tym samym pliku w new_md5_df
-    #     if new_md5_df[new_md5_df['file'] == file_value].empty:
-    #         # Jeśli nie istnieje, dodaj ten wiersz do new_md5_df
-    #         new_row = {'file': file_value, 'md5': row['md5']}
-    #         new_md5_df = pd.concat([new_md5_df, pd.DataFrame([new_row])], ignore_index=True)
-
-    # new_md5_df.to_parquet('./imports_validator/md5.parquet')
-
 
 if __name__ == "__main__":
     main()

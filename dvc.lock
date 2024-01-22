@@ -10,10 +10,10 @@ stages:
       md5: 4c6c2ff6314356dd48342074b8fcf9c4.dir
       size: 97054783
       nfiles: 5
-    - path: imports_validator/load/TweeterCyberbullying.txt
+    - path: imports_validator/load/TweeterCyberbullying.yaml
       hash: md5
-      md5: 6de86fbef451f9e52aeb424fcd19fd02
-      size: 18
+      md5: b2c3ec9bf8f5e4fb58391abf9fa04f02
+      size: 72
     - path: scripts/load.py
       hash: md5
       md5: 3d3448246f66fdc1646164c565eb0ea9
@@ -65,10 +65,10 @@ stages:
       md5: 71ce56e92d10eec7c30e4247963eb271.dir
       size: 446957
       nfiles: 2
-    - path: imports_validator/clean/DummyDatacleaner.txt
+    - path: imports_validator/clean/DummyDatacleaner.yaml
       hash: md5
-      md5: 579e93e494aaa79b5d9f2abbb21e5836
-      size: 18
+      md5: 32f07d45e314a1cae233cdfeed1663b0
+      size: 36
     - path: scripts/clean.py
       hash: md5
       md5: a35073fb8ed6b407b4d09d0c795ba62e
@@ -88,13 +88,13 @@ stages:
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 8c8d03c370bb1570aadc34c23e7ae2ff.dir
-      size: 401982
+      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      size: 447065
       nfiles: 2
-    - path: imports_validator/vectorize/SpacyMorphTagVectorizer.txt
+    - path: imports_validator/vectorize/SpacyMorphTagVectorizer.yaml
       hash: md5
-      md5: 3f0c9fc2ed5abf796c2d4cceb86ed7b8
-      size: 18
+      md5: cd0e3fcebb1a20fcc4ee39a48fea2b4f
+      size: 36
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
@@ -106,8 +106,8 @@ stages:
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 6996a34f3cdd4647b973da3e47fea3b8.dir
-      size: 586731
+      md5: f186e980aa3c369bdeb35f1aca04bf4c.dir
+      size: 650278
       nfiles: 1
   evaluate@data0-model0:
     cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer1000"
@@ -211,13 +211,13 @@ stages:
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 8c8d03c370bb1570aadc34c23e7ae2ff.dir
-      size: 401982
+      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      size: 447065
       nfiles: 2
-    - path: imports_validator/vectorize/CountVectorizer1000.txt
+    - path: imports_validator/vectorize/CountVectorizer1000.yaml
       hash: md5
-      md5: 45c9ada85fbacce30039448e5af0afa9
-      size: 18
+      md5: 5e26295f0e668ab4ce7e33a7e534b651
+      size: 36
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
@@ -229,8 +229,8 @@ stages:
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner_CountVectorizer1000
       hash: md5
-      md5: a67cffe93e6d188980a4693951306b62.dir
-      size: 232593
+      md5: fc0d54492a474b63083915463da3b502.dir
+      size: 258966
       nfiles: 1
   evaluate@data1-model0:
     cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "CountVectorizer1000"
@@ -272,13 +272,13 @@ stages:
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 8c8d03c370bb1570aadc34c23e7ae2ff.dir
-      size: 401982
+      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      size: 447065
       nfiles: 2
-    - path: imports_validator/vectorize/DPEBPVectorizer100Avg.txt
+    - path: imports_validator/vectorize/DPEBPVectorizer100Avg.yaml
       hash: md5
-      md5: 4f2714c6ca34b6dfac2ca032c5b9b3e5
-      size: 18
+      md5: d2d37e42118c03b936dae85ccf7ec024
+      size: 36
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
@@ -290,21 +290,21 @@ stages:
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: b5c6698a4dc43d75e4034b97b7dccac3.dir
-      size: 3338397
+      md5: 58cf41efaa7dc824aa1107359e176568.dir
+      size: 3709892
       nfiles: 1
   vectorize@3:
     cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "HerbertVectorizer"
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 8c8d03c370bb1570aadc34c23e7ae2ff.dir
-      size: 401982
+      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      size: 447065
       nfiles: 2
-    - path: imports_validator/vectorize/HerbertVectorizer.txt
+    - path: imports_validator/vectorize/HerbertVectorizer.yaml
       hash: md5
-      md5: a5d7d17ddefc937037bdb1177ce8372e
-      size: 18
+      md5: 6999d4384954fceaa24a7b5b1f8e97d7
+      size: 72
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
@@ -316,8 +316,8 @@ stages:
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner_HerbertVectorizer
       hash: md5
-      md5: 5519bdca79fb61c05ec490558d1d56aa.dir
-      size: 25510955
+      md5: 1a50cd57f8f9150dd4287cfc10279aba.dir
+      size: 28345442
       nfiles: 1
   evaluate@data2-model0:
     cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer5000"
@@ -396,13 +396,13 @@ stages:
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 8c8d03c370bb1570aadc34c23e7ae2ff.dir
-      size: 401982
+      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      size: 447065
       nfiles: 2
-    - path: imports_validator/vectorize/TfidfVectorizer1000.txt
+    - path: imports_validator/vectorize/TfidfVectorizer1000.yaml
       hash: md5
-      md5: 3117e8a18809eb9beb02c916589fcaf8
-      size: 17
+      md5: 107feb8daf50e8192478fcd7df2729a3
+      size: 36
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
@@ -414,8 +414,8 @@ stages:
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner_TfidfVectorizer1000
       hash: md5
-      md5: e17549e8cb17daeb72118387ec6cfa26.dir
-      size: 694903
+      md5: ff529485d80d12eaadd86dfd61a0986c.dir
+      size: 773982
       nfiles: 1
   vectorize@5:
     cmd: python scripts/vectorize.py "MsTweetsV2" "TweetNormalizationHashtagSkip"
@@ -2591,13 +2591,13 @@ stages:
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 6996a34f3cdd4647b973da3e47fea3b8.dir
-      size: 586731
+      md5: f186e980aa3c369bdeb35f1aca04bf4c.dir
+      size: 650278
       nfiles: 1
-    - path: imports_validator/evaluate/RandomForest.txt
+    - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
-      md5: ae883903554bbb915b56b29613830f36
-      size: 17
+      md5: 92a92b7ba25c11620fa9d3b65e3cd32c
+      size: 108
     - path: params/RandomForest1.yaml
       hash: md5
       md5: 911fa5beb1765bda142542bfbf82b586
@@ -2614,14 +2614,14 @@ stages:
     - path: 
         mlruns_store/TweeterCyberbullying/DummyDatacleaner/SpacyMorphTagVectorizer/RandomForest/RandomForest1
       hash: md5
-      md5: c96c6876962537dde02eed10be32a853.dir
-      size: 8973305
-      nfiles: 58
+      md5: 316938433d70f53442ace887f3a1bde1.dir
+      size: 11917147
+      nfiles: 59
     - path: 
         results/TweeterCyberbullying/DummyDatacleaner/SpacyMorphTagVectorizer/RandomForest/RandomForest1.json
       hash: md5
-      md5: 6f4e8ab7ac1b1c25f623d193e95ec749
-      size: 312
+      md5: c3bb6456a6bafd953625fa5772d0da10
+      size: 332
   evaluate_classification@data0-model1:
     cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "SpacyMorphTagVectorizer"
       "MLP" "MLP1"
