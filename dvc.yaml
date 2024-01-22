@@ -10,7 +10,7 @@ stages:
         - scripts/load.py
         - datasets_raw/
         - stages/dataloaders/${item.dataloader}.py
-        - imports_validator/load/${item.dataloader}.txt
+        - imports_validator/load/${item.dataloader}.yaml
       outs:
         - data/${item.dataloader}/raw
 
@@ -23,7 +23,7 @@ stages:
         - scripts/clean.py
         - data/${item.dataloader}/raw
         - stages/datacleaners/${item.datacleaner}.py
-        - imports_validator/clean/${item.datacleaner}.txt
+        - imports_validator/clean/${item.datacleaner}.yaml
       outs:
         - data/${item.dataloader}/${item.datacleaner}
 
@@ -35,7 +35,7 @@ stages:
         - scripts/vectorize.py
         - data/${item.dataloader}/${item.datacleaner}
         - stages/vectorizers/${item.vectorizer}.py
-        - imports_validator/vectorize/${item.vectorizer}.txt
+        - imports_validator/vectorize/${item.vectorizer}.yaml
       outs:
         - data/${item.dataloader}/${item.datacleaner}_${item.vectorizer}
 
@@ -49,7 +49,7 @@ stages:
       - data/${item.data.dataloader}/${item.data.datacleaner}_${item.data.vectorizer}
       - stages/models/${item.model.model}.py
       - params/${item.model.params}.yaml
-      - imports_validator/evaluate/${item.model.model}.txt
+      - imports_validator/evaluate/${item.model.model}.yaml
     outs:
       - results/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}.json
       - mlruns_store/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}
@@ -65,7 +65,7 @@ stages:
   #     - data/${item.data.dataloader}/${item.data.datacleaner}_${item.data.vectorizer}
   #     - stages/models/${item.model.model}.py
   #     - params/${item.model.params}.yaml
-  #     - imports_validator/evaluate/${item.model.model}.txt
+  #     - imports_validator/evaluate/${item.model.model}.yaml
   #   outs:
   #     - results/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}.json
   #     - mlruns_store/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}
