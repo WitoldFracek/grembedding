@@ -57,3 +57,12 @@ class Vectorizer(ABC):
         return os.path.join(
             get_root_dir(), DATA_DIR_PATH, dataset, f"{datacleaner}_{self.__class__.__name__}"
         )
+    
+    @staticmethod
+    def get_vectoriser_data_dir() -> str:
+        return os.path.join(
+            get_root_dir(), 
+            'stages', 
+            'vectorizers', 
+            'vectorizer_data'
+        )
