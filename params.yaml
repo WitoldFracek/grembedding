@@ -21,6 +21,9 @@ vectorize:
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
     vectorizer: TfidfVectorizer1000
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
 
 evaluate_classification:
   - dataloader: TweeterCyberbullying
@@ -38,6 +41,9 @@ evaluate_classification:
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
     vectorizer: TfidfVectorizer1000
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
 
 evaluate_clustering:
   # TODO
