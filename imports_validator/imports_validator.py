@@ -61,6 +61,7 @@ def _get_recursive_custom_imports(path: str) -> list[str]:
     custom_imports = step_custom_imports.copy()
     for imp in step_custom_imports:
         custom_imports += _get_recursive_custom_imports(imp)
+    
     return custom_imports
 
 
@@ -70,7 +71,10 @@ def validate(stage: str, stage_params: List[Dict[str, str]]):
         param_name = _get_important_param_name(stage)
         param_value = run_params[param_name]
         path = os.path.join("stages", f"{param_name}s", f"{param_value}.py")
-        custom_imports = _get_recursive_custom_imports(path)
+        try:
+            custom_imports = _get_recursive_custom_imports(path)
+        except RecursionError:
+            raise RecursionError("Recursion imports! Fix it!")
         md5s = []
         for imp in custom_imports:
             with open(imp, 'rb') as file:
@@ -78,7 +82,7 @@ def validate(stage: str, stage_params: List[Dict[str, str]]):
                 current_md5 = hashlib.md5(file_content).hexdigest()
                 md5s.append(current_md5)
 
-        md5s = sorted(md5s)
+        md5s = sorted(list(set(md5s)))
         path = os.path.join("imports_validator", stage)
         if not os.path.exists(path):
             os.mkdir(path)

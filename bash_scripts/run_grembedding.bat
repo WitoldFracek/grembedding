@@ -10,10 +10,11 @@ if %errorlevel% equ 0 (
     echo imports_validator ended without error
     echo Starting dvc...
     dvc exp run
+    set PYTHONPATH=.
+    python .\utils\mlflow\sync.py
 ) else (
     rem Jeśli pierwsza komenda nie powiodła się, wyświetl komunikat o błędzie
     echo Błąd podczas wykonania pierwszej komendy.
 )
 
-set PYTHONPATH=.
-python .\utils\mlflow\sync.py
+
