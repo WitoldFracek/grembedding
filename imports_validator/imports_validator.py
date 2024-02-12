@@ -52,15 +52,29 @@ def _get_important_param_name(stage: str) -> str:
         return "model"
     raise ValueError(f"Stage {stage} does not exsist.")
 
+def _get_recursive_custom_imports(path: str) -> list[str]:
+    imports = get_imports(path)
+    imports = [imp.replace(".", "/") + ".py" for imp in imports]
+    step_custom_imports = [imp for imp in imports if is_file(imp)]
+    if not step_custom_imports:
+        return []
+    custom_imports = step_custom_imports.copy()
+    for imp in step_custom_imports:
+        custom_imports += _get_recursive_custom_imports(imp)
+    
+    return custom_imports
+
 
 def validate(stage: str, stage_params: List[Dict[str, str]]):
     new_md5_df = pd.DataFrame(columns=['file', 'md5'])
     for run_params in stage_params:
         param_name = _get_important_param_name(stage)
         param_value = run_params[param_name]
-        imports = get_imports(os.path.join("stages", f"{param_name}s", f"{param_value}.py"))
-        imports = [imp.replace(".", "/") + ".py" for imp in imports]
-        custom_imports = [imp for imp in imports if is_file(imp)]
+        path = os.path.join("stages", f"{param_name}s", f"{param_value}.py")
+        try:
+            custom_imports = _get_recursive_custom_imports(path)
+        except RecursionError:
+            raise RecursionError("Recursion imports! Fix it!")
         md5s = []
         for imp in custom_imports:
             with open(imp, 'rb') as file:
@@ -68,7 +82,7 @@ def validate(stage: str, stage_params: List[Dict[str, str]]):
                 current_md5 = hashlib.md5(file_content).hexdigest()
                 md5s.append(current_md5)
 
-        md5s = sorted(md5s)
+        md5s = sorted(list(set(md5s)))
         path = os.path.join("imports_validator", stage)
         if not os.path.exists(path):
             os.mkdir(path)
