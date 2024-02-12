@@ -60,7 +60,7 @@ def _get_recursive_custom_imports(path: str) -> list[str]:
         return []
     custom_imports = step_custom_imports.copy()
     for imp in step_custom_imports:
-        custom_imports += _get_important_param_name(imp)
+        custom_imports += _get_recursive_custom_imports(imp)
     return custom_imports
 
 
