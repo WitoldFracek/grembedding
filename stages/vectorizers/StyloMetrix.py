@@ -3,7 +3,7 @@ import stylo_metrix as sm
 
 class StyloMetrix(Vectorizer):
     def __init__(self) -> None:
-        super().__init()
+        super().__init__()
 
     def vectorize(self, dataset: str, datacleaner: str) -> None:
         df_train, df_test = self.load_train_test_dataframes(dataset, datacleaner)
