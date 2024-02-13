@@ -83,3 +83,16 @@ Do not put transitive dependencies in `requirements.in` unless you want to pin t
 2. Use `pip-compile && pip-sync` to sync venv with the new dependencies.
 This is preferred to `pip install -r requirements.txt` because it will also uninstall unused dependencies.
 
+### Install stylo_metrix
+[Download pl_nask model](http://mozart.ipipan.waw.pl/~rtuora/spacy/)
+```python
+pip install stylo_metrix
+pip install <pl_nask-0.0.7.tar.gz>
+```
+Pip may end with error. Incompatible between pl-core-news-* and spacy==3.5.4
+```python
+python -m spacy validate
+python -m spacy download pl_core_news_sm
+python -m spacy download pl_core_news_lg
+```
+

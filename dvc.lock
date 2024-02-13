@@ -418,31 +418,30 @@ stages:
       size: 773982
       nfiles: 1
   vectorize@5:
-    cmd: python scripts/vectorize.py "MsTweetsV2" "TweetNormalizationHashtagSkip"
-      "TfidfVectorizer1000"
+    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "StyloMetrix"
     deps:
-    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip
+    - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 69ddc052efe5aa58eaf9e088bfcb3a4a.dir
-      size: 8140655
+      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      size: 447065
       nfiles: 2
-    - path: imports_validator/vectorize/TfidfVectorizer1000.txt
+    - path: imports_validator/vectorize/StyloMetrix.yaml
       hash: md5
-      md5: 0e30acae35d64a240545520e7395209b
-      size: 18
+      md5: cd0e3fcebb1a20fcc4ee39a48fea2b4f
+      size: 36
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
       size: 798
-    - path: stages/vectorizers/TfidfVectorizer1000.py
+    - path: stages/vectorizers/StyloMetrix.py
       hash: md5
-      md5: 68cd77ee60169f068587a4e7bbaabdce
-      size: 252
+      md5: baf3e05871069c273f595354b5626734
+      size: 715
     outs:
-    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_TfidfVectorizer1000
+    - path: data/TweeterCyberbullying/DummyDatacleaner_StyloMetrix
       hash: md5
-      md5: de24f4fb97320115fd15b7d79dfb0ef4.dir
-      size: 10489890
+      md5: 5a1cce29d4fd04ebe3ae6f4840a48ef3.dir
+      size: 969234
       nfiles: 1
   vectorize@6:
     cmd: python scripts/vectorize.py "MsTweetsV2" "TweetNormalizationHashtagSkip"
@@ -3313,3 +3312,147 @@ stages:
       hash: md5
       md5: f5d67d26f25fb07d80fbef8a0ad752e4
       size: 311
+  evaluate_classification@data5-model0:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "StyloMetrix"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: 5a1cce29d4fd04ebe3ae6f4840a48ef3.dir
+      size: 969234
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 60891a7182cc29d128dfa18da1c0ab4e
+      size: 108
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/RandomForest/RandomForest1
+      hash: md5
+      md5: 67cfd6f24ed80b1c82408ccf27d97c0f.dir
+      size: 10147212
+      nfiles: 58
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/RandomForest/RandomForest1.json
+      hash: md5
+      md5: 9c0d8652ebc5008c11e5382bc5e298dc
+      size: 303
+  evaluate_classification@data5-model1:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "StyloMetrix"
+      "MLP" "MLP1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: 5a1cce29d4fd04ebe3ae6f4840a48ef3.dir
+      size: 969234
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 60891a7182cc29d128dfa18da1c0ab4e
+      size: 108
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: mlruns_store/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/MLP/MLP1
+      hash: md5
+      md5: 3729ebd4ae04214f26d4dd74dbc49524.dir
+      size: 588241
+      nfiles: 64
+    - path: results/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/MLP/MLP1.json
+      hash: md5
+      md5: 9d1f9e3a0a2fca03f2d84b344bfabf39
+      size: 449
+  evaluate_classification@data5-model2:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "StyloMetrix"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: 5a1cce29d4fd04ebe3ae6f4840a48ef3.dir
+      size: 969234
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 60891a7182cc29d128dfa18da1c0ab4e
+      size: 108
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/LogisticRegression/LR1
+      hash: md5
+      md5: 71e2124e0f1907950825b30c91f794a3.dir
+      size: 156612
+      nfiles: 55
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/LogisticRegression/LR1.json
+      hash: md5
+      md5: bcbe9f372c50f952c30545498de8df9a
+      size: 351
+  evaluate_classification@data5-model3:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "StyloMetrix"
+      "SVC" "SVC1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: 5a1cce29d4fd04ebe3ae6f4840a48ef3.dir
+      size: 969234
+      nfiles: 1
+    - path: imports_validator/evaluate/SVC.yaml
+      hash: md5
+      md5: 60891a7182cc29d128dfa18da1c0ab4e
+      size: 108
+    - path: params/SVC1.yaml
+      hash: md5
+      md5: 60666bdd5cdb9c1bfa8ed6336d21f015
+      size: 24
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/SVC.py
+      hash: md5
+      md5: 09fb99c43a91014211c0584c952e12d2
+      size: 1429
+    outs:
+    - path: mlruns_store/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/SVC/SVC1
+      hash: md5
+      md5: 787c8193bd7afecb5e14304e6c21d88c.dir
+      size: 4952920
+      nfiles: 55
+    - path: results/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/SVC/SVC1.json
+      hash: md5
+      md5: bb4a5e74b8b6e5f32af6779b1093f852
+      size: 302
