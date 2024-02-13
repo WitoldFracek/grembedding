@@ -180,5 +180,4 @@ mlruns
 .idea
 /datasets_raw
 
-*draft.ipynb
-*draft.py
+draft*
