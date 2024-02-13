@@ -17,7 +17,7 @@ class PrusVsSienkiewicz(DataLoader):
 
     def create_dataset(self) -> None:
         df: pd.DataFrame = pd.read_parquet(
-            os.path.join(self.raw_datasets_dir, self.DATASET_DIR, 'data.parquet')
+            os.path.join(self.raw_datasets_dir, self.DATASET_DIR, 'books.parquet')
         )
         authors = df['author'].unique()
         self.authors_mapping = {
@@ -26,10 +26,12 @@ class PrusVsSienkiewicz(DataLoader):
             in enumerate(sorted(list(authors)))
         }
         df['author'] = df['author'].apply(lambda a: self.authors_mapping[a])
+        train_df, test_df = self.title_wise_split(df)
+        self._save_dataset(train_df, test_df)
 
     def title_wise_split(self, df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
-        X_train = pd.DataFrame(columns=['text', 'label'])
-        X_test = pd.DataFrame(columns=['text', 'label'])
+        train_df = pd.DataFrame(columns=['text', 'label'])
+        test_df = pd.DataFrame(columns=['text', 'label'])
 
         for author in self.authors_mapping.values():
             titles = list(df[df['author'] == author]['title'].unique())
@@ -41,14 +43,14 @@ class PrusVsSienkiewicz(DataLoader):
             train_titles_df = df[df['title'].isin(train_titles)].copy()
             train_titles_df.drop(columns=['title'], inplace=True)
             train_titles_df.rename(columns={'author': 'label'}, inplace=True)
-            X_train = pd.concat([X_train, train_titles_df], ignore_index=True)
+            train_df = pd.concat([train_df, train_titles_df], ignore_index=True)
 
             test_titles_df = df[df['title'].isin(test_titles)].copy()
             test_titles_df.drop(columns=['title'])
             test_titles_df.rename(columns={'author': 'label'}, inplace=True)
-            X_test = pd.concat([X_test, test_titles_df], ignore_index=True)
+            test_df = pd.concat([test_df, test_titles_df], ignore_index=True)
 
-        return X_train, X_test
+        return train_df, test_df
 
 
 
