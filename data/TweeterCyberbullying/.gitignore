@@ -5,3 +5,6 @@
 /DummyDatacleaner_DPEBPVectorizer100Avg
 /DummyDatacleaner_TfidfVectorizer1000
 /DummyDatacleaner_HerbertVectorizer
+/DummyDatacleaner_FullMorphTagVectorizer
+/DummyDatacleaner_BigramMorphTagVectorizer100
+/DummyDatacleaner_BigramMorphTagVectorizer370

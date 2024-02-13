@@ -1,43 +1,49 @@
 load:
-  - dataloader: TweeterCyberbullying
+  - dataloader: PrusVsSienkiewicz
 
 clean:
-  - dataloader: TweeterCyberbullying
+  - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
 
 vectorize:
-  - dataloader: TweeterCyberbullying
+  # - dataloader: TweeterCyberbullying
+  #   datacleaner: DummyDatacleaner
+  #   vectorizer: SpacyMorphTagVectorizer
+  # - dataloader: TweeterCyberbullying
+  #   datacleaner: DummyDatacleaner
+  #   vectorizer: CountVectorizer1000
+  # - dataloader: TweeterCyberbullying
+  #   datacleaner: DummyDatacleaner
+  #   vectorizer: DPEBPVectorizer100Avg
+  # - dataloader: TweeterCyberbullying
+  #   datacleaner: DummyDatacleaner
+  #   vectorizer: HerbertVectorizer
+  # - dataloader: TweeterCyberbullying
+  #   datacleaner: DummyDatacleaner
+  #   vectorizer: TfidfVectorizer1000
+  - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
-    vectorizer: SpacyMorphTagVectorizer
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: CountVectorizer1000
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: DPEBPVectorizer100Avg
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertVectorizer
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: TfidfVectorizer1000
+    vectorizer: BigramMorphTagVectorizer370
 
 evaluate_classification:
-  - dataloader: TweeterCyberbullying
+  # - dataloader: TweeterCyberbullying
+  #   datacleaner: DummyDatacleaner
+  #   vectorizer: SpacyMorphTagVectorizer
+  # - dataloader: TweeterCyberbullying
+  #   datacleaner: DummyDatacleaner
+  #   vectorizer: CountVectorizer1000
+  # - dataloader: TweeterCyberbullying
+  #   datacleaner: DummyDatacleaner
+  #   vectorizer: DPEBPVectorizer100Avg
+  # - dataloader: TweeterCyberbullying
+  #   datacleaner: DummyDatacleaner
+  #   vectorizer: HerbertVectorizer
+  # - dataloader: TweeterCyberbullying
+  #   datacleaner: DummyDatacleaner
+  #   vectorizer: TfidfVectorizer1000
+  - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
-    vectorizer: SpacyMorphTagVectorizer
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: CountVectorizer1000
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: DPEBPVectorizer100Avg
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertVectorizer
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: TfidfVectorizer1000
+    vectorizer: BigramMorphTagVectorizer370
 
 evaluate_clustering:
   # TODO
@@ -49,8 +55,8 @@ classification_models:
     params: MLP1
   - model: LogisticRegression
     params: LR1
-  - model: SVC
-    params: SVC1
+#  - model: SVC
+#    params: SVC1
 
 clustering_models:
   # TODO
