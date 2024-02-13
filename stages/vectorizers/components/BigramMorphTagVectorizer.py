@@ -75,7 +75,9 @@ class BigramMorphTagVectorizer(Vectorizer):
                     for tag_name2, value2 in token2.morph.to_dict().items():
                         t1 = f'{tag_name1.lower()}_{value1.lower()}'
                         t2 = f'{tag_name2.lower()}_{value2.lower()}'
-                        index = self.bigram_map[(t1, t2)]
+                        index = self.bigram_map.get((t1, t2), -1)
+                        if index == -1:
+                            continue
                         ret[index] += 1
         return preprocessing.normalize([ret])
 

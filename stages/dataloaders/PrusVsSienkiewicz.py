@@ -25,7 +25,9 @@ class PrusVsSienkiewicz(DataLoader):
             for i, author
             in enumerate(sorted(list(authors)))
         }
+        logger.info(f'Authors mapping: {self.authors_mapping}')
         df['author'] = df['author'].apply(lambda a: self.authors_mapping[a])
+        logger.info('Title wise train test split')
         train_df, test_df = self.title_wise_split(df)
         self._save_dataset(train_df, test_df)
 
