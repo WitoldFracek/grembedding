@@ -44,8 +44,8 @@ class BigramMorphTagVectorizer(Vectorizer):
     def vectorize(self, dataset: str, datacleaner: str) -> None:
         df_train, df_test = self.load_train_test_dataframes(dataset, datacleaner)
 
-        X_train_pca = np.zeros((len(df_train), len(TAGS)))
-        X_test_pca = np.zeros((len(df_test), len(TAGS)))
+        X_train_pca = np.zeros((len(df_train), len(self.bigram_map)))
+        X_test_pca = np.zeros((len(df_test), len(self.bigram_map)))
 
         logger.info(f'generating train document bigram morph vectors')
         for i, (_, data) in enumerate(tqdm(df_train.iterrows(), total=len(df_train))):
@@ -66,7 +66,7 @@ class BigramMorphTagVectorizer(Vectorizer):
         self.save_as_npy(dataset, datacleaner, X_train, X_test, y_train, y_test)
 
     def get_document_vector(self, text: str) -> np.ndarray:
-        ret = np.zeros(len(TAGS))
+        ret = np.zeros(len(self.bigram_map))
         doc = self.nlp(text)
         tokens = list(doc)
         for token1, token2 in zip(tokens, tokens[1:]):
