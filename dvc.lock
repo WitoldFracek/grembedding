@@ -2,6 +2,34 @@ schema: '2.0'
 stages:
   load@0:
     cmd:
+    - echo data/TweeterCyberbullying/raw/test.parquet
+    - python scripts/load.py "TweeterCyberbullying"
+    deps:
+    - path: datasets_raw/
+      hash: md5
+      md5: a7e9939ec188b29a84339b86aeedfde3.dir
+      size: 105622160
+      nfiles: 6
+    - path: imports_validator/load/TweeterCyberbullying.yaml
+      hash: md5
+      md5: 3f4b18f402a0f5e8dcd3141d71cc6bef
+      size: 108
+    - path: scripts/load.py
+      hash: md5
+      md5: 3d3448246f66fdc1646164c565eb0ea9
+      size: 764
+    - path: stages/dataloaders/TweeterCyberbullying.py
+      hash: md5
+      md5: ff56a647aed122268a9aaaba8458cc90
+      size: 606
+    outs:
+    - path: data/TweeterCyberbullying/raw
+      hash: md5
+      md5: 71ce56e92d10eec7c30e4247963eb271.dir
+      size: 446957
+      nfiles: 2
+  load@1:
+    cmd:
     - echo data/PrusVsSienkiewicz/raw/test.parquet
     - python scripts/load.py "PrusVsSienkiewicz"
     deps:
@@ -12,63 +40,35 @@ stages:
       nfiles: 6
     - path: imports_validator/load/PrusVsSienkiewicz.yaml
       hash: md5
-      md5: b2c3ec9bf8f5e4fb58391abf9fa04f02
-      size: 72
+      md5: 3f4b18f402a0f5e8dcd3141d71cc6bef
+      size: 108
     - path: scripts/load.py
       hash: md5
       md5: 3d3448246f66fdc1646164c565eb0ea9
       size: 764
     - path: stages/dataloaders/PrusVsSienkiewicz.py
       hash: md5
-      md5: 10a886f3eecce95bb15d083185361564
-      size: 2264
+      md5: 18e8b1345e2c99724b52f8d0b1fbaa12
+      size: 2207
     outs:
     - path: data/PrusVsSienkiewicz/raw
       hash: md5
-      md5: 4a4a406166dd3d4a8b5caacc589cf7f4.dir
-      size: 5078587
-      nfiles: 2
-  load@1:
-    cmd:
-    - echo data/MsTweetsV2/raw/test.parquet
-    - python scripts/load.py "MsTweetsV2"
-    deps:
-    - path: datasets_raw/
-      hash: md5
-      md5: 2090ab1bf326723b4cf50ad6d48c4893.dir
-      size: 95361594
-      nfiles: 2
-    - path: imports_validator/load/MsTweetsV2.txt
-      hash: md5
-      md5: ad21b4fdb8eaa293074192f4727da859
-      size: 18
-    - path: scripts/load.py
-      hash: md5
-      md5: 3d3448246f66fdc1646164c565eb0ea9
-      size: 764
-    - path: stages/dataloaders/MsTweetsV2.py
-      hash: md5
-      md5: 6ace308d6f89b8ddb120374eb18271fe
-      size: 2513
-    outs:
-    - path: data/MsTweetsV2/raw
-      hash: md5
-      md5: 078f0cdf757091df6de8b7152854c2ba.dir
-      size: 10010152
+      md5: 9f44082ca5a7c3638fca7a1b56b1ccac.dir
+      size: 5078974
       nfiles: 2
   clean@0:
     cmd:
-    - python scripts/clean.py "PrusVsSienkiewicz" "DummyDatacleaner"
+    - python scripts/clean.py "TweeterCyberbullying" "DummyDatacleaner"
     deps:
-    - path: data/PrusVsSienkiewicz/raw
+    - path: data/TweeterCyberbullying/raw
       hash: md5
-      md5: 4a4a406166dd3d4a8b5caacc589cf7f4.dir
-      size: 5078587
+      md5: 71ce56e92d10eec7c30e4247963eb271.dir
+      size: 446957
       nfiles: 2
     - path: imports_validator/clean/DummyDatacleaner.yaml
       hash: md5
-      md5: 32f07d45e314a1cae233cdfeed1663b0
-      size: 36
+      md5: 44b7c1703af99adcdf1a165c61b006e6
+      size: 72
     - path: scripts/clean.py
       hash: md5
       md5: a35073fb8ed6b407b4d09d0c795ba62e
@@ -78,36 +78,36 @@ stages:
       md5: 23ff43c09abce64633a874d5758ce9b7
       size: 426
     outs:
-    - path: data/PrusVsSienkiewicz/DummyDatacleaner
+    - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 3e61f06125222b9d956c4ff0f8a23073.dir
-      size: 5078685
+      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      size: 447065
       nfiles: 2
   vectorize@0:
-    cmd: python scripts/vectorize.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer370"
+    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "BigramMorphTagVectorizer100"
     deps:
-    - path: data/PrusVsSienkiewicz/DummyDatacleaner
+    - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 3e61f06125222b9d956c4ff0f8a23073.dir
-      size: 5078685
+      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      size: 447065
       nfiles: 2
-    - path: imports_validator/vectorize/BigramMorphTagVectorizer370.yaml
+    - path: imports_validator/vectorize/BigramMorphTagVectorizer100.yaml
       hash: md5
-      md5: 9e0f66b0875bdab74d8601d1ffea98a5
-      size: 36
+      md5: 3403ed84f2fbb3107498df943467b328
+      size: 108
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
       size: 798
-    - path: stages/vectorizers/BigramMorphTagVectorizer370.py
+    - path: stages/vectorizers/BigramMorphTagVectorizer100.py
       hash: md5
-      md5: 9ca4df7412a36f7be66da7a834a03acc
+      md5: f11ee03bc2906ca3e8c3757f059bf2fc
       size: 217
     outs:
-    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer370
+    - path: data/TweeterCyberbullying/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: 652773a9c3b5ec2a4026f15bcde3bde8.dir
-      size: 183280442
+      md5: 70ecc5f0ca6640bbb840c1630b907116.dir
+      size: 7697038
       nfiles: 1
   evaluate@data0-model0:
     cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer1000"
@@ -181,56 +181,56 @@ stages:
       size: 166
   clean@1:
     cmd:
-    - python scripts/clean.py "RpTweetsXS" "TweetNormalization"
+    - python scripts/clean.py "PrusVsSienkiewicz" "DummyDatacleaner"
     deps:
-    - path: data/RpTweetsXS/raw
+    - path: data/PrusVsSienkiewicz/raw
       hash: md5
-      md5: 36d68669293771d83dde3710d5617f23.dir
-      size: 2486565
+      md5: 9f44082ca5a7c3638fca7a1b56b1ccac.dir
+      size: 5078974
       nfiles: 2
-    - path: imports_validator/clean/TweetNormalization.txt
+    - path: imports_validator/clean/DummyDatacleaner.yaml
       hash: md5
-      md5: c6bc6e68d733321afea27bca803d5fcc
-      size: 17
+      md5: 44b7c1703af99adcdf1a165c61b006e6
+      size: 72
     - path: scripts/clean.py
       hash: md5
       md5: a35073fb8ed6b407b4d09d0c795ba62e
       size: 842
-    - path: stages/datacleaners/TweetNormalization.py
+    - path: stages/datacleaners/DummyDatacleaner.py
       hash: md5
-      md5: f17249e434ff836ed82dddff4864de1c
-      size: 1487
+      md5: 23ff43c09abce64633a874d5758ce9b7
+      size: 426
     outs:
-    - path: data/RpTweetsXS/TweetNormalization
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner
       hash: md5
-      md5: e87bf3b68e782466e7b8726a32f890c0.dir
-      size: 2059609
+      md5: 2dbe96ec2d9eef42c9c800205a94f882.dir
+      size: 5079076
       nfiles: 2
   vectorize@1:
-    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "CountVectorizer1000"
+    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "BigramMorphTagVectorizer370"
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
       md5: 42c308a5fc11a46578eed3d1a4657416.dir
       size: 447065
       nfiles: 2
-    - path: imports_validator/vectorize/CountVectorizer1000.yaml
+    - path: imports_validator/vectorize/BigramMorphTagVectorizer370.yaml
       hash: md5
-      md5: 5e26295f0e668ab4ce7e33a7e534b651
-      size: 36
+      md5: 3403ed84f2fbb3107498df943467b328
+      size: 108
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
       size: 798
-    - path: stages/vectorizers/CountVectorizer1000.py
+    - path: stages/vectorizers/BigramMorphTagVectorizer370.py
       hash: md5
-      md5: 52614696ad9ffe36c66ea7aa91c91dc2
-      size: 183
+      md5: b8df63e0653fb3445ecbd075f30220a5
+      size: 217
     outs:
-    - path: data/TweeterCyberbullying/DummyDatacleaner_CountVectorizer1000
+    - path: data/TweeterCyberbullying/DummyDatacleaner_BigramMorphTagVectorizer370
       hash: md5
-      md5: fc0d54492a474b63083915463da3b502.dir
-      size: 258966
+      md5: 3d1fef61b5653db8c0bd4e21634fbb86.dir
+      size: 28484879
       nfiles: 1
   evaluate@data1-model0:
     cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "CountVectorizer1000"
@@ -268,56 +268,56 @@ stages:
       md5: fcb2fbcb31882b5d0c94a1944c55c95a
       size: 173
   vectorize@2:
-    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "DPEBPVectorizer100Avg"
+    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "CountVectorizer1000"
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
       md5: 42c308a5fc11a46578eed3d1a4657416.dir
       size: 447065
       nfiles: 2
-    - path: imports_validator/vectorize/DPEBPVectorizer100Avg.yaml
+    - path: imports_validator/vectorize/CountVectorizer1000.yaml
       hash: md5
-      md5: d2d37e42118c03b936dae85ccf7ec024
-      size: 36
+      md5: 56ed927ce2a2baec5411b392b959d1ae
+      size: 108
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
       size: 798
-    - path: stages/vectorizers/DPEBPVectorizer100Avg.py
+    - path: stages/vectorizers/CountVectorizer1000.py
       hash: md5
-      md5: 813cc10ac1889b375d8eff12f80ee64b
-      size: 204
+      md5: 52614696ad9ffe36c66ea7aa91c91dc2
+      size: 183
     outs:
-    - path: data/TweeterCyberbullying/DummyDatacleaner_DPEBPVectorizer100Avg
+    - path: data/TweeterCyberbullying/DummyDatacleaner_CountVectorizer1000
       hash: md5
-      md5: 58cf41efaa7dc824aa1107359e176568.dir
-      size: 3709892
+      md5: fc0d54492a474b63083915463da3b502.dir
+      size: 258966
       nfiles: 1
   vectorize@3:
-    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "HerbertVectorizer"
+    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "CountVectorizer5000"
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
       md5: 42c308a5fc11a46578eed3d1a4657416.dir
       size: 447065
       nfiles: 2
-    - path: imports_validator/vectorize/HerbertVectorizer.yaml
+    - path: imports_validator/vectorize/CountVectorizer5000.yaml
       hash: md5
-      md5: 6999d4384954fceaa24a7b5b1f8e97d7
-      size: 72
+      md5: 56ed927ce2a2baec5411b392b959d1ae
+      size: 108
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
       size: 798
-    - path: stages/vectorizers/HerbertVectorizer.py
+    - path: stages/vectorizers/CountVectorizer5000.py
       hash: md5
-      md5: d3b6716ba8a17b5321c15e3d3e2ab323
-      size: 4301
+      md5: 46335d26c3afcc23f7e7919b3b15e9ff
+      size: 183
     outs:
-    - path: data/TweeterCyberbullying/DummyDatacleaner_HerbertVectorizer
+    - path: data/TweeterCyberbullying/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: 1a50cd57f8f9150dd4287cfc10279aba.dir
-      size: 28345442
+      md5: 8d4c7e49a67db7e25c99186fb9892bbc.dir
+      size: 639996
       nfiles: 1
   evaluate@data2-model0:
     cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer5000"
@@ -392,110 +392,109 @@ stages:
       md5: 8e539ea9743c6c25caf3b1fcff2d2fc4
       size: 184
   vectorize@4:
-    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "TfidfVectorizer1000"
+    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "DPEBPVectorizer100Avg"
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
       md5: 42c308a5fc11a46578eed3d1a4657416.dir
       size: 447065
       nfiles: 2
-    - path: imports_validator/vectorize/TfidfVectorizer1000.yaml
+    - path: imports_validator/vectorize/DPEBPVectorizer100Avg.yaml
       hash: md5
-      md5: 107feb8daf50e8192478fcd7df2729a3
-      size: 36
+      md5: f5d87a0307612e2c07a1b3934d46044a
+      size: 144
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
       size: 798
-    - path: stages/vectorizers/TfidfVectorizer1000.py
+    - path: stages/vectorizers/DPEBPVectorizer100Avg.py
       hash: md5
-      md5: 68cd77ee60169f068587a4e7bbaabdce
-      size: 252
+      md5: 813cc10ac1889b375d8eff12f80ee64b
+      size: 204
     outs:
-    - path: data/TweeterCyberbullying/DummyDatacleaner_TfidfVectorizer1000
+    - path: data/TweeterCyberbullying/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: ff529485d80d12eaadd86dfd61a0986c.dir
-      size: 773982
+      md5: 58cf41efaa7dc824aa1107359e176568.dir
+      size: 3709892
       nfiles: 1
   vectorize@5:
-    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "StyloMetrix"
+    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "FullMorphTagVectorizer"
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
       md5: 42c308a5fc11a46578eed3d1a4657416.dir
       size: 447065
       nfiles: 2
-    - path: imports_validator/vectorize/StyloMetrix.yaml
+    - path: imports_validator/vectorize/FullMorphTagVectorizer.yaml
       hash: md5
-      md5: cd0e3fcebb1a20fcc4ee39a48fea2b4f
-      size: 36
+      md5: cc23219eb6d307148c9fa7dbea18a081
+      size: 72
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
       size: 798
-    - path: stages/vectorizers/StyloMetrix.py
+    - path: stages/vectorizers/FullMorphTagVectorizer.py
       hash: md5
-      md5: baf3e05871069c273f595354b5626734
-      size: 715
+      md5: 6c23658cd05a9f6899e5c11a2659cacf
+      size: 2523
     outs:
-    - path: data/TweeterCyberbullying/DummyDatacleaner_StyloMetrix
+    - path: data/TweeterCyberbullying/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: 5a1cce29d4fd04ebe3ae6f4840a48ef3.dir
-      size: 969234
+      md5: 0c7fc7b5be2da942f19d7d7a5e175306.dir
+      size: 531572
       nfiles: 1
   vectorize@6:
-    cmd: python scripts/vectorize.py "MsTweetsV2" "TweetNormalizationHashtagSkip"
-      "TfidfVectorizer5000"
+    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "HerbertVectorizer"
     deps:
-    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip
+    - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 69ddc052efe5aa58eaf9e088bfcb3a4a.dir
-      size: 8140655
+      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      size: 447065
       nfiles: 2
-    - path: imports_validator/vectorize/TfidfVectorizer5000.txt
+    - path: imports_validator/vectorize/HerbertVectorizer.yaml
       hash: md5
-      md5: 689dbb6da8ad7714bbf9ac9509ff06e5
-      size: 18
+      md5: 07fdc8076d8564e88fbe4d6f2e309664
+      size: 108
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
       size: 798
-    - path: stages/vectorizers/TfidfVectorizer5000.py
+    - path: stages/vectorizers/HerbertVectorizer.py
       hash: md5
-      md5: a262d3b84d8d9928c9cef04eac811201
-      size: 252
+      md5: d3b6716ba8a17b5321c15e3d3e2ab323
+      size: 4301
     outs:
-    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_TfidfVectorizer5000
+    - path: data/TweeterCyberbullying/DummyDatacleaner_HerbertVectorizer
       hash: md5
-      md5: 397b9e47e1cbca601658f751b4b96840.dir
-      size: 18137919
+      md5: 1a50cd57f8f9150dd4287cfc10279aba.dir
+      size: 28345442
       nfiles: 1
   vectorize@7:
-    cmd: python scripts/vectorize.py "RpTweetsXS" "TweetNormalization" "TfidfVectorizer5000"
+    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "SpacyMorphTagVectorizer"
     deps:
-    - path: data/RpTweetsXS/TweetNormalization
+    - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 83601e77b2e0955595264527509cebf8.dir
-      size: 3253771
+      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      size: 447065
       nfiles: 2
+    - path: imports_validator/vectorize/SpacyMorphTagVectorizer.yaml
+      hash: md5
+      md5: cc23219eb6d307148c9fa7dbea18a081
+      size: 72
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
       size: 798
-    - path: stages/vectorizers/TfidfVectorizer5000.py
+    - path: stages/vectorizers/SpacyMorphTagVectorizer.py
       hash: md5
-      md5: a262d3b84d8d9928c9cef04eac811201
-      size: 252
-    - path: stages/vectorizers/Vectorizer.py
-      hash: md5
-      md5: 8f9b348cc065e03e61bc7cf543c6a64b
-      size: 2288
+      md5: 32c4f1377b287e024f0f92b9938e8b2e
+      size: 3556
     outs:
-    - path: data/RpTweetsXS/TweetNormalization_TfidfVectorizer5000
+    - path: data/TweeterCyberbullying/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: ec59dcd0b1cc366c46eb199ba75082da.dir
-      size: 1071534776
-      nfiles: 4
+      md5: f186e980aa3c369bdeb35f1aca04bf4c.dir
+      size: 650278
+      nfiles: 1
   evaluate@data4-model0:
     cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "CountVectorizer5000"
       "SVC" "SVC1"
@@ -1078,65 +1077,43 @@ stages:
       size: 12523473
       nfiles: 2
   vectorize@8:
-    cmd: python scripts/vectorize.py "MsTweetsV2" "LemmatizerSM" "CountVectorizer1000"
+    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "StyloMetrix"
     deps:
-    - path: data/MsTweetsV2/LemmatizerSM
+    - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: d43b920202fa194517988915aa67dc47.dir
-      size: 12523473
+      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      size: 447065
       nfiles: 2
+    - path: imports_validator/vectorize/StyloMetrix.yaml
+      hash: md5
+      md5: cc23219eb6d307148c9fa7dbea18a081
+      size: 72
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
       size: 798
-    - path: stages/vectorizers/CountVectorizer1000.py
+    - path: stages/vectorizers/StyloMetrix.py
       hash: md5
-      md5: 52614696ad9ffe36c66ea7aa91c91dc2
-      size: 183
-    - path: stages/vectorizers/Vectorizer.py
-      hash: md5
-      md5: 8f9b348cc065e03e61bc7cf543c6a64b
-      size: 2288
+      md5: baf3e05871069c273f595354b5626734
+      size: 715
     outs:
-    - path: data/MsTweetsV2/LemmatizerSM_CountVectorizer1000
+    - path: data/TweeterCyberbullying/DummyDatacleaner_StyloMetrix
       hash: md5
-      md5: 8f6504d3557538c247d83e209e9309c7.dir
-      size: 773044784
-      nfiles: 4
+      md5: 5a1cce29d4fd04ebe3ae6f4840a48ef3.dir
+      size: 969234
+      nfiles: 1
   vectorize@9:
-    cmd: python scripts/vectorize.py "MsTweetsV2" "LemmatizerSM" "CountVectorizer5000"
+    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "TfidfVectorizer1000"
     deps:
-    - path: data/MsTweetsV2/LemmatizerSM
+    - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: d43b920202fa194517988915aa67dc47.dir
-      size: 12523473
+      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      size: 447065
       nfiles: 2
-    - path: scripts/vectorize.py
+    - path: imports_validator/vectorize/TfidfVectorizer1000.yaml
       hash: md5
-      md5: 313deb9b0c0dc175f52248c04ddc2330
-      size: 798
-    - path: stages/vectorizers/CountVectorizer5000.py
-      hash: md5
-      md5: 46335d26c3afcc23f7e7919b3b15e9ff
-      size: 183
-    - path: stages/vectorizers/Vectorizer.py
-      hash: md5
-      md5: 8f9b348cc065e03e61bc7cf543c6a64b
-      size: 2288
-    outs:
-    - path: data/MsTweetsV2/LemmatizerSM_CountVectorizer5000
-      hash: md5
-      md5: f24d47a910e0235b7c569f5a83f10c43.dir
-      size: 3862132784
-      nfiles: 4
-  vectorize@10:
-    cmd: python scripts/vectorize.py "MsTweetsV2" "LemmatizerSM" "TfidfVectorizer1000"
-    deps:
-    - path: data/MsTweetsV2/LemmatizerSM
-      hash: md5
-      md5: d43b920202fa194517988915aa67dc47.dir
-      size: 12523473
-      nfiles: 2
+      md5: 249c307b2d055740eb622bcc6d40d2fb
+      size: 108
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
@@ -1145,24 +1122,24 @@ stages:
       hash: md5
       md5: 68cd77ee60169f068587a4e7bbaabdce
       size: 252
-    - path: stages/vectorizers/Vectorizer.py
-      hash: md5
-      md5: 8f9b348cc065e03e61bc7cf543c6a64b
-      size: 2288
     outs:
-    - path: data/MsTweetsV2/LemmatizerSM_TfidfVectorizer1000
+    - path: data/TweeterCyberbullying/DummyDatacleaner_TfidfVectorizer1000
       hash: md5
-      md5: fbbf840e915f1d569b5f272dc93b8cc9.dir
-      size: 773044784
-      nfiles: 4
-  vectorize@11:
-    cmd: python scripts/vectorize.py "MsTweetsV2" "LemmatizerSM" "TfidfVectorizer5000"
+      md5: ff529485d80d12eaadd86dfd61a0986c.dir
+      size: 773982
+      nfiles: 1
+  vectorize@10:
+    cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "TfidfVectorizer5000"
     deps:
-    - path: data/MsTweetsV2/LemmatizerSM
+    - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: d43b920202fa194517988915aa67dc47.dir
-      size: 12523473
+      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      size: 447065
       nfiles: 2
+    - path: imports_validator/vectorize/TfidfVectorizer5000.yaml
+      hash: md5
+      md5: 249c307b2d055740eb622bcc6d40d2fb
+      size: 108
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
@@ -1171,16 +1148,38 @@ stages:
       hash: md5
       md5: a262d3b84d8d9928c9cef04eac811201
       size: 252
-    - path: stages/vectorizers/Vectorizer.py
-      hash: md5
-      md5: 8f9b348cc065e03e61bc7cf543c6a64b
-      size: 2288
     outs:
-    - path: data/MsTweetsV2/LemmatizerSM_TfidfVectorizer5000
+    - path: data/TweeterCyberbullying/DummyDatacleaner_TfidfVectorizer5000
       hash: md5
-      md5: 7e01a88930cba2b11549618d901712b0.dir
-      size: 3862132784
-      nfiles: 4
+      md5: e06e298fa4f7e1b26026e31f630e7c2e.dir
+      size: 1293094
+      nfiles: 1
+  vectorize@11:
+    cmd: python scripts/vectorize.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer100"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner
+      hash: md5
+      md5: 2dbe96ec2d9eef42c9c800205a94f882.dir
+      size: 5079076
+      nfiles: 2
+    - path: imports_validator/vectorize/BigramMorphTagVectorizer100.yaml
+      hash: md5
+      md5: 3403ed84f2fbb3107498df943467b328
+      size: 108
+    - path: scripts/vectorize.py
+      hash: md5
+      md5: 313deb9b0c0dc175f52248c04ddc2330
+      size: 798
+    - path: stages/vectorizers/BigramMorphTagVectorizer100.py
+      hash: md5
+      md5: f11ee03bc2906ca3e8c3757f059bf2fc
+      size: 217
+    outs:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer100
+      hash: md5
+      md5: ddf7a944ad61e5ea5b574306836762e4.dir
+      size: 49439983
+      nfiles: 1
   evaluate@data0-model2:
     cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer1000"
       "SVC" "SVC3"
@@ -1825,14 +1824,43 @@ stages:
       md5: 0314592df42bc338e35f8952039be88b
       size: 488
   vectorize@12:
-    cmd: python scripts/vectorize.py "MsTweetsV2" "TweetNormalizationHashtagSkip"
-      "CountVectorizer1000"
+    cmd: python scripts/vectorize.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer370"
     deps:
-    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner
       hash: md5
-      md5: ad0ff1abdb0b197995b6d6a74818bfbf.dir
-      size: 12959052
+      md5: 2dbe96ec2d9eef42c9c800205a94f882.dir
+      size: 5079076
       nfiles: 2
+    - path: imports_validator/vectorize/BigramMorphTagVectorizer370.yaml
+      hash: md5
+      md5: 3403ed84f2fbb3107498df943467b328
+      size: 108
+    - path: scripts/vectorize.py
+      hash: md5
+      md5: 313deb9b0c0dc175f52248c04ddc2330
+      size: 798
+    - path: stages/vectorizers/BigramMorphTagVectorizer370.py
+      hash: md5
+      md5: b8df63e0653fb3445ecbd075f30220a5
+      size: 217
+    outs:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer370
+      hash: md5
+      md5: 68532e4034847a1be33c4fd28db80ec4.dir
+      size: 183274681
+      nfiles: 1
+  vectorize@13:
+    cmd: python scripts/vectorize.py "PrusVsSienkiewicz" "DummyDatacleaner" "CountVectorizer1000"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner
+      hash: md5
+      md5: 2dbe96ec2d9eef42c9c800205a94f882.dir
+      size: 5079076
+      nfiles: 2
+    - path: imports_validator/vectorize/CountVectorizer1000.yaml
+      hash: md5
+      md5: 56ed927ce2a2baec5411b392b959d1ae
+      size: 108
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
@@ -1841,25 +1869,24 @@ stages:
       hash: md5
       md5: 52614696ad9ffe36c66ea7aa91c91dc2
       size: 183
-    - path: stages/vectorizers/Vectorizer.py
-      hash: md5
-      md5: 8f9b348cc065e03e61bc7cf543c6a64b
-      size: 2288
     outs:
-    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_CountVectorizer1000
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_CountVectorizer1000
       hash: md5
-      md5: f74393ef71428c8698f92b0519b6e555.dir
-      size: 773044784
-      nfiles: 4
-  vectorize@13:
-    cmd: python scripts/vectorize.py "MsTweetsV2" "TweetNormalizationHashtagSkip"
-      "CountVectorizer5000"
+      md5: 6c1680f5120e899b32c1d0266e5e76e8.dir
+      size: 2432050
+      nfiles: 1
+  vectorize@14:
+    cmd: python scripts/vectorize.py "PrusVsSienkiewicz" "DummyDatacleaner" "CountVectorizer5000"
     deps:
-    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner
       hash: md5
-      md5: ad0ff1abdb0b197995b6d6a74818bfbf.dir
-      size: 12959052
+      md5: 2dbe96ec2d9eef42c9c800205a94f882.dir
+      size: 5079076
       nfiles: 2
+    - path: imports_validator/vectorize/CountVectorizer5000.yaml
+      hash: md5
+      md5: 56ed927ce2a2baec5411b392b959d1ae
+      size: 108
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
@@ -1868,70 +1895,38 @@ stages:
       hash: md5
       md5: 46335d26c3afcc23f7e7919b3b15e9ff
       size: 183
-    - path: stages/vectorizers/Vectorizer.py
-      hash: md5
-      md5: 8f9b348cc065e03e61bc7cf543c6a64b
-      size: 2288
     outs:
-    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_CountVectorizer5000
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: df352169ac0d2422035f11ac4995fd66.dir
-      size: 3862132784
-      nfiles: 4
-  vectorize@14:
-    cmd: python scripts/vectorize.py "MsTweetsV2" "TweetNormalizationHashtagSkip"
-      "TfidfVectorizer1000"
-    deps:
-    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip
-      hash: md5
-      md5: ad0ff1abdb0b197995b6d6a74818bfbf.dir
-      size: 12959052
-      nfiles: 2
-    - path: scripts/vectorize.py
-      hash: md5
-      md5: 313deb9b0c0dc175f52248c04ddc2330
-      size: 798
-    - path: stages/vectorizers/TfidfVectorizer1000.py
-      hash: md5
-      md5: 68cd77ee60169f068587a4e7bbaabdce
-      size: 252
-    - path: stages/vectorizers/Vectorizer.py
-      hash: md5
-      md5: 8f9b348cc065e03e61bc7cf543c6a64b
-      size: 2288
-    outs:
-    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_TfidfVectorizer1000
-      hash: md5
-      md5: a275ea3eabb9fb9a81825a4c14bf45cf.dir
-      size: 773044784
-      nfiles: 4
+      md5: 074552d0f4f2d0b93a6583cb68d23f76.dir
+      size: 5388960
+      nfiles: 1
   vectorize@15:
-    cmd: python scripts/vectorize.py "MsTweetsV2" "TweetNormalizationHashtagSkip"
-      "TfidfVectorizer5000"
+    cmd: python scripts/vectorize.py "PrusVsSienkiewicz" "DummyDatacleaner" "DPEBPVectorizer100Avg"
     deps:
-    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner
       hash: md5
-      md5: ad0ff1abdb0b197995b6d6a74818bfbf.dir
-      size: 12959052
+      md5: 2dbe96ec2d9eef42c9c800205a94f882.dir
+      size: 5079076
       nfiles: 2
+    - path: imports_validator/vectorize/DPEBPVectorizer100Avg.yaml
+      hash: md5
+      md5: f5d87a0307612e2c07a1b3934d46044a
+      size: 144
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
       size: 798
-    - path: stages/vectorizers/TfidfVectorizer5000.py
+    - path: stages/vectorizers/DPEBPVectorizer100Avg.py
       hash: md5
-      md5: a262d3b84d8d9928c9cef04eac811201
-      size: 252
-    - path: stages/vectorizers/Vectorizer.py
-      hash: md5
-      md5: 8f9b348cc065e03e61bc7cf543c6a64b
-      size: 2288
+      md5: 813cc10ac1889b375d8eff12f80ee64b
+      size: 204
     outs:
-    - path: data/MsTweetsV2/TweetNormalizationHashtagSkip_TfidfVectorizer5000
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: b48c8bbe63af9d86636eb71bfb01daa2.dir
-      size: 3862132784
-      nfiles: 4
+      md5: e21673e97a4557bca1be2d2c806463dc.dir
+      size: 23124097
+      nfiles: 1
   evaluate@data12-model0:
     cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "CountVectorizer1000"
       "SVC" "SVC3"
@@ -2585,18 +2580,18 @@ stages:
       md5: 6ea4b1fa6f569d111591e1053390cc49
       size: 508
   evaluate_classification@data0-model0:
-    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer370"
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "BigramMorphTagVectorizer100"
       "RandomForest" "RandomForest1"
     deps:
-    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer370
+    - path: data/TweeterCyberbullying/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: 652773a9c3b5ec2a4026f15bcde3bde8.dir
-      size: 183280442
+      md5: 70ecc5f0ca6640bbb840c1630b907116.dir
+      size: 7697038
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
     - path: params/RandomForest1.yaml
       hash: md5
       md5: 911fa5beb1765bda142542bfbf82b586
@@ -2611,29 +2606,29 @@ stages:
       size: 1476
     outs:
     - path: 
-        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/RandomForest/RandomForest1
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/BigramMorphTagVectorizer100/RandomForest/RandomForest1
       hash: md5
-      md5: 1dbc9506b9ea21223209243b030d72b9.dir
-      size: 71102475
+      md5: 409dcd261949dcb31b1861a688b5e98d.dir
+      size: 8728813
       nfiles: 58
     - path: 
-        results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/RandomForest/RandomForest1.json
+        results/TweeterCyberbullying/DummyDatacleaner/BigramMorphTagVectorizer100/RandomForest/RandomForest1.json
       hash: md5
-      md5: 691166a9103160d81e29b28c299ee180
-      size: 317
+      md5: 99e8c6352c04cb373ba2af2187e0b89e
+      size: 305
   evaluate_classification@data0-model1:
-    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer370"
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "BigramMorphTagVectorizer100"
       "MLP" "MLP1"
     deps:
-    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer370
+    - path: data/TweeterCyberbullying/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: 652773a9c3b5ec2a4026f15bcde3bde8.dir
-      size: 183280442
+      md5: 70ecc5f0ca6640bbb840c1630b907116.dir
+      size: 7697038
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
     - path: params/MLP1.yaml
       hash: md5
       md5: 37c50ab93123590daa2ce4cc339014d4
@@ -2648,29 +2643,29 @@ stages:
       size: 2138
     outs:
     - path: 
-        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP1
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/BigramMorphTagVectorizer100/MLP/MLP1
       hash: md5
-      md5: b2436395b2405863dbc0c03bc34fad94.dir
-      size: 1087024
+      md5: fa001e9cdf90ae6cde7ccdd913c31a60.dir
+      size: 421740
       nfiles: 64
     - path: 
-        results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP1.json
+        results/TweeterCyberbullying/DummyDatacleaner/BigramMorphTagVectorizer100/MLP/MLP1.json
       hash: md5
-      md5: 9f48b86508e317b92a6df8322c17cfa0
-      size: 476
+      md5: 9a70831e318ccd09e570e0888639ea24
+      size: 465
   evaluate_classification@data0-model2:
-    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer370"
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "BigramMorphTagVectorizer100"
       "LogisticRegression" "LR1"
     deps:
-    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer370
+    - path: data/TweeterCyberbullying/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: 652773a9c3b5ec2a4026f15bcde3bde8.dir
-      size: 183280442
+      md5: 70ecc5f0ca6640bbb840c1630b907116.dir
+      size: 7697038
       nfiles: 1
     - path: imports_validator/evaluate/LogisticRegression.yaml
       hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
     - path: params/LR1.yaml
       hash: md5
       md5: 575940047794a5dc6e126056daa3ba96
@@ -2685,17 +2680,128 @@ stages:
       size: 1222
     outs:
     - path: 
-        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/LogisticRegression/LR1
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/BigramMorphTagVectorizer100/LogisticRegression/LR1
       hash: md5
-      md5: b3716437a7d918c4e015246af2e8ab81.dir
-      size: 168839
+      md5: fb2f7ad35a34775d79ccad075057a3ab.dir
+      size: 154016
       nfiles: 55
     - path: 
-        results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/LogisticRegression/LR1.json
+        results/TweeterCyberbullying/DummyDatacleaner/BigramMorphTagVectorizer100/LogisticRegression/LR1.json
       hash: md5
-      md5: afe6337f63da4eeb2978622cee6374f6
-      size: 364
+      md5: 2c672838b30b4fdf41b0d44dd6f76fab
+      size: 353
   evaluate_classification@data1-model0:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "BigramMorphTagVectorizer370"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_BigramMorphTagVectorizer370
+      hash: md5
+      md5: 3d1fef61b5653db8c0bd4e21634fbb86.dir
+      size: 28484879
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/BigramMorphTagVectorizer370/RandomForest/RandomForest1
+      hash: md5
+      md5: cd7e168ef5fd50478388e9a9d9434a03.dir
+      size: 8164537
+      nfiles: 58
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/BigramMorphTagVectorizer370/RandomForest/RandomForest1.json
+      hash: md5
+      md5: 18e606a82de18a1ec7d9f53840459ad8
+      size: 305
+  evaluate_classification@data1-model1:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "BigramMorphTagVectorizer370"
+      "MLP" "MLP1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_BigramMorphTagVectorizer370
+      hash: md5
+      md5: 3d1fef61b5653db8c0bd4e21634fbb86.dir
+      size: 28484879
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP1
+      hash: md5
+      md5: 9b7389e29309a38c520dd101388fea69.dir
+      size: 1069538
+      nfiles: 64
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP1.json
+      hash: md5
+      md5: 2bcdd257b8e374fb53be17c22065b39d
+      size: 465
+  evaluate_classification@data1-model2:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "BigramMorphTagVectorizer370"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_BigramMorphTagVectorizer370
+      hash: md5
+      md5: 3d1fef61b5653db8c0bd4e21634fbb86.dir
+      size: 28484879
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/BigramMorphTagVectorizer370/LogisticRegression/LR1
+      hash: md5
+      md5: 2fdb73f9e0a4a750d808a4fc34172cec.dir
+      size: 158023
+      nfiles: 55
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/BigramMorphTagVectorizer370/LogisticRegression/LR1.json
+      hash: md5
+      md5: 346174a11596550f02d5466ba7858401
+      size: 369
+  evaluate_classification@data2-model0:
     cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "CountVectorizer1000"
       "RandomForest" "RandomForest1"
     deps:
@@ -2706,8 +2812,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
     - path: params/RandomForest1.yaml
       hash: md5
       md5: 911fa5beb1765bda142542bfbf82b586
@@ -2724,15 +2830,15 @@ stages:
     - path: 
         mlruns_store/TweeterCyberbullying/DummyDatacleaner/CountVectorizer1000/RandomForest/RandomForest1
       hash: md5
-      md5: 5947399429e06d1bd544e641d096ae38.dir
-      size: 32554165
+      md5: 720a607a29f9a991c207f88c670c6b46.dir
+      size: 32375427
       nfiles: 58
     - path: 
         results/TweeterCyberbullying/DummyDatacleaner/CountVectorizer1000/RandomForest/RandomForest1.json
       hash: md5
-      md5: 24a0c71339cf180f81eaf59ce0f40ada
-      size: 312
-  evaluate_classification@data1-model1:
+      md5: 4c28a4d61be208f6a3d5b48023e3637c
+      size: 311
+  evaluate_classification@data2-model1:
     cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "CountVectorizer1000"
       "MLP" "MLP1"
     deps:
@@ -2743,8 +2849,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
     - path: params/MLP1.yaml
       hash: md5
       md5: 37c50ab93123590daa2ce4cc339014d4
@@ -2760,14 +2866,14 @@ stages:
     outs:
     - path: mlruns_store/TweeterCyberbullying/DummyDatacleaner/CountVectorizer1000/MLP/MLP1
       hash: md5
-      md5: 20f8e79824ab8e569ce9d05db6269313.dir
-      size: 2585464
+      md5: d0a176e5f1dc7cc502fb6c926f6f2c1e.dir
+      size: 2586458
       nfiles: 64
     - path: results/TweeterCyberbullying/DummyDatacleaner/CountVectorizer1000/MLP/MLP1.json
       hash: md5
-      md5: 3253919ff48acfae48e5e58206ea0e60
-      size: 471
-  evaluate_classification@data1-model2:
+      md5: 26d2d302f4435c921ec5099861a06ff2
+      size: 472
+  evaluate_classification@data2-model2:
     cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "CountVectorizer1000"
       "LogisticRegression" "LR1"
     deps:
@@ -2778,8 +2884,8 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/LogisticRegression.yaml
       hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
     - path: params/LR1.yaml
       hash: md5
       md5: 575940047794a5dc6e126056daa3ba96
@@ -2796,7 +2902,7 @@ stages:
     - path: 
         mlruns_store/TweeterCyberbullying/DummyDatacleaner/CountVectorizer1000/LogisticRegression/LR1
       hash: md5
-      md5: be7c6dc1cb79feef323b8f0b764307d1.dir
+      md5: d4e1481819bac9e7d92c86a20aed3770.dir
       size: 168112
       nfiles: 55
     - path: 
@@ -2804,117 +2910,6 @@ stages:
       hash: md5
       md5: 25f11d6eaf343798ba402e864e5c70be
       size: 360
-  evaluate_classification@data2-model0:
-    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "DPEBPVectorizer100Avg"
-      "RandomForest" "RandomForest1"
-    deps:
-    - path: data/TweeterCyberbullying/DummyDatacleaner_DPEBPVectorizer100Avg
-      hash: md5
-      md5: 58cf41efaa7dc824aa1107359e176568.dir
-      size: 3709892
-      nfiles: 1
-    - path: imports_validator/evaluate/RandomForest.yaml
-      hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
-    - path: params/RandomForest1.yaml
-      hash: md5
-      md5: 911fa5beb1765bda142542bfbf82b586
-      size: 17
-    - path: scripts/evaluate.py
-      hash: md5
-      md5: ea49b7cebc0803f03157ca6696987f14
-      size: 1058
-    - path: stages/models/RandomForest.py
-      hash: md5
-      md5: 571b70940a729164e78914b3a16a41f7
-      size: 1476
-    outs:
-    - path: 
-        mlruns_store/TweeterCyberbullying/DummyDatacleaner/DPEBPVectorizer100Avg/RandomForest/RandomForest1
-      hash: md5
-      md5: 9ba2a03a2256a9c223490eb5522651be.dir
-      size: 8656611
-      nfiles: 58
-    - path: 
-        results/TweeterCyberbullying/DummyDatacleaner/DPEBPVectorizer100Avg/RandomForest/RandomForest1.json
-      hash: md5
-      md5: dc624b4e6ca9eae626067b31372886e9
-      size: 299
-  evaluate_classification@data2-model1:
-    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "DPEBPVectorizer100Avg"
-      "MLP" "MLP1"
-    deps:
-    - path: data/TweeterCyberbullying/DummyDatacleaner_DPEBPVectorizer100Avg
-      hash: md5
-      md5: 58cf41efaa7dc824aa1107359e176568.dir
-      size: 3709892
-      nfiles: 1
-    - path: imports_validator/evaluate/MLP.yaml
-      hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
-    - path: params/MLP1.yaml
-      hash: md5
-      md5: 37c50ab93123590daa2ce4cc339014d4
-      size: 224
-    - path: scripts/evaluate.py
-      hash: md5
-      md5: ea49b7cebc0803f03157ca6696987f14
-      size: 1058
-    - path: stages/models/MLP.py
-      hash: md5
-      md5: 6067b8c19fc6e2c90c0b537895233f59
-      size: 2138
-    outs:
-    - path: 
-        mlruns_store/TweeterCyberbullying/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP1
-      hash: md5
-      md5: 9e30d5ccd52bd048119981b534a252d7.dir
-      size: 295156
-      nfiles: 64
-    - path: 
-        results/TweeterCyberbullying/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP1.json
-      hash: md5
-      md5: 7000cc90952a76643769bb962d008018
-      size: 459
-  evaluate_classification@data2-model2:
-    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "DPEBPVectorizer100Avg"
-      "LogisticRegression" "LR1"
-    deps:
-    - path: data/TweeterCyberbullying/DummyDatacleaner_DPEBPVectorizer100Avg
-      hash: md5
-      md5: 58cf41efaa7dc824aa1107359e176568.dir
-      size: 3709892
-      nfiles: 1
-    - path: imports_validator/evaluate/LogisticRegression.yaml
-      hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
-    - path: params/LR1.yaml
-      hash: md5
-      md5: 575940047794a5dc6e126056daa3ba96
-      size: 67
-    - path: scripts/evaluate.py
-      hash: md5
-      md5: ea49b7cebc0803f03157ca6696987f14
-      size: 1058
-    - path: stages/models/LogisticRegression.py
-      hash: md5
-      md5: 87c2516c2c04a251ab03a407b80ae7db
-      size: 1222
-    outs:
-    - path: 
-        mlruns_store/TweeterCyberbullying/DummyDatacleaner/DPEBPVectorizer100Avg/LogisticRegression/LR1
-      hash: md5
-      md5: 2e57b9be4f6575b0246d3eed38f527f6.dir
-      size: 154988
-      nfiles: 55
-    - path: 
-        results/TweeterCyberbullying/DummyDatacleaner/DPEBPVectorizer100Avg/LogisticRegression/LR1.json
-      hash: md5
-      md5: 66cf71ed00ac0a73adf4d334132966c1
-      size: 362
   evaluate_classification@data2-model3:
     cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "DPEBPVectorizer100Avg"
       "SVC" "SVC1"
@@ -2953,18 +2948,18 @@ stages:
       md5: b8abedb02468ad529ff78f10c70e8430
       size: 313
   evaluate_classification@data3-model0:
-    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "HerbertVectorizer"
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "CountVectorizer5000"
       "RandomForest" "RandomForest1"
     deps:
-    - path: data/TweeterCyberbullying/DummyDatacleaner_HerbertVectorizer
+    - path: data/TweeterCyberbullying/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: 1a50cd57f8f9150dd4287cfc10279aba.dir
-      size: 28345442
+      md5: 8d4c7e49a67db7e25c99186fb9892bbc.dir
+      size: 639996
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
     - path: params/RandomForest1.yaml
       hash: md5
       md5: 911fa5beb1765bda142542bfbf82b586
@@ -2979,29 +2974,29 @@ stages:
       size: 1476
     outs:
     - path: 
-        mlruns_store/TweeterCyberbullying/DummyDatacleaner/HerbertVectorizer/RandomForest/RandomForest1
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/CountVectorizer5000/RandomForest/RandomForest1
       hash: md5
-      md5: 2994f16646cff1af2db0772c97f7a62b.dir
-      size: 7501107
+      md5: b2808bd055aa200996bc5b3f8b63dd80.dir
+      size: 22891725
       nfiles: 58
     - path: 
-        results/TweeterCyberbullying/DummyDatacleaner/HerbertVectorizer/RandomForest/RandomForest1.json
+        results/TweeterCyberbullying/DummyDatacleaner/CountVectorizer5000/RandomForest/RandomForest1.json
       hash: md5
-      md5: 7e62ccd117e0549a3a0ffa852ea21c0d
-      size: 295
+      md5: 023b202d693a193e8c794d7e56618f4b
+      size: 312
   evaluate_classification@data3-model1:
-    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "HerbertVectorizer"
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "CountVectorizer5000"
       "MLP" "MLP1"
     deps:
-    - path: data/TweeterCyberbullying/DummyDatacleaner_HerbertVectorizer
+    - path: data/TweeterCyberbullying/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: 1a50cd57f8f9150dd4287cfc10279aba.dir
-      size: 28345442
+      md5: 8d4c7e49a67db7e25c99186fb9892bbc.dir
+      size: 639996
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
     - path: params/MLP1.yaml
       hash: md5
       md5: 37c50ab93123590daa2ce4cc339014d4
@@ -3015,28 +3010,28 @@ stages:
       md5: 6067b8c19fc6e2c90c0b537895233f59
       size: 2138
     outs:
-    - path: mlruns_store/TweeterCyberbullying/DummyDatacleaner/HerbertVectorizer/MLP/MLP1
+    - path: mlruns_store/TweeterCyberbullying/DummyDatacleaner/CountVectorizer5000/MLP/MLP1
       hash: md5
-      md5: a7acc29734f245c0e3ce5892e9a07269.dir
-      size: 1094893
+      md5: 3ea1589cfe3a749ef5443ab25673cd18.dir
+      size: 12176803
       nfiles: 64
-    - path: results/TweeterCyberbullying/DummyDatacleaner/HerbertVectorizer/MLP/MLP1.json
+    - path: results/TweeterCyberbullying/DummyDatacleaner/CountVectorizer5000/MLP/MLP1.json
       hash: md5
-      md5: 602594143780e53c9b2382d0d249eb2e
-      size: 455
+      md5: 0c631e0ca881c1095454fb24f11e91bc
+      size: 472
   evaluate_classification@data3-model2:
-    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "HerbertVectorizer"
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "CountVectorizer5000"
       "LogisticRegression" "LR1"
     deps:
-    - path: data/TweeterCyberbullying/DummyDatacleaner_HerbertVectorizer
+    - path: data/TweeterCyberbullying/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: 1a50cd57f8f9150dd4287cfc10279aba.dir
-      size: 28345442
+      md5: 8d4c7e49a67db7e25c99186fb9892bbc.dir
+      size: 639996
       nfiles: 1
     - path: imports_validator/evaluate/LogisticRegression.yaml
       hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
     - path: params/LR1.yaml
       hash: md5
       md5: 575940047794a5dc6e126056daa3ba96
@@ -3051,16 +3046,16 @@ stages:
       size: 1222
     outs:
     - path: 
-        mlruns_store/TweeterCyberbullying/DummyDatacleaner/HerbertVectorizer/LogisticRegression/LR1
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/CountVectorizer5000/LogisticRegression/LR1
       hash: md5
-      md5: e8f93234cbdfeaf3e7c43a0aea05fc82.dir
-      size: 161060
+      md5: e502a67605add74329485f64da7bf3ed.dir
+      size: 187472
       nfiles: 55
     - path: 
-        results/TweeterCyberbullying/DummyDatacleaner/HerbertVectorizer/LogisticRegression/LR1.json
+        results/TweeterCyberbullying/DummyDatacleaner/CountVectorizer5000/LogisticRegression/LR1.json
       hash: md5
-      md5: a6159f391a6cd83585e1c2a1c6f3f0bf
-      size: 356
+      md5: 843644f76d5f224e0cc0f8db0000c22a
+      size: 360
   evaluate_classification@data3-model3:
     cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "HerbertVectorizer"
       "SVC" "SVC1"
@@ -3169,18 +3164,18 @@ stages:
       md5: 56292fa99f3d17e8e9c2c189980731f2
       size: 311
   evaluate_classification@data4-model0:
-    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "TfidfVectorizer1000"
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "DPEBPVectorizer100Avg"
       "RandomForest" "RandomForest1"
     deps:
-    - path: data/TweeterCyberbullying/DummyDatacleaner_TfidfVectorizer1000
+    - path: data/TweeterCyberbullying/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: ff529485d80d12eaadd86dfd61a0986c.dir
-      size: 773982
+      md5: 58cf41efaa7dc824aa1107359e176568.dir
+      size: 3709892
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
     - path: params/RandomForest1.yaml
       hash: md5
       md5: 911fa5beb1765bda142542bfbf82b586
@@ -3195,29 +3190,29 @@ stages:
       size: 1476
     outs:
     - path: 
-        mlruns_store/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer1000/RandomForest/RandomForest1
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/DPEBPVectorizer100Avg/RandomForest/RandomForest1
       hash: md5
-      md5: 85fc328610462247408ca8788fee8ab0.dir
-      size: 17083802
+      md5: 2c14382ceee91f56e8cb3ffaa059bf05.dir
+      size: 8612771
       nfiles: 58
     - path: 
-        results/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer1000/RandomForest/RandomForest1.json
+        results/TweeterCyberbullying/DummyDatacleaner/DPEBPVectorizer100Avg/RandomForest/RandomForest1.json
       hash: md5
-      md5: cd267af26b7d2f768319417fc5cf4b0a
-      size: 312
+      md5: dc624b4e6ca9eae626067b31372886e9
+      size: 299
   evaluate_classification@data4-model1:
-    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "TfidfVectorizer1000"
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "DPEBPVectorizer100Avg"
       "MLP" "MLP1"
     deps:
-    - path: data/TweeterCyberbullying/DummyDatacleaner_TfidfVectorizer1000
+    - path: data/TweeterCyberbullying/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: ff529485d80d12eaadd86dfd61a0986c.dir
-      size: 773982
+      md5: 58cf41efaa7dc824aa1107359e176568.dir
+      size: 3709892
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
     - path: params/MLP1.yaml
       hash: md5
       md5: 37c50ab93123590daa2ce4cc339014d4
@@ -3231,28 +3226,30 @@ stages:
       md5: 6067b8c19fc6e2c90c0b537895233f59
       size: 2138
     outs:
-    - path: mlruns_store/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP1
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP1
       hash: md5
-      md5: c45db70ffb35f57a954f4499f3f774ed.dir
-      size: 2580453
+      md5: a8742c3b71c5d359e50a25ff1103f6e5.dir
+      size: 293577
       nfiles: 64
-    - path: results/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP1.json
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP1.json
       hash: md5
-      md5: 3402d8d8ca49515865572e8f7f3676d1
-      size: 457
+      md5: 7000cc90952a76643769bb962d008018
+      size: 459
   evaluate_classification@data4-model2:
-    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "TfidfVectorizer1000"
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "DPEBPVectorizer100Avg"
       "LogisticRegression" "LR1"
     deps:
-    - path: data/TweeterCyberbullying/DummyDatacleaner_TfidfVectorizer1000
+    - path: data/TweeterCyberbullying/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: ff529485d80d12eaadd86dfd61a0986c.dir
-      size: 773982
+      md5: 58cf41efaa7dc824aa1107359e176568.dir
+      size: 3709892
       nfiles: 1
     - path: imports_validator/evaluate/LogisticRegression.yaml
       hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
     - path: params/LR1.yaml
       hash: md5
       md5: 575940047794a5dc6e126056daa3ba96
@@ -3267,16 +3264,16 @@ stages:
       size: 1222
     outs:
     - path: 
-        mlruns_store/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer1000/LogisticRegression/LR1
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/DPEBPVectorizer100Avg/LogisticRegression/LR1
       hash: md5
-      md5: e62eea06609422c17cd05e3925c25b7c.dir
-      size: 164564
+      md5: 91ab46cd6c0b05122edcdd0b3966887c.dir
+      size: 154988
       nfiles: 55
     - path: 
-        results/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer1000/LogisticRegression/LR1.json
+        results/TweeterCyberbullying/DummyDatacleaner/DPEBPVectorizer100Avg/LogisticRegression/LR1.json
       hash: md5
-      md5: dcb9a2819e6a09b7e49dea3dd2b3c202
-      size: 360
+      md5: 66cf71ed00ac0a73adf4d334132966c1
+      size: 362
   evaluate_classification@data4-model3:
     cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "TfidfVectorizer1000"
       "SVC" "SVC1"
@@ -3313,18 +3310,18 @@ stages:
       md5: f5d67d26f25fb07d80fbef8a0ad752e4
       size: 311
   evaluate_classification@data5-model0:
-    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "StyloMetrix"
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "FullMorphTagVectorizer"
       "RandomForest" "RandomForest1"
     deps:
-    - path: data/TweeterCyberbullying/DummyDatacleaner_StyloMetrix
+    - path: data/TweeterCyberbullying/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: 5a1cce29d4fd04ebe3ae6f4840a48ef3.dir
-      size: 969234
+      md5: 0c7fc7b5be2da942f19d7d7a5e175306.dir
+      size: 531572
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
     - path: params/RandomForest1.yaml
       hash: md5
       md5: 911fa5beb1765bda142542bfbf82b586
@@ -3339,29 +3336,29 @@ stages:
       size: 1476
     outs:
     - path: 
-        mlruns_store/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/RandomForest/RandomForest1
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/FullMorphTagVectorizer/RandomForest/RandomForest1
       hash: md5
-      md5: 67cfd6f24ed80b1c82408ccf27d97c0f.dir
-      size: 10147212
+      md5: 3f7bdfdd915bc9d33bffeb09f0e7289f.dir
+      size: 20110080
       nfiles: 58
     - path: 
-        results/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/RandomForest/RandomForest1.json
+        results/TweeterCyberbullying/DummyDatacleaner/FullMorphTagVectorizer/RandomForest/RandomForest1.json
       hash: md5
-      md5: 9c0d8652ebc5008c11e5382bc5e298dc
-      size: 303
+      md5: b54d01d37295119d17d775fa52d1814e
+      size: 316
   evaluate_classification@data5-model1:
-    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "StyloMetrix"
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "FullMorphTagVectorizer"
       "MLP" "MLP1"
     deps:
-    - path: data/TweeterCyberbullying/DummyDatacleaner_StyloMetrix
+    - path: data/TweeterCyberbullying/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: 5a1cce29d4fd04ebe3ae6f4840a48ef3.dir
-      size: 969234
+      md5: 0c7fc7b5be2da942f19d7d7a5e175306.dir
+      size: 531572
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
     - path: params/MLP1.yaml
       hash: md5
       md5: 37c50ab93123590daa2ce4cc339014d4
@@ -3375,28 +3372,30 @@ stages:
       md5: 6067b8c19fc6e2c90c0b537895233f59
       size: 2138
     outs:
-    - path: mlruns_store/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/MLP/MLP1
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/FullMorphTagVectorizer/MLP/MLP1
       hash: md5
-      md5: 3729ebd4ae04214f26d4dd74dbc49524.dir
-      size: 588241
+      md5: 6356ab5bb73aea5ed323dff6302e35d2.dir
+      size: 3622510
       nfiles: 64
-    - path: results/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/MLP/MLP1.json
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/FullMorphTagVectorizer/MLP/MLP1.json
       hash: md5
-      md5: 9d1f9e3a0a2fca03f2d84b344bfabf39
-      size: 449
+      md5: 0f7f696d7d9233973864247791db103e
+      size: 460
   evaluate_classification@data5-model2:
-    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "StyloMetrix"
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "FullMorphTagVectorizer"
       "LogisticRegression" "LR1"
     deps:
-    - path: data/TweeterCyberbullying/DummyDatacleaner_StyloMetrix
+    - path: data/TweeterCyberbullying/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: 5a1cce29d4fd04ebe3ae6f4840a48ef3.dir
-      size: 969234
+      md5: 0c7fc7b5be2da942f19d7d7a5e175306.dir
+      size: 531572
       nfiles: 1
     - path: imports_validator/evaluate/LogisticRegression.yaml
       hash: md5
-      md5: 60891a7182cc29d128dfa18da1c0ab4e
-      size: 108
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
     - path: params/LR1.yaml
       hash: md5
       md5: 575940047794a5dc6e126056daa3ba96
@@ -3411,16 +3410,16 @@ stages:
       size: 1222
     outs:
     - path: 
-        mlruns_store/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/LogisticRegression/LR1
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/FullMorphTagVectorizer/LogisticRegression/LR1
       hash: md5
-      md5: 71e2124e0f1907950825b30c91f794a3.dir
-      size: 156612
+      md5: 772b0f762b7d96f805a8f6d8ba79d69a.dir
+      size: 166526
       nfiles: 55
     - path: 
-        results/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/LogisticRegression/LR1.json
+        results/TweeterCyberbullying/DummyDatacleaner/FullMorphTagVectorizer/LogisticRegression/LR1.json
       hash: md5
-      md5: bcbe9f372c50f952c30545498de8df9a
-      size: 351
+      md5: 090a73c060d9042c5467c0f6dc58ab74
+      size: 364
   evaluate_classification@data5-model3:
     cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "StyloMetrix"
       "SVC" "SVC1"
@@ -3456,3 +3455,1909 @@ stages:
       hash: md5
       md5: bb4a5e74b8b6e5f32af6779b1093f852
       size: 302
+  vectorize@16:
+    cmd: python scripts/vectorize.py "PrusVsSienkiewicz" "DummyDatacleaner" "FullMorphTagVectorizer"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner
+      hash: md5
+      md5: 2dbe96ec2d9eef42c9c800205a94f882.dir
+      size: 5079076
+      nfiles: 2
+    - path: imports_validator/vectorize/FullMorphTagVectorizer.yaml
+      hash: md5
+      md5: cc23219eb6d307148c9fa7dbea18a081
+      size: 72
+    - path: scripts/vectorize.py
+      hash: md5
+      md5: 313deb9b0c0dc175f52248c04ddc2330
+      size: 798
+    - path: stages/vectorizers/FullMorphTagVectorizer.py
+      hash: md5
+      md5: 6c23658cd05a9f6899e5c11a2659cacf
+      size: 2523
+    outs:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_FullMorphTagVectorizer
+      hash: md5
+      md5: 4bf9a14e5eb40d5917df0d77cdfb4bd5.dir
+      size: 5385736
+      nfiles: 1
+  vectorize@17:
+    cmd: python scripts/vectorize.py "PrusVsSienkiewicz" "DummyDatacleaner" "HerbertVectorizer"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner
+      hash: md5
+      md5: 2dbe96ec2d9eef42c9c800205a94f882.dir
+      size: 5079076
+      nfiles: 2
+    - path: imports_validator/vectorize/HerbertVectorizer.yaml
+      hash: md5
+      md5: 07fdc8076d8564e88fbe4d6f2e309664
+      size: 108
+    - path: scripts/vectorize.py
+      hash: md5
+      md5: 313deb9b0c0dc175f52248c04ddc2330
+      size: 798
+    - path: stages/vectorizers/HerbertVectorizer.py
+      hash: md5
+      md5: d3b6716ba8a17b5321c15e3d3e2ab323
+      size: 4301
+    outs:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_HerbertVectorizer
+      hash: md5
+      md5: 9d3e517c1e58aa44244eede26f696eaf.dir
+      size: 183005371
+      nfiles: 1
+  vectorize@18:
+    cmd: python scripts/vectorize.py "PrusVsSienkiewicz" "DummyDatacleaner" "SpacyMorphTagVectorizer"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner
+      hash: md5
+      md5: 2dbe96ec2d9eef42c9c800205a94f882.dir
+      size: 5079076
+      nfiles: 2
+    - path: imports_validator/vectorize/SpacyMorphTagVectorizer.yaml
+      hash: md5
+      md5: cc23219eb6d307148c9fa7dbea18a081
+      size: 72
+    - path: scripts/vectorize.py
+      hash: md5
+      md5: 313deb9b0c0dc175f52248c04ddc2330
+      size: 798
+    - path: stages/vectorizers/SpacyMorphTagVectorizer.py
+      hash: md5
+      md5: 32c4f1377b287e024f0f92b9938e8b2e
+      size: 3556
+    outs:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_SpacyMorphTagVectorizer
+      hash: md5
+      md5: fc3422ce8bab8af17a3dc7065184c019.dir
+      size: 5566548
+      nfiles: 1
+  vectorize@19:
+    cmd: python scripts/vectorize.py "PrusVsSienkiewicz" "DummyDatacleaner" "StyloMetrix"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner
+      hash: md5
+      md5: 2dbe96ec2d9eef42c9c800205a94f882.dir
+      size: 5079076
+      nfiles: 2
+    - path: imports_validator/vectorize/StyloMetrix.yaml
+      hash: md5
+      md5: cc23219eb6d307148c9fa7dbea18a081
+      size: 72
+    - path: scripts/vectorize.py
+      hash: md5
+      md5: 313deb9b0c0dc175f52248c04ddc2330
+      size: 798
+    - path: stages/vectorizers/StyloMetrix.py
+      hash: md5
+      md5: baf3e05871069c273f595354b5626734
+      size: 715
+    outs:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: 391e261d9c7a8ac63c9b957aa246310a.dir
+      size: 10121272
+      nfiles: 1
+  vectorize@20:
+    cmd: python scripts/vectorize.py "PrusVsSienkiewicz" "DummyDatacleaner" "TfidfVectorizer1000"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner
+      hash: md5
+      md5: 2dbe96ec2d9eef42c9c800205a94f882.dir
+      size: 5079076
+      nfiles: 2
+    - path: imports_validator/vectorize/TfidfVectorizer1000.yaml
+      hash: md5
+      md5: 249c307b2d055740eb622bcc6d40d2fb
+      size: 108
+    - path: scripts/vectorize.py
+      hash: md5
+      md5: 313deb9b0c0dc175f52248c04ddc2330
+      size: 798
+    - path: stages/vectorizers/TfidfVectorizer1000.py
+      hash: md5
+      md5: 68cd77ee60169f068587a4e7bbaabdce
+      size: 252
+    outs:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_TfidfVectorizer1000
+      hash: md5
+      md5: eb2bb726191d727c61ead4f3d4715d53.dir
+      size: 8270584
+      nfiles: 1
+  vectorize@21:
+    cmd: python scripts/vectorize.py "PrusVsSienkiewicz" "DummyDatacleaner" "TfidfVectorizer5000"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner
+      hash: md5
+      md5: 2dbe96ec2d9eef42c9c800205a94f882.dir
+      size: 5079076
+      nfiles: 2
+    - path: imports_validator/vectorize/TfidfVectorizer5000.yaml
+      hash: md5
+      md5: 249c307b2d055740eb622bcc6d40d2fb
+      size: 108
+    - path: scripts/vectorize.py
+      hash: md5
+      md5: 313deb9b0c0dc175f52248c04ddc2330
+      size: 798
+    - path: stages/vectorizers/TfidfVectorizer5000.py
+      hash: md5
+      md5: a262d3b84d8d9928c9cef04eac811201
+      size: 252
+    outs:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_TfidfVectorizer5000
+      hash: md5
+      md5: f5373833b5a6b1f39485fac39331283e.dir
+      size: 13389952
+      nfiles: 1
+  evaluate_classification@data6-model0:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "HerbertVectorizer"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_HerbertVectorizer
+      hash: md5
+      md5: 1a50cd57f8f9150dd4287cfc10279aba.dir
+      size: 28345442
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/HerbertVectorizer/RandomForest/RandomForest1
+      hash: md5
+      md5: f97c96420bce263e64c3dd176de720ce.dir
+      size: 7510032
+      nfiles: 58
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/HerbertVectorizer/RandomForest/RandomForest1.json
+      hash: md5
+      md5: b3e258a4273886d98b7efc64f752beee
+      size: 311
+  evaluate_classification@data6-model1:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "HerbertVectorizer"
+      "MLP" "MLP1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_HerbertVectorizer
+      hash: md5
+      md5: 1a50cd57f8f9150dd4287cfc10279aba.dir
+      size: 28345442
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: mlruns_store/TweeterCyberbullying/DummyDatacleaner/HerbertVectorizer/MLP/MLP1
+      hash: md5
+      md5: f434f86f4f4b928bacc31e47f3dfc4bd.dir
+      size: 1095357
+      nfiles: 64
+    - path: results/TweeterCyberbullying/DummyDatacleaner/HerbertVectorizer/MLP/MLP1.json
+      hash: md5
+      md5: 602594143780e53c9b2382d0d249eb2e
+      size: 455
+  evaluate_classification@data6-model2:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "HerbertVectorizer"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_HerbertVectorizer
+      hash: md5
+      md5: 1a50cd57f8f9150dd4287cfc10279aba.dir
+      size: 28345442
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/HerbertVectorizer/LogisticRegression/LR1
+      hash: md5
+      md5: 637719fbbd6f37c968a6aa15b48b4558.dir
+      size: 161060
+      nfiles: 55
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/HerbertVectorizer/LogisticRegression/LR1.json
+      hash: md5
+      md5: a6159f391a6cd83585e1c2a1c6f3f0bf
+      size: 356
+  evaluate_classification@data7-model0:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "SpacyMorphTagVectorizer"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_SpacyMorphTagVectorizer
+      hash: md5
+      md5: f186e980aa3c369bdeb35f1aca04bf4c.dir
+      size: 650278
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/SpacyMorphTagVectorizer/RandomForest/RandomForest1
+      hash: md5
+      md5: cc6a7c65223319b6bf297e7588e51991.dir
+      size: 11858025
+      nfiles: 58
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/SpacyMorphTagVectorizer/RandomForest/RandomForest1.json
+      hash: md5
+      md5: 78025ef3013a24b110de8eb9e77259c5
+      size: 317
+  evaluate_classification@data7-model1:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "SpacyMorphTagVectorizer"
+      "MLP" "MLP1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_SpacyMorphTagVectorizer
+      hash: md5
+      md5: f186e980aa3c369bdeb35f1aca04bf4c.dir
+      size: 650278
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/SpacyMorphTagVectorizer/MLP/MLP1
+      hash: md5
+      md5: 85e33c5ba9cab1a9a930fa5ccbb141fa.dir
+      size: 397799
+      nfiles: 64
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/SpacyMorphTagVectorizer/MLP/MLP1.json
+      hash: md5
+      md5: 3b8b8bdddb97973425a8e2111eff811d
+      size: 461
+  evaluate_classification@data7-model2:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "SpacyMorphTagVectorizer"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_SpacyMorphTagVectorizer
+      hash: md5
+      md5: f186e980aa3c369bdeb35f1aca04bf4c.dir
+      size: 650278
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/SpacyMorphTagVectorizer/LogisticRegression/LR1
+      hash: md5
+      md5: f1750cfd4b5d9821cf6123b99557a0e3.dir
+      size: 153598
+      nfiles: 55
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/SpacyMorphTagVectorizer/LogisticRegression/LR1.json
+      hash: md5
+      md5: ef4f215cf4f8bbc437feb40e83604740
+      size: 349
+  evaluate_classification@data8-model0:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "StyloMetrix"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: 5a1cce29d4fd04ebe3ae6f4840a48ef3.dir
+      size: 969234
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/RandomForest/RandomForest1
+      hash: md5
+      md5: 3a315912f7eae3aa55660b695b5e830f.dir
+      size: 10084577
+      nfiles: 58
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/RandomForest/RandomForest1.json
+      hash: md5
+      md5: ea0d0d8b171426c194869feebedf9cde
+      size: 303
+  evaluate_classification@data8-model1:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "StyloMetrix"
+      "MLP" "MLP1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: 5a1cce29d4fd04ebe3ae6f4840a48ef3.dir
+      size: 969234
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: mlruns_store/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/MLP/MLP1
+      hash: md5
+      md5: 9b948644ba15a4da190f195d94bd759e.dir
+      size: 594965
+      nfiles: 64
+    - path: results/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/MLP/MLP1.json
+      hash: md5
+      md5: 84c5bbfc1290572370005afd753ba459
+      size: 465
+  evaluate_classification@data8-model2:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "StyloMetrix"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: 5a1cce29d4fd04ebe3ae6f4840a48ef3.dir
+      size: 969234
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/LogisticRegression/LR1
+      hash: md5
+      md5: ce25bd75e0ce0ef2ceb3f941bda34b74.dir
+      size: 156612
+      nfiles: 55
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/StyloMetrix/LogisticRegression/LR1.json
+      hash: md5
+      md5: bcbe9f372c50f952c30545498de8df9a
+      size: 351
+  evaluate_classification@data9-model0:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "TfidfVectorizer1000"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_TfidfVectorizer1000
+      hash: md5
+      md5: ff529485d80d12eaadd86dfd61a0986c.dir
+      size: 773982
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer1000/RandomForest/RandomForest1
+      hash: md5
+      md5: 45529827319f009356491e34ffb9d158.dir
+      size: 17418919
+      nfiles: 58
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer1000/RandomForest/RandomForest1.json
+      hash: md5
+      md5: 698217f7c01a0c2b323f23b3f513407a
+      size: 312
+  evaluate_classification@data9-model1:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "TfidfVectorizer1000"
+      "MLP" "MLP1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_TfidfVectorizer1000
+      hash: md5
+      md5: ff529485d80d12eaadd86dfd61a0986c.dir
+      size: 773982
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: mlruns_store/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP1
+      hash: md5
+      md5: 7fa5c83e5a721a9f14ffdeae0fbf90c9.dir
+      size: 2587141
+      nfiles: 64
+    - path: results/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP1.json
+      hash: md5
+      md5: 4839fa9c81444b5cf925e1eb2f9f3461
+      size: 471
+  evaluate_classification@data9-model2:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "TfidfVectorizer1000"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_TfidfVectorizer1000
+      hash: md5
+      md5: ff529485d80d12eaadd86dfd61a0986c.dir
+      size: 773982
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer1000/LogisticRegression/LR1
+      hash: md5
+      md5: ae9065b4b5f20be75be1d78f43d94f88.dir
+      size: 164564
+      nfiles: 55
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer1000/LogisticRegression/LR1.json
+      hash: md5
+      md5: dcb9a2819e6a09b7e49dea3dd2b3c202
+      size: 360
+  evaluate_classification@data10-model0:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "TfidfVectorizer5000"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_TfidfVectorizer5000
+      hash: md5
+      md5: e06e298fa4f7e1b26026e31f630e7c2e.dir
+      size: 1293094
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer5000/RandomForest/RandomForest1
+      hash: md5
+      md5: 231705b0b8d6fa5317d9003394b13b2a.dir
+      size: 14038339
+      nfiles: 58
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer5000/RandomForest/RandomForest1.json
+      hash: md5
+      md5: de34e7206396f62de9a8e5b9bf971089
+      size: 312
+  evaluate_classification@data10-model1:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "TfidfVectorizer5000"
+      "MLP" "MLP1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_TfidfVectorizer5000
+      hash: md5
+      md5: e06e298fa4f7e1b26026e31f630e7c2e.dir
+      size: 1293094
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: mlruns_store/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer5000/MLP/MLP1
+      hash: md5
+      md5: 7611a2f1a9eec80ed30ad14eefcdaebd.dir
+      size: 12178608
+      nfiles: 64
+    - path: results/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer5000/MLP/MLP1.json
+      hash: md5
+      md5: 424b4c778f86f5d2b8242b95362efae0
+      size: 472
+  evaluate_classification@data10-model2:
+    cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "TfidfVectorizer5000"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/TweeterCyberbullying/DummyDatacleaner_TfidfVectorizer5000
+      hash: md5
+      md5: e06e298fa4f7e1b26026e31f630e7c2e.dir
+      size: 1293094
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer5000/LogisticRegression/LR1
+      hash: md5
+      md5: d522e3384d2e8b2ac1921c4678695aa0.dir
+      size: 191404
+      nfiles: 55
+    - path: 
+        results/TweeterCyberbullying/DummyDatacleaner/TfidfVectorizer5000/LogisticRegression/LR1.json
+      hash: md5
+      md5: 793853bd39a3cc608044e4ece78a8b73
+      size: 359
+  evaluate_classification@data11-model0:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer100"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer100
+      hash: md5
+      md5: ddf7a944ad61e5ea5b574306836762e4.dir
+      size: 49439983
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer100/RandomForest/RandomForest1
+      hash: md5
+      md5: 205517b72f7c77ab2132c95c1ea0a0b8.dir
+      size: 10588522
+      nfiles: 58
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer100/RandomForest/RandomForest1.json
+      hash: md5
+      md5: ec90966f6245b3203c68b47da48b908a
+      size: 317
+  evaluate_classification@data11-model1:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer100"
+      "MLP" "MLP1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer100
+      hash: md5
+      md5: ddf7a944ad61e5ea5b574306836762e4.dir
+      size: 49439983
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer100/MLP/MLP1
+      hash: md5
+      md5: 151f2a47714a0146919bfba3e7bf1e20.dir
+      size: 440291
+      nfiles: 64
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer100/MLP/MLP1.json
+      hash: md5
+      md5: 7d2bb0dd29ac27c8d17563a6bbfcd5bd
+      size: 462
+  evaluate_classification@data11-model2:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer100"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer100
+      hash: md5
+      md5: ddf7a944ad61e5ea5b574306836762e4.dir
+      size: 49439983
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer100/LogisticRegression/LR1
+      hash: md5
+      md5: 5cef39f6038a4feb048522cf104cf327.dir
+      size: 174110
+      nfiles: 55
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer100/LogisticRegression/LR1.json
+      hash: md5
+      md5: acacd5111e6a5eb890b1d4bc3659d591
+      size: 350
+  evaluate_classification@data12-model0:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer370"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer370
+      hash: md5
+      md5: 68532e4034847a1be33c4fd28db80ec4.dir
+      size: 183274681
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/RandomForest/RandomForest1
+      hash: md5
+      md5: 96fad6e5184168649d7979d728948ad8.dir
+      size: 9909875
+      nfiles: 58
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/RandomForest/RandomForest1.json
+      hash: md5
+      md5: 0f72f8ac67c87469b41d6c8a1f6aea68
+      size: 317
+  evaluate_classification@data12-model1:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer370"
+      "MLP" "MLP1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer370
+      hash: md5
+      md5: 68532e4034847a1be33c4fd28db80ec4.dir
+      size: 183274681
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP1
+      hash: md5
+      md5: 2e6a40f096bd42707bc6ba3713dcdb96.dir
+      size: 1089962
+      nfiles: 64
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP1.json
+      hash: md5
+      md5: 6a2c56d2f749e1d16ddd9635a4417282
+      size: 462
+  evaluate_classification@data12-model2:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer370"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer370
+      hash: md5
+      md5: 68532e4034847a1be33c4fd28db80ec4.dir
+      size: 183274681
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/LogisticRegression/LR1
+      hash: md5
+      md5: ed32be4fc0d7bb315517e515d2a7bea6.dir
+      size: 171060
+      nfiles: 55
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/LogisticRegression/LR1.json
+      hash: md5
+      md5: 082c8b0c7e63ad7da69aa754d17ae1a4
+      size: 366
+  evaluate_classification@data13-model0:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "CountVectorizer1000"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_CountVectorizer1000
+      hash: md5
+      md5: 6c1680f5120e899b32c1d0266e5e76e8.dir
+      size: 2432050
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/CountVectorizer1000/RandomForest/RandomForest1
+      hash: md5
+      md5: f84cd4aa102125e8080045540fe413ff.dir
+      size: 40490816
+      nfiles: 58
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/CountVectorizer1000/RandomForest/RandomForest1.json
+      hash: md5
+      md5: 4ab541dd529c60ed8341107eb7b59d93
+      size: 309
+  evaluate_classification@data13-model1:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "CountVectorizer1000"
+      "MLP" "MLP1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_CountVectorizer1000
+      hash: md5
+      md5: 6c1680f5120e899b32c1d0266e5e76e8.dir
+      size: 2432050
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/CountVectorizer1000/MLP/MLP1
+      hash: md5
+      md5: 0f5f1275bad7319d9efe9b0dd3225ffd.dir
+      size: 2583753
+      nfiles: 64
+    - path: results/PrusVsSienkiewicz/DummyDatacleaner/CountVectorizer1000/MLP/MLP1.json
+      hash: md5
+      md5: 9a5cff888d273f2ed23b6ca9002cf96d
+      size: 469
+  evaluate_classification@data13-model2:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "CountVectorizer1000"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_CountVectorizer1000
+      hash: md5
+      md5: 6c1680f5120e899b32c1d0266e5e76e8.dir
+      size: 2432050
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/CountVectorizer1000/LogisticRegression/LR1
+      hash: md5
+      md5: f51a0264f2fbd7d65e8550686c1c67ad.dir
+      size: 165972
+      nfiles: 55
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/CountVectorizer1000/LogisticRegression/LR1.json
+      hash: md5
+      md5: 65c8406d698e804f5e38324609345993
+      size: 357
+  evaluate_classification@data14-model0:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "CountVectorizer5000"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_CountVectorizer5000
+      hash: md5
+      md5: 074552d0f4f2d0b93a6583cb68d23f76.dir
+      size: 5388960
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/CountVectorizer5000/RandomForest/RandomForest1
+      hash: md5
+      md5: 37128db256c7ea9cf0648351a8de0bfd.dir
+      size: 39815131
+      nfiles: 58
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/CountVectorizer5000/RandomForest/RandomForest1.json
+      hash: md5
+      md5: 3bd06f1f4dcc1b3f26c70c705c5632fa
+      size: 310
+  evaluate_classification@data14-model1:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "CountVectorizer5000"
+      "MLP" "MLP1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_CountVectorizer5000
+      hash: md5
+      md5: 074552d0f4f2d0b93a6583cb68d23f76.dir
+      size: 5388960
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/CountVectorizer5000/MLP/MLP1
+      hash: md5
+      md5: 75cbea38d3ea70c23eab22411ee8b9a4.dir
+      size: 12177885
+      nfiles: 64
+    - path: results/PrusVsSienkiewicz/DummyDatacleaner/CountVectorizer5000/MLP/MLP1.json
+      hash: md5
+      md5: 6dc9d860aa708ad062d5fe9ba3474077
+      size: 469
+  evaluate_classification@data14-model2:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "CountVectorizer5000"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_CountVectorizer5000
+      hash: md5
+      md5: 074552d0f4f2d0b93a6583cb68d23f76.dir
+      size: 5388960
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/CountVectorizer5000/LogisticRegression/LR1
+      hash: md5
+      md5: d74dea54db4ae5f37acb80a333e098eb.dir
+      size: 189217
+      nfiles: 55
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/CountVectorizer5000/LogisticRegression/LR1.json
+      hash: md5
+      md5: 5ab4f7c421b8905a24ac0973701d1f9f
+      size: 357
+  evaluate_classification@data15-model0:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "DPEBPVectorizer100Avg"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_DPEBPVectorizer100Avg
+      hash: md5
+      md5: e21673e97a4557bca1be2d2c806463dc.dir
+      size: 23124097
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/DPEBPVectorizer100Avg/RandomForest/RandomForest1
+      hash: md5
+      md5: 85c4f487ee3a0a3613838338ffa8cc61.dir
+      size: 10154742
+      nfiles: 58
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/DPEBPVectorizer100Avg/RandomForest/RandomForest1.json
+      hash: md5
+      md5: e4d047e3838d83f5a6b9bbb7d69f8787
+      size: 312
+  evaluate_classification@data15-model1:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "DPEBPVectorizer100Avg"
+      "MLP" "MLP1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_DPEBPVectorizer100Avg
+      hash: md5
+      md5: e21673e97a4557bca1be2d2c806463dc.dir
+      size: 23124097
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP1
+      hash: md5
+      md5: e0ed09804ef7854ae3157de04a55101d.dir
+      size: 313221
+      nfiles: 64
+    - path: results/PrusVsSienkiewicz/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP1.json
+      hash: md5
+      md5: b296a3ab9baa4955c1dc6ff436db42ed
+      size: 456
+  evaluate_classification@data15-model2:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "DPEBPVectorizer100Avg"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_DPEBPVectorizer100Avg
+      hash: md5
+      md5: e21673e97a4557bca1be2d2c806463dc.dir
+      size: 23124097
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/DPEBPVectorizer100Avg/LogisticRegression/LR1
+      hash: md5
+      md5: f32d07a0477531d209ecdfa09c8ef818.dir
+      size: 172328
+      nfiles: 55
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/DPEBPVectorizer100Avg/LogisticRegression/LR1.json
+      hash: md5
+      md5: 035e052272b915c91263126677157b70
+      size: 359
+  evaluate_classification@data16-model0:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "FullMorphTagVectorizer"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_FullMorphTagVectorizer
+      hash: md5
+      md5: 4bf9a14e5eb40d5917df0d77cdfb4bd5.dir
+      size: 5385736
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/FullMorphTagVectorizer/RandomForest/RandomForest1
+      hash: md5
+      md5: 2cddc807621af47764165375d1a4992b.dir
+      size: 21609439
+      nfiles: 58
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/FullMorphTagVectorizer/RandomForest/RandomForest1.json
+      hash: md5
+      md5: 1db5e34c938931aa1040ff5523b7633f
+      size: 313
+  evaluate_classification@data16-model1:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "FullMorphTagVectorizer"
+      "MLP" "MLP1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_FullMorphTagVectorizer
+      hash: md5
+      md5: 4bf9a14e5eb40d5917df0d77cdfb4bd5.dir
+      size: 5385736
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/FullMorphTagVectorizer/MLP/MLP1
+      hash: md5
+      md5: 6dce0bd67bd7158bf2086fe75d0ae266.dir
+      size: 3644751
+      nfiles: 64
+    - path: results/PrusVsSienkiewicz/DummyDatacleaner/FullMorphTagVectorizer/MLP/MLP1.json
+      hash: md5
+      md5: f9022885af1703fd763f8ca5540157c0
+      size: 457
+  evaluate_classification@data16-model2:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "FullMorphTagVectorizer"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_FullMorphTagVectorizer
+      hash: md5
+      md5: 4bf9a14e5eb40d5917df0d77cdfb4bd5.dir
+      size: 5385736
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/FullMorphTagVectorizer/LogisticRegression/LR1
+      hash: md5
+      md5: 5327a56e206a6d7bad913edf5a2059fd.dir
+      size: 183183
+      nfiles: 55
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/FullMorphTagVectorizer/LogisticRegression/LR1.json
+      hash: md5
+      md5: 8b4fb08ef9f823f4cd59f9c3f9a7a377
+      size: 361
+  evaluate_classification@data17-model0:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "HerbertVectorizer"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_HerbertVectorizer
+      hash: md5
+      md5: 9d3e517c1e58aa44244eede26f696eaf.dir
+      size: 183005371
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/HerbertVectorizer/RandomForest/RandomForest1
+      hash: md5
+      md5: 290c4f44887351b6dd26b523ee665655.dir
+      size: 8856648
+      nfiles: 58
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/HerbertVectorizer/RandomForest/RandomForest1.json
+      hash: md5
+      md5: c4afd23938c1c62e4106a5c2cfb05f91
+      size: 307
+  evaluate_classification@data17-model1:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "HerbertVectorizer"
+      "MLP" "MLP1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_HerbertVectorizer
+      hash: md5
+      md5: 9d3e517c1e58aa44244eede26f696eaf.dir
+      size: 183005371
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/HerbertVectorizer/MLP/MLP1
+      hash: md5
+      md5: 3262568321b23a766b1b5e441fe7a81e.dir
+      size: 1109951
+      nfiles: 64
+    - path: results/PrusVsSienkiewicz/DummyDatacleaner/HerbertVectorizer/MLP/MLP1.json
+      hash: md5
+      md5: ca25c0c1a5e4008215bf62e74ed2e08c
+      size: 467
+  evaluate_classification@data17-model2:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "HerbertVectorizer"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_HerbertVectorizer
+      hash: md5
+      md5: 9d3e517c1e58aa44244eede26f696eaf.dir
+      size: 183005371
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/HerbertVectorizer/LogisticRegression/LR1
+      hash: md5
+      md5: f96e12c295a3835f152975887684fd25.dir
+      size: 165649
+      nfiles: 55
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/HerbertVectorizer/LogisticRegression/LR1.json
+      hash: md5
+      md5: 0c23027b0704c8e1fb651fa659f0026d
+      size: 356
+  evaluate_classification@data18-model0:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "SpacyMorphTagVectorizer"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_SpacyMorphTagVectorizer
+      hash: md5
+      md5: fc3422ce8bab8af17a3dc7065184c019.dir
+      size: 5566548
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/SpacyMorphTagVectorizer/RandomForest/RandomForest1
+      hash: md5
+      md5: e040314e992006e219d7c679f3d61ecf.dir
+      size: 12479694
+      nfiles: 58
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/SpacyMorphTagVectorizer/RandomForest/RandomForest1.json
+      hash: md5
+      md5: 0e92643368a4680a3fc215416227be1f
+      size: 314
+  evaluate_classification@data18-model1:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "SpacyMorphTagVectorizer"
+      "MLP" "MLP1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_SpacyMorphTagVectorizer
+      hash: md5
+      md5: fc3422ce8bab8af17a3dc7065184c019.dir
+      size: 5566548
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/SpacyMorphTagVectorizer/MLP/MLP1
+      hash: md5
+      md5: 6053fd898bbc2df42a16132ad3575afc.dir
+      size: 414418
+      nfiles: 64
+    - path: results/PrusVsSienkiewicz/DummyDatacleaner/SpacyMorphTagVectorizer/MLP/MLP1.json
+      hash: md5
+      md5: 245694d02431257304dbead2b94b619a
+      size: 458
+  evaluate_classification@data18-model2:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "SpacyMorphTagVectorizer"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_SpacyMorphTagVectorizer
+      hash: md5
+      md5: fc3422ce8bab8af17a3dc7065184c019.dir
+      size: 5566548
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/SpacyMorphTagVectorizer/LogisticRegression/LR1
+      hash: md5
+      md5: 8085d57f48b3571f961c4a2600d79543.dir
+      size: 174294
+      nfiles: 55
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/SpacyMorphTagVectorizer/LogisticRegression/LR1.json
+      hash: md5
+      md5: d98730b3f54ffd681da837d1e9c5715a
+      size: 362
+  evaluate_classification@data19-model0:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "StyloMetrix"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: 391e261d9c7a8ac63c9b957aa246310a.dir
+      size: 10121272
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/StyloMetrix/RandomForest/RandomForest1
+      hash: md5
+      md5: 5fe25aa4444adffeaff9267990654e79.dir
+      size: 11853984
+      nfiles: 58
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/StyloMetrix/RandomForest/RandomForest1.json
+      hash: md5
+      md5: e1c762165199f90ac00c325cbe77a39b
+      size: 302
+  evaluate_classification@data19-model1:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "StyloMetrix"
+      "MLP" "MLP1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: 391e261d9c7a8ac63c9b957aa246310a.dir
+      size: 10121272
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/StyloMetrix/MLP/MLP1
+      hash: md5
+      md5: e0f0a0903ce00dc5d57ef0d9916efe07.dir
+      size: 609846
+      nfiles: 64
+    - path: results/PrusVsSienkiewicz/DummyDatacleaner/StyloMetrix/MLP/MLP1.json
+      hash: md5
+      md5: 383f91901e423c67bddba01a12ae9cea
+      size: 446
+  evaluate_classification@data19-model2:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "StyloMetrix"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: 391e261d9c7a8ac63c9b957aa246310a.dir
+      size: 10121272
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/StyloMetrix/LogisticRegression/LR1
+      hash: md5
+      md5: 65048de196789c9ce5144b571d71b8b2.dir
+      size: 168452
+      nfiles: 55
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/StyloMetrix/LogisticRegression/LR1.json
+      hash: md5
+      md5: 12bf901ff2e0cf75ba09f21af1e85d5a
+      size: 349
+  evaluate_classification@data20-model0:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "TfidfVectorizer1000"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_TfidfVectorizer1000
+      hash: md5
+      md5: eb2bb726191d727c61ead4f3d4715d53.dir
+      size: 8270584
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/TfidfVectorizer1000/RandomForest/RandomForest1
+      hash: md5
+      md5: 2db1ce49ef8f620ba786b92e0fe9bb44.dir
+      size: 22459481
+      nfiles: 58
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/TfidfVectorizer1000/RandomForest/RandomForest1.json
+      hash: md5
+      md5: 213d63fa3178c50b53978c5e6c9bb55d
+      size: 308
+  evaluate_classification@data20-model1:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "TfidfVectorizer1000"
+      "MLP" "MLP1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_TfidfVectorizer1000
+      hash: md5
+      md5: eb2bb726191d727c61ead4f3d4715d53.dir
+      size: 8270584
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP1
+      hash: md5
+      md5: df63050f23280a101210d4c9fb851291.dir
+      size: 2596930
+      nfiles: 64
+    - path: results/PrusVsSienkiewicz/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP1.json
+      hash: md5
+      md5: 20186ef795cc97103bb63afcd62332c6
+      size: 454
+  evaluate_classification@data20-model2:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "TfidfVectorizer1000"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_TfidfVectorizer1000
+      hash: md5
+      md5: eb2bb726191d727c61ead4f3d4715d53.dir
+      size: 8270584
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/TfidfVectorizer1000/LogisticRegression/LR1
+      hash: md5
+      md5: a04edfc1904a4e515e09be97b1d7a267.dir
+      size: 168933
+      nfiles: 55
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/TfidfVectorizer1000/LogisticRegression/LR1.json
+      hash: md5
+      md5: 7ddaed43cd72c609b0a32006c290344e
+      size: 358
+  evaluate_classification@data21-model0:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "TfidfVectorizer5000"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_TfidfVectorizer5000
+      hash: md5
+      md5: f5373833b5a6b1f39485fac39331283e.dir
+      size: 13389952
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/TfidfVectorizer5000/RandomForest/RandomForest1
+      hash: md5
+      md5: 15083c9ec5b6c84357dc73aa7a651c8f.dir
+      size: 21736435
+      nfiles: 58
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/TfidfVectorizer5000/RandomForest/RandomForest1.json
+      hash: md5
+      md5: 1193b68e7618e1f178bab2608d09661c
+      size: 308
+  evaluate_classification@data21-model1:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "TfidfVectorizer5000"
+      "MLP" "MLP1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_TfidfVectorizer5000
+      hash: md5
+      md5: f5373833b5a6b1f39485fac39331283e.dir
+      size: 13389952
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 6067b8c19fc6e2c90c0b537895233f59
+      size: 2138
+    outs:
+    - path: mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/TfidfVectorizer5000/MLP/MLP1
+      hash: md5
+      md5: 7eefddf7ee6c9661c4d2adf1fc74ddcf.dir
+      size: 12178774
+      nfiles: 64
+    - path: results/PrusVsSienkiewicz/DummyDatacleaner/TfidfVectorizer5000/MLP/MLP1.json
+      hash: md5
+      md5: 6a84bef6a5de208d99c39112f31aa7f9
+      size: 469
+  evaluate_classification@data21-model2:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "TfidfVectorizer5000"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_TfidfVectorizer5000
+      hash: md5
+      md5: f5373833b5a6b1f39485fac39331283e.dir
+      size: 13389952
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: 6f394849194a2c518ae0ad97abbbf7c4
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/TfidfVectorizer5000/LogisticRegression/LR1
+      hash: md5
+      md5: ee17694c5d08d89df9501de357278faf.dir
+      size: 193057
+      nfiles: 55
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/TfidfVectorizer5000/LogisticRegression/LR1.json
+      hash: md5
+      md5: 91c4b43a7d52af0564627798f24842fd
+      size: 356

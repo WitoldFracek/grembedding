@@ -9,3 +9,5 @@
 /DummyDatacleaner_BigramMorphTagVectorizer100
 /DummyDatacleaner_BigramMorphTagVectorizer370
 /DummyDatacleaner_StyloMetrix
+/DummyDatacleaner_CountVectorizer5000
+/DummyDatacleaner_TfidfVectorizer5000

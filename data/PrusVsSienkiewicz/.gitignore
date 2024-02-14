@@ -1,3 +1,14 @@
 /DummyDatacleaner_BigramMorphTagVectorizer370
 /raw
 /DummyDatacleaner
+/DummyDatacleaner_SpacyMorphTagVectorizer
+/DummyDatacleaner_StyloMetrix
+/DummyDatacleaner_TfidfVectorizer1000
+/DummyDatacleaner_TfidfVectorizer5000
+/DummyDatacleaner_BigramMorphTagVectorizer100
+/DummyDatacleaner_CountVectorizer1000
+/DummyDatacleaner_CountVectorizer5000
+/DummyDatacleaner_DPEBPVectorizer100Avg
+/DummyDatacleaner_FullMorphTagVectorizer
+/DummyDatacleaner_HerbertVectorizer
+
