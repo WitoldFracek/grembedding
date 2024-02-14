@@ -39,6 +39,8 @@ class SpacyMorphTagVectorizer(Vectorizer):
             if token.morph:
                 for tag_name, value in token.morph.to_dict().items():
                     t = f'{tag_name.lower()}_{value.lower()}'
-                    index = TAGS[t]
+                    index = TAGS.get(t, -1)
+                    if index == -1:
+                        continue
                     ret[index] += 1
         return preprocessing.normalize([ret])
