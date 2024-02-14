@@ -87,6 +87,9 @@ class EvaluateModelRequest:
 
 def load_mlflow_meta(metadata_path: Union[str, os.PathLike], errors: Literal['omit', 'raise'] = "omit") -> Optional[
     Union[ExperimentMetadata, RunMetadata]]:
+    if not os.path.exists(metadata_path):
+        logger.warning(f'file "{metadata_path}" does not exist')
+        return None
     with open(metadata_path, "r") as f:
         data = yaml.safe_load(f)
         try:

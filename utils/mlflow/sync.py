@@ -2,7 +2,7 @@ import os
 import re
 import shutil
 from pathlib import Path
-from typing import Union
+from typing import Union, Optional
 
 import mlflow
 from loguru import logger
@@ -31,6 +31,8 @@ def run_sync(force_recreate: bool = True):
 
     for exp_folder in tqdm(source_exp_dirs):
         dest_experiment_path = _resolve_destination(exp_folder, dest_mlruns_root)
+        if dest_experiment_path is None:
+            continue
         # logger.info(f"For exp: {exp_folder} resolved dest experiment path: {dest_experiment_path}")
 
         # Walk all direct directories children in src exp_folder & copy
@@ -65,7 +67,7 @@ def _fixup_dest_run_metadata(dest_run_dir: Union[str, os.PathLike], new_experime
 
 
 def _resolve_destination(exp_folder: Union[str, os.PathLike],
-                         base_dest_path: Union[str, os.PathLike] = MLRUNS_VIEW_ROOT) -> Union[str, os.PathLike]:
+                         base_dest_path: Union[str, os.PathLike] = MLRUNS_VIEW_ROOT) -> Optional[Union[str, os.PathLike]]:
     """Resolved destination path of the experiment for a given run of mlruns_store
     (creates dest experiment if not exists)
 
@@ -77,6 +79,8 @@ def _resolve_destination(exp_folder: Union[str, os.PathLike],
         Path to the destination experiment folder in MLRUNS_VIEW_ROOT
     """
     meta: ExperimentMetadata = load_mlflow_meta(Path(exp_folder).joinpath("meta.yaml"), errors="raise")
+    if meta is None:
+        return None
     dataset_name = meta.name.split("_")[0]
     dest_exp_id = _resolve_dest_experiment(dataset_name, base_dest_path)
     dest_exp_path = Path(base_dest_path).joinpath(dest_exp_id)
