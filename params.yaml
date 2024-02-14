@@ -1,47 +1,47 @@
 load:
-#  - dataloader: TweeterCyberbullying
+  - dataloader: TweeterCyberbullying
   - dataloader: PrusVsSienkiewicz
 
 clean:
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
 
 vectorize:
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: BigramMorphTagVectorizer100
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: BigramMorphTagVectorizer370
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: CountVectorizer1000
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: CountVectorizer5000
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: DPEBPVectorizer100Avg
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: FullMorphTagVectorizer
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: HerbertVectorizer
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: SpacyMorphTagVectorizer
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: StyloMetrix
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: TfidfVectorizer1000
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: TfidfVectorizer5000
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertVectorizer
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
   ####################################
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
@@ -49,68 +49,68 @@ vectorize:
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
     vectorizer: BigramMorphTagVectorizer370
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: CountVectorizer1000
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: CountVectorizer5000
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: DPEBPVectorizer100Avg
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: FullMorphTagVectorizer
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: HerbertVectorizer
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: SpacyMorphTagVectorizer
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: StyloMetrix
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: TfidfVectorizer1000
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: TfidfVectorizer5000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertVectorizer
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
 
 evaluate_classification:
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: BigramMorphTagVectorizer100
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: BigramMorphTagVectorizer370
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: CountVectorizer1000
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: CountVectorizer5000
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: DPEBPVectorizer100Avg
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: FullMorphTagVectorizer
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: HerbertVectorizer
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: SpacyMorphTagVectorizer
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: StyloMetrix
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: TfidfVectorizer1000
-#  - dataloader: TweeterCyberbullying
-#    datacleaner: DummyDatacleaner
-#    vectorizer: TfidfVectorizer5000
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertVectorizer
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
   ####################################
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
@@ -118,33 +118,33 @@ evaluate_classification:
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
     vectorizer: BigramMorphTagVectorizer370
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: CountVectorizer1000
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: CountVectorizer5000
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: DPEBPVectorizer100Avg
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: FullMorphTagVectorizer
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: HerbertVectorizer
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: SpacyMorphTagVectorizer
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: StyloMetrix
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: TfidfVectorizer1000
-#  - dataloader: PrusVsSienkiewicz
-#    datacleaner: DummyDatacleaner
-#    vectorizer: TfidfVectorizer5000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertVectorizer
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
 
 evaluate_clustering:
   # TODO
