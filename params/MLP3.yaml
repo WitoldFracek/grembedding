@@ -1,0 +1,8 @@
+hidden_layer_sizes: [500]
+activation: relu
+solver: adam
+learning_rate_init: 0.001   # LR constant if learning_rate is set to 'constant'
+max_iter: 200
+early_stopping: True
+validation_fraction: 0.1
+n_iter_no_change: 5

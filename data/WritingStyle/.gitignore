@@ -1,0 +1,11 @@
+/raw
+/DummyDatacleaner
+/DummyDatacleaner_BigramMorphTagVectorizer100
+/DummyDatacleaner_BigramMorphTagVectorizer370
+/DummyDatacleaner_CountVectorizer1000
+/DummyDatacleaner_CountVectorizer5000
+/DummyDatacleaner_DPEBPVectorizer100Avg
+/DummyDatacleaner_FullMorphTagVectorizer
+/DummyDatacleaner_SpacyMorphTagVectorizer
+/DummyDatacleaner_TfidfVectorizer1000
+/DummyDatacleaner_TfidfVectorizer5000
