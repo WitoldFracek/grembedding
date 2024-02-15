@@ -2,6 +2,7 @@ load:
   - dataloader: TweeterCyberbullying
   - dataloader: PrusVsSienkiewicz
   - dataloader: WritingStyle
+  - dataloader: Classics5Authors35Books
 
 clean:
   - dataloader: TweeterCyberbullying
@@ -9,6 +10,8 @@ clean:
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
   - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+  - dataloader: Classics5Authors35Books
     datacleaner: DummyDatacleaner
 
 vectorize:
@@ -83,16 +86,22 @@ vectorize:
 ######################################### STYL LITERACKI
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
-    vectorizer: BigramMorphTagVectorizer100
-  - dataloader: WritingStyle
-    datacleaner: DummyDatacleaner
-    vectorizer: BigramMorphTagVectorizer370
-  - dataloader: WritingStyle
-    datacleaner: DummyDatacleaner
     vectorizer: CountVectorizer1000
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: CountVectorizer5000
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: DPEBPVectorizer100Avg
@@ -108,12 +117,40 @@ vectorize:
 #  - dataloader: WritingStyle
 #    datacleaner: DummyDatacleaner
 #    vectorizer: StyloMetrix
-  - dataloader: WritingStyle
+######################################### 5AUTHORS_35BOOKS
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: Classics5Authors35Books
     datacleaner: DummyDatacleaner
     vectorizer: TfidfVectorizer1000
-  - dataloader: WritingStyle
+  - dataloader: Classics5Authors35Books
     datacleaner: DummyDatacleaner
     vectorizer: TfidfVectorizer5000
+#  - dataloader: Classics5Authors35Books
+#    datacleaner: DummyDatacleaner
+#    vectorizer: BigramMorphTagVectorizer100
+#  - dataloader: Classics5Authors35Books
+#    datacleaner: DummyDatacleaner
+#    vectorizer: BigramMorphTagVectorizer370
+#  - dataloader: Classics5Authors35Books
+#    datacleaner: DummyDatacleaner
+#    vectorizer: DPEBPVectorizer100Avg
+#  - dataloader: Classics5Authors35Books
+#    datacleaner: DummyDatacleaner
+#    vectorizer: FullMorphTagVectorizer
+#  - dataloader: Classics5Authors35Books
+#    datacleaner: DummyDatacleaner
+#    vectorizer: HerbertVectorizer
+#  - dataloader: Classics5Authors35Books
+#    datacleaner: DummyDatacleaner
+#    vectorizer: SpacyMorphTagVectorizer
+#  - dataloader: Classics5Authors35Books
+#    datacleaner: DummyDatacleaner
+#    vectorizer: StyloMetrix
 
 evaluate_classification:
 #  - dataloader: TweeterCyberbullying
@@ -186,16 +223,22 @@ evaluate_classification:
 ######################################### STYL LITERACKI
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
-    vectorizer: BigramMorphTagVectorizer100
-  - dataloader: WritingStyle
-    datacleaner: DummyDatacleaner
-    vectorizer: BigramMorphTagVectorizer370
-  - dataloader: WritingStyle
-    datacleaner: DummyDatacleaner
     vectorizer: CountVectorizer1000
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: CountVectorizer5000
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: DPEBPVectorizer100Avg
@@ -211,12 +254,41 @@ evaluate_classification:
 #  - dataloader: WritingStyle
 #    datacleaner: DummyDatacleaner
 #    vectorizer: StyloMetrix
-  - dataloader: WritingStyle
+
+######################################### 5AUTHORS_35BOOKS
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: Classics5Authors35Books
     datacleaner: DummyDatacleaner
     vectorizer: TfidfVectorizer1000
-  - dataloader: WritingStyle
+  - dataloader: Classics5Authors35Books
     datacleaner: DummyDatacleaner
     vectorizer: TfidfVectorizer5000
+#  - dataloader: Classics5Authors35Books
+#    datacleaner: DummyDatacleaner
+#    vectorizer: BigramMorphTagVectorizer100
+#  - dataloader: Classics5Authors35Books
+#    datacleaner: DummyDatacleaner
+#    vectorizer: BigramMorphTagVectorizer370
+#  - dataloader: Classics5Authors35Books
+#    datacleaner: DummyDatacleaner
+#    vectorizer: DPEBPVectorizer100Avg
+#  - dataloader: Classics5Authors35Books
+#    datacleaner: DummyDatacleaner
+#    vectorizer: FullMorphTagVectorizer
+#  - dataloader: Classics5Authors35Books
+#    datacleaner: DummyDatacleaner
+#    vectorizer: HerbertVectorizer
+#  - dataloader: Classics5Authors35Books
+#    datacleaner: DummyDatacleaner
+#    vectorizer: SpacyMorphTagVectorizer
+#  - dataloader: Classics5Authors35Books
+#    datacleaner: DummyDatacleaner
+#    vectorizer: StyloMetrix
 
 evaluate_clustering:
   # TODO

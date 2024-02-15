@@ -81,5 +81,5 @@ class WritingStyle(DataLoader):
 
 if __name__ == "__main__":
     os.environ["DVC_ROOT"] = "."
-    dl = LiteraryStyle()
+    dl = WritingStyle()
     dl.create_dataset()
