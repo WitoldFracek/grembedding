@@ -1,6 +1,7 @@
 load:
   - dataloader: TweeterCyberbullying
   - dataloader: PrusVsSienkiewicz
+  - dataloader: LiteraryStyle
 
 clean:
   - dataloader: TweeterCyberbullying

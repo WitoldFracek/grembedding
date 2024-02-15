@@ -4,6 +4,9 @@ import sys
 
 from loguru import logger
 
+if "DVC_ROOT" not in os.environ.keys():
+    os.environ["DVC_ROOT"] = "."
+
 if "DVC_ROOT" in os.environ.keys():
     root_dir = os.environ["DVC_ROOT"]
     if root_dir not in sys.path:
