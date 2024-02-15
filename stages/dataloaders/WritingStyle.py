@@ -9,13 +9,13 @@ from stages.dataloaders.DataLoader import DataLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 
-class LiteraryStyle(DataLoader):
+class WritingStyle(DataLoader):
     DATASET_DIR = "styl_literacki"
     DATASET_FILE = "styl_literacki.parquet"
 
-    DEFAULT_MAX_TEXT_LEN = 5_000  # use texts of this size or less
+    DEFAULT_MAX_TEXT_LEN = 2_500    # use texts of this size or less
 
-    LABEL_MAPPING: dict[Literal['literacki', 'naukowy'], int] = {
+    WRITING_STYLE_LABEL_MAPPING: dict[Literal['literacki', 'naukowy'], int] = {
         "literacki": 0,
         "naukowy": 1
     }
@@ -42,12 +42,17 @@ class LiteraryStyle(DataLoader):
         # Take relevant cols and rename
         train_df = train_df[["chunked_text", "label"]]
         test_df = test_df[["chunked_text", "label"]]
-        train_df.rename(mapper={
+        train_df.rename(columns={
             "chunked_text": "text"
-        })
-        test_df.rename(mapper={
+        }, inplace=True)
+        test_df.rename(columns={
             "chunked_text": "text"
-        })
+        }, inplace=True)
+
+        assert "text" in train_df.columns
+        assert "text" in test_df.columns
+        assert "label" in train_df.columns
+        assert "label" in test_df.columns
 
         self._save_dataset(train_df, test_df)
 
@@ -55,7 +60,7 @@ class LiteraryStyle(DataLoader):
         df = pd.read_parquet(
             os.path.join(self.raw_datasets_dir, self.DATASET_DIR, self.DATASET_FILE)
         )
-        df["label"] = df["style"].apply(lambda s: self.LABEL_MAPPING[s])
+        df["label"] = df["style"].apply(lambda s: self.WRITING_STYLE_LABEL_MAPPING[s])
         return df
 
     def _split_text(self, df: pd.DataFrame) -> pd.DataFrame:

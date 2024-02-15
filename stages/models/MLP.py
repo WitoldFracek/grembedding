@@ -6,6 +6,7 @@ import numpy as np
 from loguru import logger
 from sklearn.neural_network import MLPClassifier
 from rich.pretty import pretty_repr
+from sklearn.preprocessing import StandardScaler
 
 from config import mlflow
 from stages.models.Model import Model
@@ -21,6 +22,12 @@ class MLP(Model):
     def evaluate(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str,
                  params: Dict[str, int | float | str]) -> None:
         X_train, X_test, y_train, y_test, metadata = self.load_train_test(dataset, datacleaner, vectorizer)
+
+        # Scaler
+        sc = StandardScaler()
+        X_train = sc.fit_transform(X_train)
+        X_test = sc.transform(X_test)
+        logger.info(f"Fit/transform with scaler complete")
 
         clf = MLPClassifier(**params)
 

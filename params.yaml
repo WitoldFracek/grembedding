@@ -1,149 +1,220 @@
 load:
   - dataloader: TweeterCyberbullying
   - dataloader: PrusVsSienkiewicz
-  - dataloader: LiteraryStyle
+  - dataloader: WritingStyle
 
 clean:
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
 
 vectorize:
-  - dataloader: TweeterCyberbullying
+  #################################### CYBERBULLYING
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: BigramMorphTagVectorizer100
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: BigramMorphTagVectorizer370
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: CountVectorizer1000
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: CountVectorizer5000
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: DPEBPVectorizer100Avg
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: FullMorphTagVectorizer
+##  - dataloader: TweeterCyberbullying
+##    datacleaner: DummyDatacleaner
+##    vectorizer: HerbertVectorizer
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: SpacyMorphTagVectorizer
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: StyloMetrix
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: TfidfVectorizer1000
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: TfidfVectorizer5000
+#  #################################### PRUS VS SIENKIEWICZ
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: BigramMorphTagVectorizer100
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: BigramMorphTagVectorizer370
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: CountVectorizer1000
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: CountVectorizer5000
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: DPEBPVectorizer100Avg
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: FullMorphTagVectorizer
+##  - dataloader: PrusVsSienkiewicz
+##    datacleaner: DummyDatacleaner
+##    vectorizer: HerbertVectorizer
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: SpacyMorphTagVectorizer
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: StyloMetrix
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: TfidfVectorizer1000
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: TfidfVectorizer5000
+######################################### STYL LITERACKI
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: BigramMorphTagVectorizer100
-  - dataloader: TweeterCyberbullying
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: BigramMorphTagVectorizer370
-  - dataloader: TweeterCyberbullying
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: CountVectorizer1000
-  - dataloader: TweeterCyberbullying
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: CountVectorizer5000
-  - dataloader: TweeterCyberbullying
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: DPEBPVectorizer100Avg
-  - dataloader: TweeterCyberbullying
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: FullMorphTagVectorizer
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertVectorizer
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: SpacyMorphTagVectorizer
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: StyloMetrix
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: TfidfVectorizer1000
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: TfidfVectorizer5000
-  ####################################
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: BigramMorphTagVectorizer100
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: BigramMorphTagVectorizer370
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: CountVectorizer1000
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: CountVectorizer5000
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: DPEBPVectorizer100Avg
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: FullMorphTagVectorizer
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertVectorizer
-  - dataloader: PrusVsSienkiewicz
+#  - dataloader: WritingStyle
+#    datacleaner: DummyDatacleaner
+#    vectorizer: HerbertVectorizer
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: StyloMetrix
-  - dataloader: PrusVsSienkiewicz
+#  - dataloader: WritingStyle
+#    datacleaner: DummyDatacleaner
+#    vectorizer: StyloMetrix
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: TfidfVectorizer1000
-  - dataloader: PrusVsSienkiewicz
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: TfidfVectorizer5000
 
 evaluate_classification:
-  - dataloader: TweeterCyberbullying
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: BigramMorphTagVectorizer100
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: BigramMorphTagVectorizer370
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: CountVectorizer1000
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: CountVectorizer5000
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: DPEBPVectorizer100Avg
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: FullMorphTagVectorizer
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: HerbertVectorizer
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: SpacyMorphTagVectorizer
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: StyloMetrix
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: TfidfVectorizer1000
+#  - dataloader: TweeterCyberbullying
+#    datacleaner: DummyDatacleaner
+#    vectorizer: TfidfVectorizer5000
+#  #################################### PRUS VS SIENKIEWICZ
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: BigramMorphTagVectorizer100
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: BigramMorphTagVectorizer370
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: CountVectorizer1000
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: CountVectorizer5000
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: DPEBPVectorizer100Avg
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: FullMorphTagVectorizer
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: HerbertVectorizer
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: SpacyMorphTagVectorizer
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: StyloMetrix
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: TfidfVectorizer1000
+#  - dataloader: PrusVsSienkiewicz
+#    datacleaner: DummyDatacleaner
+#    vectorizer: TfidfVectorizer5000
+######################################### STYL LITERACKI
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: BigramMorphTagVectorizer100
-  - dataloader: TweeterCyberbullying
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: BigramMorphTagVectorizer370
-  - dataloader: TweeterCyberbullying
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: CountVectorizer1000
-  - dataloader: TweeterCyberbullying
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: CountVectorizer5000
-  - dataloader: TweeterCyberbullying
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: DPEBPVectorizer100Avg
-  - dataloader: TweeterCyberbullying
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: FullMorphTagVectorizer
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertVectorizer
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: SpacyMorphTagVectorizer
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: StyloMetrix
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: TfidfVectorizer1000
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: TfidfVectorizer5000
-  ####################################
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: BigramMorphTagVectorizer100
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: BigramMorphTagVectorizer370
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: CountVectorizer1000
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: CountVectorizer5000
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: DPEBPVectorizer100Avg
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: FullMorphTagVectorizer
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertVectorizer
-  - dataloader: PrusVsSienkiewicz
+#  - dataloader: WritingStyle
+#    datacleaner: DummyDatacleaner
+#    vectorizer: HerbertVectorizer
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: StyloMetrix
-  - dataloader: PrusVsSienkiewicz
+#  - dataloader: WritingStyle
+#    datacleaner: DummyDatacleaner
+#    vectorizer: StyloMetrix
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: TfidfVectorizer1000
-  - dataloader: PrusVsSienkiewicz
+  - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: TfidfVectorizer5000
 
