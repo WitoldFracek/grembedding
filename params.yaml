@@ -148,9 +148,9 @@ vectorize:
   - dataloader: Classics5Authors35Books
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: Classics5Authors35Books
-    datacleaner: DummyDatacleaner
-    vectorizer: StyloMetrix
+  # - dataloader: Classics5Authors35Books
+  #   datacleaner: DummyDatacleaner
+  #   vectorizer: StyloMetrix
 
 evaluate_classification:
   - dataloader: TweeterCyberbullying
@@ -286,9 +286,9 @@ evaluate_classification:
   - dataloader: Classics5Authors35Books
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: Classics5Authors35Books
-    datacleaner: DummyDatacleaner
-    vectorizer: StyloMetrix
+  # - dataloader: Classics5Authors35Books
+  #   datacleaner: DummyDatacleaner
+  #   vectorizer: StyloMetrix
 
 evaluate_clustering:
   # TODO
