@@ -291,7 +291,12 @@ evaluate_classification:
   #   vectorizer: StyloMetrix
 
 evaluate_clustering:
-  # TODO
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
 
 classification_models:
   - model: RandomForest
