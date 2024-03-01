@@ -2,10 +2,10 @@ from sklearn.metrics import silhouette_score, davies_bouldin_score, calinski_har
 import numpy as np
 from loguru import logger
 import matplotlib.pyplot as plt
-from umap import UMAP
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 import mlflow
+from umap.umap_ import UMAP
 
 
 def compute_clustering_metrics(x: np.ndarray, labels: np.ndarray) -> dict[str, float]:
