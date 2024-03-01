@@ -11082,3 +11082,77 @@ stages:
       hash: md5
       md5: 50d45f2f1d47d9a05ba06dab74d5cf1b
       size: 369
+  evaluate_clustering@data0-model0:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer100"
+      "DBSCAN" "DBSCAN1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer100
+      hash: md5
+      md5: 40c4c9cfafa93683fd279563025904b5.dir
+      size: 5196121
+      nfiles: 1
+    - path: imports_validator/evaluate/DBSCAN.yaml
+      hash: md5
+      md5: 9880ed451863b6eef58909bcdf4b2536
+      size: 216
+    - path: params/DBSCAN1.yaml
+      hash: md5
+      md5: d38419d3470a8b18f122e9c6733d0f4d
+      size: 8
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/DBSCAN.py
+      hash: md5
+      md5: d97325f63b08cb9761ccefaef4804e1b
+      size: 1040
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer100/DBSCAN/DBSCAN1
+      hash: md5
+      md5: 43811543003a73fcfbccef204d28dd16.dir
+      size: 217482
+      nfiles: 56
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer100/DBSCAN/DBSCAN1.json
+      hash: md5
+      md5: 3d39dcdb81e2e4f41675b45450605198
+      size: 287
+  evaluate_clustering@data1-model0:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer370"
+      "DBSCAN" "DBSCAN1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer370
+      hash: md5
+      md5: 527318e70703f799770a95bfd3e266bc.dir
+      size: 19225323
+      nfiles: 1
+    - path: imports_validator/evaluate/DBSCAN.yaml
+      hash: md5
+      md5: 9880ed451863b6eef58909bcdf4b2536
+      size: 216
+    - path: params/DBSCAN1.yaml
+      hash: md5
+      md5: d38419d3470a8b18f122e9c6733d0f4d
+      size: 8
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/DBSCAN.py
+      hash: md5
+      md5: d97325f63b08cb9761ccefaef4804e1b
+      size: 1040
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/DBSCAN/DBSCAN1
+      hash: md5
+      md5: a1e3aa9799bb533db40cfc722a5cd172.dir
+      size: 313383
+      nfiles: 56
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/DBSCAN/DBSCAN1.json
+      hash: md5
+      md5: b1ea0da18a464b82dedb2646b24a3d15
+      size: 288

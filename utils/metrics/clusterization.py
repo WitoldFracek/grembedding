@@ -27,11 +27,12 @@ def compute_clustering_metrics(x: np.ndarray, labels: np.ndarray) -> dict[str, f
     for method in ['PCA', 'TSNE', 'UMAP']:
         _log_clusters_plot(x, labels, reduction_method=method)
     
+    logger.info(f'Clustering metrics: ' + ' '.join(map(lambda pair: f'{pair[0]}: {pair[1]}', results.items())))
     return results
 
 
 def _log_clusters_plot(x: np.ndarray, labels: np.ndarray, reduction_method='PCA'):    
-    logger.info('Dimensionality reduction...')
+    logger.info(f'Dimensionality reduction ({reduction_method})...')
     reducer = _get_reducer(reduction_method)
     x_reduced = reducer.fit_transform(x)
 
