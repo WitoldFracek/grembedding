@@ -309,5 +309,5 @@ classification_models:
 
 clustering_models:
   # TODO
-  - model: RandomForest
-    params: RandomForest1
+  - model: DBSCAN
+    params: DBSCAN1
