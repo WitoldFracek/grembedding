@@ -41,7 +41,7 @@ def _log_clusters_plot(x: np.ndarray, labels: np.ndarray, reduction_method='PCA'
 
     for label in np.unique(labels):
         cluster = x_reduced[labels == label]
-        ax.scatter(cluster[:, 0], cluster[:, 1], label=str(label))
+        ax.scatter(cluster[:, 0], cluster[:, 1], label=str(label), alpha=0.4)
     ax.set_title(f'Clustering\n({reduction_method} reduction)')
     ax.legend()
     mlflow.log_figure(fig, f'clustering_wiht_{reduction_method}.png')

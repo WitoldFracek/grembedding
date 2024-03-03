@@ -11093,7 +11093,7 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/DBSCAN.yaml
       hash: md5
-      md5: 9880ed451863b6eef58909bcdf4b2536
+      md5: b90476cc0e047e05ca05aa3d1c70e395
       size: 216
     - path: params/DBSCAN1.yaml
       hash: md5
@@ -11105,14 +11105,14 @@ stages:
       size: 1058
     - path: stages/models/DBSCAN.py
       hash: md5
-      md5: d97325f63b08cb9761ccefaef4804e1b
-      size: 1040
+      md5: 04420c80addb70f0c0937daa5e11fdd0
+      size: 890
     outs:
     - path: 
         mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer100/DBSCAN/DBSCAN1
       hash: md5
-      md5: 43811543003a73fcfbccef204d28dd16.dir
-      size: 217482
+      md5: 95c1e2c0df633fe9805eae0254680a06.dir
+      size: 594283
       nfiles: 56
     - path: 
         results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer100/DBSCAN/DBSCAN1.json
@@ -11130,7 +11130,7 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/DBSCAN.yaml
       hash: md5
-      md5: 9880ed451863b6eef58909bcdf4b2536
+      md5: b90476cc0e047e05ca05aa3d1c70e395
       size: 216
     - path: params/DBSCAN1.yaml
       hash: md5
@@ -11142,17 +11142,91 @@ stages:
       size: 1058
     - path: stages/models/DBSCAN.py
       hash: md5
-      md5: d97325f63b08cb9761ccefaef4804e1b
-      size: 1040
+      md5: 04420c80addb70f0c0937daa5e11fdd0
+      size: 890
     outs:
     - path: 
         mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/DBSCAN/DBSCAN1
       hash: md5
-      md5: a1e3aa9799bb533db40cfc722a5cd172.dir
-      size: 313383
+      md5: 443b1dcab95c7b073ca2096b823c7288.dir
+      size: 806002
       nfiles: 56
     - path: 
         results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/DBSCAN/DBSCAN1.json
       hash: md5
       md5: b1ea0da18a464b82dedb2646b24a3d15
       size: 288
+  evaluate_clustering@data0-model1:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer100"
+      "KMeans" "KMeans1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer100
+      hash: md5
+      md5: 40c4c9cfafa93683fd279563025904b5.dir
+      size: 5196121
+      nfiles: 1
+    - path: imports_validator/evaluate/KMeans.yaml
+      hash: md5
+      md5: b90476cc0e047e05ca05aa3d1c70e395
+      size: 216
+    - path: params/KMeans1.yaml
+      hash: md5
+      md5: 7be3ad8fac59bd1d99c9b2ec0b74ed44
+      size: 13
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/KMeans.py
+      hash: md5
+      md5: 6f3be6907c5991a0dea764118e7a4ef4
+      size: 890
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer100/KMeans/KMeans1
+      hash: md5
+      md5: 0ded6bc69568920b8229fe555a6bd26f.dir
+      size: 768238
+      nfiles: 46
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer100/KMeans/KMeans1.json
+      hash: md5
+      md5: 89138be42863c0c9e6eb918dce5b0231
+      size: 293
+  evaluate_clustering@data1-model1:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer370"
+      "KMeans" "KMeans1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer370
+      hash: md5
+      md5: 527318e70703f799770a95bfd3e266bc.dir
+      size: 19225323
+      nfiles: 1
+    - path: imports_validator/evaluate/KMeans.yaml
+      hash: md5
+      md5: b90476cc0e047e05ca05aa3d1c70e395
+      size: 216
+    - path: params/KMeans1.yaml
+      hash: md5
+      md5: 7be3ad8fac59bd1d99c9b2ec0b74ed44
+      size: 13
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/KMeans.py
+      hash: md5
+      md5: 6f3be6907c5991a0dea764118e7a4ef4
+      size: 890
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/KMeans/KMeans1
+      hash: md5
+      md5: 6aa6c06a6f405e164162c90ee5b08ede.dir
+      size: 662019
+      nfiles: 46
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/KMeans/KMeans1.json
+      hash: md5
+      md5: 601087f7be9d34a173683be3461ebe6d
+      size: 292

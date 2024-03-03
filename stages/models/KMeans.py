@@ -6,7 +6,7 @@ from utils.metrics.clusterization import compute_clustering_metrics
 from loguru import logger
 
 
-class DBSCAN(Model):
+class KMeans(Model):
     
     @mlflow_context
     def evaluate(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str, params: Dict[str, int | float | str]) -> None:
