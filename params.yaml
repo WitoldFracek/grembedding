@@ -316,3 +316,5 @@ clustering_models:
   # TODO
   - model: DBSCAN
     params: DBSCAN1
+  - model: KMeans
+    params: KMeans1
