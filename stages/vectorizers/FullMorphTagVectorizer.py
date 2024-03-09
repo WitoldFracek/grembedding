@@ -18,6 +18,8 @@ class FullMorphTagVectorizer(Vectorizer):
         
         with open(path, 'r', encoding='utf-8') as file:
             self.full_tags: dict[str, int] = json.load(file)
+
+        spacy.require_gpu()
         self.nlp = spacy.load("pl_core_news_lg")
 
     def vectorize(self, dataset: str, datacleaner: str):

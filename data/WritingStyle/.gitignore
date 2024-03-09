@@ -9,3 +9,4 @@
 /DummyDatacleaner_SpacyMorphTagVectorizer
 /DummyDatacleaner_TfidfVectorizer1000
 /DummyDatacleaner_TfidfVectorizer5000
+/DummyDatacleaner_HerbertVectorizer

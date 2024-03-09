@@ -11,6 +11,7 @@ TAGS = {'abbr_yes': 0, 'adptype_post': 1, 'adptype_prep': 2, 'animacy_hum': 3, '
 class SpacyMorphTagVectorizer(Vectorizer):
     def __init__(self) -> None:
         super().__init__()
+        spacy.require_gpu()
         self.nlp = spacy.load("pl_core_news_lg")
     
     def vectorize(self, dataset: str, datacleaner: str) -> None:

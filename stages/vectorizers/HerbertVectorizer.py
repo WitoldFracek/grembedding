@@ -17,15 +17,17 @@ class HerbertVectorizer(Vectorizer):
     TOKENIZER_PATH: str = "allegro/herbert-base-cased"
     MODEL_PATH: str = "allegro/herbert-base-cased"
 
-    INFERENCE_BATCH_SIZE: int = 32
+    INFERENCE_BATCH_SIZE: int = 64
+    NUM_WORKERS: int = 4
 
     def __init__(self, tokenizer_max_length: Union[int, Literal['auto']] = 'auto'):
         super().__init__()
 
         # Env config
         self.device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
-        self.num_workers = os.cpu_count()
+        self.num_workers = self.NUM_WORKERS
         self.batch_size = self.INFERENCE_BATCH_SIZE
+
 
         # Model config
         self.tokenizer: BertTokenizer = AutoTokenizer.from_pretrained(self.TOKENIZER_PATH)
@@ -52,8 +54,10 @@ class HerbertVectorizer(Vectorizer):
         train_ds = self.create_dataset(train_df)
         test_ds = self.create_dataset(test_df)
 
-        train_dl = DataLoader(train_ds, batch_size=self.batch_size, num_workers=self.num_workers, shuffle=False)
-        test_dl = DataLoader(test_ds, batch_size=self.batch_size, num_workers=self.num_workers, shuffle=False)
+        logger.debug("Dataloader instantiation started")
+        train_dl = DataLoader(train_ds, batch_size=self.batch_size, num_workers=self.num_workers, shuffle=False, pin_memory=True, persistent_workers=True)
+        test_dl = DataLoader(test_ds, batch_size=self.batch_size, num_workers=self.num_workers, shuffle=False, pin_memory=True, persistent_workers=True)
+        logger.debug("Dataloaders ready")
 
         train_embeds: np.ndarray = self.create_embeddings(train_dl).cpu().detach().numpy()
         test_embeds: np.ndarray = self.create_embeddings(test_dl).cpu().detach().numpy()

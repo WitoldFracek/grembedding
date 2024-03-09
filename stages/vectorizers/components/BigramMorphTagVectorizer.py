@@ -28,7 +28,10 @@ TAGS = {'abbr_yes': 0, 'adptype_post': 1, 'adptype_prep': 2, 'animacy_hum': 3, '
 class BigramMorphTagVectorizer(Vectorizer):
     def __init__(self, size: int) -> None:
         super().__init__()
+
+        spacy.require_gpu()
         self.nlp = spacy.load("pl_core_news_lg")
+
         self.vector_size = size
         bigrams: list[tuple[str, str]] = sorted(list(set([
             (tag1, tag2)
