@@ -6,6 +6,7 @@ from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 import mlflow
 from umap.umap_ import UMAP
+import bcubed
 
 
 def compute_clustering_metrics(x: np.ndarray, labels: np.ndarray) -> dict[str, float]:
@@ -29,6 +30,20 @@ def compute_clustering_metrics(x: np.ndarray, labels: np.ndarray) -> dict[str, f
     
     logger.info(f'Clustering metrics: ' + ' '.join(map(lambda pair: f'{pair[0]}: {pair[1]}', results.items())))
     return results
+
+def compute_b_cubed_metrics(labels_true: list, labels_pred: list) -> dict[str, float]:
+    ldict = {}
+    cdict = {}
+    for i, (lt, lp) in enumerate(zip(labels_true, labels_pred)):
+        ldict[i] = set([lt])
+        cdict[i] = set([lp])
+    precission = bcubed.precision(cdict, ldict)
+    recall = bcubed.recall(cdict, ldict)
+    return {
+        "bcubed_precission": precission,
+        "bcubed_recall": recall,
+        "bcubed_f1": bcubed.fscore(precission, recall)
+    }
 
 
 def _log_clusters_plot(x: np.ndarray, labels: np.ndarray, reduction_method='PCA'):    
