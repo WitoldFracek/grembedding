@@ -3,6 +3,7 @@ load:
   - dataloader: PrusVsSienkiewicz
   - dataloader: WritingStyle
   - dataloader: Classics5Authors35Books
+  - dataloader: OldNewspapers
 
 clean:
   - dataloader: TweeterCyberbullying
@@ -12,6 +13,8 @@ clean:
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
   - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+  - dataloader: OldNewspapers
     datacleaner: DummyDatacleaner
 
 vectorize:
@@ -151,6 +154,10 @@ vectorize:
   # - dataloader: Classics5Authors35Books
   #   datacleaner: DummyDatacleaner
   #   vectorizer: StyloMetrix
+######################################### Old newspapers
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
 
 evaluate_classification:
   - dataloader: TweeterCyberbullying
@@ -289,6 +296,10 @@ evaluate_classification:
   # - dataloader: Classics5Authors35Books
   #   datacleaner: DummyDatacleaner
   #   vectorizer: StyloMetrix
+######################################### Old Newspapers
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
 
 evaluate_clustering:
   - dataloader: PrusVsSienkiewicz
