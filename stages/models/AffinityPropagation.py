@@ -17,5 +17,6 @@ class AffinityPropagation(Model):
         metrics = compute_clustering_metrics(X_train, labels)
         bcubed = compute_b_cubed_metrics(y_train, labels)
         metrics.update(bcubed)
+        
         self.save_mlflow_results(params, metrics)
         self.save_json_results(dataset, datacleaner, vectorizer, params_name, params, metrics)
