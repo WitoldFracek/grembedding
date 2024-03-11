@@ -329,3 +329,5 @@ clustering_models:
     params: DBSCAN1
   - model: KMeans
     params: KMeans1
+  - model: AffinityPropagation
+    params: AffinityPropagation1
