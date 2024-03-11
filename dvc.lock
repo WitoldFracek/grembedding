@@ -7,9 +7,9 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: d4d63909bc037c523a8b928d3d78ff21.dir
-      size: 170828345
-      nfiles: 665
+      md5: a0b6932b4d63cf35de3d178c2e07cf0f.dir
+      size: 362310228
+      nfiles: 669
     - path: imports_validator/load/TweeterCyberbullying.yaml
       hash: md5
       md5: 3f4b18f402a0f5e8dcd3141d71cc6bef
@@ -35,9 +35,9 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: d4d63909bc037c523a8b928d3d78ff21.dir
-      size: 170828345
-      nfiles: 665
+      md5: a0b6932b4d63cf35de3d178c2e07cf0f.dir
+      size: 362310228
+      nfiles: 669
     - path: imports_validator/load/PrusVsSienkiewicz.yaml
       hash: md5
       md5: 3f4b18f402a0f5e8dcd3141d71cc6bef
@@ -892,9 +892,9 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: d4d63909bc037c523a8b928d3d78ff21.dir
-      size: 170828345
-      nfiles: 665
+      md5: a0b6932b4d63cf35de3d178c2e07cf0f.dir
+      size: 362310228
+      nfiles: 669
     - path: imports_validator/load/WritingStyle.yaml
       hash: md5
       md5: d7e294607a140a211e467b5979bc7039
@@ -946,8 +946,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/raw
       hash: md5
-      md5: 9a1ad9be77cd62ce2d8d974e0a114fb5.dir
-      size: 12349037
+      md5: 0fab5a9551e240e37791842116d80c55.dir
+      size: 12350462
       nfiles: 2
     - path: imports_validator/clean/DummyDatacleaner.yaml
       hash: md5
@@ -964,35 +964,35 @@ stages:
     outs:
     - path: data/Classics5Authors35Books/DummyDatacleaner
       hash: md5
-      md5: 02bbc1bc91a1f78343ff31e24d3657c3.dir
-      size: 12349137
+      md5: 6dc18ba3adb79ea6f1c38d7966284d44.dir
+      size: 12350562
       nfiles: 2
   clean@4:
     cmd:
-    - python scripts/clean.py "MsTweets" "TweetNormalizationHashtagSkip"
+    - python scripts/clean.py "OldNewspapers" "DummyDatacleaner"
     deps:
-    - path: data/MsTweets/raw
+    - path: data/OldNewspapers/raw
       hash: md5
-      md5: 69a81154bcee9535449243027593e500.dir
-      size: 7470212
+      md5: 294bb8dea39cf9c20c7a3dbc8c277541.dir
+      size: 47089575
       nfiles: 2
+    - path: imports_validator/clean/DummyDatacleaner.yaml
+      hash: md5
+      md5: 44b7c1703af99adcdf1a165c61b006e6
+      size: 72
     - path: scripts/clean.py
       hash: md5
       md5: a35073fb8ed6b407b4d09d0c795ba62e
       size: 842
-    - path: stages/datacleaners/DataCleaner.py
+    - path: stages/datacleaners/DummyDatacleaner.py
       hash: md5
-      md5: 934ee50d1e9610c307610a8e3a986a47
-      size: 2132
-    - path: stages/datacleaners/TweetNormalizationHashtagSkip.py
-      hash: md5
-      md5: b1fee1606ab7ac84c1b8fa62d454e28e
-      size: 1789
+      md5: 23ff43c09abce64633a874d5758ce9b7
+      size: 426
     outs:
-    - path: data/MsTweets/TweetNormalizationHashtagSkip
+    - path: data/OldNewspapers/DummyDatacleaner
       hash: md5
-      md5: 02a0d124655b72fb560c375177908c3a.dir
-      size: 5928977
+      md5: 821cb684ba459bcc0228d0a25e986146.dir
+      size: 47089679
       nfiles: 2
   load@3:
     cmd:
@@ -1001,9 +1001,9 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: d4d63909bc037c523a8b928d3d78ff21.dir
-      size: 170828345
-      nfiles: 665
+      md5: a0b6932b4d63cf35de3d178c2e07cf0f.dir
+      size: 362310228
+      nfiles: 669
     - path: imports_validator/load/Classics5Authors35Books.yaml
       hash: md5
       md5: d7e294607a140a211e467b5979bc7039
@@ -1019,8 +1019,8 @@ stages:
     outs:
     - path: data/Classics5Authors35Books/raw
       hash: md5
-      md5: 9a1ad9be77cd62ce2d8d974e0a114fb5.dir
-      size: 12349037
+      md5: 0fab5a9551e240e37791842116d80c55.dir
+      size: 12350462
       nfiles: 2
   clean@5:
     cmd:
@@ -5627,8 +5627,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner
       hash: md5
-      md5: 02bbc1bc91a1f78343ff31e24d3657c3.dir
-      size: 12349137
+      md5: 6dc18ba3adb79ea6f1c38d7966284d44.dir
+      size: 12350562
       nfiles: 2
     - path: imports_validator/vectorize/CountVectorizer1000.yaml
       hash: md5
@@ -5645,8 +5645,8 @@ stages:
     outs:
     - path: data/Classics5Authors35Books/DummyDatacleaner_CountVectorizer1000
       hash: md5
-      md5: 37e3bf4817b0c8c7c3f2239ebc42bce5.dir
-      size: 1666638
+      md5: 7414165decf699661305bf904350c63f.dir
+      size: 1666980
       nfiles: 1
   vectorize@34:
     cmd: python scripts/vectorize.py "Classics5Authors35Books" "DummyDatacleaner"
@@ -5654,8 +5654,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner
       hash: md5
-      md5: 02bbc1bc91a1f78343ff31e24d3657c3.dir
-      size: 12349137
+      md5: 6dc18ba3adb79ea6f1c38d7966284d44.dir
+      size: 12350562
       nfiles: 2
     - path: imports_validator/vectorize/CountVectorizer5000.yaml
       hash: md5
@@ -5672,8 +5672,8 @@ stages:
     outs:
     - path: data/Classics5Authors35Books/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: a052e313a8545b210ec2660402d0fb24.dir
-      size: 3746404
+      md5: dd98c17aae793012f657af074f5336b4.dir
+      size: 3746609
       nfiles: 1
   vectorize@35:
     cmd: python scripts/vectorize.py "Classics5Authors35Books" "DummyDatacleaner"
@@ -5681,8 +5681,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner
       hash: md5
-      md5: 02bbc1bc91a1f78343ff31e24d3657c3.dir
-      size: 12349137
+      md5: 6dc18ba3adb79ea6f1c38d7966284d44.dir
+      size: 12350562
       nfiles: 2
     - path: imports_validator/vectorize/TfidfVectorizer1000.yaml
       hash: md5
@@ -5699,8 +5699,8 @@ stages:
     outs:
     - path: data/Classics5Authors35Books/DummyDatacleaner_TfidfVectorizer1000
       hash: md5
-      md5: e9ff41e47f275f029b1fac40ddb34e5f.dir
-      size: 9156365
+      md5: ee48915949c0b3b9efce4ada031ff217.dir
+      size: 9156502
       nfiles: 1
   vectorize@36:
     cmd: python scripts/vectorize.py "Classics5Authors35Books" "DummyDatacleaner"
@@ -5708,8 +5708,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner
       hash: md5
-      md5: 02bbc1bc91a1f78343ff31e24d3657c3.dir
-      size: 12349137
+      md5: 6dc18ba3adb79ea6f1c38d7966284d44.dir
+      size: 12350562
       nfiles: 2
     - path: imports_validator/vectorize/TfidfVectorizer5000.yaml
       hash: md5
@@ -5726,8 +5726,8 @@ stages:
     outs:
     - path: data/Classics5Authors35Books/DummyDatacleaner_TfidfVectorizer5000
       hash: md5
-      md5: 697c1d3d5317c7f9b45624b69c76cb46.dir
-      size: 15046398
+      md5: a72fbf34c8bbb458e48cd4bf96a7ec9f.dir
+      size: 15046300
       nfiles: 1
   vectorize@37:
     cmd: python scripts/vectorize.py "Classics5Authors35Books" "DummyDatacleaner"
@@ -5735,8 +5735,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner
       hash: md5
-      md5: 02bbc1bc91a1f78343ff31e24d3657c3.dir
-      size: 12349137
+      md5: 6dc18ba3adb79ea6f1c38d7966284d44.dir
+      size: 12350562
       nfiles: 2
     - path: imports_validator/vectorize/BigramMorphTagVectorizer100.yaml
       hash: md5
@@ -5753,8 +5753,8 @@ stages:
     outs:
     - path: data/Classics5Authors35Books/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: 0c0175591cab5e1f7608bdcdacf7cd74.dir
-      size: 4575600
+      md5: 3921ce5cb8b3f8dc40071d3c550d75cc.dir
+      size: 4575900
       nfiles: 1
   vectorize@38:
     cmd: python scripts/vectorize.py "Classics5Authors35Books" "DummyDatacleaner"
@@ -5762,8 +5762,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner
       hash: md5
-      md5: 02bbc1bc91a1f78343ff31e24d3657c3.dir
-      size: 12349137
+      md5: 6dc18ba3adb79ea6f1c38d7966284d44.dir
+      size: 12350562
       nfiles: 2
     - path: imports_validator/vectorize/BigramMorphTagVectorizer370.yaml
       hash: md5
@@ -5780,8 +5780,8 @@ stages:
     outs:
     - path: data/Classics5Authors35Books/DummyDatacleaner_BigramMorphTagVectorizer370
       hash: md5
-      md5: 40e6e8956295225269c1d31c50a26872.dir
-      size: 16928225
+      md5: 288629a40f108ad76ee841e650828ac6.dir
+      size: 16928624
       nfiles: 1
   vectorize@39:
     cmd: python scripts/vectorize.py "Classics5Authors35Books" "DummyDatacleaner"
@@ -5789,8 +5789,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner
       hash: md5
-      md5: 02bbc1bc91a1f78343ff31e24d3657c3.dir
-      size: 12349137
+      md5: 6dc18ba3adb79ea6f1c38d7966284d44.dir
+      size: 12350562
       nfiles: 2
     - path: imports_validator/vectorize/DPEBPVectorizer100Avg.yaml
       hash: md5
@@ -5807,8 +5807,8 @@ stages:
     outs:
     - path: data/Classics5Authors35Books/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: e4b5972ddd143ebec1d45bfb3f05e04d.dir
-      size: 2216787
+      md5: 73cd84878205036a74e8e38d61342541.dir
+      size: 2216754
       nfiles: 1
   vectorize@40:
     cmd: python scripts/vectorize.py "Classics5Authors35Books" "DummyDatacleaner"
@@ -5816,8 +5816,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner
       hash: md5
-      md5: 02bbc1bc91a1f78343ff31e24d3657c3.dir
-      size: 12349137
+      md5: 6dc18ba3adb79ea6f1c38d7966284d44.dir
+      size: 12350562
       nfiles: 2
     - path: imports_validator/vectorize/FullMorphTagVectorizer.yaml
       hash: md5
@@ -5834,8 +5834,8 @@ stages:
     outs:
     - path: data/Classics5Authors35Books/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: abc2e25b82723eddc81f645d359f2bc6.dir
-      size: 3176081
+      md5: 082029be17545fa2808004ed497c1260.dir
+      size: 3176154
       nfiles: 1
   vectorize@41:
     cmd: python scripts/vectorize.py "Classics5Authors35Books" "DummyDatacleaner"
@@ -5843,8 +5843,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner
       hash: md5
-      md5: 02bbc1bc91a1f78343ff31e24d3657c3.dir
-      size: 12349137
+      md5: 6dc18ba3adb79ea6f1c38d7966284d44.dir
+      size: 12350562
       nfiles: 2
     - path: imports_validator/vectorize/HerbertVectorizer.yaml
       hash: md5
@@ -5861,8 +5861,8 @@ stages:
     outs:
     - path: data/Classics5Authors35Books/DummyDatacleaner_HerbertVectorizer
       hash: md5
-      md5: dcf999f9d5db16c731f260fe63585be8.dir
-      size: 16860279
+      md5: 557bfa9539e9c1d89d0268a5526dd9f8.dir
+      size: 16860640
       nfiles: 1
   vectorize@42:
     cmd: python scripts/vectorize.py "Classics5Authors35Books" "DummyDatacleaner"
@@ -5870,8 +5870,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner
       hash: md5
-      md5: 02bbc1bc91a1f78343ff31e24d3657c3.dir
-      size: 12349137
+      md5: 6dc18ba3adb79ea6f1c38d7966284d44.dir
+      size: 12350562
       nfiles: 2
     - path: imports_validator/vectorize/SpacyMorphTagVectorizer.yaml
       hash: md5
@@ -5888,8 +5888,8 @@ stages:
     outs:
     - path: data/Classics5Authors35Books/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 16fff92f487817182fc04fcb6ce7e3bc.dir
-      size: 1881975
+      md5: 31c3fb4708541cde553cac5646bdb156.dir
+      size: 1882097
       nfiles: 1
   evaluate_classification@data0-model4:
     cmd: python scripts/evaluate.py "TweeterCyberbullying" "DummyDatacleaner" "BigramMorphTagVectorizer100"
@@ -9244,8 +9244,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_CountVectorizer1000
       hash: md5
-      md5: 37e3bf4817b0c8c7c3f2239ebc42bce5.dir
-      size: 1666638
+      md5: 7414165decf699661305bf904350c63f.dir
+      size: 1666980
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -9267,13 +9267,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/CountVectorizer1000/RandomForest/RandomForest1
       hash: md5
-      md5: dcf2fff9d82d069c738492e418eadead.dir
-      size: 13732702
+      md5: c5dd3467eeb13c0a18ab97ba7ee7afe6.dir
+      size: 13546138
       nfiles: 56
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/CountVectorizer1000/RandomForest/RandomForest1.json
       hash: md5
-      md5: 769bc06fae55fcd7366e25ca44ab8af9
+      md5: ac5f909960704e25f37f644ae73ac34c
       size: 315
   evaluate_classification@data33-model1:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "CountVectorizer1000"
@@ -9281,8 +9281,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_CountVectorizer1000
       hash: md5
-      md5: 37e3bf4817b0c8c7c3f2239ebc42bce5.dir
-      size: 1666638
+      md5: 7414165decf699661305bf904350c63f.dir
+      size: 1666980
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -9304,22 +9304,22 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/CountVectorizer1000/MLP/MLP1
       hash: md5
-      md5: 61718d5b114ace5f9f6ae996dd4acaea.dir
-      size: 2508510
+      md5: 86d6993637b6761ebc8af6bd64ad4501.dir
+      size: 2511343
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/CountVectorizer1000/MLP/MLP1.json
       hash: md5
-      md5: 8f7f1d311da479a868d1477ffb342776
-      size: 475
+      md5: ee0685b71d6179079783ad1861faca88
+      size: 474
   evaluate_classification@data33-model2:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "CountVectorizer1000"
       "MLP" "MLP2"
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_CountVectorizer1000
       hash: md5
-      md5: 37e3bf4817b0c8c7c3f2239ebc42bce5.dir
-      size: 1666638
+      md5: 7414165decf699661305bf904350c63f.dir
+      size: 1666980
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -9341,22 +9341,22 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/CountVectorizer1000/MLP/MLP2
       hash: md5
-      md5: 811d3198b74fa698328a4b1b1cb05991.dir
-      size: 6134292
+      md5: 8f1e7c4ebf91324c0cf83f9949f91bdd.dir
+      size: 6132088
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/CountVectorizer1000/MLP/MLP2.json
       hash: md5
-      md5: 4bc253ad18d26ff26b3b8d35366c958b
-      size: 475
+      md5: fe19ab979e979323932dced6605c412a
+      size: 474
   evaluate_classification@data33-model3:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "CountVectorizer1000"
       "MLP" "MLP3"
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_CountVectorizer1000
       hash: md5
-      md5: 37e3bf4817b0c8c7c3f2239ebc42bce5.dir
-      size: 1666638
+      md5: 7414165decf699661305bf904350c63f.dir
+      size: 1666980
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -9378,13 +9378,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/CountVectorizer1000/MLP/MLP3
       hash: md5
-      md5: efe8cd67197a5417e8c06dd0d0d143b5.dir
-      size: 12166626
+      md5: 5bbf262b2c78322eaf4b78f3dcb4e638.dir
+      size: 12167721
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/CountVectorizer1000/MLP/MLP3.json
       hash: md5
-      md5: 0ff6dd6bcddefc0b870515c9faf424b8
+      md5: fe1c9f5fdeae979ac092ea5e491e60dc
       size: 475
   evaluate_classification@data33-model4:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "CountVectorizer1000"
@@ -9392,8 +9392,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_CountVectorizer1000
       hash: md5
-      md5: 37e3bf4817b0c8c7c3f2239ebc42bce5.dir
-      size: 1666638
+      md5: 7414165decf699661305bf904350c63f.dir
+      size: 1666980
       nfiles: 1
     - path: imports_validator/evaluate/LogisticRegression.yaml
       hash: md5
@@ -9415,7 +9415,7 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/CountVectorizer1000/LogisticRegression/LR1
       hash: md5
-      md5: 0b350fa09695b435d93b083045dd32a5.dir
+      md5: f9c07527ee6fdbbb4ffed18af4e2b45b.dir
       size: 105935
       nfiles: 53
     - path: 
@@ -9429,8 +9429,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: a052e313a8545b210ec2660402d0fb24.dir
-      size: 3746404
+      md5: dd98c17aae793012f657af074f5336b4.dir
+      size: 3746609
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -9452,13 +9452,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/CountVectorizer5000/RandomForest/RandomForest1
       hash: md5
-      md5: d2c75f362535d0ecec21ced55ba93fe6.dir
-      size: 14436304
+      md5: 8760788ea603bd5784148acc14ee9bb7.dir
+      size: 14684014
       nfiles: 56
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/CountVectorizer5000/RandomForest/RandomForest1.json
       hash: md5
-      md5: b7ce7e17b36e2795a83edca4de400464
+      md5: fd60c67afb9469e44a33a577057982b3
       size: 314
   evaluate_classification@data34-model1:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "CountVectorizer5000"
@@ -9466,8 +9466,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: a052e313a8545b210ec2660402d0fb24.dir
-      size: 3746404
+      md5: dd98c17aae793012f657af074f5336b4.dir
+      size: 3746609
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -9489,22 +9489,22 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/CountVectorizer5000/MLP/MLP1
       hash: md5
-      md5: b15a74c67a2d9e44a86c3e25dcd25f32.dir
-      size: 12107627
+      md5: f7d9deb71877100d2d7faf63a20fe876.dir
+      size: 12106235
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/CountVectorizer5000/MLP/MLP1.json
       hash: md5
-      md5: 92c58e987a77e5eff7fd88006cdc1ad4
-      size: 475
+      md5: a6119416058516e24957ef29d9bf491d
+      size: 474
   evaluate_classification@data34-model2:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "CountVectorizer5000"
       "MLP" "MLP2"
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: a052e313a8545b210ec2660402d0fb24.dir
-      size: 3746404
+      md5: dd98c17aae793012f657af074f5336b4.dir
+      size: 3746609
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -9526,22 +9526,22 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/CountVectorizer5000/MLP/MLP2
       hash: md5
-      md5: 4bef640306cc182e848298f773e3a1f2.dir
-      size: 30128638
+      md5: 72b0e6d99c19671d38b8d2a745226c2d.dir
+      size: 30129248
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/CountVectorizer5000/MLP/MLP2.json
       hash: md5
-      md5: e5b6f61b5af4f502f2d8a0dfa4fb9d42
-      size: 474
+      md5: 73f83e1099812eae88c02c92a0d9b616
+      size: 475
   evaluate_classification@data34-model3:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "CountVectorizer5000"
       "MLP" "MLP3"
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: a052e313a8545b210ec2660402d0fb24.dir
-      size: 3746404
+      md5: dd98c17aae793012f657af074f5336b4.dir
+      size: 3746609
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -9563,22 +9563,22 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/CountVectorizer5000/MLP/MLP3
       hash: md5
-      md5: 53c00544fba06b313d01ef046b44267f.dir
-      size: 60162294
+      md5: 208704cd0d79d702581353b4e0e0681d.dir
+      size: 60162762
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/CountVectorizer5000/MLP/MLP3.json
       hash: md5
-      md5: 184e7365a0e748063e269fcc6c224929
-      size: 474
+      md5: ad1672007703af11c43febcdad2f1960
+      size: 475
   evaluate_classification@data34-model4:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "CountVectorizer5000"
       "LogisticRegression" "LR1"
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: a052e313a8545b210ec2660402d0fb24.dir
-      size: 3746404
+      md5: dd98c17aae793012f657af074f5336b4.dir
+      size: 3746609
       nfiles: 1
     - path: imports_validator/evaluate/LogisticRegression.yaml
       hash: md5
@@ -9600,7 +9600,7 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/CountVectorizer5000/LogisticRegression/LR1
       hash: md5
-      md5: 9a8e98ab5aa503e6816e6062bacaf277.dir
+      md5: 2e3bdcc9aba92164d3fc1113ecab209f.dir
       size: 265629
       nfiles: 53
     - path: 
@@ -9614,8 +9614,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_TfidfVectorizer1000
       hash: md5
-      md5: e9ff41e47f275f029b1fac40ddb34e5f.dir
-      size: 9156365
+      md5: ee48915949c0b3b9efce4ada031ff217.dir
+      size: 9156502
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -9637,13 +9637,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer1000/RandomForest/RandomForest1
       hash: md5
-      md5: 60b5e6f7b65c51a31d27be8db60ccb36.dir
-      size: 11936152
+      md5: 288e434bf4cfdecd35c76b11bd47569e.dir
+      size: 11939135
       nfiles: 56
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer1000/RandomForest/RandomForest1.json
       hash: md5
-      md5: 14aceb43f0209081d5dd5cd47f96247a
+      md5: a0fe34b37634949fe9e8275ac29f04f8
       size: 315
   evaluate_classification@data35-model1:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "TfidfVectorizer1000"
@@ -9651,8 +9651,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_TfidfVectorizer1000
       hash: md5
-      md5: e9ff41e47f275f029b1fac40ddb34e5f.dir
-      size: 9156365
+      md5: ee48915949c0b3b9efce4ada031ff217.dir
+      size: 9156502
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -9674,22 +9674,22 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP1
       hash: md5
-      md5: a1ac0015f3a392d5234743769cc8f4ca.dir
-      size: 2509942
+      md5: 780327a09a0cbcd27f69dbf4b797ac98.dir
+      size: 2510652
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP1.json
       hash: md5
-      md5: 844755881297f2bb1b35fa6915e47170
-      size: 475
+      md5: e58bdd3644f1332a068148ca9c94612f
+      size: 474
   evaluate_classification@data35-model2:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "TfidfVectorizer1000"
       "MLP" "MLP2"
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_TfidfVectorizer1000
       hash: md5
-      md5: e9ff41e47f275f029b1fac40ddb34e5f.dir
-      size: 9156365
+      md5: ee48915949c0b3b9efce4ada031ff217.dir
+      size: 9156502
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -9711,13 +9711,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP2
       hash: md5
-      md5: 5f2d7ef032a52a39c13b02fc8898b22e.dir
-      size: 6129393
+      md5: 5d75e9e73f5b6fcfca4c28d8e5738b99.dir
+      size: 6130279
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP2.json
       hash: md5
-      md5: f9a5fb612dbeda0630e8bb0e3ea690ea
+      md5: 2b19bb0cda34e9ad22430fd25598b4e9
       size: 475
   evaluate_classification@data35-model3:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "TfidfVectorizer1000"
@@ -9725,8 +9725,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_TfidfVectorizer1000
       hash: md5
-      md5: e9ff41e47f275f029b1fac40ddb34e5f.dir
-      size: 9156365
+      md5: ee48915949c0b3b9efce4ada031ff217.dir
+      size: 9156502
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -9748,13 +9748,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP3
       hash: md5
-      md5: 3659a3f2a14a546bb51787a579821e70.dir
-      size: 12165553
+      md5: d5c830806de07d5c8fceab136b866139.dir
+      size: 12167856
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP3.json
       hash: md5
-      md5: f73f1e007301bc31cf569554f0d4ac4e
+      md5: b75cf42b413d9f593b292d66d75c2649
       size: 474
   evaluate_classification@data35-model4:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "TfidfVectorizer1000"
@@ -9762,8 +9762,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_TfidfVectorizer1000
       hash: md5
-      md5: e9ff41e47f275f029b1fac40ddb34e5f.dir
-      size: 9156365
+      md5: ee48915949c0b3b9efce4ada031ff217.dir
+      size: 9156502
       nfiles: 1
     - path: imports_validator/evaluate/LogisticRegression.yaml
       hash: md5
@@ -9785,7 +9785,7 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer1000/LogisticRegression/LR1
       hash: md5
-      md5: 4e649082f717bad553f6a04086be3a03.dir
+      md5: b48860de27b47f40f2074dc35337d805.dir
       size: 112321
       nfiles: 53
     - path: 
@@ -9799,8 +9799,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_TfidfVectorizer5000
       hash: md5
-      md5: 697c1d3d5317c7f9b45624b69c76cb46.dir
-      size: 15046398
+      md5: a72fbf34c8bbb458e48cd4bf96a7ec9f.dir
+      size: 15046300
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -9822,13 +9822,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer5000/RandomForest/RandomForest1
       hash: md5
-      md5: 964c2ccac8e645c8bbd5bfa4ba1b92d3.dir
-      size: 13166044
+      md5: eee317764c507fe763f86771d02c920e.dir
+      size: 13111598
       nfiles: 56
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer5000/RandomForest/RandomForest1.json
       hash: md5
-      md5: c43212060959019dc094dce812430542
+      md5: 3c0326a90fa3c459f84055073e3b9682
       size: 315
   evaluate_classification@data36-model1:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "TfidfVectorizer5000"
@@ -9836,8 +9836,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_TfidfVectorizer5000
       hash: md5
-      md5: 697c1d3d5317c7f9b45624b69c76cb46.dir
-      size: 15046398
+      md5: a72fbf34c8bbb458e48cd4bf96a7ec9f.dir
+      size: 15046300
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -9859,13 +9859,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer5000/MLP/MLP1
       hash: md5
-      md5: 258fdefd3338a44975c8d8f30ed4afa6.dir
-      size: 12106010
+      md5: 4d7a438ce136a7ebe92402fc451b22d4.dir
+      size: 12104807
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer5000/MLP/MLP1.json
       hash: md5
-      md5: 641f5605bde0766a6d9bf9de4d70685b
+      md5: 776be59bce3f9a240ee5e106a9589d03
       size: 475
   evaluate_classification@data36-model2:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "TfidfVectorizer5000"
@@ -9873,8 +9873,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_TfidfVectorizer5000
       hash: md5
-      md5: 697c1d3d5317c7f9b45624b69c76cb46.dir
-      size: 15046398
+      md5: a72fbf34c8bbb458e48cd4bf96a7ec9f.dir
+      size: 15046300
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -9896,13 +9896,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer5000/MLP/MLP2
       hash: md5
-      md5: 7916d0f8907e5e96f07fcac72f5e382b.dir
-      size: 30128064
+      md5: 005caae25f7b22d77207085fbe8159ff.dir
+      size: 30126630
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer5000/MLP/MLP2.json
       hash: md5
-      md5: 45ef31d71f02caac78f5328e42a025e5
+      md5: 723f2cc9276db75833c38a97af16d7de
       size: 474
   evaluate_classification@data36-model3:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "TfidfVectorizer5000"
@@ -9910,8 +9910,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_TfidfVectorizer5000
       hash: md5
-      md5: 697c1d3d5317c7f9b45624b69c76cb46.dir
-      size: 15046398
+      md5: a72fbf34c8bbb458e48cd4bf96a7ec9f.dir
+      size: 15046300
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -9933,13 +9933,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer5000/MLP/MLP3
       hash: md5
-      md5: 151e2fdc63ba1ad88c381c78a94161d8.dir
-      size: 60163030
+      md5: 4eb4005ad51a76e87f70cd7e74599cd7.dir
+      size: 60160490
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer5000/MLP/MLP3.json
       hash: md5
-      md5: 47beb14744d59b5b0cabc2bc2bb7ac29
+      md5: 84b43e4dd05bf557d2a7774c068f3a25
       size: 475
   evaluate_classification@data36-model4:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "TfidfVectorizer5000"
@@ -9947,8 +9947,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_TfidfVectorizer5000
       hash: md5
-      md5: 697c1d3d5317c7f9b45624b69c76cb46.dir
-      size: 15046398
+      md5: a72fbf34c8bbb458e48cd4bf96a7ec9f.dir
+      size: 15046300
       nfiles: 1
     - path: imports_validator/evaluate/LogisticRegression.yaml
       hash: md5
@@ -9970,8 +9970,8 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer5000/LogisticRegression/LR1
       hash: md5
-      md5: a3754393ce20eb1c63676374bd9bbc2b.dir
-      size: 266600
+      md5: bb883e821c41c0df9319734883315187.dir
+      size: 266599
       nfiles: 53
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/TfidfVectorizer5000/LogisticRegression/LR1.json
@@ -9984,8 +9984,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: 0c0175591cab5e1f7608bdcdacf7cd74.dir
-      size: 4575600
+      md5: 3921ce5cb8b3f8dc40071d3c550d75cc.dir
+      size: 4575900
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -10007,13 +10007,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer100/RandomForest/RandomForest1
       hash: md5
-      md5: 186a336d1bcac63fbb9f03a954d75f95.dir
-      size: 15073609
+      md5: 43a5ebc516c85ff41a117e47a3b174ee.dir
+      size: 15132939
       nfiles: 56
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer100/RandomForest/RandomForest1.json
       hash: md5
-      md5: 5d739cd79cf95f73665e2695e281c44d
+      md5: 68033f54b3613e4f15559fad78837ab8
       size: 323
   evaluate_classification@data37-model1:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "BigramMorphTagVectorizer100"
@@ -10021,8 +10021,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: 0c0175591cab5e1f7608bdcdacf7cd74.dir
-      size: 4575600
+      md5: 3921ce5cb8b3f8dc40071d3c550d75cc.dir
+      size: 4575900
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -10044,13 +10044,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer100/MLP/MLP1
       hash: md5
-      md5: 064db7ecc4f35265edf329e86949e014.dir
-      size: 369773
+      md5: 707e4ece5519a775f76bc3679cf546b3.dir
+      size: 376628
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer100/MLP/MLP1.json
       hash: md5
-      md5: f0094d24f6b7841112f56b3299408c36
+      md5: f312a1d7ecb304dc22a88ce5ba4ba01c
       size: 483
   evaluate_classification@data37-model2:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "BigramMorphTagVectorizer100"
@@ -10058,8 +10058,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: 0c0175591cab5e1f7608bdcdacf7cd74.dir
-      size: 4575600
+      md5: 3921ce5cb8b3f8dc40071d3c550d75cc.dir
+      size: 4575900
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -10081,22 +10081,22 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer100/MLP/MLP2
       hash: md5
-      md5: f1d10cc80e6460cd7ff30215aaf754fd.dir
-      size: 751690
+      md5: f316d60801db3b2a8fe815854e3c35e3.dir
+      size: 741844
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer100/MLP/MLP2.json
       hash: md5
-      md5: 03054ce7ab7da8a5b6c332cfb4510633
-      size: 483
+      md5: cd3d4dc3564d42d83472b59f33b980b1
+      size: 482
   evaluate_classification@data37-model3:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "BigramMorphTagVectorizer100"
       "MLP" "MLP3"
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: 0c0175591cab5e1f7608bdcdacf7cd74.dir
-      size: 4575600
+      md5: 3921ce5cb8b3f8dc40071d3c550d75cc.dir
+      size: 4575900
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -10118,13 +10118,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer100/MLP/MLP3
       hash: md5
-      md5: 81c8dbac8dedf17b3b713fd5f78debea.dir
-      size: 1379622
+      md5: f6dcbcc2c5f6bdfcfa3bb9d4a086f9d8.dir
+      size: 1378097
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer100/MLP/MLP3.json
       hash: md5
-      md5: 8e1238ca912ee6c2e87282de21fe98c3
+      md5: 5e9dc82a130eeb64371f846bd978048e
       size: 482
   evaluate_classification@data37-model4:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "BigramMorphTagVectorizer100"
@@ -10132,8 +10132,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: 0c0175591cab5e1f7608bdcdacf7cd74.dir
-      size: 4575600
+      md5: 3921ce5cb8b3f8dc40071d3c550d75cc.dir
+      size: 4575900
       nfiles: 1
     - path: imports_validator/evaluate/LogisticRegression.yaml
       hash: md5
@@ -10155,13 +10155,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer100/LogisticRegression/LR1
       hash: md5
-      md5: 26511bc91394be58eb87309e21bfeefb.dir
-      size: 92744
+      md5: 3a17a628c513569ee15e6fc7c0dfc11b.dir
+      size: 92176
       nfiles: 53
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer100/LogisticRegression/LR1.json
       hash: md5
-      md5: 599510d738aaffa878286b58adf6e2f4
+      md5: 110ec7130f36df939f9bae49b11960ab
       size: 371
   evaluate_classification@data38-model0:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "BigramMorphTagVectorizer370"
@@ -10169,8 +10169,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_BigramMorphTagVectorizer370
       hash: md5
-      md5: 40e6e8956295225269c1d31c50a26872.dir
-      size: 16928225
+      md5: 288629a40f108ad76ee841e650828ac6.dir
+      size: 16928624
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -10192,22 +10192,22 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer370/RandomForest/RandomForest1
       hash: md5
-      md5: a5057075f3b69aaf9c6deef840662b16.dir
-      size: 16441054
+      md5: c5ab41c1c7348842b66d26fb9a2a6353.dir
+      size: 16411907
       nfiles: 56
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer370/RandomForest/RandomForest1.json
       hash: md5
-      md5: b7c46f66b661a36a97a461f668e68c4d
-      size: 322
+      md5: e8332a8b039c158ff876bbf37396294a
+      size: 323
   evaluate_classification@data38-model1:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "BigramMorphTagVectorizer370"
       "MLP" "MLP1"
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_BigramMorphTagVectorizer370
       hash: md5
-      md5: 40e6e8956295225269c1d31c50a26872.dir
-      size: 16928225
+      md5: 288629a40f108ad76ee841e650828ac6.dir
+      size: 16928624
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -10229,13 +10229,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP1
       hash: md5
-      md5: 0c90c44a6360d56fbadb9715e9ec48ff.dir
-      size: 1014148
+      md5: f5fda48499614708555a250cc5f79dc4.dir
+      size: 1014576
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP1.json
       hash: md5
-      md5: b79df4a6133f7ddd3d767cff3c22305b
+      md5: ddef37a22ee20d8103d67ba44431d658
       size: 482
   evaluate_classification@data38-model2:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "BigramMorphTagVectorizer370"
@@ -10243,8 +10243,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_BigramMorphTagVectorizer370
       hash: md5
-      md5: 40e6e8956295225269c1d31c50a26872.dir
-      size: 16928225
+      md5: 288629a40f108ad76ee841e650828ac6.dir
+      size: 16928624
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -10266,22 +10266,22 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP2
       hash: md5
-      md5: 03e8ef8d1a5f6a6151487d04d1c6bd7a.dir
-      size: 2365215
+      md5: f57a119522f1945915b4eb55407be22c.dir
+      size: 2362242
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP2.json
       hash: md5
-      md5: 91fde057536d84395aee6c5cc6ef6bc3
-      size: 482
+      md5: 9581669e1fb0b2a7877581c37363effe
+      size: 483
   evaluate_classification@data38-model3:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "BigramMorphTagVectorizer370"
       "MLP" "MLP3"
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_BigramMorphTagVectorizer370
       hash: md5
-      md5: 40e6e8956295225269c1d31c50a26872.dir
-      size: 16928225
+      md5: 288629a40f108ad76ee841e650828ac6.dir
+      size: 16928624
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -10303,13 +10303,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP3
       hash: md5
-      md5: e21a98a2f73b76498520d1e0087509be.dir
-      size: 4618528
+      md5: b47c263c4373439d6dce74beb3acb2eb.dir
+      size: 4619347
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP3.json
       hash: md5
-      md5: 129c50672698c3e3edf9b56bee664495
+      md5: 97ea7e7153bb84360737c0066aec922c
       size: 482
   evaluate_classification@data38-model4:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "BigramMorphTagVectorizer370"
@@ -10317,8 +10317,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_BigramMorphTagVectorizer370
       hash: md5
-      md5: 40e6e8956295225269c1d31c50a26872.dir
-      size: 16928225
+      md5: 288629a40f108ad76ee841e650828ac6.dir
+      size: 16928624
       nfiles: 1
     - path: imports_validator/evaluate/LogisticRegression.yaml
       hash: md5
@@ -10340,22 +10340,22 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer370/LogisticRegression/LR1
       hash: md5
-      md5: 95a979d36793ac9b1894aa157b782de5.dir
-      size: 102208
+      md5: fd0d7e19b254652fedfb74df91620a6c.dir
+      size: 102510
       nfiles: 53
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/BigramMorphTagVectorizer370/LogisticRegression/LR1.json
       hash: md5
-      md5: 1dcc6a77711d444a415ddaba1f913e02
-      size: 371
+      md5: 1875719546b884756ea56947c8f98cb7
+      size: 370
   evaluate_classification@data39-model0:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "DPEBPVectorizer100Avg"
       "RandomForest" "RandomForest1"
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: e4b5972ddd143ebec1d45bfb3f05e04d.dir
-      size: 2216787
+      md5: 73cd84878205036a74e8e38d61342541.dir
+      size: 2216754
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -10377,13 +10377,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/DPEBPVectorizer100Avg/RandomForest/RandomForest1
       hash: md5
-      md5: 377142702608577f648c55f3a84e258a.dir
-      size: 13797894
+      md5: 9c129f36809ad9dae9740561d0355ca0.dir
+      size: 13802445
       nfiles: 56
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/DPEBPVectorizer100Avg/RandomForest/RandomForest1.json
       hash: md5
-      md5: 176c9477627db3b8a085c2982f84d419
+      md5: 2102b0e6726db243c0573fcec5b8ca7d
       size: 317
   evaluate_classification@data39-model1:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "DPEBPVectorizer100Avg"
@@ -10391,8 +10391,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: e4b5972ddd143ebec1d45bfb3f05e04d.dir
-      size: 2216787
+      md5: 73cd84878205036a74e8e38d61342541.dir
+      size: 2216754
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -10414,13 +10414,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP1
       hash: md5
-      md5: c62d18713a6d48d2b026b572c505d5ac.dir
-      size: 250185
+      md5: 2023262048f95e66d4c743c7829ae3ca.dir
+      size: 250149
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP1.json
       hash: md5
-      md5: 542c7d0f5d808985cc03042c1a554b4a
+      md5: f4b0afa9bcc0123a60c41314027eb178
       size: 476
   evaluate_classification@data39-model2:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "DPEBPVectorizer100Avg"
@@ -10428,8 +10428,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: e4b5972ddd143ebec1d45bfb3f05e04d.dir
-      size: 2216787
+      md5: 73cd84878205036a74e8e38d61342541.dir
+      size: 2216754
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -10451,13 +10451,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP2
       hash: md5
-      md5: 600b1dca68e23a3a4159614e4a01058e.dir
-      size: 442775
+      md5: c966f457fac159617ab2e48cc98c756d.dir
+      size: 443194
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP2.json
       hash: md5
-      md5: 2c7ef60e26b02e394ad11d8290629649
+      md5: 2a97778d026ef9ff2071b4cea7a3572d
       size: 477
   evaluate_classification@data39-model3:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "DPEBPVectorizer100Avg"
@@ -10465,8 +10465,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: e4b5972ddd143ebec1d45bfb3f05e04d.dir
-      size: 2216787
+      md5: 73cd84878205036a74e8e38d61342541.dir
+      size: 2216754
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -10488,13 +10488,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP3
       hash: md5
-      md5: 02360402d0542571f13e203891a1bd1e.dir
-      size: 760058
+      md5: fa2507d6b830159d3dc7ac37582edd50.dir
+      size: 755746
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP3.json
       hash: md5
-      md5: 1beeed354bc3dcc0c9f7c4611f7e7516
+      md5: 975dfa926466c5eaf72b8c264923619d
       size: 477
   evaluate_classification@data39-model4:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "DPEBPVectorizer100Avg"
@@ -10502,8 +10502,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: e4b5972ddd143ebec1d45bfb3f05e04d.dir
-      size: 2216787
+      md5: 73cd84878205036a74e8e38d61342541.dir
+      size: 2216754
       nfiles: 1
     - path: imports_validator/evaluate/LogisticRegression.yaml
       hash: md5
@@ -10525,7 +10525,7 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/DPEBPVectorizer100Avg/LogisticRegression/LR1
       hash: md5
-      md5: 76caf831dc6c98ada5174b607f4eb49c.dir
+      md5: 821d85c40a0ca8fc01b36d29ed508043.dir
       size: 99157
       nfiles: 53
     - path: 
@@ -10539,8 +10539,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: abc2e25b82723eddc81f645d359f2bc6.dir
-      size: 3176081
+      md5: 082029be17545fa2808004ed497c1260.dir
+      size: 3176154
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -10562,13 +10562,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/FullMorphTagVectorizer/RandomForest/RandomForest1
       hash: md5
-      md5: caed1ea8f4ab30a4a39dbb04c076ea94.dir
-      size: 18072036
+      md5: b3fd0250c813e2aa8456eed5e3a340d1.dir
+      size: 18087176
       nfiles: 56
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/FullMorphTagVectorizer/RandomForest/RandomForest1.json
       hash: md5
-      md5: c5fa6889dc15b2cf806fc6c8be657ec1
+      md5: d5156bb784c4bbba959dc3c702b17652
       size: 319
   evaluate_classification@data40-model1:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "FullMorphTagVectorizer"
@@ -10576,8 +10576,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: abc2e25b82723eddc81f645d359f2bc6.dir
-      size: 3176081
+      md5: 082029be17545fa2808004ed497c1260.dir
+      size: 3176154
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -10599,22 +10599,22 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/FullMorphTagVectorizer/MLP/MLP1
       hash: md5
-      md5: 0f11240d58bd5f3eec04ff23d8d8d9d2.dir
-      size: 3576357
+      md5: 02d685ae25c1025c4aac4940ce2123c7.dir
+      size: 3574390
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/FullMorphTagVectorizer/MLP/MLP1.json
       hash: md5
-      md5: cb484adda8bfc791d763424ad9591fea
-      size: 476
+      md5: b2e29c868546e8a0df7834af998e0c80
+      size: 478
   evaluate_classification@data40-model2:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "FullMorphTagVectorizer"
       "MLP" "MLP2"
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: abc2e25b82723eddc81f645d359f2bc6.dir
-      size: 3176081
+      md5: 082029be17545fa2808004ed497c1260.dir
+      size: 3176154
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -10636,13 +10636,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/FullMorphTagVectorizer/MLP/MLP2
       hash: md5
-      md5: 27fc4f482c14889144eafe0a9e979a77.dir
-      size: 8757466
+      md5: 6d3407c962d21d92dfed5fa1dc1654bf.dir
+      size: 8758420
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/FullMorphTagVectorizer/MLP/MLP2.json
       hash: md5
-      md5: e1e6c859aa0d0af641f435f4acd7625a
+      md5: 649c67b1fbb43de44dbaf2707d56f907
       size: 477
   evaluate_classification@data40-model3:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "FullMorphTagVectorizer"
@@ -10650,8 +10650,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: abc2e25b82723eddc81f645d359f2bc6.dir
-      size: 3176081
+      md5: 082029be17545fa2808004ed497c1260.dir
+      size: 3176154
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -10673,22 +10673,22 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/FullMorphTagVectorizer/MLP/MLP3
       hash: md5
-      md5: d98ea8df3cfd56e63c0773b5e8295bce.dir
-      size: 17411188
+      md5: 0115ba8758680147869c8827ac1f630a.dir
+      size: 17409327
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/FullMorphTagVectorizer/MLP/MLP3.json
       hash: md5
-      md5: 663a3cfe5c7d3d311bc337bb99cbaf0a
-      size: 477
+      md5: c3b723fa0bf1d8cebd39179f32df4d9a
+      size: 478
   evaluate_classification@data40-model4:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "FullMorphTagVectorizer"
       "LogisticRegression" "LR1"
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: abc2e25b82723eddc81f645d359f2bc6.dir
-      size: 3176081
+      md5: 082029be17545fa2808004ed497c1260.dir
+      size: 3176154
       nfiles: 1
     - path: imports_validator/evaluate/LogisticRegression.yaml
       hash: md5
@@ -10710,8 +10710,8 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/FullMorphTagVectorizer/LogisticRegression/LR1
       hash: md5
-      md5: 14786ef7ec843180a79e166ba9f79c03.dir
-      size: 146457
+      md5: 2f3fb5f82c6ee8745f0350f33e9e6ee0.dir
+      size: 146455
       nfiles: 53
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/FullMorphTagVectorizer/LogisticRegression/LR1.json
@@ -10724,8 +10724,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_HerbertVectorizer
       hash: md5
-      md5: dcf999f9d5db16c731f260fe63585be8.dir
-      size: 16860279
+      md5: 557bfa9539e9c1d89d0268a5526dd9f8.dir
+      size: 16860640
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -10747,13 +10747,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/HerbertVectorizer/RandomForest/RandomForest1
       hash: md5
-      md5: 423019766af48063e081a40fa0bfbe9d.dir
-      size: 20597651
+      md5: 858bd81c0c0b63695778962db5951d4a.dir
+      size: 20579847
       nfiles: 56
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/HerbertVectorizer/RandomForest/RandomForest1.json
       hash: md5
-      md5: 35726eb9605717b3659626b68fb4f3c7
+      md5: 2ad87c42508e72bda2dab0f7300b09fa
       size: 316
   evaluate_classification@data41-model1:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "HerbertVectorizer"
@@ -10761,8 +10761,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_HerbertVectorizer
       hash: md5
-      md5: dcf999f9d5db16c731f260fe63585be8.dir
-      size: 16860279
+      md5: 557bfa9539e9c1d89d0268a5526dd9f8.dir
+      size: 16860640
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -10783,21 +10783,21 @@ stages:
     outs:
     - path: mlruns_store/Classics5Authors35Books/DummyDatacleaner/HerbertVectorizer/MLP/MLP1
       hash: md5
-      md5: f2390ea97cd7aa21603b9ec470421bff.dir
-      size: 1056445
+      md5: 795b114a256100db5186ca216fd96b82.dir
+      size: 1057605
       nfiles: 62
     - path: results/Classics5Authors35Books/DummyDatacleaner/HerbertVectorizer/MLP/MLP1.json
       hash: md5
-      md5: 02a06745f3b551c1d05a96615c95a3eb
-      size: 473
+      md5: 48b675c7d47e6e25c7b7c18ff9d3cdd3
+      size: 472
   evaluate_classification@data41-model2:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "HerbertVectorizer"
       "MLP" "MLP2"
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_HerbertVectorizer
       hash: md5
-      md5: dcf999f9d5db16c731f260fe63585be8.dir
-      size: 16860279
+      md5: 557bfa9539e9c1d89d0268a5526dd9f8.dir
+      size: 16860640
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -10818,21 +10818,21 @@ stages:
     outs:
     - path: mlruns_store/Classics5Authors35Books/DummyDatacleaner/HerbertVectorizer/MLP/MLP2
       hash: md5
-      md5: 42363fba7728f561e6bcb732e57e44df.dir
-      size: 2449395
+      md5: f454850e59c8ffd57408b26508a16082.dir
+      size: 2452163
       nfiles: 62
     - path: results/Classics5Authors35Books/DummyDatacleaner/HerbertVectorizer/MLP/MLP2.json
       hash: md5
-      md5: 9780d74520699fd267c0c4f6df70a067
-      size: 475
+      md5: e806b2503dfa0abbf755b4d8e5bcb106
+      size: 472
   evaluate_classification@data41-model3:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "HerbertVectorizer"
       "MLP" "MLP3"
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_HerbertVectorizer
       hash: md5
-      md5: dcf999f9d5db16c731f260fe63585be8.dir
-      size: 16860279
+      md5: 557bfa9539e9c1d89d0268a5526dd9f8.dir
+      size: 16860640
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -10853,12 +10853,12 @@ stages:
     outs:
     - path: mlruns_store/Classics5Authors35Books/DummyDatacleaner/HerbertVectorizer/MLP/MLP3
       hash: md5
-      md5: 2053cc72513d07ba24531667e8309487.dir
-      size: 4770922
+      md5: b2a40bb52ec8539f1666bd6f8443af47.dir
+      size: 4773789
       nfiles: 62
     - path: results/Classics5Authors35Books/DummyDatacleaner/HerbertVectorizer/MLP/MLP3.json
       hash: md5
-      md5: d0a30b71aac343a31ec137f2e81cd5d4
+      md5: 9745c9a6adc1b871b539a138017603c6
       size: 475
   evaluate_classification@data41-model4:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "HerbertVectorizer"
@@ -10866,8 +10866,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_HerbertVectorizer
       hash: md5
-      md5: dcf999f9d5db16c731f260fe63585be8.dir
-      size: 16860279
+      md5: 557bfa9539e9c1d89d0268a5526dd9f8.dir
+      size: 16860640
       nfiles: 1
     - path: imports_validator/evaluate/LogisticRegression.yaml
       hash: md5
@@ -10889,8 +10889,8 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/HerbertVectorizer/LogisticRegression/LR1
       hash: md5
-      md5: 45d7df1d3d6707e6797d5091dfb6e8b2.dir
-      size: 127128
+      md5: 5682b2d138acdded7c1bcefb8d5fdf1a.dir
+      size: 127015
       nfiles: 53
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/HerbertVectorizer/LogisticRegression/LR1.json
@@ -10903,8 +10903,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 16fff92f487817182fc04fcb6ce7e3bc.dir
-      size: 1881975
+      md5: 31c3fb4708541cde553cac5646bdb156.dir
+      size: 1882097
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -10926,13 +10926,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/SpacyMorphTagVectorizer/RandomForest/RandomForest1
       hash: md5
-      md5: 0a95c1b08f523fe71ee966fc00c4ad57.dir
-      size: 12792934
+      md5: 8ce6b7e5008776c90ae406857d8eea03.dir
+      size: 12882785
       nfiles: 56
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/SpacyMorphTagVectorizer/RandomForest/RandomForest1.json
       hash: md5
-      md5: c3ee7b38ad6271fd2df8f2f0789ff62c
+      md5: eee35ba9e2afd96d0cb21e5e845d3216
       size: 319
   evaluate_classification@data42-model1:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "SpacyMorphTagVectorizer"
@@ -10940,8 +10940,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 16fff92f487817182fc04fcb6ce7e3bc.dir
-      size: 1881975
+      md5: 31c3fb4708541cde553cac5646bdb156.dir
+      size: 1882097
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -10963,13 +10963,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/SpacyMorphTagVectorizer/MLP/MLP1
       hash: md5
-      md5: 228b00fcc256451ba8fc5e15dfeaf041.dir
-      size: 355406
+      md5: 44c83f5274c7b6703e5c64882f6f67ed.dir
+      size: 355057
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/SpacyMorphTagVectorizer/MLP/MLP1.json
       hash: md5
-      md5: 7afaa75fe90db6bb8c9f4c9372ce25f8
+      md5: 9bddcee2cdd04577b39e1d0aad028fd4
       size: 479
   evaluate_classification@data42-model2:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "SpacyMorphTagVectorizer"
@@ -10977,8 +10977,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 16fff92f487817182fc04fcb6ce7e3bc.dir
-      size: 1881975
+      md5: 31c3fb4708541cde553cac5646bdb156.dir
+      size: 1882097
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -11000,13 +11000,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/SpacyMorphTagVectorizer/MLP/MLP2
       hash: md5
-      md5: 85e223d10c629c71ee6cb6117ce56f88.dir
-      size: 704284
+      md5: ac815ebd613259c749b72f07e7e64d68.dir
+      size: 706918
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/SpacyMorphTagVectorizer/MLP/MLP2.json
       hash: md5
-      md5: 206a67fde9a1faa2905ba65f455f6dab
+      md5: 2c1c4d73280480f29157902a6f9a3db0
       size: 479
   evaluate_classification@data42-model3:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "SpacyMorphTagVectorizer"
@@ -11014,8 +11014,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 16fff92f487817182fc04fcb6ce7e3bc.dir
-      size: 1881975
+      md5: 31c3fb4708541cde553cac5646bdb156.dir
+      size: 1882097
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -11037,13 +11037,13 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/SpacyMorphTagVectorizer/MLP/MLP3
       hash: md5
-      md5: 903384ddd6e4746a856e10630a0d1b32.dir
-      size: 1292075
+      md5: 7eaf2dbfac4924dc36d7428657f74e5c.dir
+      size: 1287448
       nfiles: 62
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/SpacyMorphTagVectorizer/MLP/MLP3.json
       hash: md5
-      md5: 91a4153e802504e5cbcacc57419acf39
+      md5: af590ccb1d7518e53d9061ca25ed8a78
       size: 479
   evaluate_classification@data42-model4:
     cmd: python scripts/evaluate.py "Classics5Authors35Books" "DummyDatacleaner" "SpacyMorphTagVectorizer"
@@ -11051,8 +11051,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 16fff92f487817182fc04fcb6ce7e3bc.dir
-      size: 1881975
+      md5: 31c3fb4708541cde553cac5646bdb156.dir
+      size: 1882097
       nfiles: 1
     - path: imports_validator/evaluate/LogisticRegression.yaml
       hash: md5
@@ -11074,8 +11074,8 @@ stages:
     - path: 
         mlruns_store/Classics5Authors35Books/DummyDatacleaner/SpacyMorphTagVectorizer/LogisticRegression/LR1
       hash: md5
-      md5: a51101c8bd85f06004fc3eb54da23bec.dir
-      size: 92167
+      md5: bcdef10c03a5e76817ba6911948b66b3.dir
+      size: 92166
       nfiles: 53
     - path: 
         results/Classics5Authors35Books/DummyDatacleaner/SpacyMorphTagVectorizer/LogisticRegression/LR1.json
@@ -11230,3 +11230,236 @@ stages:
       hash: md5
       md5: 3fdd88ac75dc827733d7b7ba81952163
       size: 403
+  load@4:
+    cmd:
+    - echo data/OldNewspapers/raw/test.parquet
+    - python scripts/load.py "OldNewspapers"
+    deps:
+    - path: datasets_raw/
+      hash: md5
+      md5: a0b6932b4d63cf35de3d178c2e07cf0f.dir
+      size: 362310228
+      nfiles: 669
+    - path: imports_validator/load/OldNewspapers.yaml
+      hash: md5
+      md5: d7e294607a140a211e467b5979bc7039
+      size: 72
+    - path: scripts/load.py
+      hash: md5
+      md5: f513e237e579b824fc664f320c36ae1c
+      size: 841
+    - path: stages/dataloaders/OldNewspapers.py
+      hash: md5
+      md5: 7d9223cfefe206d52cca61e1909b27d9
+      size: 771
+    outs:
+    - path: data/OldNewspapers/raw
+      hash: md5
+      md5: 294bb8dea39cf9c20c7a3dbc8c277541.dir
+      size: 47089575
+      nfiles: 2
+  vectorize@43:
+    cmd: python scripts/vectorize.py "OldNewspapers" "DummyDatacleaner" "CountVectorizer1000"
+    deps:
+    - path: data/OldNewspapers/DummyDatacleaner
+      hash: md5
+      md5: 821cb684ba459bcc0228d0a25e986146.dir
+      size: 47089679
+      nfiles: 2
+    - path: imports_validator/vectorize/CountVectorizer1000.yaml
+      hash: md5
+      md5: 56ed927ce2a2baec5411b392b959d1ae
+      size: 108
+    - path: scripts/vectorize.py
+      hash: md5
+      md5: 313deb9b0c0dc175f52248c04ddc2330
+      size: 798
+    - path: stages/vectorizers/CountVectorizer1000.py
+      hash: md5
+      md5: 52614696ad9ffe36c66ea7aa91c91dc2
+      size: 183
+    outs:
+    - path: data/OldNewspapers/DummyDatacleaner_CountVectorizer1000
+      hash: md5
+      md5: b73b8b4a40dfc2ccd20c0542fae8df2e.dir
+      size: 16474423
+      nfiles: 1
+  evaluate_classification@data43-model0:
+    cmd: python scripts/evaluate.py "OldNewspapers" "DummyDatacleaner" "CountVectorizer1000"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/OldNewspapers/DummyDatacleaner_CountVectorizer1000
+      hash: md5
+      md5: b73b8b4a40dfc2ccd20c0542fae8df2e.dir
+      size: 16474423
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: a0b7b43a483e31105d7775cbed766a96
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/OldNewspapers/DummyDatacleaner/CountVectorizer1000/RandomForest/RandomForest1
+      hash: md5
+      md5: 5e306ec8d2975ab430a719d0a35d9e58.dir
+      size: 7173007043
+      nfiles: 56
+    - path: 
+        results/OldNewspapers/DummyDatacleaner/CountVectorizer1000/RandomForest/RandomForest1.json
+      hash: md5
+      md5: 98e71ce2e505414f13faa9cdd45fdecf
+      size: 308
+  evaluate_classification@data43-model1:
+    cmd: python scripts/evaluate.py "OldNewspapers" "DummyDatacleaner" "CountVectorizer1000"
+      "MLP" "MLP1"
+    deps:
+    - path: data/OldNewspapers/DummyDatacleaner_CountVectorizer1000
+      hash: md5
+      md5: b73b8b4a40dfc2ccd20c0542fae8df2e.dir
+      size: 16474423
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: a0b7b43a483e31105d7775cbed766a96
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 3146b629f42d8213ae553ad0f6ae0b4a
+      size: 2383
+    outs:
+    - path: mlruns_store/OldNewspapers/DummyDatacleaner/CountVectorizer1000/MLP/MLP1
+      hash: md5
+      md5: c214e02176fc2b0bc761b90d79c61d93.dir
+      size: 2726922
+      nfiles: 62
+    - path: results/OldNewspapers/DummyDatacleaner/CountVectorizer1000/MLP/MLP1.json
+      hash: md5
+      md5: a9b49a11d19ae10faeff459eb714b7ed
+      size: 465
+  evaluate_classification@data43-model2:
+    cmd: python scripts/evaluate.py "OldNewspapers" "DummyDatacleaner" "CountVectorizer1000"
+      "MLP" "MLP2"
+    deps:
+    - path: data/OldNewspapers/DummyDatacleaner_CountVectorizer1000
+      hash: md5
+      md5: b73b8b4a40dfc2ccd20c0542fae8df2e.dir
+      size: 16474423
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: a0b7b43a483e31105d7775cbed766a96
+      size: 216
+    - path: params/MLP2.yaml
+      hash: md5
+      md5: 9f3f22b949093caa0eebabe883a481ac
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 3146b629f42d8213ae553ad0f6ae0b4a
+      size: 2383
+    outs:
+    - path: mlruns_store/OldNewspapers/DummyDatacleaner/CountVectorizer1000/MLP/MLP2
+      hash: md5
+      md5: 117d5be5d7094cda837c9f3e28961925.dir
+      size: 6413744
+      nfiles: 62
+    - path: results/OldNewspapers/DummyDatacleaner/CountVectorizer1000/MLP/MLP2.json
+      hash: md5
+      md5: 6b44b3710080a22522c9c18b9e695ca2
+      size: 468
+  evaluate_classification@data43-model3:
+    cmd: python scripts/evaluate.py "OldNewspapers" "DummyDatacleaner" "CountVectorizer1000"
+      "MLP" "MLP3"
+    deps:
+    - path: data/OldNewspapers/DummyDatacleaner_CountVectorizer1000
+      hash: md5
+      md5: b73b8b4a40dfc2ccd20c0542fae8df2e.dir
+      size: 16474423
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: a0b7b43a483e31105d7775cbed766a96
+      size: 216
+    - path: params/MLP3.yaml
+      hash: md5
+      md5: 15e23c59857ca072d2a915cbf1deca09
+      size: 222
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 3146b629f42d8213ae553ad0f6ae0b4a
+      size: 2383
+    outs:
+    - path: mlruns_store/OldNewspapers/DummyDatacleaner/CountVectorizer1000/MLP/MLP3
+      hash: md5
+      md5: 331fa61549917170e111688cb8fe65f4.dir
+      size: 12564252
+      nfiles: 62
+    - path: results/OldNewspapers/DummyDatacleaner/CountVectorizer1000/MLP/MLP3.json
+      hash: md5
+      md5: 41dc1f58f4c6ff3d8f127dba5b02a2ab
+      size: 466
+  evaluate_classification@data43-model4:
+    cmd: python scripts/evaluate.py "OldNewspapers" "DummyDatacleaner" "CountVectorizer1000"
+      "LogisticRegression" "LR1"
+    deps:
+    - path: data/OldNewspapers/DummyDatacleaner_CountVectorizer1000
+      hash: md5
+      md5: b73b8b4a40dfc2ccd20c0542fae8df2e.dir
+      size: 16474423
+      nfiles: 1
+    - path: imports_validator/evaluate/LogisticRegression.yaml
+      hash: md5
+      md5: a0b7b43a483e31105d7775cbed766a96
+      size: 216
+    - path: params/LR1.yaml
+      hash: md5
+      md5: 575940047794a5dc6e126056daa3ba96
+      size: 67
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/LogisticRegression.py
+      hash: md5
+      md5: 87c2516c2c04a251ab03a407b80ae7db
+      size: 1222
+    outs:
+    - path: 
+        mlruns_store/OldNewspapers/DummyDatacleaner/CountVectorizer1000/LogisticRegression/LR1
+      hash: md5
+      md5: f0cd2da307e6c46665297d3d2e75dac5.dir
+      size: 419952
+      nfiles: 53
+    - path: 
+        results/OldNewspapers/DummyDatacleaner/CountVectorizer1000/LogisticRegression/LR1.json
+      hash: md5
+      md5: d0ce62fad5f6071882c43cd0a947cbbc
+      size: 354
