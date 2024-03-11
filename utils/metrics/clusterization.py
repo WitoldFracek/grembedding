@@ -39,11 +39,13 @@ def compute_b_cubed_metrics(labels_true: list, labels_pred: list) -> dict[str, f
         cdict[i] = set([lp])
     precission = bcubed.precision(cdict, ldict)
     recall = bcubed.recall(cdict, ldict)
-    return {
+    results = {
         "bcubed_precission": precission,
         "bcubed_recall": recall,
         "bcubed_f1": bcubed.fscore(precission, recall)
     }
+    logger.info(f'B-Cubed metrics: ' + ' '.join(map(lambda pair: f'{pair[0]}: {pair[1]}', results.items())))
+    return results
 
 
 def _log_clusters_plot(x: np.ndarray, labels: np.ndarray, reduction_method='PCA'):    
