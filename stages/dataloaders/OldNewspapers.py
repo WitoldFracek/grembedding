@@ -15,9 +15,11 @@ class OldNewspapers(DataLoader):
         train_df: pd.DataFrame = pd.read_parquet(
             os.path.join(self.raw_datasets_dir, self.DATASET_DIR, 'train.parquet')
         )
+        train_df.dropna(inplace=True)
         test_df: pd.DataFrame = pd.read_parquet(
             os.path.join(self.raw_datasets_dir, self.DATASET_DIR, 'test.parquet')
         )
+        test_df.dropna(inplace=True)
 
         train_df = train_df.drop(columns=['source'])
         test_df = test_df.drop(columns=['source'])
