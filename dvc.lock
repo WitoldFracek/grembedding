@@ -11130,7 +11130,7 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/DBSCAN.yaml
       hash: md5
-      md5: a1ab01eaea22c37c948bbd37be81e634
+      md5: 4154d4ec5170c7eed3eb19c67e5b29e9
       size: 216
     - path: params/DBSCAN1.yaml
       hash: md5
@@ -11148,8 +11148,8 @@ stages:
     - path: 
         mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/DBSCAN/DBSCAN1
       hash: md5
-      md5: 5f8e9e934460fec53601eab89db89b41.dir
-      size: 797857
+      md5: 65d386fd1fe470507566b0074e4d6fd0.dir
+      size: 754311
       nfiles: 59
     - path: 
         results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/DBSCAN/DBSCAN1.json
@@ -11204,7 +11204,7 @@ stages:
       nfiles: 1
     - path: imports_validator/evaluate/KMeans.yaml
       hash: md5
-      md5: a1ab01eaea22c37c948bbd37be81e634
+      md5: 4154d4ec5170c7eed3eb19c67e5b29e9
       size: 216
     - path: params/KMeans1.yaml
       hash: md5
@@ -11222,13 +11222,13 @@ stages:
     - path: 
         mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/KMeans/KMeans1
       hash: md5
-      md5: 9f256f6b1a30296affc758a90bd42a98.dir
-      size: 713627
+      md5: db619abab6b44f119cf67d84d70fbe91.dir
+      size: 734198
       nfiles: 49
     - path: 
         results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/KMeans/KMeans1.json
       hash: md5
-      md5: 3fdd88ac75dc827733d7b7ba81952163
+      md5: 704629b8d4070e0ff8f780e6111ae6fc
       size: 403
   load@4:
     cmd:
@@ -11463,3 +11463,77 @@ stages:
       hash: md5
       md5: d0ce62fad5f6071882c43cd0a947cbbc
       size: 354
+  evaluate_clustering@data0-model2:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer100"
+      "AffinityPropagation" "AffinityPropagation1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer100
+      hash: md5
+      md5: 40c4c9cfafa93683fd279563025904b5.dir
+      size: 5196121
+      nfiles: 1
+    - path: imports_validator/evaluate/AffinityPropagation.yaml
+      hash: md5
+      md5: 4154d4ec5170c7eed3eb19c67e5b29e9
+      size: 216
+    - path: params/AffinityPropagation1.yaml
+      hash: md5
+      md5: 13457963b710a60ef5cc911ddd5dab9e
+      size: 27
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/AffinityPropagation.py
+      hash: md5
+      md5: 96ea1813237ad80fefdeb0a58433afaa
+      size: 1054
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer100/AffinityPropagation/AffinityPropagation1
+      hash: md5
+      md5: c2aa7273673189f1049dcdd5a0c79dbf.dir
+      size: 941119
+      nfiles: 58
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer100/AffinityPropagation/AffinityPropagation1.json
+      hash: md5
+      md5: dc8d24c225d0e28c3b248e6ce58ee4c4
+      size: 440
+  evaluate_clustering@data1-model2:
+    cmd: python scripts/evaluate.py "PrusVsSienkiewicz" "DummyDatacleaner" "BigramMorphTagVectorizer370"
+      "AffinityPropagation" "AffinityPropagation1"
+    deps:
+    - path: data/PrusVsSienkiewicz/DummyDatacleaner_BigramMorphTagVectorizer370
+      hash: md5
+      md5: 527318e70703f799770a95bfd3e266bc.dir
+      size: 19225323
+      nfiles: 1
+    - path: imports_validator/evaluate/AffinityPropagation.yaml
+      hash: md5
+      md5: 4154d4ec5170c7eed3eb19c67e5b29e9
+      size: 216
+    - path: params/AffinityPropagation1.yaml
+      hash: md5
+      md5: 13457963b710a60ef5cc911ddd5dab9e
+      size: 27
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/AffinityPropagation.py
+      hash: md5
+      md5: 96ea1813237ad80fefdeb0a58433afaa
+      size: 1054
+    outs:
+    - path: 
+        mlruns_store/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/AffinityPropagation/AffinityPropagation1
+      hash: md5
+      md5: 616a03e3a47b11ae1cc6db7c53276326.dir
+      size: 988634
+      nfiles: 58
+    - path: 
+        results/PrusVsSienkiewicz/DummyDatacleaner/BigramMorphTagVectorizer370/AffinityPropagation/AffinityPropagation1.json
+      hash: md5
+      md5: aa2f3311862a2d241a930cbce5c5cd60
+      size: 437
