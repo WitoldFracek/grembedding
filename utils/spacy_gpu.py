@@ -19,7 +19,7 @@ def autoconfigure_spacy_mode(caller_type: Type[Any]):
                            f"has invalid value '{spacy_mode_env}' - defaulting to 'cpu'")
             _use_cpu()
         else:
-            logger.info(f"Spacy: mode autoconfiguration - using mode {spacy_mode_env}")
+            logger.debug(f"Spacy: mode autoconfiguration - using mode {spacy_mode_env}")
             if spacy_mode_env == "gpu":
                 _use_gpu()
             elif spacy_mode_env == "gpu_except_stylometrix":
