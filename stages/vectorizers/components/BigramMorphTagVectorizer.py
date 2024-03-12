@@ -29,7 +29,7 @@ TAGS = {'abbr_yes': 0, 'adptype_post': 1, 'adptype_prep': 2, 'animacy_hum': 3, '
 
 class BigramMorphTagVectorizer(Vectorizer):
 
-    PROCESSING_BATCH_SIZE: int = 256
+    PROCESSING_BATCH_SIZE: int = 500
 
     def __init__(self, size: int) -> None:
         super().__init__()

@@ -10,7 +10,7 @@ if %errorlevel% equ 0 (
     echo imports_validator ended without error
     echo Starting dvc...
 
-    set GRE_SPACY_MODE=gpu
+    set GRE_SPACY_MODE=cpu
     dvc exp run
 
     set PYTHONPATH=.
