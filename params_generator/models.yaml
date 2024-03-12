@@ -1,0 +1,14 @@
+classification_models:
+  - model: RandomForest
+    params: RandomForest1
+  - model: MLP
+    params: MLP1
+  - model: LogisticRegression
+    params: LR1
+  # - model: SVC
+  #   params: SVC1
+
+clustering_models:
+  # TODO
+  - model: RandomForest
+    params: RandomForest1
