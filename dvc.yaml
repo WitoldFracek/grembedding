@@ -55,17 +55,17 @@ stages:
       - mlruns_store/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}
   
   # Uncomment when there is a clustering task
-  # evaluate_clustering:
-  #   matrix:
-  #     data: ${evaluate_clustering}
-  #     model: ${clustering_models}
-  #   cmd: python scripts/evaluate.py "${item.data.dataloader}" "${item.data.datacleaner}" "${item.data.vectorizer}" "${item.model.model}" "${item.model.params}"
-  #   deps:
-  #     - scripts/evaluate.py
-  #     - data/${item.data.dataloader}/${item.data.datacleaner}_${item.data.vectorizer}
-  #     - stages/models/${item.model.model}.py
-  #     - params/${item.model.params}.yaml
-  #     - imports_validator/evaluate/${item.model.model}.yaml
-  #   outs:
-  #     - results/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}.json
-  #     - mlruns_store/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}
+  evaluate_clustering:
+    matrix:
+      data: ${evaluate_clustering}
+      model: ${clustering_models}
+    cmd: python scripts/evaluate.py "${item.data.dataloader}" "${item.data.datacleaner}" "${item.data.vectorizer}" "${item.model.model}" "${item.model.params}"
+    deps:
+      - scripts/evaluate.py
+      - data/${item.data.dataloader}/${item.data.datacleaner}_${item.data.vectorizer}
+      - stages/models/${item.model.model}.py
+      - params/${item.model.params}.yaml
+      - imports_validator/evaluate/${item.model.model}.yaml
+    outs:
+      - results/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}.json
+      - mlruns_store/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}

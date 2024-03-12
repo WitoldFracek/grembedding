@@ -3,6 +3,7 @@ load:
   - dataloader: PrusVsSienkiewicz
   - dataloader: WritingStyle
   - dataloader: Classics5Authors35Books
+  - dataloader: OldNewspapers
 
 clean:
   - dataloader: TweeterCyberbullying
@@ -12,6 +13,8 @@ clean:
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
   - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+  - dataloader: OldNewspapers
     datacleaner: DummyDatacleaner
 
 vectorize:
@@ -151,6 +154,10 @@ vectorize:
   # - dataloader: Classics5Authors35Books
   #   datacleaner: DummyDatacleaner
   #   vectorizer: StyloMetrix
+######################################### Old newspapers
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
 
 evaluate_classification:
   - dataloader: TweeterCyberbullying
@@ -289,9 +296,18 @@ evaluate_classification:
   # - dataloader: Classics5Authors35Books
   #   datacleaner: DummyDatacleaner
   #   vectorizer: StyloMetrix
+######################################### Old Newspapers
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
 
 evaluate_clustering:
-  # TODO
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
 
 classification_models:
   - model: RandomForest
@@ -309,5 +325,9 @@ classification_models:
 
 clustering_models:
   # TODO
-  - model: RandomForest
-    params: RandomForest1
+  - model: DBSCAN
+    params: DBSCAN1
+  - model: KMeans
+    params: KMeans1
+  - model: AffinityPropagation
+    params: AffinityPropagation1
