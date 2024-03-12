@@ -1,7 +1,7 @@
 import json
 import os
 from abc import ABC, abstractmethod
-from typing import Dict, Tuple
+from typing import Dict, Tuple, Any
 
 import mlflow
 import numpy as np
@@ -27,7 +27,7 @@ class Model(ABC):
         pass
 
     def load_train_test(self, dataset: str, datacleaner: str, vectorizer: str) -> Tuple[
-        np.matrix, np.matrix, np.array, np.array]:
+        np.matrix, np.matrix, np.ndarray, np.ndarray, Any]:
         """
         Load train and test data
         :dataset: name of dataset
