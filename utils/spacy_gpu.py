@@ -44,6 +44,7 @@ def resolve_spacy_batch_size() -> int:
         logger.debug(f"Spacy: resolved batch size to {env_spacy_batch_size} via env variable.")
         return env_spacy_batch_size
     else:
+        logger.debug(f"Spacy: resolved batch size to {SPACY_DEFAULT_BATCH_SIZE} (default) since NO env var present.")
         return SPACY_DEFAULT_BATCH_SIZE
 
 

@@ -93,7 +93,7 @@ stages:
       nfiles: 2
     - path: imports_validator/vectorize/BigramMorphTagVectorizer100.yaml
       hash: md5
-      md5: a3065857f15335c6f4867d3dd3b88c55
+      md5: 8e3e1d6fc8aadc92d08a8ec872a037d7
       size: 144
     - path: scripts/vectorize.py
       hash: md5
@@ -106,8 +106,8 @@ stages:
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: 863c62fee6f7359be569c3865a771807.dir
-      size: 7697200
+      md5: 59a5ccdcdc97fca0e4962135bfe590cd.dir
+      size: 7697206
       nfiles: 1
   evaluate@data0-model0:
     cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer1000"
@@ -216,7 +216,7 @@ stages:
       nfiles: 2
     - path: imports_validator/vectorize/BigramMorphTagVectorizer370.yaml
       hash: md5
-      md5: a3065857f15335c6f4867d3dd3b88c55
+      md5: 8e3e1d6fc8aadc92d08a8ec872a037d7
       size: 144
     - path: scripts/vectorize.py
       hash: md5
@@ -229,8 +229,8 @@ stages:
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner_BigramMorphTagVectorizer370
       hash: md5
-      md5: d6fd7ffaba629c537f0621eb777533fc.dir
-      size: 28484876
+      md5: f43abc2662626f46cd85d2bcd433e992.dir
+      size: 28484759
       nfiles: 1
   evaluate@data1-model0:
     cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "CountVectorizer1000"
@@ -427,7 +427,7 @@ stages:
       nfiles: 2
     - path: imports_validator/vectorize/FullMorphTagVectorizer.yaml
       hash: md5
-      md5: d3e24c99f8168be7f1638b848da890f6
+      md5: 44f2290266d5b3014375294513bed450
       size: 108
     - path: scripts/vectorize.py
       hash: md5
@@ -435,8 +435,8 @@ stages:
       size: 798
     - path: stages/vectorizers/FullMorphTagVectorizer.py
       hash: md5
-      md5: acdd754105b7b2ac1aca14a0c4b4e5c9
-      size: 3734
+      md5: 91dd877d8526c40289e7526855f89a3e
+      size: 3783
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
@@ -479,7 +479,7 @@ stages:
       nfiles: 2
     - path: imports_validator/vectorize/SpacyMorphTagVectorizer.yaml
       hash: md5
-      md5: d3e24c99f8168be7f1638b848da890f6
+      md5: 44f2290266d5b3014375294513bed450
       size: 108
     - path: scripts/vectorize.py
       hash: md5
@@ -487,13 +487,13 @@ stages:
       size: 798
     - path: stages/vectorizers/SpacyMorphTagVectorizer.py
       hash: md5
-      md5: a9bff6cb9a2c688ff80019380fd7f2d6
-      size: 3662
+      md5: 54f1ca5e8c6bb70311959c787bbe9d75
+      size: 4768
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 36b1d7a2da793d6e6d548d06b733e037.dir
-      size: 650278
+      md5: 5a4db7bb4b3bbc9e0c53578d6d4cc612.dir
+      size: 650263
       nfiles: 1
   evaluate@data4-model0:
     cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "CountVectorizer5000"

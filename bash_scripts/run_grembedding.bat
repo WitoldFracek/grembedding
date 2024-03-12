@@ -10,6 +10,7 @@ if %errorlevel% equ 0 (
     echo imports_validator ended without error
     echo Starting dvc...
 
+    rem Env var do sterowania spacy
     set GRE_SPACY_MODE=cpu
     dvc exp run
 
