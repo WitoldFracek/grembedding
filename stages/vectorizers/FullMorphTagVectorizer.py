@@ -10,12 +10,12 @@ from tqdm import tqdm
 import json
 import os
 
-from utils.spacy_gpu import autoconfigure_spacy_mode
+from utils.spacy_gpu import autoconfigure_spacy_mode, resolve_spacy_batch_size
 
 
 class FullMorphTagVectorizer(Vectorizer):
 
-    PROCESSING_BATCH_SIZE: int = 500
+    PROCESSING_BATCH_SIZE: int = resolve_spacy_batch_size()
 
     def __init__(self) -> None:
         super().__init__()

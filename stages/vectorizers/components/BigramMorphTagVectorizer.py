@@ -6,7 +6,7 @@ from sklearn.decomposition import PCA
 from loguru import logger
 from tqdm import tqdm
 
-from utils.spacy_gpu import autoconfigure_spacy_mode
+from utils.spacy_gpu import autoconfigure_spacy_mode, resolve_spacy_batch_size
 
 TAGS = {'abbr_yes': 0, 'adptype_post': 1, 'adptype_prep': 2, 'animacy_hum': 3, 'animacy_inan': 4, 'animacy_nhum': 5,
         'aspect_imp': 6, 'aspect_imp,perf': 7, 'aspect_perf': 8, 'case_acc': 9, 'case_dat': 10, 'case_gen': 11,
@@ -29,7 +29,7 @@ TAGS = {'abbr_yes': 0, 'adptype_post': 1, 'adptype_prep': 2, 'animacy_hum': 3, '
 
 class BigramMorphTagVectorizer(Vectorizer):
 
-    PROCESSING_BATCH_SIZE: int = 500
+    PROCESSING_BATCH_SIZE: int = resolve_spacy_batch_size()
 
     def __init__(self, size: int) -> None:
         super().__init__()
