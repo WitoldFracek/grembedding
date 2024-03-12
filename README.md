@@ -102,11 +102,17 @@ python -m spacy download pl_core_news_lg
 
 ### Spacy CUDA
 
+You can control if Spacy uses cuda or not with env variable `GRE_SPACY_MODE`. Allowed values:
+- `cpu` (run all spacy on CPU)
+- `gpu` (run all spacy on GPU)
+- `gpu_except_stylometrix` (run all on GPU except StyloMetrix). To run stylometrix on GPU you would need to modify
+some package pulled by `pl_nask`. TODO
+
 1. Install MS Visual Studio (xD naprawdę potrzeba)
 2. Install CUDA Toolkit (make note of version, I used latest - 12.x)
 3. Remove Spacy `pip uninstall spacy`
 4. Install Spacy with cuda (`cupy`) (get command from website [Spacy usage](https://spacy.io/usage)) - for CUDA 12.x it is `pip install -U 'spacy[cuda12x]==3.5.4'`
 5. If `cupy-cuda` was not installed, install it manually `pip install cupy-cuda12x`
-5. Test if cuda works with Spacy (notebook [](notebooks/spacy_cuda.ipynb))
-6. If sth is f'd up you can try uninstalling `cupy-cuda12x` and installing it again
+6. Test if cuda works with Spacy (notebook [](notebooks/spacy_cuda.ipynb))
+7. If sth is f'd up you can try uninstalling `cupy-cuda12x` and installing it again
 
