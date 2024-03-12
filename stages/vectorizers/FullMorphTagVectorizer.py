@@ -7,10 +7,14 @@ from tqdm import tqdm
 import json
 import os
 
+from utils.spacy_gpu import autoconfigure_spacy_mode
+
 
 class FullMorphTagVectorizer(Vectorizer):
     def __init__(self) -> None:
         super().__init__()
+        autoconfigure_spacy_mode(self.__class__)
+
         dir_ = Vectorizer.get_vectoriser_data_dir()
         path = os.path.join(dir_, 'full_morphological_tags.json')
         if not os.path.exists(path):
@@ -19,7 +23,6 @@ class FullMorphTagVectorizer(Vectorizer):
         with open(path, 'r', encoding='utf-8') as file:
             self.full_tags: dict[str, int] = json.load(file)
 
-        spacy.require_gpu()
         self.nlp = spacy.load("pl_core_news_lg")
 
     def vectorize(self, dataset: str, datacleaner: str):

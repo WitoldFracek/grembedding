@@ -6,6 +6,8 @@ from sklearn.decomposition import PCA
 from loguru import logger
 from tqdm import tqdm
 
+from utils.spacy_gpu import autoconfigure_spacy_mode
+
 TAGS = {'abbr_yes': 0, 'adptype_post': 1, 'adptype_prep': 2, 'animacy_hum': 3, 'animacy_inan': 4, 'animacy_nhum': 5,
         'aspect_imp': 6, 'aspect_imp,perf': 7, 'aspect_perf': 8, 'case_acc': 9, 'case_dat': 10, 'case_gen': 11,
         'case_ins': 12, 'case_loc': 13, 'case_nom': 14, 'case_voc': 15, 'clitic_yes': 16, 'conjtype_comp': 17,
@@ -29,7 +31,7 @@ class BigramMorphTagVectorizer(Vectorizer):
     def __init__(self, size: int) -> None:
         super().__init__()
 
-        spacy.require_gpu()
+        autoconfigure_spacy_mode(self.__class__)
         self.nlp = spacy.load("pl_core_news_lg")
 
         self.vector_size = size

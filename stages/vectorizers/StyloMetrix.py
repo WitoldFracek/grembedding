@@ -3,14 +3,16 @@ import spacy
 from stages.vectorizers.Vectorizer import Vectorizer
 import stylo_metrix as sm
 
+from utils.spacy_gpu import autoconfigure_spacy_mode
+
+
 class StyloMetrix(Vectorizer):
     def __init__(self) -> None:
+        autoconfigure_spacy_mode(self.__class__)
         super().__init__()
 
     def vectorize(self, dataset: str, datacleaner: str) -> None:
         df_train, df_test = self.load_train_test_dataframes(dataset, datacleaner)
-
-        spacy.require_gpu()
 
         stylo = sm.StyloMetrix('pl')
         X_train = stylo.transform(df_train["clean_text"]).drop(columns="text").to_numpy()

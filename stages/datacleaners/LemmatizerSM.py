@@ -3,12 +3,14 @@ import spacy
 from stages.datacleaners.DataCleaner import DataCleaner
 from spacy.lang.pl import stop_words as pl_stop_words
 
+from utils.spacy_gpu import autoconfigure_spacy_mode
+
 
 class LemmatizerSM(DataCleaner):
 
     def __init__(self) -> None:
         super().__init__()
-        spacy.require_gpu()
+        autoconfigure_spacy_mode(self.__class__)
         self._nlp = spacy.load("pl_core_news_sm")
 
     def clean_data(self, dataset: str) -> None:
