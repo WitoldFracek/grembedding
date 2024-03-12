@@ -17,18 +17,28 @@ def autoconfigure_spacy_mode(caller_type: Type[Any]):
         if spacy_mode_env not in SPACY_MODE_ALLOWED_VALUES:
             logger.warning(f"Environment variable {SPACY_MODE_ENV_VARIABLE_NAME} "
                            f"has invalid value '{spacy_mode_env}' - defaulting to 'cpu'")
-            spacy.require_cpu()
+            _use_cpu()
         else:
-            logger.info(f"Using Spacy mode: {spacy_mode_env}")
+            logger.info(f"Spacy: mode autoconfiguration - using mode {spacy_mode_env}")
             if spacy_mode_env == "gpu":
-                spacy.require_gpu()
+                _use_gpu()
             elif spacy_mode_env == "gpu_except_stylometrix":
                 if caller_type.__name__ == "StyloMetrix":
-                    spacy.require_cpu()
+                    _use_cpu()
                 else:
-                    spacy.require_cpu()
+                    _use_gpu()
             elif spacy_mode_env == "cpu":
-                spacy.require_gpu()
+                _use_cpu()
     else:
         logger.warning(f"Environment variable {SPACY_MODE_ENV_VARIABLE_NAME} not set - defaulting to 'cpu'")
-        spacy.require_cpu()
+        _use_cpu()
+
+
+def _use_cpu():
+    spacy.require_cpu()
+    logger.info("Spacy: using CPU")
+
+
+def _use_gpu():
+    spacy.require_gpu()
+    logger.info("Spacy: using GPU")

@@ -112,7 +112,7 @@ some package pulled by `pl_nask`. TODO
 2. Install CUDA Toolkit (make note of version, I used latest - 12.x)
 3. Remove Spacy `pip uninstall spacy`
 4. Install Spacy with cuda (`cupy`) (get command from website [Spacy usage](https://spacy.io/usage)) - for CUDA 12.x it is `pip install -U 'spacy[cuda12x]==3.5.4'`
-5. If `cupy-cuda` was not installed, install it manually `pip install cupy-cuda12x`
+5. If `cupy-cuda` was not installed (check `pip list | grep cupy`), install it manually `pip install cupy-cuda12x`
 6. Test if cuda works with Spacy (notebook [](notebooks/spacy_cuda.ipynb))
 7. If sth is f'd up you can try uninstalling `cupy-cuda12x` and installing it again
 
