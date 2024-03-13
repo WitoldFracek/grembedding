@@ -12,6 +12,7 @@ if %errorlevel% equ 0 (
 
     rem Env var do sterowania spacy
     set GRE_SPACY_MODE=cpu
+    set GRE_SPACY_BATCH_SIZE=64
     dvc exp run
 
     set PYTHONPATH=.

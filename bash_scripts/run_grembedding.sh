@@ -10,8 +10,8 @@ if [ $? -eq 0 ]; then
     echo "Starting dvc..."
 
     # Env var do sterowania spacy
-    export GRE_SPACY_MODE=gpu_except_stylometrix
-    export GRE_SPACY_BATCH_SIZE=1000
+    export GRE_SPACY_MODE=gpu
+    export GRE_SPACY_BATCH_SIZE=64
 
     dvc exp run
 else
