@@ -25,4 +25,4 @@ pl-core-news-sm @ https://github.com/explosion/spacy-models/releases/download/pl
 pl-core-news-lg @ https://github.com/explosion/spacy-models/releases/download/pl_core_news_lg-3.7.0/pl_core_news_lg-3.7.0-py3-none-any.whl
 
 # TODO
-http://mozart.ipipan.waw.pl/~rtuora/spacy/pl_nask-0.0.7.tar.gz
+pl_nask==0.0.7 @ http://mozart.ipipan.waw.pl/~rtuora/spacy/pl_nask-0.0.7.tar.gz

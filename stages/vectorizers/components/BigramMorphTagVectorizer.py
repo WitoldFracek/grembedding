@@ -6,6 +6,8 @@ from sklearn.decomposition import PCA
 from loguru import logger
 from tqdm import tqdm
 
+from utils.spacy_gpu import autoconfigure_spacy_mode, resolve_spacy_batch_size
+
 TAGS = {'abbr_yes': 0, 'adptype_post': 1, 'adptype_prep': 2, 'animacy_hum': 3, 'animacy_inan': 4, 'animacy_nhum': 5,
         'aspect_imp': 6, 'aspect_imp,perf': 7, 'aspect_perf': 8, 'case_acc': 9, 'case_dat': 10, 'case_gen': 11,
         'case_ins': 12, 'case_loc': 13, 'case_nom': 14, 'case_voc': 15, 'clitic_yes': 16, 'conjtype_comp': 17,
@@ -26,9 +28,15 @@ TAGS = {'abbr_yes': 0, 'adptype_post': 1, 'adptype_prep': 2, 'animacy_hum': 3, '
 
 
 class BigramMorphTagVectorizer(Vectorizer):
+
+    PROCESSING_BATCH_SIZE: int = resolve_spacy_batch_size()
+
     def __init__(self, size: int) -> None:
         super().__init__()
+
+        autoconfigure_spacy_mode(self.__class__)
         self.nlp = spacy.load("pl_core_news_lg")
+
         self.vector_size = size
         bigrams: list[tuple[str, str]] = sorted(list(set([
             (tag1, tag2)
@@ -44,16 +52,8 @@ class BigramMorphTagVectorizer(Vectorizer):
     def vectorize(self, dataset: str, datacleaner: str) -> None:
         df_train, df_test = self.load_train_test_dataframes(dataset, datacleaner)
 
-        X_train_pca = np.zeros((len(df_train), len(self.bigram_map)))
-        X_test_pca = np.zeros((len(df_test), len(self.bigram_map)))
-
-        logger.info(f'generating train document bigram morph vectors')
-        for i, (_, data) in enumerate(tqdm(df_train.iterrows(), total=len(df_train))):
-            X_train_pca[i] = self.get_document_vector(data['clean_text'])
-
-        logger.info(f'generating test document gramatical vectors')
-        for i, (_, data) in enumerate(tqdm(df_test.iterrows(), total=len(df_test))):
-            X_test_pca[i] = self.get_document_vector(data['clean_text'])
+        X_train_pca = self.batch_get_document_vector(df_train['clean_text'])
+        X_test_pca = self.batch_get_document_vector(df_test['clean_text'])
 
         logger.info(f'Starting PCA. Dimensionality reduction to {self.vector_size}')
         pca = PCA(n_components=self.vector_size)
@@ -65,19 +65,19 @@ class BigramMorphTagVectorizer(Vectorizer):
 
         self.save_as_npy(dataset, datacleaner, X_train, X_test, y_train, y_test)
 
-    def get_document_vector(self, text: str) -> np.ndarray:
-        ret = np.zeros(len(self.bigram_map))
-        doc = self.nlp(text)
-        tokens = list(doc)
-        for token1, token2 in zip(tokens, tokens[1:]):
-            if token1.morph and token2.morph:
-                for tag_name1, value1 in token1.morph.to_dict().items():
-                    for tag_name2, value2 in token2.morph.to_dict().items():
-                        t1 = f'{tag_name1.lower()}_{value1.lower()}'
-                        t2 = f'{tag_name2.lower()}_{value2.lower()}'
-                        index = self.bigram_map.get((t1, t2), -1)
-                        if index == -1:
-                            continue
-                        ret[index] += 1
-        return preprocessing.normalize([ret])
+    def batch_get_document_vector(self, texts: list[str]) -> np.ndarray:
+        ret = np.zeros((len(texts), len(self.bigram_map)))
 
+        for i, doc in tqdm(enumerate(self.nlp.pipe(texts, batch_size=self.PROCESSING_BATCH_SIZE)), total=len(texts)):
+            tokens = list(doc)
+            for token1, token2 in zip(tokens, tokens[1:]):
+                if token1.morph and token2.morph:
+                    for tag_name1, value1 in token1.morph.to_dict().items():
+                        for tag_name2, value2 in token2.morph.to_dict().items():
+                            t1 = f'{tag_name1.lower()}_{value1.lower()}'
+                            t2 = f'{tag_name2.lower()}_{value2.lower()}'
+                            index = self.bigram_map.get((t1, t2), -1)
+                            if index != -1:
+                                ret[i][index] += 1
+
+        return preprocessing.normalize(ret)

@@ -26,7 +26,7 @@ def mlflow_context(func):
         default_tags: dict[str, str] = evaluate_request.run_tags
         exp_id: str = _resolve_experiment_id(evaluate_request)
 
-        mlflow.autolog(log_models=True)
+        mlflow.autolog(log_models=False)
 
         with mlflow.start_run(experiment_id=exp_id,
                               run_name=evaluate_request.experiment_name,
