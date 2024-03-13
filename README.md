@@ -99,6 +99,17 @@ python -m spacy download pl_core_news_sm
 python -m spacy download pl_core_news_lg
 ```
 
+### Enable long paths on Windows
+
+This is because there is a limit of 256 chars in fpath and our paths can be longer.
+
+1. Press Win + R keys together on your keyboard and type: gpedit.msc. Hit Enter.
+2. Expand the left panel to Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem.
+3. Double click option Enable Win32 long paths in the right panel.
+4. Check the radio button beside Enabled.
+5. Click on OK to save the changes.
+6. Restart Windows 10. (jest szansa że działa już po apply - tak było u mnie)
+
 
 ### Spacy tweaking
 
