@@ -52,7 +52,7 @@ stages:
       - imports_validator/evaluate/${item.model.model}.yaml
     outs:
       - results/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}.json
-      - mlruns_store/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}
+      - mlruns_store/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}/out_mlflow.zip
   
   # Uncomment when there is a clustering task
   evaluate_clustering:
@@ -68,4 +68,4 @@ stages:
       - imports_validator/evaluate/${item.model.model}.yaml
     outs:
       - results/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}.json
-      - mlruns_store/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}
+      - mlruns_store/${item.data.dataloader}/${item.data.datacleaner}/${item.data.vectorizer}/${item.model.model}/${item.model.params}/out_mlflow.zip

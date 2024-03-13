@@ -1,3 +1,4 @@
+import glob
 import os
 import re
 import shutil
@@ -7,6 +8,8 @@ from typing import Union, Optional
 import mlflow
 from loguru import logger
 from tqdm.auto import tqdm
+from typing_extensions import deprecated
+import zipfile
 
 from config.mlflow import MLRUNS_STORAGE_ROOT, MLRUNS_VIEW_ROOT
 from utils.mlflow.domain import load_mlflow_meta, ExperimentMetadata, RunMetadata
@@ -20,33 +23,54 @@ def run_sync(force_recreate: bool = True):
     3. Copies all runs from MLRUNS_STORAGE_ROOT to MLRUNS_VIEW_ROOT
     4. Fixes up metadata of the copied runs to point to the correct experiment id and artifact uri
     """
-    source_exp_dirs = _find_mlruns_store_experiment_dirs()
+    source_exp_output_zips = _find_mlruns_zip_files()
     dest_mlruns_root = Path.cwd().joinpath(MLRUNS_VIEW_ROOT)
-    logger.info(f"Schedule to copy {len(source_exp_dirs)} experiments to {dest_mlruns_root}")
+    logger.info(f"Schedule to copy {len(source_exp_output_zips)} experiments to {dest_mlruns_root}")
 
     # remove previous migrations
     if force_recreate:
         shutil.rmtree(dest_mlruns_root, ignore_errors=True)
         logger.info(f"Removed previous migrations from {dest_mlruns_root}")
 
-    for exp_folder in tqdm(source_exp_dirs):
-        dest_experiment_path = _resolve_destination(exp_folder, dest_mlruns_root)
-        if dest_experiment_path is None:
-            continue
-        # logger.info(f"For exp: {exp_folder} resolved dest experiment path: {dest_experiment_path}")
+    for out_zipped_path in tqdm(source_exp_output_zips):
 
-        # Walk all direct directories children in src exp_folder & copy
-        for root, dirs, files in os.walk(exp_folder):
-            for dir in dirs:
-                source_run_dir = os.path.join(root, dir)  # mlruns store run folder
-                dest_experiment_dir = os.path.join(dest_experiment_path, dir)  # mlruns view experiment folder
-                # logger.info(f"Copying {source_run_dir} to {dest_experiment_dir}")
-                shutil.copytree(source_run_dir, dest_experiment_dir, dirs_exist_ok=True)
+        # Unzip the mlflow output from
+        temp_dir = Path(out_zipped_path).parent.joinpath("__unzip_temp__")
 
-                # Fixup metadata, omit datasets folders
-                if dir != "datasets":
-                    _fixup_dest_run_metadata(dest_experiment_dir, new_experiment_id=Path(dest_experiment_path).name)
-            break  # Break after the first iteration to not go deeper
+        try:
+            os.mkdir(temp_dir)
+            # logger.debug(f"Created temp unzip dir: {temp_dir}. Unpacking from {out_zipped_path} to temp dir")
+            with zipfile.ZipFile(out_zipped_path, 'r') as zip_ref:
+                zip_ref.extractall(temp_dir)
+
+            # Get experiment path from unzip temp (the experiment is a directory consisting of digits only, not 0 dir)
+            exp_source_path = ""
+            for item in os.listdir(temp_dir):
+                if item.isnumeric() and item != "0":
+                    exp_source_path = os.path.join(temp_dir, item)
+                    # logger.debug(f"Found exp source location in unzipped temp: {exp_source_path}")
+                    break
+
+            dest_experiment_path = _resolve_destination(exp_source_path, dest_mlruns_root)
+            if dest_experiment_path is None:
+                continue
+            # logger.debug(f"For exp: {exp_source_path} resolved dest experiment path: {dest_experiment_path}")
+
+            # Walk all direct directories children in src exp_folder & copy
+            for root, dirs, files in os.walk(exp_source_path):
+                for dir in dirs:
+                    source_run_dir = os.path.join(root, dir)  # mlruns store run folder
+                    dest_experiment_dir = os.path.join(dest_experiment_path, dir)  # mlruns view experiment folder
+                    shutil.copytree(source_run_dir, dest_experiment_dir, dirs_exist_ok=True)
+
+                    # Fixup metadata, omit datasets folders
+                    if dir != "datasets":
+                        _fixup_dest_run_metadata(dest_experiment_dir, new_experiment_id=Path(dest_experiment_path).name)
+                break  # Break after the first iteration to not go deeper
+
+        finally:
+            # logger.debug(f"Removing temp dir {temp_dir}")
+            shutil.rmtree(temp_dir)
 
 
 def _fixup_dest_run_metadata(dest_run_dir: Union[str, os.PathLike], new_experiment_id: str) -> None:
@@ -72,7 +96,7 @@ def _resolve_destination(exp_folder: Union[str, os.PathLike],
     (creates dest experiment if not exists)
 
     Args:
-        exp_folder: path to the DVC tracked experiment folder
+        exp_folder: path to the DVC tracked experiment folder like /mlruns_store/Dataloader/.../RandomForest1/0232323
         base_dest_path: path to the mlruns_view root
 
     Returns:
@@ -97,9 +121,10 @@ def _resolve_dest_experiment(dataset_name: str, base_dest_path: Union[str, os.Pa
         return exp.experiment_id
 
 
+@deprecated("non zip approach")
 def _find_mlruns_store_experiment_dirs(base_path: Union[str, os.PathLike] = MLRUNS_STORAGE_ROOT) -> list[
     Union[str, os.PathLike]]:
-    folder_name_pattern = re.compile(r'^\d+$')
+    folder_name_pattern = re.compile(r'^\d+$')      # directory name consisting only of digits
 
     matched_folders = []
 
@@ -109,6 +134,13 @@ def _find_mlruns_store_experiment_dirs(base_path: Union[str, os.PathLike] = MLRU
                 matched_folders.append(os.path.abspath(os.path.join(root, dir)))
 
     return matched_folders
+
+
+def _find_mlruns_zip_files(base_path: Union[str, os.PathLike] = MLRUNS_STORAGE_ROOT):
+    """This finds all out_mlflow.zip files in mlruns_store"""
+    search_pattern = os.path.join(base_path, '**', 'out_mlflow.zip')
+    matched_files = glob.glob(search_pattern, recursive=True)
+    return matched_files
 
 
 if __name__ == "__main__":

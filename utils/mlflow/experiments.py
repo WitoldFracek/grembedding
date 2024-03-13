@@ -1,5 +1,6 @@
 import functools
 import os.path
+import shutil
 from pathlib import Path
 from typing import Union
 
@@ -33,6 +34,8 @@ def mlflow_context(func):
                               tags=default_tags) as run:
             result = func(*args, **kwargs)
 
+        _zip_mlflow_output(evaluate_request)
+
         return result
 
     return wrapper
@@ -53,3 +56,23 @@ def _resolve_experiment_id(eval_request: EvaluateModelRequest) -> str:
         logger.info(f"Reusing mlflow experiment with id: {exp.experiment_id}")
         exp_id = exp.experiment_id
     return exp_id
+
+
+def _zip_mlflow_output(eval_request: EvaluateModelRequest):
+    exp_location: os.PathLike | str = eval_request.mlruns_location
+
+    temp_dir = os.path.join(exp_location, "__temp__")
+    os.mkdir(temp_dir)
+    logger.debug(f"Creating temp directory: {temp_dir}")
+
+    try:
+        for item in os.listdir(exp_location):
+            if item not in {"__temp__", ".gitignore"}:
+                shutil.move(os.path.join(exp_location, item), os.path.join(temp_dir, item))
+
+        logger.debug(f"Moved files from {exp_location} to temp directory: {temp_dir}. Zipping temp dir to out_mlflow.zip")
+        shutil.make_archive(os.path.join(exp_location, "out_mlflow"), "zip", temp_dir)
+    finally:
+        logger.debug(f"Removing temp directory")
+        shutil.rmtree(temp_dir)
+
