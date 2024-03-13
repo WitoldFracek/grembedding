@@ -7,12 +7,12 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: a0b6932b4d63cf35de3d178c2e07cf0f.dir
-      size: 362310228
-      nfiles: 669
+      md5: d4d63909bc037c523a8b928d3d78ff21.dir
+      size: 170828345
+      nfiles: 665
     - path: imports_validator/load/TweeterCyberbullying.yaml
       hash: md5
-      md5: 3f4b18f402a0f5e8dcd3141d71cc6bef
+      md5: 7dcec9f3137c6a0f2522708df743b4ba
       size: 108
     - path: scripts/load.py
       hash: md5
@@ -20,12 +20,12 @@ stages:
       size: 841
     - path: stages/dataloaders/TweeterCyberbullying.py
       hash: md5
-      md5: ff56a647aed122268a9aaaba8458cc90
-      size: 606
+      md5: a4e4e04d32f1f57778f6c3326a234169
+      size: 607
     outs:
     - path: data/TweeterCyberbullying/raw
       hash: md5
-      md5: 71ce56e92d10eec7c30e4247963eb271.dir
+      md5: 555d96e61e4c71be5fcb3644a28841cf.dir
       size: 446957
       nfiles: 2
   load@1:
@@ -35,25 +35,25 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: a0b6932b4d63cf35de3d178c2e07cf0f.dir
-      size: 362310228
-      nfiles: 669
+      md5: d4d63909bc037c523a8b928d3d78ff21.dir
+      size: 170828345
+      nfiles: 665
     - path: imports_validator/load/PrusVsSienkiewicz.yaml
       hash: md5
-      md5: 3f4b18f402a0f5e8dcd3141d71cc6bef
-      size: 108
+      md5: d7e294607a140a211e467b5979bc7039
+      size: 72
     - path: scripts/load.py
       hash: md5
       md5: f513e237e579b824fc664f320c36ae1c
       size: 841
     - path: stages/dataloaders/PrusVsSienkiewicz.py
       hash: md5
-      md5: ce54d5ab0c16b1597e3fa2053048d73f
-      size: 4175
+      md5: f5ff4665b046265e6286c0e2fa0ea339
+      size: 4111
     outs:
     - path: data/PrusVsSienkiewicz/raw
       hash: md5
-      md5: 9ae5ecb7e00df67a70599fc48cc82372.dir
+      md5: 7ea11b9da2ef936a9bc7ebe3b6eb32ae.dir
       size: 2944855
       nfiles: 2
   clean@0:
@@ -62,7 +62,7 @@ stages:
     deps:
     - path: data/TweeterCyberbullying/raw
       hash: md5
-      md5: 71ce56e92d10eec7c30e4247963eb271.dir
+      md5: 555d96e61e4c71be5fcb3644a28841cf.dir
       size: 446957
       nfiles: 2
     - path: imports_validator/clean/DummyDatacleaner.yaml
@@ -80,7 +80,7 @@ stages:
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      md5: 76f2460a53a9d99e3339f4a83855f52b.dir
       size: 447065
       nfiles: 2
   vectorize@0:
@@ -88,13 +88,13 @@ stages:
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      md5: 76f2460a53a9d99e3339f4a83855f52b.dir
       size: 447065
       nfiles: 2
     - path: imports_validator/vectorize/BigramMorphTagVectorizer100.yaml
       hash: md5
-      md5: 3403ed84f2fbb3107498df943467b328
-      size: 108
+      md5: 8e3e1d6fc8aadc92d08a8ec872a037d7
+      size: 144
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
@@ -106,8 +106,8 @@ stages:
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: 70ecc5f0ca6640bbb840c1630b907116.dir
-      size: 7697038
+      md5: 59a5ccdcdc97fca0e4962135bfe590cd.dir
+      size: 7697206
       nfiles: 1
   evaluate@data0-model0:
     cmd: python scripts/evaluate.py "RpTweetsXS" "LemmatizerSM" "CountVectorizer1000"
@@ -185,7 +185,7 @@ stages:
     deps:
     - path: data/PrusVsSienkiewicz/raw
       hash: md5
-      md5: 9ae5ecb7e00df67a70599fc48cc82372.dir
+      md5: 7ea11b9da2ef936a9bc7ebe3b6eb32ae.dir
       size: 2944855
       nfiles: 2
     - path: imports_validator/clean/DummyDatacleaner.yaml
@@ -203,7 +203,7 @@ stages:
     outs:
     - path: data/PrusVsSienkiewicz/DummyDatacleaner
       hash: md5
-      md5: c20c745424c80693041364a9aa3d3851.dir
+      md5: ce69567ec540157d7538be9104c0154e.dir
       size: 2944961
       nfiles: 2
   vectorize@1:
@@ -211,13 +211,13 @@ stages:
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      md5: 76f2460a53a9d99e3339f4a83855f52b.dir
       size: 447065
       nfiles: 2
     - path: imports_validator/vectorize/BigramMorphTagVectorizer370.yaml
       hash: md5
-      md5: 3403ed84f2fbb3107498df943467b328
-      size: 108
+      md5: 8e3e1d6fc8aadc92d08a8ec872a037d7
+      size: 144
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
@@ -229,8 +229,8 @@ stages:
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner_BigramMorphTagVectorizer370
       hash: md5
-      md5: 3d1fef61b5653db8c0bd4e21634fbb86.dir
-      size: 28484879
+      md5: f43abc2662626f46cd85d2bcd433e992.dir
+      size: 28484759
       nfiles: 1
   evaluate@data1-model0:
     cmd: python scripts/evaluate.py "RpTweetsXS" "TweetNormalization" "CountVectorizer1000"
@@ -272,7 +272,7 @@ stages:
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      md5: 76f2460a53a9d99e3339f4a83855f52b.dir
       size: 447065
       nfiles: 2
     - path: imports_validator/vectorize/CountVectorizer1000.yaml
@@ -290,7 +290,7 @@ stages:
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner_CountVectorizer1000
       hash: md5
-      md5: fc0d54492a474b63083915463da3b502.dir
+      md5: de4dc56472c487a09a281c92cc751e54.dir
       size: 258966
       nfiles: 1
   vectorize@3:
@@ -298,7 +298,7 @@ stages:
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      md5: 76f2460a53a9d99e3339f4a83855f52b.dir
       size: 447065
       nfiles: 2
     - path: imports_validator/vectorize/CountVectorizer5000.yaml
@@ -316,7 +316,7 @@ stages:
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: 8d4c7e49a67db7e25c99186fb9892bbc.dir
+      md5: 043f0d35b6cf7ee4d06902de00e93256.dir
       size: 639996
       nfiles: 1
   evaluate@data2-model0:
@@ -396,7 +396,7 @@ stages:
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      md5: 76f2460a53a9d99e3339f4a83855f52b.dir
       size: 447065
       nfiles: 2
     - path: imports_validator/vectorize/DPEBPVectorizer100Avg.yaml
@@ -414,7 +414,7 @@ stages:
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: 58cf41efaa7dc824aa1107359e176568.dir
+      md5: 39e6431bd6370722eb9efb6736ba6069.dir
       size: 3709892
       nfiles: 1
   vectorize@5:
@@ -422,33 +422,33 @@ stages:
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      md5: 76f2460a53a9d99e3339f4a83855f52b.dir
       size: 447065
       nfiles: 2
     - path: imports_validator/vectorize/FullMorphTagVectorizer.yaml
       hash: md5
-      md5: cc23219eb6d307148c9fa7dbea18a081
-      size: 72
+      md5: 44f2290266d5b3014375294513bed450
+      size: 108
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
       size: 798
     - path: stages/vectorizers/FullMorphTagVectorizer.py
       hash: md5
-      md5: 6c23658cd05a9f6899e5c11a2659cacf
-      size: 2523
+      md5: 91dd877d8526c40289e7526855f89a3e
+      size: 3783
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: 0c7fc7b5be2da942f19d7d7a5e175306.dir
-      size: 531572
+      md5: fd7131b0abf2fd7e835a69a2945ebb17.dir
+      size: 531576
       nfiles: 1
   vectorize@6:
     cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "HerbertVectorizer"
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      md5: 76f2460a53a9d99e3339f4a83855f52b.dir
       size: 447065
       nfiles: 2
     - path: imports_validator/vectorize/HerbertVectorizer.yaml
@@ -461,39 +461,39 @@ stages:
       size: 798
     - path: stages/vectorizers/HerbertVectorizer.py
       hash: md5
-      md5: d3b6716ba8a17b5321c15e3d3e2ab323
-      size: 4301
+      md5: e3207e8b3b1bc02efb8d10326ec17f54
+      size: 4516
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner_HerbertVectorizer
       hash: md5
-      md5: 1a50cd57f8f9150dd4287cfc10279aba.dir
-      size: 28345442
+      md5: 8dab4fd6d6fa45ec3ea9b1d4473ad27d.dir
+      size: 28347155
       nfiles: 1
   vectorize@7:
     cmd: python scripts/vectorize.py "TweeterCyberbullying" "DummyDatacleaner" "SpacyMorphTagVectorizer"
     deps:
     - path: data/TweeterCyberbullying/DummyDatacleaner
       hash: md5
-      md5: 42c308a5fc11a46578eed3d1a4657416.dir
+      md5: 76f2460a53a9d99e3339f4a83855f52b.dir
       size: 447065
       nfiles: 2
     - path: imports_validator/vectorize/SpacyMorphTagVectorizer.yaml
       hash: md5
-      md5: cc23219eb6d307148c9fa7dbea18a081
-      size: 72
+      md5: 44f2290266d5b3014375294513bed450
+      size: 108
     - path: scripts/vectorize.py
       hash: md5
       md5: 313deb9b0c0dc175f52248c04ddc2330
       size: 798
     - path: stages/vectorizers/SpacyMorphTagVectorizer.py
       hash: md5
-      md5: 32c4f1377b287e024f0f92b9938e8b2e
-      size: 3556
+      md5: 54f1ca5e8c6bb70311959c787bbe9d75
+      size: 4768
     outs:
     - path: data/TweeterCyberbullying/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: f186e980aa3c369bdeb35f1aca04bf4c.dir
-      size: 650278
+      md5: 5a4db7bb4b3bbc9e0c53578d6d4cc612.dir
+      size: 650263
       nfiles: 1
   evaluate@data4-model0:
     cmd: python scripts/evaluate.py "MsTweetsV2" "TweetNormalizationHashtagSkip" "CountVectorizer5000"
@@ -892,26 +892,26 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: a0b6932b4d63cf35de3d178c2e07cf0f.dir
-      size: 362310228
-      nfiles: 669
+      md5: d4d63909bc037c523a8b928d3d78ff21.dir
+      size: 170828345
+      nfiles: 665
     - path: imports_validator/load/WritingStyle.yaml
       hash: md5
-      md5: d7e294607a140a211e467b5979bc7039
-      size: 72
+      md5: dad5d40155227bf668b3ea697038ba60
+      size: 108
     - path: scripts/load.py
       hash: md5
       md5: f513e237e579b824fc664f320c36ae1c
       size: 841
     - path: stages/dataloaders/WritingStyle.py
       hash: md5
-      md5: fc0d505c6b054ca0886d585bac9d9369
-      size: 2808
+      md5: 9f6a4a5382ffb00a62a2f8cdf2a539ae
+      size: 1816
     outs:
     - path: data/WritingStyle/raw
       hash: md5
-      md5: 60a1c63b4d56f67e444b75e417a746b3.dir
-      size: 8178187
+      md5: dbb5aec202ed62ca517b7d70fa794669.dir
+      size: 8120897
       nfiles: 2
   clean@2:
     cmd:
@@ -919,8 +919,8 @@ stages:
     deps:
     - path: data/WritingStyle/raw
       hash: md5
-      md5: 60a1c63b4d56f67e444b75e417a746b3.dir
-      size: 8178187
+      md5: dbb5aec202ed62ca517b7d70fa794669.dir
+      size: 8120897
       nfiles: 2
     - path: imports_validator/clean/DummyDatacleaner.yaml
       hash: md5
@@ -937,8 +937,8 @@ stages:
     outs:
     - path: data/WritingStyle/DummyDatacleaner
       hash: md5
-      md5: 62414d2caa4b1dd44e9fd8acdee8b0db.dir
-      size: 8178295
+      md5: 1b7e0cea47a26ec3e8cbeb263d07555b.dir
+      size: 8121005
       nfiles: 2
   clean@3:
     cmd:
@@ -946,8 +946,8 @@ stages:
     deps:
     - path: data/Classics5Authors35Books/raw
       hash: md5
-      md5: 0fab5a9551e240e37791842116d80c55.dir
-      size: 12350462
+      md5: 9a1ad9be77cd62ce2d8d974e0a114fb5.dir
+      size: 12349037
       nfiles: 2
     - path: imports_validator/clean/DummyDatacleaner.yaml
       hash: md5
@@ -964,8 +964,8 @@ stages:
     outs:
     - path: data/Classics5Authors35Books/DummyDatacleaner
       hash: md5
-      md5: 6dc18ba3adb79ea6f1c38d7966284d44.dir
-      size: 12350562
+      md5: 1cb3362cefe838883e3af67155699041.dir
+      size: 12349137
       nfiles: 2
   clean@4:
     cmd:
@@ -1001,9 +1001,9 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: a0b6932b4d63cf35de3d178c2e07cf0f.dir
-      size: 362310228
-      nfiles: 669
+      md5: d4d63909bc037c523a8b928d3d78ff21.dir
+      size: 170828345
+      nfiles: 665
     - path: imports_validator/load/Classics5Authors35Books.yaml
       hash: md5
       md5: d7e294607a140a211e467b5979bc7039
@@ -1019,8 +1019,8 @@ stages:
     outs:
     - path: data/Classics5Authors35Books/raw
       hash: md5
-      md5: 0fab5a9551e240e37791842116d80c55.dir
-      size: 12350462
+      md5: 9a1ad9be77cd62ce2d8d974e0a114fb5.dir
+      size: 12349037
       nfiles: 2
   clean@5:
     cmd:

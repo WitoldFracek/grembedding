@@ -9,7 +9,11 @@ if %errorlevel% equ 0 (
     rem Jeśli tak, wywołaj drugą komendę
     echo imports_validator ended without error
     echo Starting dvc...
+
+    rem Env var do sterowania spacy
+    set GRE_SPACY_MODE=cpu
     dvc exp run
+
     set PYTHONPATH=.
     python .\utils\mlflow\sync.py
 ) else (

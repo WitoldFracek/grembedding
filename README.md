@@ -85,14 +85,40 @@ This is preferred to `pip install -r requirements.txt` because it will also unin
 
 ### Install stylo_metrix
 [Download pl_nask model](http://mozart.ipipan.waw.pl/~rtuora/spacy/)
+
 ```python
 pip install stylo_metrix
 pip install <pl_nask-0.0.7.tar.gz>
 ```
+
 Pip may end with error. Incompatible between pl-core-news-* and spacy==3.5.4
+
 ```python
 python -m spacy validate
 python -m spacy download pl_core_news_sm
 python -m spacy download pl_core_news_lg
 ```
+
+
+### Spacy tweaking
+
+**You can control if Spacy uses cuda or not** with env variable `GRE_SPACY_MODE`. Allowed values:
+- `cpu` (run all spacy on CPU)
+- `gpu` (run all spacy on GPU)
+- `gpu_except_stylometrix` (run all on GPU except StyloMetrix). To run stylometrix on GPU you would need to modify
+some package pulled by `pl_nask`. TODO
+
+**You can control Spacy batch size** with env variable `GRE_SPACY_BATCH_SIZE`.
+- Default is 500 (tbh I didn't see much difference when tweaking this)
+- To hook to this mechanism use value returned by `spacy_gpu.resolve_spacy_batch_size`
+
+### Spacy CUDA
+
+1. Install MS Visual Studio (xD naprawdę potrzeba)
+2. Install CUDA Toolkit (make note of version, I used latest - 12.x)
+3. Remove Spacy `pip uninstall spacy`
+4. Install Spacy with cuda (`cupy`) (get command from website [Spacy usage](https://spacy.io/usage)) - for CUDA 12.x it is `pip install -U 'spacy[cuda12x]==3.5.4'`
+5. If `cupy-cuda` was not installed (check `pip list | grep cupy`), install it manually `pip install cupy-cuda12x`
+6. Test if cuda works with Spacy ([notebook](notebooks/spacy_cuda.ipynb))
+7. If sth is f'd up you can try uninstalling `cupy-cuda12x` and installing it again
 
