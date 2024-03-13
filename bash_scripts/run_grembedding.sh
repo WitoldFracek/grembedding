@@ -11,6 +11,7 @@ if [ $? -eq 0 ]; then
 
     # Env var do sterowania spacy
     export GRE_SPACY_MODE=gpu_except_stylometrix
+    export GRE_SPACY_BATCH_SIZE=1000
 
     dvc exp run
 else
