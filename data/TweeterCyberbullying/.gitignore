@@ -11,3 +11,7 @@
 /DummyDatacleaner_StyloMetrix
 /DummyDatacleaner_CountVectorizer5000
 /DummyDatacleaner_TfidfVectorizer5000
+/DummyDatacleaner_HerbertFT
+/DummyDatacleaner_RoBERTaFrozen
+/DummyDatacleaner_RoBERTaFT
+/DummyDatacleaner_HerbertFrozen

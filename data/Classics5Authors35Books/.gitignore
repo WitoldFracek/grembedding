@@ -10,3 +10,7 @@
 /DummyDatacleaner_FullMorphTagVectorizer
 /DummyDatacleaner_HerbertVectorizer
 /DummyDatacleaner_SpacyMorphTagVectorizer
+/DummyDatacleaner_HerbertFT
+/DummyDatacleaner_RoBERTaFrozen
+/DummyDatacleaner_RoBERTaFT
+/DummyDatacleaner_HerbertFrozen
