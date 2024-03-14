@@ -4,6 +4,7 @@ load:
   - dataloader: WritingStyle
   - dataloader: Classics5Authors35Books
   - dataloader: OldNewspapers
+  - dataloader: StarWarsFanfic
 
 clean:
   - dataloader: TweeterCyberbullying
@@ -15,6 +16,8 @@ clean:
   - dataloader: Classics5Authors35Books
     datacleaner: DummyDatacleaner
   - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+  - dataloader: StarWarsFanfic
     datacleaner: DummyDatacleaner
 
 vectorize:
@@ -158,6 +161,13 @@ vectorize:
   - dataloader: OldNewspapers
     datacleaner: DummyDatacleaner
     vectorizer: CountVectorizer1000
+######################################### Star Wars Fancfic
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
 
 evaluate_classification:
   - dataloader: TweeterCyberbullying
@@ -301,11 +311,22 @@ evaluate_classification:
     datacleaner: DummyDatacleaner
     vectorizer: CountVectorizer1000
 
+######################################### Star Wars Fancfic
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+
 evaluate_clustering:
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
     vectorizer: BigramMorphTagVectorizer100
   - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: StarWarsFanfic
     datacleaner: DummyDatacleaner
     vectorizer: BigramMorphTagVectorizer370
 
