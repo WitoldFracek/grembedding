@@ -7,9 +7,9 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: a0b6932b4d63cf35de3d178c2e07cf0f.dir
-      size: 362310228
-      nfiles: 669
+      md5: a7f55885dd33dbd41b423246df168afc.dir
+      size: 362991151
+      nfiles: 671
     - path: imports_validator/load/TweeterCyberbullying.yaml
       hash: md5
       md5: 7dcec9f3137c6a0f2522708df743b4ba
@@ -25,7 +25,7 @@ stages:
     outs:
     - path: data/TweeterCyberbullying/raw
       hash: md5
-      md5: 555d96e61e4c71be5fcb3644a28841cf.dir
+      md5: 71ce56e92d10eec7c30e4247963eb271.dir
       size: 446957
       nfiles: 2
   load@1:
@@ -35,9 +35,9 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: a0b6932b4d63cf35de3d178c2e07cf0f.dir
-      size: 362310228
-      nfiles: 669
+      md5: a7f55885dd33dbd41b423246df168afc.dir
+      size: 362991151
+      nfiles: 671
     - path: imports_validator/load/PrusVsSienkiewicz.yaml
       hash: md5
       md5: d7e294607a140a211e467b5979bc7039
@@ -53,7 +53,7 @@ stages:
     outs:
     - path: data/PrusVsSienkiewicz/raw
       hash: md5
-      md5: 7ea11b9da2ef936a9bc7ebe3b6eb32ae.dir
+      md5: 9ae5ecb7e00df67a70599fc48cc82372.dir
       size: 2944855
       nfiles: 2
   clean@0:
@@ -892,9 +892,9 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: a0b6932b4d63cf35de3d178c2e07cf0f.dir
-      size: 362310228
-      nfiles: 669
+      md5: a7f55885dd33dbd41b423246df168afc.dir
+      size: 362991151
+      nfiles: 671
     - path: imports_validator/load/WritingStyle.yaml
       hash: md5
       md5: dad5d40155227bf668b3ea697038ba60
@@ -910,7 +910,7 @@ stages:
     outs:
     - path: data/WritingStyle/raw
       hash: md5
-      md5: dbb5aec202ed62ca517b7d70fa794669.dir
+      md5: 451de1120e4938e302f494ea74767f59.dir
       size: 8120897
       nfiles: 2
   clean@2:
@@ -1001,9 +1001,9 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: a0b6932b4d63cf35de3d178c2e07cf0f.dir
-      size: 362310228
-      nfiles: 669
+      md5: a7f55885dd33dbd41b423246df168afc.dir
+      size: 362991151
+      nfiles: 671
     - path: imports_validator/load/Classics5Authors35Books.yaml
       hash: md5
       md5: d7e294607a140a211e467b5979bc7039
@@ -1019,8 +1019,8 @@ stages:
     outs:
     - path: data/Classics5Authors35Books/raw
       hash: md5
-      md5: c604a957625965100d4dbdd1d323fc22.dir
-      size: 12349037
+      md5: 0fab5a9551e240e37791842116d80c55.dir
+      size: 12350462
       nfiles: 2
   clean@5:
     cmd:
@@ -11113,9 +11113,9 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: a0b6932b4d63cf35de3d178c2e07cf0f.dir
-      size: 362310228
-      nfiles: 669
+      md5: a7f55885dd33dbd41b423246df168afc.dir
+      size: 362991151
+      nfiles: 671
     - path: imports_validator/load/OldNewspapers.yaml
       hash: md5
       md5: d7e294607a140a211e467b5979bc7039

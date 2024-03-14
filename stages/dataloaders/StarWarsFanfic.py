@@ -21,7 +21,7 @@ class StarWarsFanfic(DataLoader):
 
         splitter = RecursiveCharacterTextSplitter(
             separators=['—', '\n', '.', ',', '!', '?', '-', ' ', ''],
-            chuk_size=1000,
+            chunk_size=1000,
             chunk_overlap=0,
         )
 
