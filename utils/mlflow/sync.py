@@ -33,10 +33,13 @@ def run_sync(force_recreate: bool = True):
         logger.info(f"Removed previous migrations from {dest_mlruns_root}")
 
     for out_zipped_path in tqdm(source_exp_output_zips):
+    
 
         # Unzip the mlflow output from
         temp_dir = Path(out_zipped_path).parent.joinpath("__unzip_temp__")
 
+        if os.path.exists(temp_dir):
+            shutil.rmtree(temp_dir, ignore_errors=True)
         try:
             os.mkdir(temp_dir)
             # logger.debug(f"Created temp unzip dir: {temp_dir}. Unpacking from {out_zipped_path} to temp dir")
@@ -70,7 +73,7 @@ def run_sync(force_recreate: bool = True):
 
         finally:
             # logger.debug(f"Removing temp dir {temp_dir}")
-            shutil.rmtree(temp_dir)
+            shutil.rmtree(temp_dir, ignore_errors=True)
 
 
 def _fixup_dest_run_metadata(dest_run_dir: Union[str, os.PathLike], new_experiment_id: str) -> None:
