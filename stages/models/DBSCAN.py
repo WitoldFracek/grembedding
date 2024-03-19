@@ -12,6 +12,8 @@ class DBSCAN(Model):
     def evaluate(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str, params: Dict[str, int | float | str]) -> None:
         X_train, X_test, y_train, y_test, metadata = self.load_train_test(dataset, datacleaner, vectorizer)
 
+        X_train, y_train = self.subsample(X_train, y_train)
+
         logger.info(f'Fitting DBSCAN...')
         dbscan = cluster.DBSCAN(**params)
         labels = dbscan.fit_predict(X_train)

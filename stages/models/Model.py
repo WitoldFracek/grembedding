@@ -67,3 +67,15 @@ class Model(ABC):
     @staticmethod
     def get_input_dir(dataset_name, datacleaner_name, vectorizer_name):
         return os.path.join(get_root_dir(), DATA_DIR_PATH, dataset_name, f"{datacleaner_name}_{vectorizer_name}")
+    
+    @staticmethod
+    def subsample(x_array: np.ndarray, y_array: np.ndarray, max_samples: int = 10_000, seed: int = 0xC0DE) -> tuple[np.ndarray, np.ndarray]:
+        """Takes a random portion of the given arrays. If the total number of samples 
+        is less than max_samples, unchanged arrays will be returned.
+        """
+        if x_array.shape[0] <= max_samples:
+            return x_array, y_array
+        if seed is not None:
+            np.random.seed(seed)
+        idx = np.random.choice(x_array.shape[0], max_samples, replace=False)
+        return x_array[idx], y_array[idx]

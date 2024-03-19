@@ -4,6 +4,7 @@ from utils.mlflow.experiments import mlflow_context
 import sklearn.cluster as cluster
 from utils.metrics.clusterization import compute_clustering_metrics, compute_b_cubed_metrics
 from loguru import logger
+import numpy as np
 
 
 class KMeans(Model):
@@ -12,8 +13,11 @@ class KMeans(Model):
     def evaluate(self, dataset: str, datacleaner: str, vectorizer: str, params_name: str, params: Dict[str, int | float | str]) -> None:
         X_train, X_test, y_train, y_test, metadata = self.load_train_test(dataset, datacleaner, vectorizer)
 
+        n_clusters = len(np.unique(y_train))
+        X_train, y_train = self.subsample(X_train, y_train)
+
         logger.info(f'Fitting KMeans...')
-        dbscan = cluster.KMeans(**params)
+        dbscan = cluster.KMeans(n_clusters=n_clusters, **params)
         labels = dbscan.fit_predict(X_train)
         metrics = compute_clustering_metrics(X_train, labels)
         bcubed = compute_b_cubed_metrics(y_train, labels)
