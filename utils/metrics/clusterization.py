@@ -19,9 +19,9 @@ def compute_clustering_metrics(x: np.ndarray, labels: np.ndarray) -> dict[str, f
         davies_bouldin = davies_bouldin_score(x, labels)
         calinski_harabasz = calinski_harabasz_score(x, labels)
     results = {
-        'silhouette': silhouette,
-        'davies_bouldin': davies_bouldin,
-        'calinski_harabasz': calinski_harabasz
+        'silhouette': float(silhouette),
+        'davies_bouldin': float(davies_bouldin),
+        'calinski_harabasz': float(calinski_harabasz)
     }
 
     logger.info('Preparing plots...')
@@ -40,9 +40,9 @@ def compute_b_cubed_metrics(labels_true: list, labels_pred: list) -> dict[str, f
     precission = bcubed.precision(cdict, ldict)
     recall = bcubed.recall(cdict, ldict)
     results = {
-        "bcubed_precission": precission,
-        "bcubed_recall": recall,
-        "bcubed_f1": bcubed.fscore(precission, recall)
+        "bcubed_precission": float(precission),
+        "bcubed_recall": float(recall),
+        "bcubed_f1": float(bcubed.fscore(precission, recall))
     }
     logger.info(f'B-Cubed metrics: ' + ' '.join(map(lambda pair: f'{pair[0]}: {pair[1]}', results.items())))
     return results
