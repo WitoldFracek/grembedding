@@ -5,6 +5,7 @@ load:
    - dataloader: StarWarsFanfic
    - dataloader: TweeterCyberbullying
    - dataloader: WritingStyle
+   - dataloader: EroticVsOthers
 
 clean:
    - dataloader: Classics5Authors35Books
@@ -18,6 +19,8 @@ clean:
    - dataloader: TweeterCyberbullying
      datacleaner: DummyDatacleaner
    - dataloader: WritingStyle
+     datacleaner: DummyDatacleaner
+   - dataloader: EroticVsOthers
      datacleaner: DummyDatacleaner
 
 vectorize:
@@ -205,6 +208,37 @@ vectorize:
     datacleaner: DummyDatacleaner
     vectorizer: HerbertVectorizer
   - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
+################################################## EroticVsOthers
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertVectorizer
+  - dataloader: EroticVsOthers
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
 
@@ -395,6 +429,37 @@ evaluate_classification:
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+################################################## EroticVsOthers
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertVectorizer
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
 
 evaluate_clustering:
 ################################################## Classics5Authors35Books
@@ -583,6 +648,37 @@ evaluate_clustering:
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+################################################## EroticVsOthers
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertVectorizer
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
 
 classification_models:
   - model: RandomForest
@@ -597,7 +693,5 @@ classification_models:
 clustering_models:
   - model: DBSCAN
     params: DBSCAN1
-  - model: KMeans
-    params: KMeans1
   - model: AffinityPropagation
     params: AffinityPropagation1
