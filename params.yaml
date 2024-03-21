@@ -241,6 +241,9 @@ vectorize:
   - dataloader: EroticVsOthers
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
 
 evaluate_classification:
 ################################################## Classics5Authors35Books
@@ -460,6 +463,9 @@ evaluate_classification:
   - dataloader: EroticVsOthers
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
 
 evaluate_clustering:
 ################################################## Classics5Authors35Books
@@ -679,6 +685,9 @@ evaluate_clustering:
   - dataloader: EroticVsOthers
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
 
 classification_models:
   - model: RandomForest
