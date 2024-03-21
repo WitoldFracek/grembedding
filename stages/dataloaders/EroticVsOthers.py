@@ -19,8 +19,7 @@ class EroticVsOthers(DataLoader):
             keep_separator=False
         )
        
-        X_erotic_train, X_erotic_test = train_test_split(X_erotic, test_size=self.TEST_SIZE)
-        X_others_train, X_others_test = train_test_split(X_others, test_size=self.TEST_SIZE)
+        X_erotic_train, X_erotic_test, X_others_train, X_others_test = self.split(X_erotic, X_others)
        
         X_erotic_train = splitter.create_documents(X_erotic_train)
         X_erotic_test = splitter.create_documents(X_erotic_test)
@@ -58,16 +57,41 @@ class EroticVsOthers(DataLoader):
         self._save_dataset(df_train, df_test)
 
     def load_texts(self):
-        X_erotic, X_others = [], []
+        X_erotic, X_others = {}, {}
         path = os.path.join("datasets_raw", self.DATASET_DIR)
         for category in os.listdir(path):
-            if category == "README.txt":
-                continue
-            for story_id in os.listdir(os.path.join(path, category)):
-                filepath = os.path.join(path, category, story_id)
-                with open(filepath, "r", encoding="utf-8") as file:
-                    if category == "erotyczne":
-                        X_erotic.append(file.read())
-                    else:
-                        X_others.append(file.read())
+            for author in os.listdir(os.path.join(path, category)):
+                author_path = os.path.join(path, category, author)
+                for story_id in os.listdir(author_path):
+                    filepath = os.path.join(author_path, story_id)
+                    with open(filepath, "r", encoding="utf-8") as file:
+                        if category == "erotyczne":
+                            if not author in X_erotic:
+                                 X_erotic[author] = []
+                            X_erotic[author].append(file.read())
+                        else:
+                            if not author in X_others:
+                                 X_others[author] = []
+                            X_others[author].append(file.read())
         return X_erotic, X_others
+
+    def split(self, X_erotic, X_others):
+        common_authors = []
+        for author in X_erotic.keys():
+            if author in X_others:
+                common_authors.append(author)
+        X_erotic_test = []
+        X_erotic_train = []
+        X_others_test = []
+        X_others_train = []
+        for author in X_erotic.keys():
+            if author in common_authors:
+                X_erotic_test += X_erotic[author]
+            else:
+                X_erotic_train += X_erotic[author]
+        for author in X_others.keys():
+            if author in common_authors:
+                X_others_test += X_others[author]
+            else:
+                X_others_train += X_others[author]
+        return X_erotic_train, X_erotic_test, X_others_train, X_others_test    
