@@ -28,23 +28,23 @@ class EroticVsOthers(DataLoader):
        
         dict_train_erotic = {
             "text": [d.page_content for d in X_erotic_train if len(d.page_content) > 100],
-            "label": [1] * len(X_erotic_train)
         }
+        dict_train_erotic["label"] = [1] * len(dict_train_erotic["text"])
 
         dict_train_others = {
             "text": [d.page_content for d in X_others_train if len(d.page_content) > 100],
-            "label": [0] * len(X_others_train)
         }
+        dict_train_others['label'] = [0] * len(dict_train_others["text"])
 
         dict_test_erotic = {
             "text": [d.page_content for d in X_erotic_test if len(d.page_content) > 100],
-            "label": [1] * len(X_erotic_test)
         }
+        dict_test_erotic["label"] = [1] * len(dict_test_erotic['text'])
 
         dict_test_others = {
             "text": [d.page_content for d in X_others_test if len(d.page_content) > 100],
-            "label": [0] * len(X_others_test)
         }
+        dict_test_others["label"] = [0] * len(dict_test_others['text'])
        
         df_train_erotic = pd.DataFrame.from_dict(dict_train_erotic)
         df_train_others = pd.DataFrame.from_dict(dict_train_others)
