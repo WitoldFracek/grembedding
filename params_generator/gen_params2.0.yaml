@@ -693,5 +693,7 @@ classification_models:
 clustering_models:
   - model: DBSCAN
     params: DBSCAN1
+  - model: KMeans
+    params: KMeans1.0
   - model: AffinityPropagation
     params: AffinityPropagation1

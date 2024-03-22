@@ -27,22 +27,22 @@ class EroticVsOthers(DataLoader):
         X_others_test = splitter.create_documents(X_others_test)
        
         dict_train_erotic = {
-            "text": [d.page_content for d in X_erotic_train],
+            "text": [d.page_content for d in X_erotic_train if len(d.page_content) > 100],
             "label": [1] * len(X_erotic_train)
         }
 
         dict_train_others = {
-            "text": [d.page_content for d in X_others_train],
+            "text": [d.page_content for d in X_others_train if len(d.page_content) > 100],
             "label": [0] * len(X_others_train)
         }
 
         dict_test_erotic = {
-            "text": [d.page_content for d in X_erotic_test],
+            "text": [d.page_content for d in X_erotic_test if len(d.page_content) > 100],
             "label": [1] * len(X_erotic_test)
         }
 
         dict_test_others = {
-            "text": [d.page_content for d in X_others_test],
+            "text": [d.page_content for d in X_others_test if len(d.page_content) > 100],
             "label": [0] * len(X_others_test)
         }
        
