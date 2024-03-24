@@ -7,9 +7,9 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: 8647d8545d657f35b4790667e4349a27.dir
-      size: 425880362
-      nfiles: 7476
+      md5: b2e93828eb1435dc4007196ef7a14e6f.dir
+      size: 425937116
+      nfiles: 7451
     - path: imports_validator/load/Classics5Authors35Books.yaml
       hash: md5
       md5: d7e294607a140a211e467b5979bc7039
@@ -35,9 +35,9 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: 8647d8545d657f35b4790667e4349a27.dir
-      size: 425880362
-      nfiles: 7476
+      md5: b2e93828eb1435dc4007196ef7a14e6f.dir
+      size: 425937116
+      nfiles: 7451
     - path: imports_validator/load/OldNewspapers.yaml
       hash: md5
       md5: d7e294607a140a211e467b5979bc7039
@@ -900,9 +900,9 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: 8647d8545d657f35b4790667e4349a27.dir
-      size: 425880362
-      nfiles: 7476
+      md5: b2e93828eb1435dc4007196ef7a14e6f.dir
+      size: 425937116
+      nfiles: 7451
     - path: imports_validator/load/PrusVsSienkiewicz.yaml
       hash: md5
       md5: d7e294607a140a211e467b5979bc7039
@@ -1009,9 +1009,9 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: 8647d8545d657f35b4790667e4349a27.dir
-      size: 425880362
-      nfiles: 7476
+      md5: b2e93828eb1435dc4007196ef7a14e6f.dir
+      size: 425937116
+      nfiles: 7451
     - path: imports_validator/load/StarWarsFanfic.yaml
       hash: md5
       md5: d7e294607a140a211e467b5979bc7039
@@ -1063,8 +1063,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/raw
       hash: md5
-      md5: b386d06564a106d4dfbd759750f35191.dir
-      size: 24646186
+      md5: aa52f148e6943c2665e7ee24e9ff5e1f.dir
+      size: 23711673
       nfiles: 2
     - path: imports_validator/clean/DummyDatacleaner.yaml
       hash: md5
@@ -1081,8 +1081,8 @@ stages:
     outs:
     - path: data/EroticVsOthers/DummyDatacleaner
       hash: md5
-      md5: d64d6003a887388e8198a4d1c2ea8f8a.dir
-      size: 24646286
+      md5: c709d04d7b055ac28fd43349fa446975.dir
+      size: 23711773
       nfiles: 2
   vectorize@8:
     cmd: python scripts/vectorize.py "Classics5Authors35Books" "DummyDatacleaner"
@@ -11095,9 +11095,9 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: 8647d8545d657f35b4790667e4349a27.dir
-      size: 425880362
-      nfiles: 7476
+      md5: b2e93828eb1435dc4007196ef7a14e6f.dir
+      size: 425937116
+      nfiles: 7451
     - path: imports_validator/load/TweeterCyberbullying.yaml
       hash: md5
       md5: 7dcec9f3137c6a0f2522708df743b4ba
@@ -11402,9 +11402,9 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: 8647d8545d657f35b4790667e4349a27.dir
-      size: 425880362
-      nfiles: 7476
+      md5: b2e93828eb1435dc4007196ef7a14e6f.dir
+      size: 425937116
+      nfiles: 7451
     - path: imports_validator/load/WritingStyle.yaml
       hash: md5
       md5: dad5d40155227bf668b3ea697038ba60
@@ -20356,9 +20356,9 @@ stages:
     deps:
     - path: datasets_raw/
       hash: md5
-      md5: 8647d8545d657f35b4790667e4349a27.dir
-      size: 425880362
-      nfiles: 7476
+      md5: b2e93828eb1435dc4007196ef7a14e6f.dir
+      size: 425937116
+      nfiles: 7451
     - path: imports_validator/load/EroticVsOthers.yaml
       hash: md5
       md5: d7e294607a140a211e467b5979bc7039
@@ -20369,21 +20369,21 @@ stages:
       size: 841
     - path: stages/dataloaders/EroticVsOthers.py
       hash: md5
-      md5: 0d42fcb755c89bf429d58989e14a0317
-      size: 2914
+      md5: 381b8117914dc2f4f09d5b57d0c8a204
+      size: 4167
     outs:
     - path: data/EroticVsOthers/raw
       hash: md5
-      md5: b386d06564a106d4dfbd759750f35191.dir
-      size: 24646186
+      md5: aa52f148e6943c2665e7ee24e9ff5e1f.dir
+      size: 23711673
       nfiles: 2
   vectorize@60:
     cmd: python scripts/vectorize.py "EroticVsOthers" "DummyDatacleaner" "TfidfVectorizer1000"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner
       hash: md5
-      md5: d64d6003a887388e8198a4d1c2ea8f8a.dir
-      size: 24646286
+      md5: c709d04d7b055ac28fd43349fa446975.dir
+      size: 23711773
       nfiles: 2
     - path: imports_validator/vectorize/TfidfVectorizer1000.yaml
       hash: md5
@@ -20400,16 +20400,16 @@ stages:
     outs:
     - path: data/EroticVsOthers/DummyDatacleaner_TfidfVectorizer1000
       hash: md5
-      md5: bc39d24572ba21b6e56d748233c639c9.dir
-      size: 32804233
+      md5: 0fbd9df3ac7acd896e80db372457d3ee.dir
+      size: 32643146
       nfiles: 1
   vectorize@61:
     cmd: python scripts/vectorize.py "EroticVsOthers" "DummyDatacleaner" "TfidfVectorizer5000"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner
       hash: md5
-      md5: d64d6003a887388e8198a4d1c2ea8f8a.dir
-      size: 24646286
+      md5: c709d04d7b055ac28fd43349fa446975.dir
+      size: 23711773
       nfiles: 2
     - path: imports_validator/vectorize/TfidfVectorizer5000.yaml
       hash: md5
@@ -20426,16 +20426,16 @@ stages:
     outs:
     - path: data/EroticVsOthers/DummyDatacleaner_TfidfVectorizer5000
       hash: md5
-      md5: ce62216dfbef9f3f1e33e48057236f1c.dir
-      size: 50927012
+      md5: e32dcdf46ba384d480f1e865b4bdcffd.dir
+      size: 50686979
       nfiles: 1
   vectorize@62:
     cmd: python scripts/vectorize.py "EroticVsOthers" "DummyDatacleaner" "BigramMorphTagVectorizer100"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner
       hash: md5
-      md5: d64d6003a887388e8198a4d1c2ea8f8a.dir
-      size: 24646286
+      md5: c709d04d7b055ac28fd43349fa446975.dir
+      size: 23711773
       nfiles: 2
     - path: imports_validator/vectorize/BigramMorphTagVectorizer100.yaml
       hash: md5
@@ -20452,16 +20452,16 @@ stages:
     outs:
     - path: data/EroticVsOthers/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: dd646eaf23a0fb9fd7782b0dc04764b3.dir
-      size: 49220268
+      md5: 47a40053ef5d3d93e910b75ef3bc4a95.dir
+      size: 47845370
       nfiles: 1
   vectorize@63:
     cmd: python scripts/vectorize.py "EroticVsOthers" "DummyDatacleaner" "BigramMorphTagVectorizer370"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner
       hash: md5
-      md5: d64d6003a887388e8198a4d1c2ea8f8a.dir
-      size: 24646286
+      md5: c709d04d7b055ac28fd43349fa446975.dir
+      size: 23711773
       nfiles: 2
     - path: imports_validator/vectorize/BigramMorphTagVectorizer370.yaml
       hash: md5
@@ -20478,16 +20478,16 @@ stages:
     outs:
     - path: data/EroticVsOthers/DummyDatacleaner_BigramMorphTagVectorizer370
       hash: md5
-      md5: a66df97f8ddb892b0c0ef1ea5be70f06.dir
-      size: 182170081
+      md5: 6facd9138cbeefd6cd712fd345f4ea20.dir
+      size: 180087025
       nfiles: 1
   vectorize@64:
     cmd: python scripts/vectorize.py "EroticVsOthers" "DummyDatacleaner" "CountVectorizer1000"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner
       hash: md5
-      md5: d64d6003a887388e8198a4d1c2ea8f8a.dir
-      size: 24646286
+      md5: c709d04d7b055ac28fd43349fa446975.dir
+      size: 23711773
       nfiles: 2
     - path: imports_validator/vectorize/CountVectorizer1000.yaml
       hash: md5
@@ -20504,16 +20504,16 @@ stages:
     outs:
     - path: data/EroticVsOthers/DummyDatacleaner_CountVectorizer1000
       hash: md5
-      md5: a835cac0e17e321c42755e1a42a34e21.dir
-      size: 7666397
+      md5: d6aa082153f852eaf49de21012424b6f.dir
+      size: 7630837
       nfiles: 1
   vectorize@65:
     cmd: python scripts/vectorize.py "EroticVsOthers" "DummyDatacleaner" "CountVectorizer5000"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner
       hash: md5
-      md5: d64d6003a887388e8198a4d1c2ea8f8a.dir
-      size: 24646286
+      md5: c709d04d7b055ac28fd43349fa446975.dir
+      size: 23711773
       nfiles: 2
     - path: imports_validator/vectorize/CountVectorizer5000.yaml
       hash: md5
@@ -20530,16 +20530,16 @@ stages:
     outs:
     - path: data/EroticVsOthers/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: 3e3ef09b0b61d72534afd981c794ac9e.dir
-      size: 14974752
+      md5: 97f59ba373a3f8b50f30eb2935c1928e.dir
+      size: 14926805
       nfiles: 1
   vectorize@66:
     cmd: python scripts/vectorize.py "EroticVsOthers" "DummyDatacleaner" "DPEBPVectorizer100Avg"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner
       hash: md5
-      md5: d64d6003a887388e8198a4d1c2ea8f8a.dir
-      size: 24646286
+      md5: c709d04d7b055ac28fd43349fa446975.dir
+      size: 23711773
       nfiles: 2
     - path: imports_validator/vectorize/DPEBPVectorizer100Avg.yaml
       hash: md5
@@ -20556,16 +20556,16 @@ stages:
     outs:
     - path: data/EroticVsOthers/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: a1aff90c88ad304bffb16131e155fd99.dir
-      size: 23840130
+      md5: 186e11b7e81e4cdab33d849e9d34db2c.dir
+      size: 22964718
       nfiles: 1
   vectorize@67:
     cmd: python scripts/vectorize.py "EroticVsOthers" "DummyDatacleaner" "FullMorphTagVectorizer"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner
       hash: md5
-      md5: d64d6003a887388e8198a4d1c2ea8f8a.dir
-      size: 24646286
+      md5: c709d04d7b055ac28fd43349fa446975.dir
+      size: 23711773
       nfiles: 2
     - path: imports_validator/vectorize/FullMorphTagVectorizer.yaml
       hash: md5
@@ -20582,16 +20582,16 @@ stages:
     outs:
     - path: data/EroticVsOthers/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: dde92e1a9707c9b470e39331820fcaa3.dir
-      size: 14915160
+      md5: 5af782ec5857e00472dd7a5daac5b968.dir
+      size: 14894885
       nfiles: 1
   vectorize@68:
     cmd: python scripts/vectorize.py "EroticVsOthers" "DummyDatacleaner" "HerbertVectorizer"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner
       hash: md5
-      md5: d64d6003a887388e8198a4d1c2ea8f8a.dir
-      size: 24646286
+      md5: c709d04d7b055ac28fd43349fa446975.dir
+      size: 23711773
       nfiles: 2
     - path: imports_validator/vectorize/HerbertVectorizer.yaml
       hash: md5
@@ -20608,16 +20608,16 @@ stages:
     outs:
     - path: data/EroticVsOthers/DummyDatacleaner_HerbertVectorizer
       hash: md5
-      md5: f7d259338e5a1e0c868a113ef2779329.dir
-      size: 181436927
+      md5: ebf230eb8d8f228ef1705777ee836f01.dir
+      size: 179359448
       nfiles: 1
   vectorize@69:
     cmd: python scripts/vectorize.py "EroticVsOthers" "DummyDatacleaner" "SpacyMorphTagVectorizer"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner
       hash: md5
-      md5: d64d6003a887388e8198a4d1c2ea8f8a.dir
-      size: 24646286
+      md5: c709d04d7b055ac28fd43349fa446975.dir
+      size: 23711773
       nfiles: 2
     - path: imports_validator/vectorize/SpacyMorphTagVectorizer.yaml
       hash: md5
@@ -20634,8 +20634,8 @@ stages:
     outs:
     - path: data/EroticVsOthers/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 4e67a28b4b3385f4e07d69ccb5fb5198.dir
-      size: 12302483
+      md5: 8d0efebd1a6e3e42d084668b93cb08f3.dir
+      size: 12006326
       nfiles: 1
   evaluate_classification@data60-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "TfidfVectorizer1000"
@@ -20643,8 +20643,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_TfidfVectorizer1000
       hash: md5
-      md5: bc39d24572ba21b6e56d748233c639c9.dir
-      size: 32804233
+      md5: 0fbd9df3ac7acd896e80db372457d3ee.dir
+      size: 32643146
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -20666,21 +20666,21 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/TfidfVectorizer1000/RandomForest/RandomForest1/out_mlflow.zip
       hash: md5
-      md5: 8b53e31d33f337432344fcbda81099fb
-      size: 129947
+      md5: d823731977d9a0fd89251e7203f0273c
+      size: 115312
     - path: 
         results/EroticVsOthers/DummyDatacleaner/TfidfVectorizer1000/RandomForest/RandomForest1.json
       hash: md5
-      md5: 0808dee562e565dd576a3f5b06fc032c
-      size: 306
+      md5: 4b824b40d9539ec45013de88e39eeaa9
+      size: 305
   evaluate_classification@data60-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "TfidfVectorizer1000"
       "MLP" "MLP1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_TfidfVectorizer1000
       hash: md5
-      md5: bc39d24572ba21b6e56d748233c639c9.dir
-      size: 32804233
+      md5: 0fbd9df3ac7acd896e80db372457d3ee.dir
+      size: 32643146
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -20702,11 +20702,11 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP1/out_mlflow.zip
       hash: md5
-      md5: 95a7c6bc162c9c1e546b1784d7fc829f
-      size: 164319
+      md5: 38bdae5f0e1ae5ad56c2d36d8b162365
+      size: 146915
     - path: results/EroticVsOthers/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP1.json
       hash: md5
-      md5: fac279ec5ae045c1bea2ffc7d27bc5f4
+      md5: 25e9c5080351c090a18443090264de1c
       size: 466
   evaluate_classification@data60-model2:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "TfidfVectorizer1000"
@@ -20714,8 +20714,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_TfidfVectorizer1000
       hash: md5
-      md5: bc39d24572ba21b6e56d748233c639c9.dir
-      size: 32804233
+      md5: 0fbd9df3ac7acd896e80db372457d3ee.dir
+      size: 32643146
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -20737,20 +20737,20 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP2/out_mlflow.zip
       hash: md5
-      md5: ecc5bc17b35067ce42dd5f6d79ae3181
-      size: 168100
+      md5: 6809e977ac09bda84631c5d5fdd6cd5b
+      size: 145582
     - path: results/EroticVsOthers/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP2.json
       hash: md5
-      md5: d3ac6a19f62e34814d2a2f1e6cee22ea
-      size: 466
+      md5: bc01d14ca84ac916c562700ddc7f1e91
+      size: 465
   evaluate_classification@data60-model3:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "TfidfVectorizer1000"
       "MLP" "MLP3"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_TfidfVectorizer1000
       hash: md5
-      md5: bc39d24572ba21b6e56d748233c639c9.dir
-      size: 32804233
+      md5: 0fbd9df3ac7acd896e80db372457d3ee.dir
+      size: 32643146
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -20772,11 +20772,11 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP3/out_mlflow.zip
       hash: md5
-      md5: b22d2ee043764599b55c6bbe8c50496e
-      size: 165554
+      md5: de7836e6d413d917576e2b67c7a36a4e
+      size: 142616
     - path: results/EroticVsOthers/DummyDatacleaner/TfidfVectorizer1000/MLP/MLP3.json
       hash: md5
-      md5: 992d61c58b2d9043acfe7dd0a08398f3
+      md5: dc82d95f14800823059894f564bdb739
       size: 466
   evaluate_classification@data61-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "TfidfVectorizer5000"
@@ -20784,8 +20784,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_TfidfVectorizer5000
       hash: md5
-      md5: ce62216dfbef9f3f1e33e48057236f1c.dir
-      size: 50927012
+      md5: e32dcdf46ba384d480f1e865b4bdcffd.dir
+      size: 50686979
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -20807,21 +20807,21 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/TfidfVectorizer5000/RandomForest/RandomForest1/out_mlflow.zip
       hash: md5
-      md5: 025918ed8808f207728338fd8a6f23f3
-      size: 126857
+      md5: a0e8a4458f16899c6c3be11d1df49e68
+      size: 114689
     - path: 
         results/EroticVsOthers/DummyDatacleaner/TfidfVectorizer5000/RandomForest/RandomForest1.json
       hash: md5
-      md5: 0a5a6742b1a9368220aa75a97d3e09ab
-      size: 305
+      md5: 8b8b44e911331ca2d0a7c7e08aae8690
+      size: 306
   evaluate_classification@data61-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "TfidfVectorizer5000"
       "MLP" "MLP1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_TfidfVectorizer5000
       hash: md5
-      md5: ce62216dfbef9f3f1e33e48057236f1c.dir
-      size: 50927012
+      md5: e32dcdf46ba384d480f1e865b4bdcffd.dir
+      size: 50686979
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -20843,11 +20843,11 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/TfidfVectorizer5000/MLP/MLP1/out_mlflow.zip
       hash: md5
-      md5: f3521d68b82c461a8373c02e6855dc10
-      size: 164657
+      md5: 23d47277c9f2be12ba0e0c10cd865580
+      size: 140515
     - path: results/EroticVsOthers/DummyDatacleaner/TfidfVectorizer5000/MLP/MLP1.json
       hash: md5
-      md5: bc325d696170ba1c7a3f0fa8f8166b82
+      md5: a5eff13ac2d6a001be782940b574ed7d
       size: 465
   evaluate_classification@data61-model2:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "TfidfVectorizer5000"
@@ -20855,8 +20855,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_TfidfVectorizer5000
       hash: md5
-      md5: ce62216dfbef9f3f1e33e48057236f1c.dir
-      size: 50927012
+      md5: e32dcdf46ba384d480f1e865b4bdcffd.dir
+      size: 50686979
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -20878,20 +20878,20 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/TfidfVectorizer5000/MLP/MLP2/out_mlflow.zip
       hash: md5
-      md5: 78e9251b945e8766f0590608c4e5e43d
-      size: 164216
+      md5: 364a12c0fb8ec2d092709086b616774c
+      size: 144004
     - path: results/EroticVsOthers/DummyDatacleaner/TfidfVectorizer5000/MLP/MLP2.json
       hash: md5
-      md5: a613fe6e784bb3822463cdbdda583936
-      size: 465
+      md5: d7753e5cb3517cea4b4b052d02377e2e
+      size: 466
   evaluate_classification@data61-model3:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "TfidfVectorizer5000"
       "MLP" "MLP3"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_TfidfVectorizer5000
       hash: md5
-      md5: ce62216dfbef9f3f1e33e48057236f1c.dir
-      size: 50927012
+      md5: e32dcdf46ba384d480f1e865b4bdcffd.dir
+      size: 50686979
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -20913,20 +20913,20 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/TfidfVectorizer5000/MLP/MLP3/out_mlflow.zip
       hash: md5
-      md5: 9612f95e15f14b9c335224a9c6b6ecff
-      size: 162748
+      md5: e504fc1a99ce776711f1896f23049be3
+      size: 146889
     - path: results/EroticVsOthers/DummyDatacleaner/TfidfVectorizer5000/MLP/MLP3.json
       hash: md5
-      md5: 3ceffebe6ff6822a3cdf27efef2b97ba
-      size: 465
+      md5: d0de27acdcf0509bff831c0d49322f80
+      size: 466
   evaluate_classification@data62-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "BigramMorphTagVectorizer100"
       "RandomForest" "RandomForest1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: dd646eaf23a0fb9fd7782b0dc04764b3.dir
-      size: 49220268
+      md5: 47a40053ef5d3d93e910b75ef3bc4a95.dir
+      size: 47845370
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -20948,12 +20948,12 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer100/RandomForest/RandomForest1/out_mlflow.zip
       hash: md5
-      md5: 71d78df7218ddb5f003419ca382d1463
-      size: 127978
+      md5: 5757b21c8c178befec0bce366adcfeac
+      size: 114823
     - path: 
         results/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer100/RandomForest/RandomForest1.json
       hash: md5
-      md5: bb5cddfed021d09ae30b39df27d48a6c
+      md5: 72e08550609ab35310f93bd86412bcfd
       size: 314
   evaluate_classification@data62-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "BigramMorphTagVectorizer100"
@@ -20961,8 +20961,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: dd646eaf23a0fb9fd7782b0dc04764b3.dir
-      size: 49220268
+      md5: 47a40053ef5d3d93e910b75ef3bc4a95.dir
+      size: 47845370
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -20984,12 +20984,12 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer100/MLP/MLP1/out_mlflow.zip
       hash: md5
-      md5: 087a21a176209646d98d7dbb49a82903
-      size: 175132
+      md5: c101fe9c6813d6951271aa8f101755b9
+      size: 165406
     - path: 
         results/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer100/MLP/MLP1.json
       hash: md5
-      md5: 4a1d63be12e2671c2915180875008985
+      md5: e3a760a30a049684c9e99981c652eddf
       size: 473
   evaluate_classification@data62-model2:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "BigramMorphTagVectorizer100"
@@ -20997,8 +20997,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: dd646eaf23a0fb9fd7782b0dc04764b3.dir
-      size: 49220268
+      md5: 47a40053ef5d3d93e910b75ef3bc4a95.dir
+      size: 47845370
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21020,21 +21020,21 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer100/MLP/MLP2/out_mlflow.zip
       hash: md5
-      md5: e6faf3db6acf167c4239b4e3567dd7dd
-      size: 171727
+      md5: e67aeef50ef95831ee41e5523635daf8
+      size: 163993
     - path: 
         results/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer100/MLP/MLP2.json
       hash: md5
-      md5: a2c877688b6f196d8786bbe524dbc90b
-      size: 474
+      md5: 79b55255ae0ac7975f4f24290c3683a5
+      size: 473
   evaluate_classification@data62-model3:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "BigramMorphTagVectorizer100"
       "MLP" "MLP3"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: dd646eaf23a0fb9fd7782b0dc04764b3.dir
-      size: 49220268
+      md5: 47a40053ef5d3d93e910b75ef3bc4a95.dir
+      size: 47845370
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21056,12 +21056,12 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer100/MLP/MLP3/out_mlflow.zip
       hash: md5
-      md5: 1c1bd5f02def39e569070bf4e90196e6
-      size: 168336
+      md5: b01864cfd0ffe74501407f3db1dccb4e
+      size: 164913
     - path: 
         results/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer100/MLP/MLP3.json
       hash: md5
-      md5: e74d294cd351687fff0e15f875ff86e5
+      md5: 2ff0ac2c9113c8b329dd8f6ace55b743
       size: 474
   evaluate_classification@data63-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "BigramMorphTagVectorizer370"
@@ -21069,8 +21069,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_BigramMorphTagVectorizer370
       hash: md5
-      md5: a66df97f8ddb892b0c0ef1ea5be70f06.dir
-      size: 182170081
+      md5: 6facd9138cbeefd6cd712fd345f4ea20.dir
+      size: 180087025
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -21092,21 +21092,21 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer370/RandomForest/RandomForest1/out_mlflow.zip
       hash: md5
-      md5: 5c391b9779002dc09a61847d691d8574
-      size: 127219
+      md5: 5f5b8c44e67ac6e87de89159a914eb0c
+      size: 112910
     - path: 
         results/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer370/RandomForest/RandomForest1.json
       hash: md5
-      md5: 68ca518137ddfd7285a02caabec8e2eb
-      size: 313
+      md5: 8eb8369664c7ee1ef7110c59394639fe
+      size: 314
   evaluate_classification@data63-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "BigramMorphTagVectorizer370"
       "MLP" "MLP1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_BigramMorphTagVectorizer370
       hash: md5
-      md5: a66df97f8ddb892b0c0ef1ea5be70f06.dir
-      size: 182170081
+      md5: 6facd9138cbeefd6cd712fd345f4ea20.dir
+      size: 180087025
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21128,12 +21128,12 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP1/out_mlflow.zip
       hash: md5
-      md5: 99adecd668d71f5da509f2fffed67cb9
-      size: 174431
+      md5: 72349ddf00e7a7c1513d7c6ae9ffd83e
+      size: 165396
     - path: 
         results/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP1.json
       hash: md5
-      md5: ef563741f3a84513de9c111daadd2fe7
+      md5: 8a5c53587d072326b3ddcc9ee75508ab
       size: 474
   evaluate_classification@data63-model2:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "BigramMorphTagVectorizer370"
@@ -21141,8 +21141,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_BigramMorphTagVectorizer370
       hash: md5
-      md5: a66df97f8ddb892b0c0ef1ea5be70f06.dir
-      size: 182170081
+      md5: 6facd9138cbeefd6cd712fd345f4ea20.dir
+      size: 180087025
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21164,12 +21164,12 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP2/out_mlflow.zip
       hash: md5
-      md5: 949de564e189a809a292ee0e807ab456
-      size: 175202
+      md5: e1b57ec520685b8dc3349c19091124af
+      size: 160220
     - path: 
         results/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP2.json
       hash: md5
-      md5: f728fdad5ce8e8c29524d74e5b85962d
+      md5: 0411e04aa898fb378985cb78ae4374cc
       size: 474
   evaluate_classification@data63-model3:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "BigramMorphTagVectorizer370"
@@ -21177,8 +21177,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_BigramMorphTagVectorizer370
       hash: md5
-      md5: a66df97f8ddb892b0c0ef1ea5be70f06.dir
-      size: 182170081
+      md5: 6facd9138cbeefd6cd712fd345f4ea20.dir
+      size: 180087025
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21200,21 +21200,21 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP3/out_mlflow.zip
       hash: md5
-      md5: 839233818a759a1aa14aced618ca5d3a
-      size: 176070
+      md5: a5805fb497c053124e177b63cf43b32c
+      size: 154522
     - path: 
         results/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer370/MLP/MLP3.json
       hash: md5
-      md5: 25605cb9558cda17d40adcc675b61d2c
-      size: 473
+      md5: 139a8f90d17800897ddbfd242e8e7a42
+      size: 474
   evaluate_classification@data64-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "CountVectorizer1000"
       "RandomForest" "RandomForest1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_CountVectorizer1000
       hash: md5
-      md5: a835cac0e17e321c42755e1a42a34e21.dir
-      size: 7666397
+      md5: d6aa082153f852eaf49de21012424b6f.dir
+      size: 7630837
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -21236,12 +21236,12 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/CountVectorizer1000/RandomForest/RandomForest1/out_mlflow.zip
       hash: md5
-      md5: 4f2e88ce39013f6fec9e4b63c06cf794
-      size: 128662
+      md5: 4a5c73c8d3ba5b2c4df661f3b32acd56
+      size: 114696
     - path: 
         results/EroticVsOthers/DummyDatacleaner/CountVectorizer1000/RandomForest/RandomForest1.json
       hash: md5
-      md5: b24a00e06f64e7fba6a3a063298f65d3
+      md5: 2610a2447be347236b4b926931b7e299
       size: 306
   evaluate_classification@data64-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "CountVectorizer1000"
@@ -21249,8 +21249,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_CountVectorizer1000
       hash: md5
-      md5: a835cac0e17e321c42755e1a42a34e21.dir
-      size: 7666397
+      md5: d6aa082153f852eaf49de21012424b6f.dir
+      size: 7630837
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21272,20 +21272,20 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/CountVectorizer1000/MLP/MLP1/out_mlflow.zip
       hash: md5
-      md5: a034ad185fe50c9b3ec0d3abd43506af
-      size: 165373
+      md5: 1b4a6dfb48f43236599b8edf01eeced9
+      size: 149158
     - path: results/EroticVsOthers/DummyDatacleaner/CountVectorizer1000/MLP/MLP1.json
       hash: md5
-      md5: 21bb5e92c3023c8f4b35bf673fa83a65
-      size: 465
+      md5: f647041255d19f23e4ca7a3c02e6327b
+      size: 464
   evaluate_classification@data64-model2:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "CountVectorizer1000"
       "MLP" "MLP2"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_CountVectorizer1000
       hash: md5
-      md5: a835cac0e17e321c42755e1a42a34e21.dir
-      size: 7666397
+      md5: d6aa082153f852eaf49de21012424b6f.dir
+      size: 7630837
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21307,11 +21307,11 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/CountVectorizer1000/MLP/MLP2/out_mlflow.zip
       hash: md5
-      md5: c27b9a3d21ffa9d6bc79565a1d682103
-      size: 164264
+      md5: 1c400ed2af99aab725c35c53d14e4bd9
+      size: 145063
     - path: results/EroticVsOthers/DummyDatacleaner/CountVectorizer1000/MLP/MLP2.json
       hash: md5
-      md5: 1e3ffc3931fb6afa3a8cb71959296536
+      md5: 3822b19e04b4df791d791e78ec79fac0
       size: 466
   evaluate_classification@data64-model3:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "CountVectorizer1000"
@@ -21319,8 +21319,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_CountVectorizer1000
       hash: md5
-      md5: a835cac0e17e321c42755e1a42a34e21.dir
-      size: 7666397
+      md5: d6aa082153f852eaf49de21012424b6f.dir
+      size: 7630837
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21342,11 +21342,11 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/CountVectorizer1000/MLP/MLP3/out_mlflow.zip
       hash: md5
-      md5: c83cb3d59e994f90f33e0db5742dbbfb
-      size: 164059
+      md5: eadf882207d14cc843d236bd393b898e
+      size: 143780
     - path: results/EroticVsOthers/DummyDatacleaner/CountVectorizer1000/MLP/MLP3.json
       hash: md5
-      md5: 1cdda9260ffb9f993057f0c8c2cc12f2
+      md5: f527ff085e09e3d5e39e0f87cff9a5fe
       size: 466
   evaluate_classification@data65-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "CountVectorizer5000"
@@ -21354,8 +21354,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: 3e3ef09b0b61d72534afd981c794ac9e.dir
-      size: 14974752
+      md5: 97f59ba373a3f8b50f30eb2935c1928e.dir
+      size: 14926805
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -21377,12 +21377,12 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/CountVectorizer5000/RandomForest/RandomForest1/out_mlflow.zip
       hash: md5
-      md5: e74731f27d61ce1cc1c67914979d6055
-      size: 126643
+      md5: 2bcdafaad10706d8470000eb17eebfc9
+      size: 114656
     - path: 
         results/EroticVsOthers/DummyDatacleaner/CountVectorizer5000/RandomForest/RandomForest1.json
       hash: md5
-      md5: 53331bf98b2bc95db9d42c2d77241d8d
+      md5: a547cf3963a67adafd37015533334e15
       size: 306
   evaluate_classification@data65-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "CountVectorizer5000"
@@ -21390,8 +21390,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: 3e3ef09b0b61d72534afd981c794ac9e.dir
-      size: 14974752
+      md5: 97f59ba373a3f8b50f30eb2935c1928e.dir
+      size: 14926805
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21413,20 +21413,20 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/CountVectorizer5000/MLP/MLP1/out_mlflow.zip
       hash: md5
-      md5: 2a7bde7e2b1ed31e258f69f8e8139693
-      size: 165727
+      md5: 4eb7a21340a808f92b093fe7ef302b9f
+      size: 142865
     - path: results/EroticVsOthers/DummyDatacleaner/CountVectorizer5000/MLP/MLP1.json
       hash: md5
-      md5: 13a32a305a31f2147ca07c35dc09c5cf
-      size: 465
+      md5: 580d1a8a9a1053763d7332704178cc61
+      size: 466
   evaluate_classification@data65-model2:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "CountVectorizer5000"
       "MLP" "MLP2"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: 3e3ef09b0b61d72534afd981c794ac9e.dir
-      size: 14974752
+      md5: 97f59ba373a3f8b50f30eb2935c1928e.dir
+      size: 14926805
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21448,20 +21448,20 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/CountVectorizer5000/MLP/MLP2/out_mlflow.zip
       hash: md5
-      md5: 181ca48c1d138a27bef53ae1243ab8e8
-      size: 166411
+      md5: b6dfabb474653097996728da941c7d97
+      size: 143455
     - path: results/EroticVsOthers/DummyDatacleaner/CountVectorizer5000/MLP/MLP2.json
       hash: md5
-      md5: 0de5a0f9130b2ee7da3896876b043f11
-      size: 466
+      md5: 6fad0139e86ea3cfde66b375c511f88c
+      size: 465
   evaluate_classification@data65-model3:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "CountVectorizer5000"
       "MLP" "MLP3"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: 3e3ef09b0b61d72534afd981c794ac9e.dir
-      size: 14974752
+      md5: 97f59ba373a3f8b50f30eb2935c1928e.dir
+      size: 14926805
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21483,11 +21483,11 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/CountVectorizer5000/MLP/MLP3/out_mlflow.zip
       hash: md5
-      md5: d30db14e3ab46a081005f50396c091ff
-      size: 165760
+      md5: 7492bdf18f0e654821320d7850d375a3
+      size: 141425
     - path: results/EroticVsOthers/DummyDatacleaner/CountVectorizer5000/MLP/MLP3.json
       hash: md5
-      md5: 6059c2aedc309f929d3395211cc3e369
+      md5: d8e179ca0c05d7ec4b7061558a700e68
       size: 465
   evaluate_classification@data66-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "DPEBPVectorizer100Avg"
@@ -21495,8 +21495,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: a1aff90c88ad304bffb16131e155fd99.dir
-      size: 23840130
+      md5: 186e11b7e81e4cdab33d849e9d34db2c.dir
+      size: 22964718
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -21518,12 +21518,12 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/DPEBPVectorizer100Avg/RandomForest/RandomForest1/out_mlflow.zip
       hash: md5
-      md5: cc585ac2f2bed4667b101c3f99703794
-      size: 128696
+      md5: 711b6a3bbdf44ea8755540cb1bc812ae
+      size: 114923
     - path: 
         results/EroticVsOthers/DummyDatacleaner/DPEBPVectorizer100Avg/RandomForest/RandomForest1.json
       hash: md5
-      md5: 8bb9d06f198f6ee7aa3941f3e2637c75
+      md5: 46a9a3ff822750eb8a1093ccdfd00c74
       size: 308
   evaluate_classification@data66-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "DPEBPVectorizer100Avg"
@@ -21531,8 +21531,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: a1aff90c88ad304bffb16131e155fd99.dir
-      size: 23840130
+      md5: 186e11b7e81e4cdab33d849e9d34db2c.dir
+      size: 22964718
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21554,11 +21554,11 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP1/out_mlflow.zip
       hash: md5
-      md5: f2537c8df8b39ff6a8e9ee7347453fe8
-      size: 169032
+      md5: 1bf0f11ed9ebc910a2a1208a75d501e9
+      size: 161233
     - path: results/EroticVsOthers/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP1.json
       hash: md5
-      md5: 5ff86425f71bd6af65163d1b126b2b16
+      md5: a738105e0ac48562ecb08c3cbd2c48c5
       size: 467
   evaluate_classification@data66-model2:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "DPEBPVectorizer100Avg"
@@ -21566,8 +21566,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: a1aff90c88ad304bffb16131e155fd99.dir
-      size: 23840130
+      md5: 186e11b7e81e4cdab33d849e9d34db2c.dir
+      size: 22964718
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21589,20 +21589,20 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP2/out_mlflow.zip
       hash: md5
-      md5: 07baf4a08bf60572867a3644e09b32aa
-      size: 171213
+      md5: 4e4d6368057574139eec71c209ce6ad8
+      size: 163637
     - path: results/EroticVsOthers/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP2.json
       hash: md5
-      md5: 62675e9c73a8978f435cbe9ca150c4b8
-      size: 467
+      md5: 9a2739a4e321f03a345ed023d0ef8128
+      size: 468
   evaluate_classification@data66-model3:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "DPEBPVectorizer100Avg"
       "MLP" "MLP3"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: a1aff90c88ad304bffb16131e155fd99.dir
-      size: 23840130
+      md5: 186e11b7e81e4cdab33d849e9d34db2c.dir
+      size: 22964718
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21624,11 +21624,11 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP3/out_mlflow.zip
       hash: md5
-      md5: f1ffe76331d31b95bd042ef8120a5a8c
-      size: 171127
+      md5: 8d75c122aff7da45c7a1d41bd60acda9
+      size: 161500
     - path: results/EroticVsOthers/DummyDatacleaner/DPEBPVectorizer100Avg/MLP/MLP3.json
       hash: md5
-      md5: 3634ee2dfbfa8f9d2a9099ff23d11346
+      md5: 7dff66ec832bd3ce8fd25a22cd112302
       size: 468
   evaluate_classification@data67-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "FullMorphTagVectorizer"
@@ -21636,8 +21636,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: dde92e1a9707c9b470e39331820fcaa3.dir
-      size: 14915160
+      md5: 5af782ec5857e00472dd7a5daac5b968.dir
+      size: 14894885
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -21659,12 +21659,12 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/FullMorphTagVectorizer/RandomForest/RandomForest1/out_mlflow.zip
       hash: md5
-      md5: ff7f59bd2eb19fbfad94e5ee4e90e5a7
-      size: 127398
+      md5: f3a1b91f05fd76085d78a6803b699c02
+      size: 114619
     - path: 
         results/EroticVsOthers/DummyDatacleaner/FullMorphTagVectorizer/RandomForest/RandomForest1.json
       hash: md5
-      md5: fb4f24cbac64d525b44d168b18c5ebb6
+      md5: 3121048710e7a5da42c86c270c89add8
       size: 309
   evaluate_classification@data67-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "FullMorphTagVectorizer"
@@ -21672,8 +21672,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: dde92e1a9707c9b470e39331820fcaa3.dir
-      size: 14915160
+      md5: 5af782ec5857e00472dd7a5daac5b968.dir
+      size: 14894885
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21695,11 +21695,11 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/FullMorphTagVectorizer/MLP/MLP1/out_mlflow.zip
       hash: md5
-      md5: aa5868965c7f22365bc18c5dfe11fefb
-      size: 174194
+      md5: df22d391fc6206871f2a6f5e996e5e2c
+      size: 157156
     - path: results/EroticVsOthers/DummyDatacleaner/FullMorphTagVectorizer/MLP/MLP1.json
       hash: md5
-      md5: dc49590329e03a4dfecbde6707e027c9
+      md5: 9dcce7ef2af6c044b5cd08383e846b4c
       size: 468
   evaluate_classification@data67-model2:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "FullMorphTagVectorizer"
@@ -21707,8 +21707,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: dde92e1a9707c9b470e39331820fcaa3.dir
-      size: 14915160
+      md5: 5af782ec5857e00472dd7a5daac5b968.dir
+      size: 14894885
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21730,11 +21730,11 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/FullMorphTagVectorizer/MLP/MLP2/out_mlflow.zip
       hash: md5
-      md5: 34a9c369be660455d4445bf02bf162f7
-      size: 172084
+      md5: 6e6e4a02df7510ef0bcc777a592ccfdb
+      size: 160455
     - path: results/EroticVsOthers/DummyDatacleaner/FullMorphTagVectorizer/MLP/MLP2.json
       hash: md5
-      md5: 0107ade17b460d5d0ba18202a4b3aeea
+      md5: 93a22eadabb19bfac12b1fffa56f2808
       size: 468
   evaluate_classification@data67-model3:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "FullMorphTagVectorizer"
@@ -21742,8 +21742,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: dde92e1a9707c9b470e39331820fcaa3.dir
-      size: 14915160
+      md5: 5af782ec5857e00472dd7a5daac5b968.dir
+      size: 14894885
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21765,20 +21765,20 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/FullMorphTagVectorizer/MLP/MLP3/out_mlflow.zip
       hash: md5
-      md5: c57fc33488a3e53e6e7b3140417d9e2f
-      size: 174371
+      md5: de6eb48684e684e195e8693eb6bd9a7b
+      size: 152434
     - path: results/EroticVsOthers/DummyDatacleaner/FullMorphTagVectorizer/MLP/MLP3.json
       hash: md5
-      md5: 0d2b8f5374a5e418143771ce67a52d72
-      size: 467
+      md5: ab5e8f65452fb24dfe6e7fa5daad53bf
+      size: 469
   evaluate_classification@data68-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "HerbertVectorizer"
       "RandomForest" "RandomForest1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_HerbertVectorizer
       hash: md5
-      md5: f7d259338e5a1e0c868a113ef2779329.dir
-      size: 181436927
+      md5: ebf230eb8d8f228ef1705777ee836f01.dir
+      size: 179359448
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -21800,21 +21800,21 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/HerbertVectorizer/RandomForest/RandomForest1/out_mlflow.zip
       hash: md5
-      md5: aaef93a50b74edaef5c6cf38252647d0
-      size: 128108
+      md5: da4a5db432529ca83681dc868d21dc7b
+      size: 112723
     - path: 
         results/EroticVsOthers/DummyDatacleaner/HerbertVectorizer/RandomForest/RandomForest1.json
       hash: md5
-      md5: 52304e1a2d6f051a45d6de37afda8f26
-      size: 304
+      md5: 8e90d205282dcf35571435dc67dceb0d
+      size: 302
   evaluate_classification@data68-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "HerbertVectorizer"
       "MLP" "MLP1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_HerbertVectorizer
       hash: md5
-      md5: f7d259338e5a1e0c868a113ef2779329.dir
-      size: 181436927
+      md5: ebf230eb8d8f228ef1705777ee836f01.dir
+      size: 179359448
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21836,11 +21836,11 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/HerbertVectorizer/MLP/MLP1/out_mlflow.zip
       hash: md5
-      md5: b0cda358eaaff3fa9e456291d72e03d5
-      size: 174143
+      md5: 07e48adcc2896df9a4737e5ba92cff05
+      size: 168027
     - path: results/EroticVsOthers/DummyDatacleaner/HerbertVectorizer/MLP/MLP1.json
       hash: md5
-      md5: 27ee65c553b056c8df9d6ae687caf0bb
+      md5: db8653cb5bffd1e0901b1ec9352d3adf
       size: 464
   evaluate_classification@data68-model2:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "HerbertVectorizer"
@@ -21848,8 +21848,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_HerbertVectorizer
       hash: md5
-      md5: f7d259338e5a1e0c868a113ef2779329.dir
-      size: 181436927
+      md5: ebf230eb8d8f228ef1705777ee836f01.dir
+      size: 179359448
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21871,11 +21871,11 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/HerbertVectorizer/MLP/MLP2/out_mlflow.zip
       hash: md5
-      md5: 9429ed59a6479ae2ad5d1eb8bc11e6da
-      size: 172766
+      md5: 2a0494a36d26c44e21cf448f66dba2ac
+      size: 164219
     - path: results/EroticVsOthers/DummyDatacleaner/HerbertVectorizer/MLP/MLP2.json
       hash: md5
-      md5: ad802a4c953f4d2d3ece03afaaceb328
+      md5: 9741e3472d4911cd183763fc6df25820
       size: 464
   evaluate_classification@data68-model3:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "HerbertVectorizer"
@@ -21883,8 +21883,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_HerbertVectorizer
       hash: md5
-      md5: f7d259338e5a1e0c868a113ef2779329.dir
-      size: 181436927
+      md5: ebf230eb8d8f228ef1705777ee836f01.dir
+      size: 179359448
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21906,20 +21906,20 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/HerbertVectorizer/MLP/MLP3/out_mlflow.zip
       hash: md5
-      md5: a16b12468ca08eca6adfc4f586a7d447
-      size: 172258
+      md5: 6811e96c778b73d4c65a915798eb4065
+      size: 164629
     - path: results/EroticVsOthers/DummyDatacleaner/HerbertVectorizer/MLP/MLP3.json
       hash: md5
-      md5: eedd114759bfaa20bceb475703c46f13
-      size: 463
+      md5: 20b0ec876386f5d83f0f149887866e40
+      size: 464
   evaluate_classification@data69-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "SpacyMorphTagVectorizer"
       "RandomForest" "RandomForest1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 4e67a28b4b3385f4e07d69ccb5fb5198.dir
-      size: 12302483
+      md5: 8d0efebd1a6e3e42d084668b93cb08f3.dir
+      size: 12006326
       nfiles: 1
     - path: imports_validator/evaluate/RandomForest.yaml
       hash: md5
@@ -21941,12 +21941,12 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/SpacyMorphTagVectorizer/RandomForest/RandomForest1/out_mlflow.zip
       hash: md5
-      md5: 87e5dbd15ccd07a0b19e07ffe530b645
-      size: 128636
+      md5: 06ba6fc205dc9691d66ca7aac09eef84
+      size: 114736
     - path: 
         results/EroticVsOthers/DummyDatacleaner/SpacyMorphTagVectorizer/RandomForest/RandomForest1.json
       hash: md5
-      md5: 89f9930a5f4f6cf3f87d642f4be3331b
+      md5: 542cecb35bf1c1195ef6c32ef79ce9a5
       size: 310
   evaluate_classification@data69-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "SpacyMorphTagVectorizer"
@@ -21954,8 +21954,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 4e67a28b4b3385f4e07d69ccb5fb5198.dir
-      size: 12302483
+      md5: 8d0efebd1a6e3e42d084668b93cb08f3.dir
+      size: 12006326
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -21977,20 +21977,20 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/SpacyMorphTagVectorizer/MLP/MLP1/out_mlflow.zip
       hash: md5
-      md5: 592c82e872fcdcc57c6fea310aa48b41
-      size: 171016
+      md5: a31b152e0043ecaffb00f7ba42b5306a
+      size: 163792
     - path: results/EroticVsOthers/DummyDatacleaner/SpacyMorphTagVectorizer/MLP/MLP1.json
       hash: md5
-      md5: da62c58c08c40d422b9513f42288193a
-      size: 469
+      md5: b37a5f89c3491d72169a24d0212b21fa
+      size: 470
   evaluate_classification@data69-model2:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "SpacyMorphTagVectorizer"
       "MLP" "MLP2"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 4e67a28b4b3385f4e07d69ccb5fb5198.dir
-      size: 12302483
+      md5: 8d0efebd1a6e3e42d084668b93cb08f3.dir
+      size: 12006326
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -22012,20 +22012,20 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/SpacyMorphTagVectorizer/MLP/MLP2/out_mlflow.zip
       hash: md5
-      md5: f9cc67d3e5ade6c8d23675ad94a444f0
-      size: 170908
+      md5: 1625eeb487044309f8638bd488ff096e
+      size: 162793
     - path: results/EroticVsOthers/DummyDatacleaner/SpacyMorphTagVectorizer/MLP/MLP2.json
       hash: md5
-      md5: 6eabfd6ff1753fc2411986906f58136b
-      size: 470
+      md5: 07a16bd5a123af086b869b6125c9afcb
+      size: 468
   evaluate_classification@data69-model3:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "SpacyMorphTagVectorizer"
       "MLP" "MLP3"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 4e67a28b4b3385f4e07d69ccb5fb5198.dir
-      size: 12302483
+      md5: 8d0efebd1a6e3e42d084668b93cb08f3.dir
+      size: 12006326
       nfiles: 1
     - path: imports_validator/evaluate/MLP.yaml
       hash: md5
@@ -22047,11 +22047,11 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/SpacyMorphTagVectorizer/MLP/MLP3/out_mlflow.zip
       hash: md5
-      md5: 75fee96d80f26440c7a020c3c7978e2f
-      size: 165444
+      md5: 2c9aba2283e8c97353fa1c605852097a
+      size: 162735
     - path: results/EroticVsOthers/DummyDatacleaner/SpacyMorphTagVectorizer/MLP/MLP3.json
       hash: md5
-      md5: 066c1b10faf9b08817ba4b1b7612408a
+      md5: a57ae8ad52a8449bdd19c0ec3f5532be
       size: 468
   evaluate_clustering@data60-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "TfidfVectorizer1000"
@@ -22059,8 +22059,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_TfidfVectorizer1000
       hash: md5
-      md5: bc39d24572ba21b6e56d748233c639c9.dir
-      size: 32804233
+      md5: 0fbd9df3ac7acd896e80db372457d3ee.dir
+      size: 32643146
       nfiles: 1
     - path: imports_validator/evaluate/DBSCAN.yaml
       hash: md5
@@ -22082,20 +22082,20 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/TfidfVectorizer1000/DBSCAN/DBSCAN1/out_mlflow.zip
       hash: md5
-      md5: 38b42efa3b6a2033cabaf81f3d416c8a
-      size: 656004
+      md5: 568e4c9d0bf0a95b53b64db9aab42922
+      size: 646486
     - path: results/EroticVsOthers/DummyDatacleaner/TfidfVectorizer1000/DBSCAN/DBSCAN1.json
       hash: md5
-      md5: 70264de49cbdbe9a62bbbb3d78da97d6
-      size: 331
+      md5: ba1666462c01c1df9f1d00b9e5fc857a
+      size: 323
   evaluate_clustering@data60-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "TfidfVectorizer1000"
       "AffinityPropagation" "AffinityPropagation1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_TfidfVectorizer1000
       hash: md5
-      md5: bc39d24572ba21b6e56d748233c639c9.dir
-      size: 32804233
+      md5: 0fbd9df3ac7acd896e80db372457d3ee.dir
+      size: 32643146
       nfiles: 1
     - path: imports_validator/evaluate/AffinityPropagation.yaml
       hash: md5
@@ -22117,12 +22117,12 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/TfidfVectorizer1000/AffinityPropagation/AffinityPropagation1/out_mlflow.zip
       hash: md5
-      md5: 9443bb067dc74457750e672fc293bc3f
-      size: 892355
+      md5: d9a3832893bb622659b83a531de003c5
+      size: 556141
     - path: 
         results/EroticVsOthers/DummyDatacleaner/TfidfVectorizer1000/AffinityPropagation/AffinityPropagation1.json
       hash: md5
-      md5: 80709456788fbe3d909fda16fff68585
+      md5: 0e656facce26442b853bc1bff7070154
       size: 473
   evaluate_clustering@data61-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "TfidfVectorizer5000"
@@ -22130,8 +22130,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_TfidfVectorizer5000
       hash: md5
-      md5: ce62216dfbef9f3f1e33e48057236f1c.dir
-      size: 50927012
+      md5: e32dcdf46ba384d480f1e865b4bdcffd.dir
+      size: 50686979
       nfiles: 1
     - path: imports_validator/evaluate/DBSCAN.yaml
       hash: md5
@@ -22153,20 +22153,20 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/TfidfVectorizer5000/DBSCAN/DBSCAN1/out_mlflow.zip
       hash: md5
-      md5: 4f7d6a37e50ccea17ac99835d61004a4
-      size: 558109
+      md5: 45426ab24e7de83a4072ce66dce819cc
+      size: 639759
     - path: results/EroticVsOthers/DummyDatacleaner/TfidfVectorizer5000/DBSCAN/DBSCAN1.json
       hash: md5
-      md5: 86933bad2b8548c1605c24e5ecc680b3
-      size: 331
+      md5: cffebe924980709a506761e06bddb51f
+      size: 323
   evaluate_clustering@data61-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "TfidfVectorizer5000"
       "AffinityPropagation" "AffinityPropagation1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_TfidfVectorizer5000
       hash: md5
-      md5: ce62216dfbef9f3f1e33e48057236f1c.dir
-      size: 50927012
+      md5: e32dcdf46ba384d480f1e865b4bdcffd.dir
+      size: 50686979
       nfiles: 1
     - path: imports_validator/evaluate/AffinityPropagation.yaml
       hash: md5
@@ -22188,21 +22188,21 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/TfidfVectorizer5000/AffinityPropagation/AffinityPropagation1/out_mlflow.zip
       hash: md5
-      md5: d45f68df14a28f5ea2cb5b0dfb78c202
-      size: 815993
+      md5: 999ad66da6229f2d7255c9a51a50310a
+      size: 1077238
     - path: 
         results/EroticVsOthers/DummyDatacleaner/TfidfVectorizer5000/AffinityPropagation/AffinityPropagation1.json
       hash: md5
-      md5: 855d652548964412dff01465f5049ef2
-      size: 473
+      md5: 76d1f6590b5667cc5bfffe6c1ceeb348
+      size: 476
   evaluate_clustering@data62-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "BigramMorphTagVectorizer100"
       "DBSCAN" "DBSCAN1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: dd646eaf23a0fb9fd7782b0dc04764b3.dir
-      size: 49220268
+      md5: 47a40053ef5d3d93e910b75ef3bc4a95.dir
+      size: 47845370
       nfiles: 1
     - path: imports_validator/evaluate/DBSCAN.yaml
       hash: md5
@@ -22224,21 +22224,21 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer100/DBSCAN/DBSCAN1/out_mlflow.zip
       hash: md5
-      md5: 76d10b0690b3a1be0b2f64c03fe7e59d
-      size: 593901
+      md5: 4e09cdfd724db9fccc6c0235aa174129
+      size: 547616
     - path: 
         results/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer100/DBSCAN/DBSCAN1.json
       hash: md5
-      md5: c28633392f20bd1f9095c7b7210b64f2
-      size: 393
+      md5: 6d31616664330a8e71ee8c9c488cd4d7
+      size: 394
   evaluate_clustering@data62-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "BigramMorphTagVectorizer100"
       "AffinityPropagation" "AffinityPropagation1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_BigramMorphTagVectorizer100
       hash: md5
-      md5: dd646eaf23a0fb9fd7782b0dc04764b3.dir
-      size: 49220268
+      md5: 47a40053ef5d3d93e910b75ef3bc4a95.dir
+      size: 47845370
       nfiles: 1
     - path: imports_validator/evaluate/AffinityPropagation.yaml
       hash: md5
@@ -22260,21 +22260,21 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer100/AffinityPropagation/AffinityPropagation1/out_mlflow.zip
       hash: md5
-      md5: 1580454631b9f0864467a67e325ee3ad
-      size: 984281
+      md5: 5289f23dd570797f9d7d8e98d0e5e56a
+      size: 944348
     - path: 
         results/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer100/AffinityPropagation/AffinityPropagation1.json
       hash: md5
-      md5: 016e6b5891250126c743e425f6511887
-      size: 486
+      md5: b1d1debde0112ac1f2dbfd9015ecd3aa
+      size: 484
   evaluate_clustering@data63-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "BigramMorphTagVectorizer370"
       "DBSCAN" "DBSCAN1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_BigramMorphTagVectorizer370
       hash: md5
-      md5: a66df97f8ddb892b0c0ef1ea5be70f06.dir
-      size: 182170081
+      md5: 6facd9138cbeefd6cd712fd345f4ea20.dir
+      size: 180087025
       nfiles: 1
     - path: imports_validator/evaluate/DBSCAN.yaml
       hash: md5
@@ -22296,21 +22296,21 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer370/DBSCAN/DBSCAN1/out_mlflow.zip
       hash: md5
-      md5: 259af42d0b222c0fbcc31965030d9b0a
-      size: 769047
+      md5: 56970582bce26d915c1cbeba09caef69
+      size: 759839
     - path: 
         results/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer370/DBSCAN/DBSCAN1.json
       hash: md5
-      md5: cfd9ffa2232dc01616faf8d1676db84d
-      size: 395
+      md5: b6e1b09f34aecd47efaf0119600cc058
+      size: 396
   evaluate_clustering@data63-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "BigramMorphTagVectorizer370"
       "AffinityPropagation" "AffinityPropagation1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_BigramMorphTagVectorizer370
       hash: md5
-      md5: a66df97f8ddb892b0c0ef1ea5be70f06.dir
-      size: 182170081
+      md5: 6facd9138cbeefd6cd712fd345f4ea20.dir
+      size: 180087025
       nfiles: 1
     - path: imports_validator/evaluate/AffinityPropagation.yaml
       hash: md5
@@ -22332,21 +22332,21 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer370/AffinityPropagation/AffinityPropagation1/out_mlflow.zip
       hash: md5
-      md5: 8295b06b806de1e04c16bf57297360b4
-      size: 892506
+      md5: e30efe085393e72045a614fb8effca26
+      size: 909412
     - path: 
         results/EroticVsOthers/DummyDatacleaner/BigramMorphTagVectorizer370/AffinityPropagation/AffinityPropagation1.json
       hash: md5
-      md5: d9441869d64563e515d51279dd64ae8f
-      size: 484
+      md5: 3ac3945748556cda2cbd7913ef032b01
+      size: 486
   evaluate_clustering@data64-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "CountVectorizer1000"
       "DBSCAN" "DBSCAN1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_CountVectorizer1000
       hash: md5
-      md5: a835cac0e17e321c42755e1a42a34e21.dir
-      size: 7666397
+      md5: d6aa082153f852eaf49de21012424b6f.dir
+      size: 7630837
       nfiles: 1
     - path: imports_validator/evaluate/DBSCAN.yaml
       hash: md5
@@ -22368,20 +22368,20 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/CountVectorizer1000/DBSCAN/DBSCAN1/out_mlflow.zip
       hash: md5
-      md5: cc107a94f994dd79f592be3ae23ceb5e
-      size: 803124
+      md5: fd79170ddec4c5076ea9de6a127e480b
+      size: 726908
     - path: results/EroticVsOthers/DummyDatacleaner/CountVectorizer1000/DBSCAN/DBSCAN1.json
       hash: md5
-      md5: 68a2a012502b28cfad4a0bc96e5e7ac4
-      size: 331
+      md5: 8f4dae0f8e79340ce686c487ffb22c61
+      size: 323
   evaluate_clustering@data64-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "CountVectorizer1000"
       "AffinityPropagation" "AffinityPropagation1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_CountVectorizer1000
       hash: md5
-      md5: a835cac0e17e321c42755e1a42a34e21.dir
-      size: 7666397
+      md5: d6aa082153f852eaf49de21012424b6f.dir
+      size: 7630837
       nfiles: 1
     - path: imports_validator/evaluate/AffinityPropagation.yaml
       hash: md5
@@ -22403,21 +22403,21 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/CountVectorizer1000/AffinityPropagation/AffinityPropagation1/out_mlflow.zip
       hash: md5
-      md5: 7292208f77b65442055f662dbac4670b
-      size: 1189164
+      md5: 42fc4295672c90ffb4c94b21b802e3a1
+      size: 1149670
     - path: 
         results/EroticVsOthers/DummyDatacleaner/CountVectorizer1000/AffinityPropagation/AffinityPropagation1.json
       hash: md5
-      md5: 1ce1dc0725775a610a6f535237c0fd7d
-      size: 475
+      md5: c87d4e53565ab2714ce2d177a2a21bdd
+      size: 478
   evaluate_clustering@data65-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "CountVectorizer5000"
       "DBSCAN" "DBSCAN1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: 3e3ef09b0b61d72534afd981c794ac9e.dir
-      size: 14974752
+      md5: 97f59ba373a3f8b50f30eb2935c1928e.dir
+      size: 14926805
       nfiles: 1
     - path: imports_validator/evaluate/DBSCAN.yaml
       hash: md5
@@ -22439,20 +22439,20 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/CountVectorizer5000/DBSCAN/DBSCAN1/out_mlflow.zip
       hash: md5
-      md5: 6256819de79fd91666401fa98cc6a791
-      size: 777025
+      md5: fa807039919f9f53b92fb8fd4295220a
+      size: 741208
     - path: results/EroticVsOthers/DummyDatacleaner/CountVectorizer5000/DBSCAN/DBSCAN1.json
       hash: md5
-      md5: e15473e830b4b190ed707fb6646e32a1
-      size: 331
+      md5: dc4339984ad7d49495ba21819a570539
+      size: 323
   evaluate_clustering@data65-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "CountVectorizer5000"
       "AffinityPropagation" "AffinityPropagation1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_CountVectorizer5000
       hash: md5
-      md5: 3e3ef09b0b61d72534afd981c794ac9e.dir
-      size: 14974752
+      md5: 97f59ba373a3f8b50f30eb2935c1928e.dir
+      size: 14926805
       nfiles: 1
     - path: imports_validator/evaluate/AffinityPropagation.yaml
       hash: md5
@@ -22474,12 +22474,12 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/CountVectorizer5000/AffinityPropagation/AffinityPropagation1/out_mlflow.zip
       hash: md5
-      md5: 0d52272440442379ef1d5eb7c5a865be
-      size: 1160493
+      md5: e14481703e0a3d8fb689bc1ebc27cafc
+      size: 1147455
     - path: 
         results/EroticVsOthers/DummyDatacleaner/CountVectorizer5000/AffinityPropagation/AffinityPropagation1.json
       hash: md5
-      md5: 8b13bc749b73a8d9d304053fc6dcd134
+      md5: 2cb500775fdb2f002b2a4d79a68f6ede
       size: 475
   evaluate_clustering@data66-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "DPEBPVectorizer100Avg"
@@ -22487,8 +22487,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: a1aff90c88ad304bffb16131e155fd99.dir
-      size: 23840130
+      md5: 186e11b7e81e4cdab33d849e9d34db2c.dir
+      size: 22964718
       nfiles: 1
     - path: imports_validator/evaluate/DBSCAN.yaml
       hash: md5
@@ -22510,12 +22510,12 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/DPEBPVectorizer100Avg/DBSCAN/DBSCAN1/out_mlflow.zip
       hash: md5
-      md5: 21428e1a635dcffc68e87d341ab03b91
-      size: 934764
+      md5: 78f2718069cc32aa91a726a3e88a57c3
+      size: 870504
     - path: 
         results/EroticVsOthers/DummyDatacleaner/DPEBPVectorizer100Avg/DBSCAN/DBSCAN1.json
       hash: md5
-      md5: d592739cf047832783953535a3ea5d08
+      md5: 3bf48286627a6330bc16d6212ff10b44
       size: 388
   evaluate_clustering@data66-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "DPEBPVectorizer100Avg"
@@ -22523,8 +22523,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_DPEBPVectorizer100Avg
       hash: md5
-      md5: a1aff90c88ad304bffb16131e155fd99.dir
-      size: 23840130
+      md5: 186e11b7e81e4cdab33d849e9d34db2c.dir
+      size: 22964718
       nfiles: 1
     - path: imports_validator/evaluate/AffinityPropagation.yaml
       hash: md5
@@ -22546,21 +22546,21 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/DPEBPVectorizer100Avg/AffinityPropagation/AffinityPropagation1/out_mlflow.zip
       hash: md5
-      md5: a6a3d74d57e7f0cdeb5413aae0d1f5a4
-      size: 1166461
+      md5: d320ec4cc036922a179ff65f8d543a04
+      size: 1102650
     - path: 
         results/EroticVsOthers/DummyDatacleaner/DPEBPVectorizer100Avg/AffinityPropagation/AffinityPropagation1.json
       hash: md5
-      md5: 326d344ab285b7ce997f3622f39b0ef6
-      size: 477
+      md5: 02d351972c1d0213f76fd296a11205f1
+      size: 478
   evaluate_clustering@data67-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "FullMorphTagVectorizer"
       "DBSCAN" "DBSCAN1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: dde92e1a9707c9b470e39331820fcaa3.dir
-      size: 14915160
+      md5: 5af782ec5857e00472dd7a5daac5b968.dir
+      size: 14894885
       nfiles: 1
     - path: imports_validator/evaluate/DBSCAN.yaml
       hash: md5
@@ -22582,21 +22582,21 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/FullMorphTagVectorizer/DBSCAN/DBSCAN1/out_mlflow.zip
       hash: md5
-      md5: 72ad82a81715aaf96953e14a01b80efd
-      size: 807388
+      md5: 973a4b5a45590a98080f5208981b8951
+      size: 788869
     - path: 
         results/EroticVsOthers/DummyDatacleaner/FullMorphTagVectorizer/DBSCAN/DBSCAN1.json
       hash: md5
-      md5: dd48da666179c1eebb84752b03c7a03f
-      size: 390
+      md5: 9da583d0827907a953faf0d66bacc59a
+      size: 392
   evaluate_clustering@data67-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "FullMorphTagVectorizer"
       "AffinityPropagation" "AffinityPropagation1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_FullMorphTagVectorizer
       hash: md5
-      md5: dde92e1a9707c9b470e39331820fcaa3.dir
-      size: 14915160
+      md5: 5af782ec5857e00472dd7a5daac5b968.dir
+      size: 14894885
       nfiles: 1
     - path: imports_validator/evaluate/AffinityPropagation.yaml
       hash: md5
@@ -22618,12 +22618,12 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/FullMorphTagVectorizer/AffinityPropagation/AffinityPropagation1/out_mlflow.zip
       hash: md5
-      md5: 80317284e26d8058b1ee6e50cfedfca1
-      size: 967529
+      md5: 2d114e3cd4baafd69b77418776b7dc09
+      size: 908378
     - path: 
         results/EroticVsOthers/DummyDatacleaner/FullMorphTagVectorizer/AffinityPropagation/AffinityPropagation1.json
       hash: md5
-      md5: a96de904f85e17b0fd9774fd60bce733
+      md5: 9804da2e8b8daeaa71800d2db87230b1
       size: 479
   evaluate_clustering@data68-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "HerbertVectorizer"
@@ -22631,8 +22631,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_HerbertVectorizer
       hash: md5
-      md5: f7d259338e5a1e0c868a113ef2779329.dir
-      size: 181436927
+      md5: ebf230eb8d8f228ef1705777ee836f01.dir
+      size: 179359448
       nfiles: 1
     - path: imports_validator/evaluate/DBSCAN.yaml
       hash: md5
@@ -22654,20 +22654,20 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/HerbertVectorizer/DBSCAN/DBSCAN1/out_mlflow.zip
       hash: md5
-      md5: 3994375a15b56e20cc6e1cda9f629657
-      size: 511500
+      md5: 6ff7cbae78a2af8672de222759059161
+      size: 520580
     - path: results/EroticVsOthers/DummyDatacleaner/HerbertVectorizer/DBSCAN/DBSCAN1.json
       hash: md5
-      md5: 565cf22f3c470f8dfbe0b18c9cca57fc
-      size: 329
+      md5: 13df2fd769dbbacbb133bfd1314502af
+      size: 321
   evaluate_clustering@data68-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "HerbertVectorizer"
       "AffinityPropagation" "AffinityPropagation1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_HerbertVectorizer
       hash: md5
-      md5: f7d259338e5a1e0c868a113ef2779329.dir
-      size: 181436927
+      md5: ebf230eb8d8f228ef1705777ee836f01.dir
+      size: 179359448
       nfiles: 1
     - path: imports_validator/evaluate/AffinityPropagation.yaml
       hash: md5
@@ -22689,12 +22689,12 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/HerbertVectorizer/AffinityPropagation/AffinityPropagation1/out_mlflow.zip
       hash: md5
-      md5: b254479a0abcc9bd8b955057fed1139c
-      size: 875183
+      md5: e526a934b72e16a5a9eada454f4b4486
+      size: 917624
     - path: 
         results/EroticVsOthers/DummyDatacleaner/HerbertVectorizer/AffinityPropagation/AffinityPropagation1.json
       hash: md5
-      md5: a8ce3d9376a49d1a1a4712d558a6cd09
+      md5: 40fee0ac05a424ba66450f769c1c370f
       size: 474
   evaluate_clustering@data69-model0:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "SpacyMorphTagVectorizer"
@@ -22702,8 +22702,8 @@ stages:
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 4e67a28b4b3385f4e07d69ccb5fb5198.dir
-      size: 12302483
+      md5: 8d0efebd1a6e3e42d084668b93cb08f3.dir
+      size: 12006326
       nfiles: 1
     - path: imports_validator/evaluate/DBSCAN.yaml
       hash: md5
@@ -22725,21 +22725,21 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/SpacyMorphTagVectorizer/DBSCAN/DBSCAN1/out_mlflow.zip
       hash: md5
-      md5: e4e8cbee5a5cb5f5cf28a039215dbcde
-      size: 586840
+      md5: 33c201e81da1c1244376528078787b1d
+      size: 542342
     - path: 
         results/EroticVsOthers/DummyDatacleaner/SpacyMorphTagVectorizer/DBSCAN/DBSCAN1.json
       hash: md5
-      md5: b5d2c2cc55404e55ab1b5177776fe05c
-      size: 389
+      md5: ba9302c742dea69cd70e0d8c311bbff7
+      size: 391
   evaluate_clustering@data69-model1:
     cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "SpacyMorphTagVectorizer"
       "AffinityPropagation" "AffinityPropagation1"
     deps:
     - path: data/EroticVsOthers/DummyDatacleaner_SpacyMorphTagVectorizer
       hash: md5
-      md5: 4e67a28b4b3385f4e07d69ccb5fb5198.dir
-      size: 12302483
+      md5: 8d0efebd1a6e3e42d084668b93cb08f3.dir
+      size: 12006326
       nfiles: 1
     - path: imports_validator/evaluate/AffinityPropagation.yaml
       hash: md5
@@ -22761,10 +22761,245 @@ stages:
     - path: 
         mlruns_store/EroticVsOthers/DummyDatacleaner/SpacyMorphTagVectorizer/AffinityPropagation/AffinityPropagation1/out_mlflow.zip
       hash: md5
-      md5: 700e015e958ee48ee7071a084306e2c4
-      size: 1146963
+      md5: 19012fd88fdf0a32f65678e39a4c6090
+      size: 965615
     - path: 
         results/EroticVsOthers/DummyDatacleaner/SpacyMorphTagVectorizer/AffinityPropagation/AffinityPropagation1.json
       hash: md5
-      md5: ef55bffe6ebe832780681d8030fa26ce
-      size: 478
+      md5: 51ecb626d82aeb8fbe4e851b2c11124e
+      size: 480
+  vectorize@70:
+    cmd: python scripts/vectorize.py "EroticVsOthers" "DummyDatacleaner" "StyloMetrix"
+    deps:
+    - path: data/EroticVsOthers/DummyDatacleaner
+      hash: md5
+      md5: c709d04d7b055ac28fd43349fa446975.dir
+      size: 23711773
+      nfiles: 2
+    - path: imports_validator/vectorize/StyloMetrix.yaml
+      hash: md5
+      md5: 44f2290266d5b3014375294513bed450
+      size: 108
+    - path: scripts/vectorize.py
+      hash: md5
+      md5: 313deb9b0c0dc175f52248c04ddc2330
+      size: 798
+    - path: stages/vectorizers/StyloMetrix.py
+      hash: md5
+      md5: 550c577dc820097999fb1ad3afb9a0e2
+      size: 995
+    outs:
+    - path: data/EroticVsOthers/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: f39ebceb90509cfef53619d0cc69e9d6.dir
+      size: 16128362
+      nfiles: 1
+  evaluate_classification@data70-model0:
+    cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "StyloMetrix"
+      "RandomForest" "RandomForest1"
+    deps:
+    - path: data/EroticVsOthers/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: f39ebceb90509cfef53619d0cc69e9d6.dir
+      size: 16128362
+      nfiles: 1
+    - path: imports_validator/evaluate/RandomForest.yaml
+      hash: md5
+      md5: 4dd7310465eef87f534e9fa50ffd871b
+      size: 216
+    - path: params/RandomForest1.yaml
+      hash: md5
+      md5: 911fa5beb1765bda142542bfbf82b586
+      size: 17
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/RandomForest.py
+      hash: md5
+      md5: 571b70940a729164e78914b3a16a41f7
+      size: 1476
+    outs:
+    - path: 
+        mlruns_store/EroticVsOthers/DummyDatacleaner/StyloMetrix/RandomForest/RandomForest1/out_mlflow.zip
+      hash: md5
+      md5: b659922eca47acb020fab47c1ca16198
+      size: 116776
+    - path: 
+        results/EroticVsOthers/DummyDatacleaner/StyloMetrix/RandomForest/RandomForest1.json
+      hash: md5
+      md5: 312c5edd68d1a93c87fc968275e18210
+      size: 297
+  evaluate_classification@data70-model1:
+    cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "StyloMetrix"
+      "MLP" "MLP1"
+    deps:
+    - path: data/EroticVsOthers/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: f39ebceb90509cfef53619d0cc69e9d6.dir
+      size: 16128362
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 4dd7310465eef87f534e9fa50ffd871b
+      size: 216
+    - path: params/MLP1.yaml
+      hash: md5
+      md5: 37c50ab93123590daa2ce4cc339014d4
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 3146b629f42d8213ae553ad0f6ae0b4a
+      size: 2383
+    outs:
+    - path: mlruns_store/EroticVsOthers/DummyDatacleaner/StyloMetrix/MLP/MLP1/out_mlflow.zip
+      hash: md5
+      md5: 453642e091d6375b0bc31f9f03a52d4a
+      size: 299037
+    - path: results/EroticVsOthers/DummyDatacleaner/StyloMetrix/MLP/MLP1.json
+      hash: md5
+      md5: 72d50e3df2943daf57688f0ede0e678e
+      size: 458
+  evaluate_classification@data70-model2:
+    cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "StyloMetrix"
+      "MLP" "MLP2"
+    deps:
+    - path: data/EroticVsOthers/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: f39ebceb90509cfef53619d0cc69e9d6.dir
+      size: 16128362
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 4dd7310465eef87f534e9fa50ffd871b
+      size: 216
+    - path: params/MLP2.yaml
+      hash: md5
+      md5: 9f3f22b949093caa0eebabe883a481ac
+      size: 224
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 3146b629f42d8213ae553ad0f6ae0b4a
+      size: 2383
+    outs:
+    - path: mlruns_store/EroticVsOthers/DummyDatacleaner/StyloMetrix/MLP/MLP2/out_mlflow.zip
+      hash: md5
+      md5: 87e78375a5cf1e3e6578992ce9b8d641
+      size: 160474
+    - path: results/EroticVsOthers/DummyDatacleaner/StyloMetrix/MLP/MLP2.json
+      hash: md5
+      md5: 430b1c3d5bbd9436db7a8f11b6a0889f
+      size: 458
+  evaluate_classification@data70-model3:
+    cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "StyloMetrix"
+      "MLP" "MLP3"
+    deps:
+    - path: data/EroticVsOthers/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: f39ebceb90509cfef53619d0cc69e9d6.dir
+      size: 16128362
+      nfiles: 1
+    - path: imports_validator/evaluate/MLP.yaml
+      hash: md5
+      md5: 4dd7310465eef87f534e9fa50ffd871b
+      size: 216
+    - path: params/MLP3.yaml
+      hash: md5
+      md5: 15e23c59857ca072d2a915cbf1deca09
+      size: 222
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/MLP.py
+      hash: md5
+      md5: 3146b629f42d8213ae553ad0f6ae0b4a
+      size: 2383
+    outs:
+    - path: mlruns_store/EroticVsOthers/DummyDatacleaner/StyloMetrix/MLP/MLP3/out_mlflow.zip
+      hash: md5
+      md5: b1c2728c9ef0f1424500502b91221b68
+      size: 159900
+    - path: results/EroticVsOthers/DummyDatacleaner/StyloMetrix/MLP/MLP3.json
+      hash: md5
+      md5: 9473ff02eb98216b3f22b80d3ca94f26
+      size: 456
+  evaluate_clustering@data70-model0:
+    cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "StyloMetrix"
+      "DBSCAN" "DBSCAN1"
+    deps:
+    - path: data/EroticVsOthers/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: f39ebceb90509cfef53619d0cc69e9d6.dir
+      size: 16128362
+      nfiles: 1
+    - path: imports_validator/evaluate/DBSCAN.yaml
+      hash: md5
+      md5: e395c7f0e65ebfd3cb4dfe94a92ebdab
+      size: 216
+    - path: params/DBSCAN1.yaml
+      hash: md5
+      md5: d38419d3470a8b18f122e9c6733d0f4d
+      size: 8
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/DBSCAN.py
+      hash: md5
+      md5: c3f54d922789fd53969af8c06c0e08f7
+      size: 1071
+    outs:
+    - path: 
+        mlruns_store/EroticVsOthers/DummyDatacleaner/StyloMetrix/DBSCAN/DBSCAN1/out_mlflow.zip
+      hash: md5
+      md5: d31ac236595d6f8bbc839618492cf70f
+      size: 609816
+    - path: results/EroticVsOthers/DummyDatacleaner/StyloMetrix/DBSCAN/DBSCAN1.json
+      hash: md5
+      md5: b5c82acef9d3721c87487656e8d2a419
+      size: 380
+  evaluate_clustering@data70-model1:
+    cmd: python scripts/evaluate.py "EroticVsOthers" "DummyDatacleaner" "StyloMetrix"
+      "AffinityPropagation" "AffinityPropagation1"
+    deps:
+    - path: data/EroticVsOthers/DummyDatacleaner_StyloMetrix
+      hash: md5
+      md5: f39ebceb90509cfef53619d0cc69e9d6.dir
+      size: 16128362
+      nfiles: 1
+    - path: imports_validator/evaluate/AffinityPropagation.yaml
+      hash: md5
+      md5: e395c7f0e65ebfd3cb4dfe94a92ebdab
+      size: 216
+    - path: params/AffinityPropagation1.yaml
+      hash: md5
+      md5: 3fed7f43a23d521791cb363c2a9ea5eb
+      size: 70
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: ea49b7cebc0803f03157ca6696987f14
+      size: 1058
+    - path: stages/models/AffinityPropagation.py
+      hash: md5
+      md5: 8428f6b1efdf6a9424b89e03f5647ae2
+      size: 1137
+    outs:
+    - path: 
+        mlruns_store/EroticVsOthers/DummyDatacleaner/StyloMetrix/AffinityPropagation/AffinityPropagation1/out_mlflow.zip
+      hash: md5
+      md5: d40d101eb68e26effd0d540c13630972
+      size: 1051487
+    - path: 
+        results/EroticVsOthers/DummyDatacleaner/StyloMetrix/AffinityPropagation/AffinityPropagation1.json
+      hash: md5
+      md5: 4e94f9fe95d26d82cfc529369e9a67ef
+      size: 468
