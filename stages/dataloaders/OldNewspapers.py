@@ -23,4 +23,9 @@ class OldNewspapers(DataLoader):
 
         train_df = train_df.drop(columns=['source'])
         test_df = test_df.drop(columns=['source'])
+
+        # TODO sample this stratified on label
+        train_df = train_df.sample(frac=0.1, random_state=SEED)
+        test_df = test_df.sample(frac=0.1, random_state=SEED)
+
         self._save_dataset(train_df, test_df)
