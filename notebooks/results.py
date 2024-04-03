@@ -29,6 +29,29 @@ for metric in METRICS:
     __DATA_DICT[metric] = []
 
 
+class GremDataFrame(pd.DataFrame):
+    def __init__(self, other: pd.DataFrame):
+        super().__init__(other)
+    
+    def dataset(self, name: str | list[str]) -> "GremDataFrame":
+        allowed = [name] if isinstance(name, str) else name
+        return GremDataFrame(self[self['dataset'].isin(allowed)])
+
+    def data_cleaner(self, name: str | list[str]) -> "GremDataFrame":
+        allowed = [name] if isinstance(name, str) else name
+        return GremDataFrame(self[self['datacleaner'].isin(allowed)])
+    
+    def vectorizer(self, name: str | list[str]) -> "GremDataFrame":
+        allowed = [name] if isinstance(name, str) else name
+        return GremDataFrame(self[self['vectorizer'].isin(allowed)])
+    
+    def classification(self) -> "GremDataFrame":
+        return GremDataFrame(self[~self['f1_score'].isna()])
+    
+    def clusterization(self) -> "GremDataFrame":
+        return GremDataFrame(self[self['f1_score'].isna()])
+
+
 def results_iter(root_dir: str | Path) -> Generator[dict[str, dict | str | float], None, None]:
     for root, dirs, files in os.walk(root_dir):
         for file in files:
@@ -105,7 +128,6 @@ def to_latex_table(
     max_scores = {}
     for score_label in bold_labels:
         max_scores[score_label] = f'{df[score_label].max():.{float_precission}f}'
-    print(max_scores)
 
     table = "\\begin{table}"
     if place_modifiers:
@@ -143,8 +165,7 @@ def __generate_table_row(data_row: Iterable, data_labels: list[str], bold_mappin
         data = data if isinstance(data, str) else f'{data:.{float_precission}f}' if isinstance(data, (int, float)) else str(data)
         if label in bold_mappings:
             if data == bold_mappings[label]:
-                data = f'\\textbb{{{data}}}'
+                data = f'\\textbf{{{data}}}'
         strs.append(data)
-    print(strs)
     return ' & '.join(strs)
 
