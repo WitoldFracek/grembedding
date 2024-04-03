@@ -2,7 +2,7 @@ import pandas as pd
 import json
 import os
 from pathlib import Path
-from typing import Generator, Optional
+from typing import Generator, Optional, Iterable
 from copy import deepcopy
 
 RESULTS_DIR = Path(os.path.join('..', 'results'))
@@ -82,6 +82,7 @@ def to_latex_table(
         caption: Optional[str] = None,
         label: Optional[str] = None,
         separate_rows: bool = False,
+        bold_labels: Optional[list[str]] = None
     ) -> str:
     """
     Function that changes data from DataFrame to LaTeX table.
@@ -99,6 +100,13 @@ def to_latex_table(
         separate_rows: bool - whether separate the rows with a line. Defaults to False.
     """
     column_names = df.columns if column_names is None else column_names
+    bold_labels = [] if bold_labels is None else bold_labels
+
+    max_scores = {}
+    for score_label in bold_labels:
+        max_scores[score_label] = f'{df[score_label].max():.{float_precission}f}'
+    print(max_scores)
+
     table = "\\begin{table}"
     if place_modifiers:
         table += f'[{place_modifiers}]'
@@ -109,7 +117,8 @@ def to_latex_table(
         table += '\\hline'
     table += '\n'
     for i, row in df.iterrows():
-        data = ' & '.join(map(lambda s: s if isinstance(s, str) else f'{s:.{float_precission}f}' if isinstance(s, (int, float)) else str(s), row))
+        # data = ' & '.join(map(lambda s: s if isinstance(s, str) else f'{s:.{float_precission}f}' if isinstance(s, (int, float)) else str(s), row))
+        data = __generate_table_row(row, df.columns, max_scores, float_precission)
         table += '\t\t' + data + ' \\\\'
         if separate_rows:
             table += ' \\hline'
@@ -126,4 +135,16 @@ def to_latex_table(
         with open(out_path, 'w+', encoding='utf-8') as file:
             file.write(table)
     return table
+
+
+def __generate_table_row(data_row: Iterable, data_labels: list[str], bold_mappings: dict[str, str], float_precission) -> str:
+    strs = []
+    for data, label in zip(data_row, data_labels):
+        data = data if isinstance(data, str) else f'{data:.{float_precission}f}' if isinstance(data, (int, float)) else str(data)
+        if label in bold_mappings:
+            if data == bold_mappings[label]:
+                data = f'\\textbb{{{data}}}'
+        strs.append(data)
+    print(strs)
+    return ' & '.join(strs)
 
