@@ -45,19 +45,7 @@ vectorize:
     vectorizer: FullMorphTagVectorizer
   - dataloader: Classics5Authors35Books
     datacleaner: DummyDatacleaner
-    vectorizer: HerbertFT
-  - dataloader: Classics5Authors35Books
-    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: Classics5Authors35Books
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertFrozen
-  - dataloader: Classics5Authors35Books
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFT
-  - dataloader: Classics5Authors35Books
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFrozen
 ################################################## PrusVsSienkiewicz
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
@@ -85,19 +73,7 @@ vectorize:
     vectorizer: FullMorphTagVectorizer
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
-    vectorizer: HerbertFT
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertFrozen
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFT
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFrozen
 ################################################## StarWarsFanfic
   - dataloader: StarWarsFanfic
     datacleaner: DummyDatacleaner
@@ -125,19 +101,7 @@ vectorize:
     vectorizer: FullMorphTagVectorizer
   - dataloader: StarWarsFanfic
     datacleaner: DummyDatacleaner
-    vectorizer: HerbertFT
-  - dataloader: StarWarsFanfic
-    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: StarWarsFanfic
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertFrozen
-  - dataloader: StarWarsFanfic
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFT
-  - dataloader: StarWarsFanfic
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFrozen
 ################################################## TweeterCyberbullying
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
@@ -165,19 +129,7 @@ vectorize:
     vectorizer: FullMorphTagVectorizer
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
-    vectorizer: HerbertFT
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertFrozen
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFT
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFrozen
 ################################################## WritingStyle
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
@@ -205,19 +157,7 @@ vectorize:
     vectorizer: FullMorphTagVectorizer
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
-    vectorizer: HerbertFT
-  - dataloader: WritingStyle
-    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: WritingStyle
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertFrozen
-  - dataloader: WritingStyle
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFT
-  - dataloader: WritingStyle
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFrozen
 
 evaluate_classification:
 ################################################## Classics5Authors35Books
@@ -247,19 +187,7 @@ evaluate_classification:
     vectorizer: FullMorphTagVectorizer
   - dataloader: Classics5Authors35Books
     datacleaner: DummyDatacleaner
-    vectorizer: HerbertFT
-  - dataloader: Classics5Authors35Books
-    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: Classics5Authors35Books
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertFrozen
-  - dataloader: Classics5Authors35Books
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFT
-  - dataloader: Classics5Authors35Books
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFrozen
 ################################################## PrusVsSienkiewicz
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
@@ -287,19 +215,7 @@ evaluate_classification:
     vectorizer: FullMorphTagVectorizer
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
-    vectorizer: HerbertFT
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertFrozen
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFT
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFrozen
 ################################################## StarWarsFanfic
   - dataloader: StarWarsFanfic
     datacleaner: DummyDatacleaner
@@ -327,19 +243,7 @@ evaluate_classification:
     vectorizer: FullMorphTagVectorizer
   - dataloader: StarWarsFanfic
     datacleaner: DummyDatacleaner
-    vectorizer: HerbertFT
-  - dataloader: StarWarsFanfic
-    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: StarWarsFanfic
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertFrozen
-  - dataloader: StarWarsFanfic
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFT
-  - dataloader: StarWarsFanfic
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFrozen
 ################################################## TweeterCyberbullying
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
@@ -367,19 +271,7 @@ evaluate_classification:
     vectorizer: FullMorphTagVectorizer
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
-    vectorizer: HerbertFT
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertFrozen
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFT
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFrozen
 ################################################## WritingStyle
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
@@ -407,19 +299,7 @@ evaluate_classification:
     vectorizer: FullMorphTagVectorizer
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
-    vectorizer: HerbertFT
-  - dataloader: WritingStyle
-    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: WritingStyle
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertFrozen
-  - dataloader: WritingStyle
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFT
-  - dataloader: WritingStyle
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFrozen
 
 evaluate_clustering:
 ################################################## Classics5Authors35Books
@@ -449,19 +329,7 @@ evaluate_clustering:
     vectorizer: FullMorphTagVectorizer
   - dataloader: Classics5Authors35Books
     datacleaner: DummyDatacleaner
-    vectorizer: HerbertFT
-  - dataloader: Classics5Authors35Books
-    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: Classics5Authors35Books
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertFrozen
-  - dataloader: Classics5Authors35Books
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFT
-  - dataloader: Classics5Authors35Books
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFrozen
 ################################################## PrusVsSienkiewicz
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
@@ -489,19 +357,7 @@ evaluate_clustering:
     vectorizer: FullMorphTagVectorizer
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
-    vectorizer: HerbertFT
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertFrozen
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFT
-  - dataloader: PrusVsSienkiewicz
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFrozen
 ################################################## StarWarsFanfic
   - dataloader: StarWarsFanfic
     datacleaner: DummyDatacleaner
@@ -529,19 +385,7 @@ evaluate_clustering:
     vectorizer: FullMorphTagVectorizer
   - dataloader: StarWarsFanfic
     datacleaner: DummyDatacleaner
-    vectorizer: HerbertFT
-  - dataloader: StarWarsFanfic
-    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: StarWarsFanfic
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertFrozen
-  - dataloader: StarWarsFanfic
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFT
-  - dataloader: StarWarsFanfic
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFrozen
 ################################################## TweeterCyberbullying
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
@@ -569,19 +413,7 @@ evaluate_clustering:
     vectorizer: FullMorphTagVectorizer
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
-    vectorizer: HerbertFT
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertFrozen
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFT
-  - dataloader: TweeterCyberbullying
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFrozen
 ################################################## WritingStyle
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
@@ -609,19 +441,7 @@ evaluate_clustering:
     vectorizer: FullMorphTagVectorizer
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
-    vectorizer: HerbertFT
-  - dataloader: WritingStyle
-    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
-  - dataloader: WritingStyle
-    datacleaner: DummyDatacleaner
-    vectorizer: HerbertFrozen
-  - dataloader: WritingStyle
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFT
-  - dataloader: WritingStyle
-    datacleaner: DummyDatacleaner
-    vectorizer: RoBERTaFrozen
 
 classification_models:
   - model: RandomForest
