@@ -1,13 +1,18 @@
 load:
    - dataloader: Classics5Authors35Books
+   - dataloader: OldNewspapers
    - dataloader: PrusVsSienkiewicz
    - dataloader: StarWarsFanfic
    - dataloader: TweeterCyberbullying
    - dataloader: WritingStyle
+   - dataloader: EroticVsOthers
+   - dataloader: StarWarsFanficShort
 
 clean:
    - dataloader: Classics5Authors35Books
      datacleaner: DummyDatacleaner
+   - dataloader: OldNewspapers
+     datacleaner: DummyDatacleaner
    - dataloader: PrusVsSienkiewicz
      datacleaner: DummyDatacleaner
    - dataloader: StarWarsFanfic
@@ -15,6 +20,10 @@ clean:
    - dataloader: TweeterCyberbullying
      datacleaner: DummyDatacleaner
    - dataloader: WritingStyle
+     datacleaner: DummyDatacleaner
+   - dataloader: EroticVsOthers
+     datacleaner: DummyDatacleaner
+   - dataloader: StarWarsFanficShort
      datacleaner: DummyDatacleaner
 
 vectorize:
@@ -44,6 +53,34 @@ vectorize:
     datacleaner: DummyDatacleaner
     vectorizer: FullMorphTagVectorizer
   - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
+################################################## OldNewspapers
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: OldNewspapers
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
 ################################################## PrusVsSienkiewicz
@@ -156,6 +193,62 @@ vectorize:
     datacleaner: DummyDatacleaner
     vectorizer: FullMorphTagVectorizer
   - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
+################################################## EroticVsOthers
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
+################################################## StarWarsFanficShort
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: StarWarsFanficShort
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
 
@@ -188,6 +281,34 @@ evaluate_classification:
   - dataloader: Classics5Authors35Books
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+################################################## OldNewspapers
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
 ################################################## PrusVsSienkiewicz
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
@@ -298,6 +419,62 @@ evaluate_classification:
     datacleaner: DummyDatacleaner
     vectorizer: FullMorphTagVectorizer
   - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
+################################################## EroticVsOthers
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
+################################################## StarWarsFanficShort
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: StarWarsFanficShort
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
 
@@ -330,6 +507,34 @@ evaluate_clustering:
   - dataloader: Classics5Authors35Books
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+################################################## OldNewspapers
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
 ################################################## PrusVsSienkiewicz
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
@@ -440,6 +645,62 @@ evaluate_clustering:
     datacleaner: DummyDatacleaner
     vectorizer: FullMorphTagVectorizer
   - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
+################################################## EroticVsOthers
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
+################################################## StarWarsFanficShort
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: StarWarsFanficShort
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
 
