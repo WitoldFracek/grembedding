@@ -17,9 +17,10 @@ class StyloMetrix(Vectorizer):
     def vectorize(self, dataset: str, datacleaner: str) -> None:
         df_train, df_test = self.load_train_test_dataframes(dataset, datacleaner)
 
-        ratio = TRAIN_SAMPLES/len(df_train)
-        df_train, _ = train_test_split(df_train, train_size=ratio, stratify=df_train["label"])
-        df_test, _ = train_test_split(df_test, train_size=ratio, stratify=df_test["label"])
+        if len(df_train) > TRAIN_SAMPLES:
+            ratio = TRAIN_SAMPLES/len(df_train)
+            df_train, _ = train_test_split(df_train, train_size=ratio, stratify=df_train["label"])
+            df_test, _ = train_test_split(df_test, train_size=ratio, stratify=df_test["label"])
 
         stylo = sm.StyloMetrix('pl')
         X_train: np.ndarray = stylo.transform(df_train["clean_text"]).drop(columns="text").to_numpy()
