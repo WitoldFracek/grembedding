@@ -704,6 +704,13 @@ evaluate_clustering:
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
 
+merge:
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer_A: TfidfVectorizer1000
+    vectorizer_B: CountVectorizer1000
+    vectorizer_name: CountTfidf1000
+
 classification_models:
   - model: RandomForest
     params: RandomForest1
