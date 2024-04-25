@@ -39,6 +39,19 @@ stages:
       outs:
         - data/${item.dataloader}/${item.datacleaner}_${item.vectorizer}
 
+  merge:
+    foreach: ${merge}
+    do:
+      cmd: python scripts/merge.py "${item.dataloader}" "${item.datacleaner}" "${item.vectorizer_A}" "${item.vectorizer_B}" "${item.vectorizer_name}"
+      deps:
+        - scripts/merge.py
+        - data/${item.dataloader}/${item.datacleaner}_${item.vectorizer_A}
+        - data/${item.dataloader}/${item.datacleaner}_${item.vectorizer_B}
+        - stages/vectorizers/Vectorizer.py
+        - stages/models/Model.py
+      outs:
+        - data/${item.dataloader}/${item.datacleaner}_${item.vectorizer_name}
+
   evaluate_classification:
     matrix:
       data: ${evaluate_classification}

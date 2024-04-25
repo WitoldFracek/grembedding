@@ -704,6 +704,13 @@ evaluate_clustering:
     datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
 
+merge:
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer_A: SpacyMorphTagVectorizer
+    vectorizer_B: CountVectorizer1000
+    vectorizer_name: Count1000SpacyMorph
+
 classification_models:
   - model: RandomForest
     params: RandomForest1
