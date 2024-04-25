@@ -705,11 +705,11 @@ evaluate_clustering:
     vectorizer: SpacyMorphTagVectorizer
 
 merge:
-  - dataloader: StarWarsFanficShort
+  - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
-    vectorizer_A: SpacyMorphTagVectorizer
+    vectorizer_A: TfidfVectorizer1000
     vectorizer_B: CountVectorizer1000
-    vectorizer_name: Count1000SpacyMorph
+    vectorizer_name: CountTfidf1000
 
 classification_models:
   - model: RandomForest
