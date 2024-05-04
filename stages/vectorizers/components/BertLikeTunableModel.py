@@ -98,7 +98,7 @@ class BertLikeTunableModel(Vectorizer):
                                      dirpath=os.path.join(lightning_loggers_dir, "lightning_logs", "checkpoints"),
                                      filename="monitored_{epoch}_{val_loss:.2f}")
         csv_logger = CSVLogger(save_dir=lightning_loggers_dir, name="lightning_logs")
-        trainer = L.Trainer(max_epochs=self.EPOCHS, logger=csv_logger, callbacks=[early_stop, best_model])
+        trainer = L.Trainer(accelerator='gpu' if torch.cuda.is_available() else 'cpu', max_epochs=self.EPOCHS, logger=csv_logger, callbacks=[early_stop, best_model])
 
         if not self.is_frozen:
             logger.info("Starting fine tuning")
