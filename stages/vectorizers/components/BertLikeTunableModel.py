@@ -79,9 +79,10 @@ class BertLikeTunableModel(Vectorizer):
 
         finetune_train_dl = DataLoader(finetune_train_ds, batch_size=self.TRAINING_BATCH_SIZE,
                                        num_workers=self.NUM_WORKERS, shuffle=True,
-                                       persistent_workers=self.NUM_WORKERS > 0)
+                                       persistent_workers=self.NUM_WORKERS > 0, drop_last=True)
         val_dl = DataLoader(val_ds, batch_size=self.TRAINING_BATCH_SIZE, shuffle=False,
-                            num_workers=self.NUM_WORKERS, persistent_workers=self.NUM_WORKERS > 0)
+                            num_workers=self.NUM_WORKERS, persistent_workers=self.NUM_WORKERS > 0,
+                            drop_last=True)
 
         # Not shuffled full DataLoaders for prediction
         train_dl_predict = DataLoader(train_ds, batch_size=self.INFERENCE_BATCH_SIZE, num_workers=self.NUM_WORKERS,
