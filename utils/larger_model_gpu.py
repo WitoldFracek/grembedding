@@ -1,5 +1,6 @@
 import os
 from typing import Literal
+from loguru import logger
 
 TRAINING_BATCH_SIZE_ENV_VARIABLE_NAME = "GRE_LARGE_MODEL_TRAIN_BATCH_SIZE"
 DEFAULT_TRAINING_BATCH_SIZE = 8
@@ -21,6 +22,7 @@ def resolve_training_batch_size():
     """Gets training batch size from env or default"""
     if TRAINING_BATCH_SIZE_ENV_VARIABLE_NAME in os.environ.keys():
         env_training_batch_size = int(os.environ[TRAINING_BATCH_SIZE_ENV_VARIABLE_NAME])
+        logger.info(f'Using env training batch size: {env_training_batch_size}')
         return env_training_batch_size
     else:
         return DEFAULT_TRAINING_BATCH_SIZE
@@ -30,6 +32,7 @@ def resolve_inference_batch_size():
     """Gets inference batch size from env or default"""
     if INFERENCE_BATCH_SIZE_ENV_VARIABLE_NAME in os.environ.keys():
         env_inference_batch_size = int(os.environ[INFERENCE_BATCH_SIZE_ENV_VARIABLE_NAME])
+        logger.info(f'Using env inference batch size: {env_inference_batch_size}')
         return env_inference_batch_size
     else:
         return DEFAULT_INFERENCE_BATCH_SIZE
