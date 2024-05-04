@@ -15,8 +15,8 @@ if %errorlevel% equ 0 (
     set GRE_SPACY_BATCH_SIZE=64
 
     rem Env var do sterowania douczaniem bertów
-    set GRE_LARGE_MODEL_TRAIN_BATCH_SIZE=16
-    set GRE_LARGE_MODEL_INFERENCE_BATCH_SIZE=64
+    set GRE_LARGE_MODEL_TRAIN_BATCH_SIZE=4
+    set GRE_LARGE_MODEL_INFERENCE_BATCH_SIZE=16
     set GRE_FINE_TUNE_EPOCHS=5
 
     dvc exp run
