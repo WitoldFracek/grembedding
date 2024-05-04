@@ -7,6 +7,7 @@ load:
    - dataloader: WritingStyle
    - dataloader: EroticVsOthers
    - dataloader: StarWarsFanficShort
+   - dataloader: StarWarsFanficMedium
 
 clean:
    - dataloader: Classics5Authors35Books
@@ -25,6 +26,18 @@ clean:
      datacleaner: DummyDatacleaner
    - dataloader: StarWarsFanficShort
      datacleaner: DummyDatacleaner
+   - dataloader: StarWarsFanficMedium
+     datacleaner: DummyDatacleaner
+   - dataloader: PrusVsSienkiewicz
+     datacleaner: ProperNamesMasker
+   - dataloader: StarWarsFanfic
+     datacleaner: ProperNamesMasker
+   - dataloader: StarWarsFanficShort
+     datacleaner: ProperNamesMasker
+   - dataloader: StarWarsFanficMedium
+     datacleaner: ProperNamesMasker
+   - dataloader: Classics5Authors35Books
+     datacleaner: ProperNamesMasker
 
 vectorize:
 ################################################## Classics5Authors35Books
@@ -54,7 +67,22 @@ vectorize:
     vectorizer: FullMorphTagVectorizer
   - dataloader: Classics5Authors35Books
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
 ################################################## OldNewspapers
   - dataloader: OldNewspapers
     datacleaner: DummyDatacleaner
@@ -82,7 +110,22 @@ vectorize:
     vectorizer: FullMorphTagVectorizer
   - dataloader: OldNewspapers
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
 ################################################## PrusVsSienkiewicz
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
@@ -110,7 +153,22 @@ vectorize:
     vectorizer: FullMorphTagVectorizer
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
 ################################################## StarWarsFanfic
   - dataloader: StarWarsFanfic
     datacleaner: DummyDatacleaner
@@ -138,7 +196,22 @@ vectorize:
     vectorizer: FullMorphTagVectorizer
   - dataloader: StarWarsFanfic
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
 ################################################## TweeterCyberbullying
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
@@ -166,7 +239,22 @@ vectorize:
     vectorizer: FullMorphTagVectorizer
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
 ################################################## WritingStyle
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
@@ -194,7 +282,22 @@ vectorize:
     vectorizer: FullMorphTagVectorizer
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
 ################################################## EroticVsOthers
   - dataloader: EroticVsOthers
     datacleaner: DummyDatacleaner
@@ -222,7 +325,22 @@ vectorize:
     vectorizer: FullMorphTagVectorizer
   - dataloader: EroticVsOthers
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
 ################################################## StarWarsFanficShort
   - dataloader: StarWarsFanficShort
     datacleaner: DummyDatacleaner
@@ -250,7 +368,646 @@ vectorize:
     vectorizer: FullMorphTagVectorizer
   - dataloader: StarWarsFanficShort
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+################################################## StarWarsFanficMedium
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+################################################## PrusVsSienkiewicz
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer1000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer5000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer1000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer5000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: StyloMetrix
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFrozen
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFrozen
+################################################## StarWarsFanfic
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer1000
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer5000
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer1000
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer5000
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFrozen
+################################################## StarWarsFanficShort
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer5000
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer5000
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFrozen
+################################################## StarWarsFanficMedium
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer5000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer5000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFrozen
+################################################## Classics5Authors35Books
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer1000
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer5000
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer1000
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer5000
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFT
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: StyloMetrix
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFrozen
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFT
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFrozen
+
+merge:
+################################################## Classics5Authors35Books
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer_A: CountVectorizer1000
+    vectorizer_B: TfidfVectorizer1000
+    vectorizer_name: CountTfidf1000
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: FrozenGremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: GremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: FrozenPanGremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: PanGremBERT
+################################################## OldNewspapers
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer_A: CountVectorizer1000
+    vectorizer_B: TfidfVectorizer1000
+    vectorizer_name: CountTfidf1000
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: FrozenGremBERT
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: GremBERT
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: FrozenPanGremBERT
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: PanGremBERT
+################################################## PrusVsSienkiewicz
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer_A: CountVectorizer1000
+    vectorizer_B: TfidfVectorizer1000
+    vectorizer_name: CountTfidf1000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: FrozenGremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: GremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: FrozenPanGremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: PanGremBERT
+################################################## StarWarsFanfic
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer_A: CountVectorizer1000
+    vectorizer_B: TfidfVectorizer1000
+    vectorizer_name: CountTfidf1000
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: FrozenGremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: GremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: FrozenPanGremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: PanGremBERT
+################################################## TweeterCyberbullying
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer_A: CountVectorizer1000
+    vectorizer_B: TfidfVectorizer1000
+    vectorizer_name: CountTfidf1000
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: FrozenGremBERT
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: GremBERT
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: FrozenPanGremBERT
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: PanGremBERT
+################################################## WritingStyle
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer_A: CountVectorizer1000
+    vectorizer_B: TfidfVectorizer1000
+    vectorizer_name: CountTfidf1000
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: FrozenGremBERT
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: GremBERT
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: FrozenPanGremBERT
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: PanGremBERT
+################################################## EroticVsOthers
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer_A: CountVectorizer1000
+    vectorizer_B: TfidfVectorizer1000
+    vectorizer_name: CountTfidf1000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: FrozenGremBERT
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: GremBERT
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: FrozenPanGremBERT
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: PanGremBERT
+################################################## StarWarsFanficShort
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer_A: CountVectorizer1000
+    vectorizer_B: TfidfVectorizer1000
+    vectorizer_name: CountTfidf1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: FrozenGremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: GremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: FrozenPanGremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: PanGremBERT
+################################################## StarWarsFanficMedium
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer_A: CountVectorizer1000
+    vectorizer_B: TfidfVectorizer1000
+    vectorizer_name: CountTfidf1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: FrozenGremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: GremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: FrozenPanGremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer_A: HerbertFT
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: PanGremBERT
+################################################## PrusVsSienkiewicz
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer_A: CountVectorizer1000
+    vectorizer_B: TfidfVectorizer1000
+    vectorizer_name: CountTfidf1000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: FrozenGremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFT
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: GremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: FrozenPanGremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFT
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: PanGremBERT
+################################################## StarWarsFanfic
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer_A: CountVectorizer1000
+    vectorizer_B: TfidfVectorizer1000
+    vectorizer_name: CountTfidf1000
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: FrozenGremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFT
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: GremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: FrozenPanGremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFT
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: PanGremBERT
+################################################## StarWarsFanficShort
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer_A: CountVectorizer1000
+    vectorizer_B: TfidfVectorizer1000
+    vectorizer_name: CountTfidf1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: FrozenGremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFT
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: GremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: FrozenPanGremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFT
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: PanGremBERT
+################################################## StarWarsFanficMedium
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer_A: CountVectorizer1000
+    vectorizer_B: TfidfVectorizer1000
+    vectorizer_name: CountTfidf1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: FrozenGremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFT
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: GremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: FrozenPanGremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFT
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: PanGremBERT
+################################################## Classics5Authors35Books
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer_A: CountVectorizer1000
+    vectorizer_B: TfidfVectorizer1000
+    vectorizer_name: CountTfidf1000
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: FrozenGremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFT
+    vectorizer_B: SpacyMorphTagVectorizer
+    vectorizer_name: GremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFrozen
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: FrozenPanGremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer_A: HerbertFT
+    vectorizer_B: BigramMorphTagVectorizer370
+    vectorizer_name: PanGremBERT
 
 evaluate_classification:
 ################################################## Classics5Authors35Books
@@ -280,7 +1037,37 @@ evaluate_classification:
     vectorizer: FullMorphTagVectorizer
   - dataloader: Classics5Authors35Books
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
 ################################################## OldNewspapers
   - dataloader: OldNewspapers
     datacleaner: DummyDatacleaner
@@ -308,7 +1095,37 @@ evaluate_classification:
     vectorizer: FullMorphTagVectorizer
   - dataloader: OldNewspapers
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
 ################################################## PrusVsSienkiewicz
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
@@ -336,7 +1153,37 @@ evaluate_classification:
     vectorizer: FullMorphTagVectorizer
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
 ################################################## StarWarsFanfic
   - dataloader: StarWarsFanfic
     datacleaner: DummyDatacleaner
@@ -364,7 +1211,37 @@ evaluate_classification:
     vectorizer: FullMorphTagVectorizer
   - dataloader: StarWarsFanfic
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
 ################################################## TweeterCyberbullying
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
@@ -392,7 +1269,37 @@ evaluate_classification:
     vectorizer: FullMorphTagVectorizer
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
 ################################################## WritingStyle
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
@@ -420,7 +1327,37 @@ evaluate_classification:
     vectorizer: FullMorphTagVectorizer
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
 ################################################## EroticVsOthers
   - dataloader: EroticVsOthers
     datacleaner: DummyDatacleaner
@@ -448,7 +1385,37 @@ evaluate_classification:
     vectorizer: FullMorphTagVectorizer
   - dataloader: EroticVsOthers
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
 ################################################## StarWarsFanficShort
   - dataloader: StarWarsFanficShort
     datacleaner: DummyDatacleaner
@@ -476,7 +1443,385 @@ evaluate_classification:
     vectorizer: FullMorphTagVectorizer
   - dataloader: StarWarsFanficShort
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
+################################################## StarWarsFanficMedium
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
+################################################## PrusVsSienkiewicz
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer1000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer5000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer1000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer5000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: StyloMetrix
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFrozen
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFrozen
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: CountTfidf1000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenGremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: GremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenPanGremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: PanGremBERT
+################################################## StarWarsFanfic
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer1000
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer5000
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer1000
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer5000
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFrozen
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: CountTfidf1000
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenGremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: GremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenPanGremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: PanGremBERT
+################################################## StarWarsFanficShort
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer5000
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer5000
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFrozen
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: CountTfidf1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenGremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: GremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenPanGremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: PanGremBERT
+################################################## StarWarsFanficMedium
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer5000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer5000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFrozen
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: CountTfidf1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenGremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: GremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenPanGremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: PanGremBERT
+################################################## Classics5Authors35Books
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer1000
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer5000
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer1000
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer5000
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFT
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: StyloMetrix
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFrozen
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFT
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFrozen
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: CountTfidf1000
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenGremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: GremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenPanGremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: PanGremBERT
 
 evaluate_clustering:
 ################################################## Classics5Authors35Books
@@ -506,7 +1851,37 @@ evaluate_clustering:
     vectorizer: FullMorphTagVectorizer
   - dataloader: Classics5Authors35Books
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
 ################################################## OldNewspapers
   - dataloader: OldNewspapers
     datacleaner: DummyDatacleaner
@@ -534,7 +1909,37 @@ evaluate_clustering:
     vectorizer: FullMorphTagVectorizer
   - dataloader: OldNewspapers
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: OldNewspapers
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
 ################################################## PrusVsSienkiewicz
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
@@ -562,7 +1967,37 @@ evaluate_clustering:
     vectorizer: FullMorphTagVectorizer
   - dataloader: PrusVsSienkiewicz
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
 ################################################## StarWarsFanfic
   - dataloader: StarWarsFanfic
     datacleaner: DummyDatacleaner
@@ -590,7 +2025,37 @@ evaluate_clustering:
     vectorizer: FullMorphTagVectorizer
   - dataloader: StarWarsFanfic
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
 ################################################## TweeterCyberbullying
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
@@ -618,7 +2083,37 @@ evaluate_clustering:
     vectorizer: FullMorphTagVectorizer
   - dataloader: TweeterCyberbullying
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: TweeterCyberbullying
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
 ################################################## WritingStyle
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
@@ -646,7 +2141,37 @@ evaluate_clustering:
     vectorizer: FullMorphTagVectorizer
   - dataloader: WritingStyle
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: WritingStyle
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
 ################################################## EroticVsOthers
   - dataloader: EroticVsOthers
     datacleaner: DummyDatacleaner
@@ -674,7 +2199,37 @@ evaluate_clustering:
     vectorizer: FullMorphTagVectorizer
   - dataloader: EroticVsOthers
     datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
     vectorizer: SpacyMorphTagVectorizer
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: EroticVsOthers
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
 ################################################## StarWarsFanficShort
   - dataloader: StarWarsFanficShort
     datacleaner: DummyDatacleaner
@@ -702,24 +2257,393 @@ evaluate_clustering:
     vectorizer: FullMorphTagVectorizer
   - dataloader: StarWarsFanficShort
     datacleaner: DummyDatacleaner
-    vectorizer: SpacyMorphTagVectorizer
-
-merge:
-  - dataloader: PrusVsSienkiewicz
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanficShort
     datacleaner: DummyDatacleaner
-    vectorizer_A: TfidfVectorizer1000
-    vectorizer_B: CountVectorizer1000
-    vectorizer_name: CountTfidf1000
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
+################################################## StarWarsFanficMedium
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: TfidfVectorizer5000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: CountVectorizer5000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: RoBERTaFrozen
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: CountTfidf1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenGremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: GremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: FrozenPanGremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: DummyDatacleaner
+    vectorizer: PanGremBERT
+################################################## PrusVsSienkiewicz
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer1000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer5000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer1000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer5000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: StyloMetrix
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFrozen
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFrozen
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: CountTfidf1000
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenGremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: GremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenPanGremBERT
+  - dataloader: PrusVsSienkiewicz
+    datacleaner: ProperNamesMasker
+    vectorizer: PanGremBERT
+################################################## StarWarsFanfic
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer1000
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer5000
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer1000
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer5000
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFrozen
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: CountTfidf1000
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenGremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: GremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenPanGremBERT
+  - dataloader: StarWarsFanfic
+    datacleaner: ProperNamesMasker
+    vectorizer: PanGremBERT
+################################################## StarWarsFanficShort
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer5000
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer5000
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFrozen
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: CountTfidf1000
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenGremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: GremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenPanGremBERT
+  - dataloader: StarWarsFanficShort
+    datacleaner: ProperNamesMasker
+    vectorizer: PanGremBERT
+################################################## StarWarsFanficMedium
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer5000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer5000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: StyloMetrix
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFrozen
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFrozen
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: CountTfidf1000
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenGremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: GremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenPanGremBERT
+  - dataloader: StarWarsFanficMedium
+    datacleaner: ProperNamesMasker
+    vectorizer: PanGremBERT
+################################################## Classics5Authors35Books
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer1000
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: TfidfVectorizer5000
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer100
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: BigramMorphTagVectorizer370
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer1000
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: CountVectorizer5000
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: DPEBPVectorizer100Avg
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: FullMorphTagVectorizer
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFT
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: SpacyMorphTagVectorizer
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: StyloMetrix
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: HerbertFrozen
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFT
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: RoBERTaFrozen
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: CountTfidf1000
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenGremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: GremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: FrozenPanGremBERT
+  - dataloader: Classics5Authors35Books
+    datacleaner: ProperNamesMasker
+    vectorizer: PanGremBERT
 
 classification_models:
   - model: RandomForest
     params: RandomForest1
   - model: MLP
     params: MLP1
-  - model: MLP
-    params: MLP2
-  - model: MLP
-    params: MLP3
+  - model: LogisticRegression
+    params: LogisticRegression1
 
 clustering_models:
   - model: DBSCAN

@@ -37,7 +37,7 @@ class ProperNamesMasker(DataCleaner):
             for token in doc:
                 pos = token.pos_
                 if pos == 'PROPN':
-                    ...
+                    clean_text += self.MASKING_TOKEN + ' '
                 else:
                     clean_text += token.text + ' '
             ret.append(clean_text)
