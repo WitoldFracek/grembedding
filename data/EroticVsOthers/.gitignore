@@ -11,3 +11,12 @@
 /DummyDatacleaner_HerbertVectorizer
 /DummyDatacleaner_SpacyMorphTagVectorizer
 /DummyDatacleaner_StyloMetrix
+/DummyDatacleaner_HerbertFT
+/DummyDatacleaner_HerbertFrozen
+/DummyDatacleaner_RoBERTaFT
+/DummyDatacleaner_RoBERTaFrozen
+/DummyDatacleaner_CountTfidf1000
+/DummyDatacleaner_FrozenGremBERT
+/DummyDatacleaner_GremBERT
+/DummyDatacleaner_FrozenPanGremBERT
+/DummyDatacleaner_PanGremBERT

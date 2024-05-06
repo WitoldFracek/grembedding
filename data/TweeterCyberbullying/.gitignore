@@ -15,3 +15,8 @@
 /DummyDatacleaner_RoBERTaFrozen
 /DummyDatacleaner_RoBERTaFT
 /DummyDatacleaner_HerbertFrozen
+/DummyDatacleaner_CountTfidf1000
+/DummyDatacleaner_FrozenGremBERT
+/DummyDatacleaner_GremBERT
+/DummyDatacleaner_FrozenPanGremBERT
+/DummyDatacleaner_PanGremBERT
