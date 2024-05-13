@@ -50,6 +50,12 @@ class GremDataFrame(pd.DataFrame):
     
     def clusterization(self) -> "GremDataFrame":
         return GremDataFrame(self[self['f1_score'].isna()])
+    
+    def index_to_col(self, column_name: str) -> "GremDataFrame":
+        df = self.copy()
+        df[column_name] = df.index
+        df = df[[column_name] + list(df.columns)[:-1]]
+        return GremDataFrame(df)
 
 
 def results_iter(root_dir: str | Path) -> Generator[dict[str, dict | str | float], None, None]:
@@ -94,6 +100,12 @@ def clusterization(df: pd.DataFrame) -> pd.DataFrame:
     return df[~df['accuracy'].isna()]
 
 
+def include_pivot_index(df: pd.DataFrame, column_name: str) -> pd.DataFrame:
+    df[column_name] = df.index
+    df = df[[column_name] + list(df.columns)[:-1]]
+    return df
+
+
 def to_latex_table(
         df: pd.DataFrame, 
         place_modifiers: Optional[str] = None, 
@@ -101,11 +113,11 @@ def to_latex_table(
         border_style: str = '||', 
         separate_header: bool = False,
         column_names: Optional[list[str]] = None,
-        float_precission: int = 2,
+        float_precission: int = 3,
         caption: Optional[str] = None,
         label: Optional[str] = None,
         separate_rows: bool = False,
-        bold_labels: Optional[list[str]] = None
+        bold_labels: Optional[list[tuple[str, str] | str]] = None
     ) -> str:
     """
     Function that changes data from DataFrame to LaTeX table.
@@ -126,13 +138,24 @@ def to_latex_table(
     bold_labels = [] if bold_labels is None else bold_labels
 
     max_scores = {}
-    for score_label in bold_labels:
-        max_scores[score_label] = f'{df[score_label].max():.{float_precission}f}'
+    for elem in bold_labels:
+        if isinstance(elem, str):
+            score_label = elem
+            mode = 'max'
+        elif isinstance(elem, tuple):
+            score_label, mode = elem
+        else:
+            raise Exception('bold_labels item is not str nor tuple[str, str]')
+        max_scores[score_label] = f'{df[score_label].max():.{float_precission}f}' if mode == 'max' else f'{df[score_label].min():.{float_precission}f}'
+    
 
     table = "\\begin{table}"
     if place_modifiers:
         table += f'[{place_modifiers}]'
-    table += '\n\t\\centering\n\t\\begin{tabular}'
+    table += '\n\t\\centering\n\t\\caption{'
+    if caption:
+        table += caption
+    table += '}\n\t\\resizebox{\\textwidth}{!}{\n\t\\begin{tabular}'
     table += f'{{{border_style}' + '|'.join(['c'] * len(df.columns)) + f'{border_style}}}\n\t\t\\hline\n\t\t'
     table += ' & '.join(column_names) + ' \\\\\n\t\t\\hline'
     if separate_header:
@@ -148,10 +171,11 @@ def to_latex_table(
     if not separate_rows:
         table += '\t\t\\hline\n'
     table += '\t\\end{tabular}\n'
-    if caption:
-        table += f'\t\\caption{{{caption}}}\n'
+    table += '\t}\n'
+    table += '\t\\label{tab:'
     if label:
-        table += f'\t\\label{{tab:{label}}}\n'
+        table += f'{label}'
+    table += '}\n'
     table += '\\end{table}'
     if out_path:
         with open(out_path, 'w+', encoding='utf-8') as file:
