@@ -2,8 +2,13 @@ import pandas as pd
 import json
 import os
 from pathlib import Path
-from typing import Generator, Optional, Iterable
+from typing import Generator, Optional, Iterable, Callable
 from copy import deepcopy
+import pandas.api.typing as pdtype
+
+
+class SupportsRichComparison:
+    pass
 
 RESULTS_DIR = Path(os.path.join('..', 'results'))
 METRICS = [
@@ -56,6 +61,9 @@ class GremDataFrame(pd.DataFrame):
         df[column_name] = df.index
         df = df[[column_name] + list(df.columns)[:-1]]
         return GremDataFrame(df)
+    
+    def first(self) -> "GremDataFrame":
+        return GremDataFrame(super().first())
 
 
 def results_iter(root_dir: str | Path) -> Generator[dict[str, dict | str | float], None, None]:
@@ -105,10 +113,49 @@ def include_pivot_index(df: pd.DataFrame, column_name: str) -> pd.DataFrame:
     df = df[[column_name] + list(df.columns)[:-1]]
     return df
 
+def make_latex_frame(
+        columns: list[str],
+        place_modifiers: Optional[str] = None,
+        border_style: str = '||',
+        separate_header: bool = False,
+        caption: Optional[str] = None,
+        column_names: Optional[list[str]] = None,
+        bold_labels: Optional[list[tuple[str, str] | str]] = None,
+        label: Optional[str] = None,
+        separate_rows: bool = False,
+    ) -> tuple[str, str]:
+    column_names = columns if column_names is None else column_names
+    bold_labels = [] if bold_labels is None else bold_labels    
+
+    begin_table = "\\begin{table}"
+    if place_modifiers:
+        begin_table += f'[{place_modifiers}]'
+    begin_table += '\n\t\\centering\n\t\\caption{'
+    if caption:
+        begin_table += caption
+    begin_table += '}\n\t\\resizebox{\\textwidth}{!}{\n\t\\begin{tabular}'
+    begin_table += f'{{{border_style}' + '|'.join(['c'] * len(columns)) + f'{border_style}}}\n\t\t\\hline\n\t\t'
+    begin_table += ' & '.join(map(lambda s: s.replace("_", "\\_"), map(lambda s: f"\\textbf{{{s}}}", column_names))) + ' \\\\\n\t\t\\hline'
+    if separate_header:
+        begin_table += '\\hline'
+    begin_table += '\n'
+
+    end_table = ''
+    if not separate_rows:
+        end_table += '\t\t\\hline\n'
+    end_table += '\t\\end{tabular}\n'
+    end_table += '\t}\n'
+    end_table += '\t\\label{tab:'
+    if label:
+        end_table += f'{label}'
+    end_table += '}\n'
+    end_table += '\\end{table}'
+    return begin_table, end_table
+
 
 def to_latex_table(
         df: pd.DataFrame, 
-        place_modifiers: Optional[str] = None, 
+        place_modifiers: Optional[str] = 'H', 
         out_path: Optional[str | Path] = None, 
         border_style: str = '||', 
         separate_header: bool = False,
@@ -134,8 +181,18 @@ def to_latex_table(
         label: Optional[str] - if given sets the label of the generated table. Defaults to None.
         separate_rows: bool - whether separate the rows with a line. Defaults to False.
     """
-    column_names = df.columns if column_names is None else column_names
     bold_labels = [] if bold_labels is None else bold_labels
+    begin_table, end_table = make_latex_frame(
+        columns=df.columns,
+        place_modifiers=place_modifiers,
+        border_style=border_style,
+        separate_header=separate_header,
+        separate_rows=separate_rows,
+        caption=caption,
+        label=label,
+        bold_labels=bold_labels,
+        column_names=column_names
+    )
 
     max_scores = {}
     for elem in bold_labels:
@@ -148,35 +205,15 @@ def to_latex_table(
             raise Exception('bold_labels item is not str nor tuple[str, str]')
         max_scores[score_label] = f'{df[score_label].max():.{float_precission}f}' if mode == 'max' else f'{df[score_label].min():.{float_precission}f}'
     
-
-    table = "\\begin{table}"
-    if place_modifiers:
-        table += f'[{place_modifiers}]'
-    table += '\n\t\\centering\n\t\\caption{'
-    if caption:
-        table += caption
-    table += '}\n\t\\resizebox{\\textwidth}{!}{\n\t\\begin{tabular}'
-    table += f'{{{border_style}' + '|'.join(['c'] * len(df.columns)) + f'{border_style}}}\n\t\t\\hline\n\t\t'
-    table += ' & '.join(column_names) + ' \\\\\n\t\t\\hline'
-    if separate_header:
-        table += '\\hline'
-    table += '\n'
-    for i, row in df.iterrows():
-        # data = ' & '.join(map(lambda s: s if isinstance(s, str) else f'{s:.{float_precission}f}' if isinstance(s, (int, float)) else str(s), row))
+    table = ''
+    for _, row in df.iterrows():
         data = __generate_table_row(row, df.columns, max_scores, float_precission)
         table += '\t\t' + data + ' \\\\'
         if separate_rows:
             table += ' \\hline'
         table += '\n'
-    if not separate_rows:
-        table += '\t\t\\hline\n'
-    table += '\t\\end{tabular}\n'
-    table += '\t}\n'
-    table += '\t\\label{tab:'
-    if label:
-        table += f'{label}'
-    table += '}\n'
-    table += '\\end{table}'
+    
+    table = begin_table + table + end_table
     if out_path:
         with open(out_path, 'w+', encoding='utf-8') as file:
             file.write(table)
@@ -187,9 +224,79 @@ def __generate_table_row(data_row: Iterable, data_labels: list[str], bold_mappin
     strs = []
     for data, label in zip(data_row, data_labels):
         data = data if isinstance(data, str) else f'{data:.{float_precission}f}' if isinstance(data, (int, float)) else str(data)
+        data = data.replace('_', '\\_')
         if label in bold_mappings:
             if data == bold_mappings[label]:
                 data = f'\\textbf{{{data}}}'
         strs.append(data)
     return ' & '.join(strs)
 
+
+def __generate_group(group: pd.DataFrame, group_name: str, data_labels: list[str], bold_mappings: dict[str, str], float_precission: int, separate_rows: bool) -> str:
+    big_cell = f'\\multirow{{{len(group)}}}{{*}}{{{group_name}}} & '
+    table = ''
+    for i, (_, row) in enumerate(group.iterrows()):
+        first_cell = big_cell if i == 0 else ' & '
+        data = first_cell + __generate_table_row(row, data_labels, bold_mappings, float_precission)
+        table += '\t\t' + data + ' \\\\'
+        if separate_rows:
+            table += f'  \\cline{{2-{len(data_labels) + 1}}}'
+        table += '\n'
+    table += f'\\hline'
+    return table
+
+
+def groups_to_latex_table(
+        gdf: pdtype.DataFrameGroupBy,
+        group_header: str = 'rodzaj wektora' ,
+        place_modifiers: Optional[str] = 'H', 
+        out_path: Optional[str | Path] = None, 
+        border_style: str = '||', 
+        separate_header: bool = False,
+        column_names: Optional[list[str]] = None,
+        float_precission: int = 3,
+        caption: Optional[str] = None,
+        label: Optional[str] = None,
+        separate_rows: bool = False,
+        bold_labels: Optional[list[tuple[str, str] | str]] = None,
+        groups_sort_key: Optional[Callable[[tuple[str, pd.DataFrame]], SupportsRichComparison]] = None
+    ) -> str:
+    bold_labels = [] if bold_labels is None else bold_labels
+    _, df = next(iter(gdf))
+    begin_table, end_table = make_latex_frame(
+        columns=[group_header] + list(df.columns),
+        place_modifiers=place_modifiers,
+        border_style=border_style,
+        separate_header=separate_header,
+        separate_rows=separate_rows,
+        caption=caption,
+        label=label,
+        bold_labels=bold_labels,
+        column_names=column_names
+    )
+    max_scores = {}
+    for group_name, group in gdf:
+        max_scores[group_name] = {}
+        for elem in bold_labels:
+            if isinstance(elem, str):
+                score_label = elem
+                mode = 'max'
+            elif isinstance(elem, tuple):
+                score_label, mode = elem
+            else:
+                raise Exception('bold_labels item is not str nor tuple[str, str]')
+            max_scores[group_name][score_label] = f'{group[score_label].max():.{float_precission}f}' if mode == 'max' else f'{group[score_label].min():.{float_precission}f}'
+    table = ''
+    groups = list(iter(gdf))
+    if groups_sort_key is not None:
+        groups = sorted(groups, key=groups_sort_key)
+    for group_name, group in groups:
+        group_str = __generate_group(group, group_name, group.columns, max_scores[group_name], float_precission, separate_rows)
+        table += group_str
+    table = table[:-6]  # remove doubled \hline
+
+    table = begin_table + table + end_table
+    if out_path:
+        with open(out_path, 'w+', encoding='utf-8') as file:
+            file.write(table)
+    return table
