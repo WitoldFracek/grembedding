@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Generator, Optional, Iterable, Callable
 from copy import deepcopy
 import pandas.api.typing as pdtype
+import numpy as np
 
 
 class SupportsRichComparison:
@@ -66,6 +67,42 @@ class GremDataFrame(pd.DataFrame):
         return GremDataFrame(super().first())
 
 
+class VectorInfo:
+    def __init__(self, dataset: str, data_cleaner: str, vectorizer: str, x: np.ndarray, y: np.ndarray):
+        self.dataset = dataset
+        self.data_cleaner = data_cleaner
+        self.vectorizer = vectorizer
+        self.x = x
+        self.y = y
+    
+    @staticmethod
+    def from_path(path: str | Path) -> "VectorInfo":
+        if isinstance(path, str):
+            path = Path(path)
+        data = np.load(path)
+        x, y, = data["X_train"], data["y_train"]
+        dataset, meta = path.parts[-3:-1]
+        data_cleaner, vectorizer = meta.split('_')
+        return VectorInfo(dataset, data_cleaner, vectorizer, x, y)
+    
+    @property
+    def vec_len(self) -> int:
+        return self.x.shape[1]
+    
+    def __repr__(self) -> str:
+        return f'{self.__class__.__name__}({self.dataset}, {self.data_cleaner}, {self.vectorizer}, x data shape({self.x.shape}))'
+
+
+class DatasetInfo:
+    def __init__(self, dataset: str, data_cleaner: str, df: pd.DataFrame):
+        self.dataset = dataset
+        self.data_cleaner = data_cleaner
+        self.df = df
+    
+    def __repr__(self) -> str:
+        return f'{self.__class__.__name__}({self.dataset}, {self.data_cleaner}, ...)'
+        
+
 def results_iter(root_dir: str | Path) -> Generator[dict[str, dict | str | float], None, None]:
     for root, dirs, files in os.walk(root_dir):
         for file in files:
@@ -75,6 +112,26 @@ def results_iter(root_dir: str | Path) -> Generator[dict[str, dict | str | float
                     yield json.load(file)
         for dir_ in dirs:
             results_iter(os.path.join(root, dir_))
+
+
+def vector_data_iter(root_dir: str | Path) -> Generator[VectorInfo, None, None]:
+    for root, dirs, files in os.walk(root_dir):
+        for file in files:
+            if file.endswith('.npz'):
+                file_path = os.path.join(root, file)
+                yield VectorInfo.from_path(file_path)
+        for dir_ in dirs:
+            vector_data_iter(os.path.join(root, dir_))
+
+def dataset_iter(root_dir: str | Path) -> Generator[DatasetInfo, None, None]:
+    for root, dirs, files in os.walk(root_dir):
+        for file in files:
+            if file.endswith('train.parquet'):
+                file_path = Path(os.path.join(root, file))
+                dataset, data_cleaner = file_path.parts[-3: -1]
+                yield DatasetInfo(dataset, data_cleaner, pd.read_parquet(file_path))
+        for dir_ in dirs:
+            vector_data_iter(os.path.join(root, dir_))
 
 
 def __update_data(results, data: dict[str, list[str | float]]):
@@ -133,9 +190,12 @@ def make_latex_frame(
     begin_table += '\n\t\\centering\n\t\\caption{'
     if caption:
         begin_table += caption
-    begin_table += '}\n\t\\resizebox{\\textwidth}{!}{\n\t\\begin{tabular}'
+    begin_table += '}\n\t\\resizebox{\n\t\\ifdim\\width>\\columnwidth\n\t\t\\columnwidth\n\t\\else\n\t\t\\width\n\t\\fi\n\t}{!}{\n\t\\begin{tabular}'
     begin_table += f'{{{border_style}' + '|'.join(['c'] * len(columns)) + f'{border_style}}}\n\t\t\\hline\n\t\t'
-    begin_table += ' & '.join(map(lambda s: s.replace("_", "\\_"), map(lambda s: f"\\textbf{{{s}}}", column_names))) + ' \\\\\n\t\t\\hline'
+    break_line_cells = map(__br_in_cell, column_names)
+    bold_text = map(lambda s: f"\\textbf{{{s}}}", break_line_cells)
+    replace_underscores = map(lambda s: s.replace("_", "\\_"), bold_text)
+    begin_table += ' & '.join(replace_underscores) + ' \\\\\n\t\t\\hline'
     if separate_header:
         begin_table += '\\hline'
     begin_table += '\n'
@@ -243,7 +303,7 @@ def __generate_group(group: pd.DataFrame, group_name: str, data_labels: list[str
             table += f'  \\cline{{2-{len(data_labels) + 1}}}'
         table += '\n'
     table += f'\\hline'
-    return table
+    return table.replace('.', ',')
 
 
 def groups_to_latex_table(
@@ -299,4 +359,11 @@ def groups_to_latex_table(
     if out_path:
         with open(out_path, 'w+', encoding='utf-8') as file:
             file.write(table)
-    return table
+    return table.replace('.', ',')
+
+
+def __br_in_cell(text: str) -> str:
+    if '\n' in text:
+        text = text.replace('\n', '\\\\')
+        return f'\\makecell{{{text}}}'
+    return text
