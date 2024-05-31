@@ -215,9 +215,9 @@ def make_latex_frame(
 
 def to_latex_table(
         df: pd.DataFrame, 
-        place_modifiers: Optional[str] = 'H', 
+        place_modifiers: Optional[str] = '!htb', 
         out_path: Optional[str | Path] = None, 
-        border_style: str = '||', 
+        border_style: str = '|', 
         separate_header: bool = False,
         column_names: Optional[list[str]] = None,
         float_precission: int = 3,
@@ -277,7 +277,7 @@ def to_latex_table(
     if out_path:
         with open(out_path, 'w+', encoding='utf-8') as file:
             file.write(table)
-    return table
+    return table.replace('.', ',')
 
 
 def __generate_table_row(data_row: Iterable, data_labels: list[str], bold_mappings: dict[str, str], float_precission) -> str:
@@ -309,9 +309,9 @@ def __generate_group(group: pd.DataFrame, group_name: str, data_labels: list[str
 def groups_to_latex_table(
         gdf: pdtype.DataFrameGroupBy,
         group_header: str = 'rodzaj wektora' ,
-        place_modifiers: Optional[str] = 'H', 
+        place_modifiers: Optional[str] = '!htb', 
         out_path: Optional[str | Path] = None, 
-        border_style: str = '||', 
+        border_style: str = '|', 
         separate_header: bool = False,
         column_names: Optional[list[str]] = None,
         float_precission: int = 3,
